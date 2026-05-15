@@ -32,8 +32,9 @@ Copy (Phase 3a)
 
 - [x] 1. Strategy
 - [x] 2. Design Brief
-- [ ] 3. Copy + Wireframes
-- [ ] 4. Design
+- [~] 3a. Copy (in progress — Home signed off, 11 pages remaining)
+- [x̶] 3b. Wireframes — CANCELLED 2026-05-15 at Dave's direction
+- [ ] 4. Design (next session — starting with Homepage, parallel with remaining Copy)
 - [ ] 5. Build
 - [ ] 6. Launch
 

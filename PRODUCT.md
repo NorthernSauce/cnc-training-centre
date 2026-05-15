@@ -33,6 +33,8 @@ Both audiences are technical, suspicious of marketing copy, and trust people who
 
 Three words: **plain-spoken, tooled-up, quietly-premium.**
 
+**First person, always.** David is the business. There is no team. Copy is written in first person singular ("I", "me", "my") — never "we", "us", "our". The exception is "Contact David" / "Tell David what you need" as direct CTAs where the proper noun is warmer than "Contact me". Inside body copy and once the buyer is past the hero, switch to first person. A future plural form ("the team") may apply if David ever hires — at which point this rule gets revisited.
+
 - **Plain-spoken** — David's voice. No corporate hedge. Contractions. Short sentences when a short sentence is enough. Will swear in long-form content (Hub articles) where it lands; tighter in service-page copy where the buyer is closer to enquiry.
 - **Tooled-up** — every paragraph carries technical weight. Names actual controls (Fanuc, Heidenhain, Siemens, Mazatrol), actual machines (sliding head, Brother Speedio, Mazak Integrex), actual problems (G73 cycles, cutter compensation, macro variables). Specificity is the proof of authority.
 - **Quietly-premium** — the design carries the premium signal, the copy doesn't have to. We do not write "premium". We write tightly, lay it out generously, and let the reader feel it. Premium without "premium".
