@@ -329,3 +329,106 @@
   margin: var(--ns-space-2xl) 0 0;
 }
 
+
+
+/* =================================================
+ * § FIND — LOCATION MAP BLOCK
+ * Classroom-specific. Sits between FAQ and the
+ * canonical .svc-cta enquiry block. Paper-tint surface
+ * to alternate cleanly with the paper-deep enquiry
+ * block that follows.
+ * ================================================= */
+
+.ct-find {
+  background: var(--ns-color-paper-tint);
+  padding-block: clamp(4rem, 7vw, 7rem);
+}
+
+.ct-find-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ns-space-2xl);
+  align-items: start;
+}
+
+@media (min-width: 900px) {
+  .ct-find-grid {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.4fr);
+    gap: var(--ns-space-3xl);
+  }
+}
+
+.ct-find-title {
+  font-family: var(--ns-font-display);
+  font-size: clamp(1.75rem, 1.2rem + 2.2vw, 3rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: var(--ns-color-ink);
+  margin: 0 0 var(--ns-space-md);
+  max-width: 18ch;
+}
+
+.ct-find-body {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-medium);
+  line-height: var(--ns-leading-base);
+  color: var(--ns-color-ink-soft);
+  margin: 0 0 var(--ns-space-lg);
+  max-width: 50ch;
+}
+
+.ct-find-address {
+  margin: 0 0 var(--ns-space-lg);
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-regular);
+  color: var(--ns-color-ink);
+  line-height: var(--ns-leading-base);
+}
+
+.ct-find-address dt {
+  font-size: var(--ns-text-tiny);
+  font-weight: var(--ns-weight-medium);
+  letter-spacing: var(--ns-track-extrawide);
+  text-transform: uppercase;
+  color: var(--ns-color-ink-muted);
+  margin-bottom: var(--ns-space-2xs);
+}
+.ct-find-address dt + dd { margin-bottom: var(--ns-space-md); }
+.ct-find-address dd { margin: 0; }
+
+.ct-find-map {
+  position: relative;
+  width: 100%;
+  background: var(--ns-color-paper);
+  border: 1px solid var(--ns-color-rule);
+  border-radius: var(--ns-radius-tight);
+  overflow: hidden;
+}
+
+.ct-find-map iframe {
+  display: block;
+  width: 100%;
+  height: clamp(320px, 50vw, 480px);
+  border: 0;
+}
+
+.ct-find-map-caption {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--ns-space-md);
+  flex-wrap: wrap;
+  padding: var(--ns-space-sm) var(--ns-space-md);
+  border-top: 1px solid var(--ns-color-rule);
+  font-size: var(--ns-text-tiny);
+  letter-spacing: var(--ns-track-wide);
+  text-transform: uppercase;
+  color: var(--ns-color-ink-muted);
+  background: var(--ns-color-paper);
+}
+
+.ct-find-map-caption a {
+  color: var(--ns-color-ink);
+  font-weight: var(--ns-weight-medium);
+  letter-spacing: var(--ns-track-wide);
+}

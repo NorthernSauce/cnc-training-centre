@@ -1,0 +1,451 @@
+/* CNC Training Centre — Contact page styles
+ * Direction A — The Engineering Manual.
+ *
+ * Loads AFTER tokens.css + components.css + page-home.css.
+ * Page-local section classes only — reuses shared .container, .s, .s-paper,
+ * .s-paper-tint, .sec-head, .sec-pretitle, .ghost-num, .hero, .hero-ghost,
+ * .hero-eyebrow, .hero-title, .hero-stack, .hero-lede, .hero-base, .spec-block,
+ * .spec, .form-stack, .form-head, .form-field, .form-input, .form-textarea,
+ * .form-select, .form-label, .form-hint, .form-actions, .form-submit, .link-arrow.
+ */
+
+
+/* ============================================
+ * § 01 — HERO
+ * Asymmetric editorial. Headline LH, contact-meta marginalia RH.
+ * Pattern mirrors onsite-training .ot-margin / .ot-hero-grid.
+ * No hero CTAs — the form below is the action.
+ * ============================================ */
+
+.ct-hero .hero-title { max-width: 14ch; }
+
+.ct-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ns-space-2xl);
+}
+
+@media (min-width: 900px) {
+  .ct-hero-grid {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    gap: var(--ns-space-4xl);
+    align-items: start;
+  }
+}
+
+.ct-hero-cue {
+  margin-top: var(--ns-space-lg);
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-small);
+  font-weight: var(--ns-weight-medium);
+  letter-spacing: var(--ns-track-wide);
+  text-transform: uppercase;
+  color: var(--ns-color-ink-muted);
+}
+
+/* Contact-meta marginalia — same visual treatment as ot-margin */
+.ct-margin {
+  background: var(--ns-color-paper-tint);
+  border: 1px solid var(--ns-color-rule);
+  padding: var(--ns-space-lg);
+  border-radius: var(--ns-radius-tight);
+  align-self: start;
+}
+
+.ct-margin-head {
+  display: grid;
+  grid-template-columns: max-content 1fr max-content;
+  gap: var(--ns-space-sm);
+  align-items: center;
+  padding-bottom: var(--ns-space-md);
+  border-bottom: 1px solid var(--ns-color-rule);
+  margin-bottom: var(--ns-space-md);
+}
+
+.ct-margin-eyebrow,
+.ct-margin-num {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  font-weight: var(--ns-weight-medium);
+  letter-spacing: var(--ns-track-extrawide);
+  text-transform: uppercase;
+  color: var(--ns-color-ink-muted);
+}
+
+.ct-margin-num { color: var(--ns-color-ink); }
+
+.ct-margin-rule {
+  height: 1px;
+  background: var(--ns-color-rule-strong);
+}
+
+.ct-margin-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ns-space-md);
+  margin: 0;
+}
+
+.ct-margin-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--ns-space-2xs);
+  padding-bottom: var(--ns-space-md);
+  border-bottom: 1px dashed var(--ns-color-rule);
+}
+
+.ct-margin-row:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+@media (min-width: 520px) {
+  .ct-margin-row {
+    grid-template-columns: 10rem 1fr;
+    gap: var(--ns-space-md);
+    align-items: baseline;
+  }
+}
+
+.ct-margin-row dt {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  font-weight: var(--ns-weight-medium);
+  letter-spacing: var(--ns-track-wide);
+  text-transform: uppercase;
+  color: var(--ns-color-ink);
+}
+
+.ct-margin-row dd {
+  margin: 0;
+  font-size: var(--ns-text-small);
+  line-height: var(--ns-leading-base);
+  color: var(--ns-color-ink-soft);
+}
+
+
+/* ============================================
+ * § 02 — FORM SECTION
+ * Form LH (canonical .form-stack), supporting column RH
+ * with "What happens" + "What I won't do".
+ * Form is the hero — given visual prominence by paper-deep surface,
+ * 2 px ink top rule (from .form-stack in components.css).
+ * ============================================ */
+
+.ct-form-section { position: relative; }
+
+.ct-form-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ns-space-2xl);
+  align-items: start;
+}
+
+@media (min-width: 1000px) {
+  .ct-form-grid {
+    grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+    gap: var(--ns-space-3xl);
+  }
+}
+
+/* The form lives inside .form-stack from components.css.
+ * Page-local: allow it to fill the column (override max-width).
+ */
+.ct-form {
+  max-width: none;
+  width: 100%;
+}
+
+/* Two-column field rows at 700+ — short fields share a row */
+.ct-form-row-2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ns-space-lg);
+}
+
+@media (min-width: 700px) {
+  .ct-form-row-2 { grid-template-columns: 1fr 1fr; gap: var(--ns-space-lg); }
+}
+
+/* Required / optional indicators inside labels */
+.ct-req {
+  color: var(--ns-color-primary);
+  font-weight: var(--ns-weight-semibold);
+  margin-left: var(--ns-space-2xs);
+}
+
+.ct-opt {
+  margin-left: var(--ns-space-xs);
+  font-family: var(--ns-font-body);
+  font-size: 0.7rem;
+  font-weight: var(--ns-weight-regular);
+  letter-spacing: var(--ns-track-wide);
+  text-transform: lowercase;
+  color: var(--ns-color-ink-muted);
+}
+
+/* The submit + promise line sit side-by-side in the form-actions row */
+.ct-form-promise {
+  font-size: var(--ns-text-tiny);
+  color: var(--ns-color-ink-muted);
+  max-width: 38ch;
+}
+
+/* Make the submit button large enough to read as a primary affordance */
+.ct-form .form-submit {
+  min-height: 52px !important;
+  padding: 0.9rem 1.4rem !important;
+  font-size: var(--ns-text-regular) !important;
+}
+
+
+/* ============================================
+ * Supporting aside — "What happens" + "What I won't do"
+ * Sits to the right of the form at desktop, below at mobile.
+ * Restrained typographic treatment, no card chrome.
+ * ============================================ */
+
+.ct-form-aside {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ns-space-2xl);
+  padding-top: var(--ns-space-xl);
+}
+
+.ct-aside-block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ns-space-md);
+}
+
+.ct-aside-eyebrow {
+  display: inline-block;
+  padding-top: var(--ns-space-xs);
+  margin: 0;
+  border-top: 1px solid var(--ns-color-ink);
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  font-weight: var(--ns-weight-medium);
+  letter-spacing: var(--ns-track-extrawide);
+  text-transform: uppercase;
+  color: var(--ns-color-ink-muted);
+  align-self: flex-start;
+}
+
+.ct-aside-title {
+  font-family: var(--ns-font-display);
+  font-size: var(--ns-heading-h3);
+  line-height: var(--ns-leading-snug);
+  letter-spacing: var(--ns-track-tight);
+  color: var(--ns-color-ink);
+  margin: 0;
+}
+
+.ct-aside-body {
+  font-size: var(--ns-text-regular);
+  line-height: var(--ns-leading-base);
+  color: var(--ns-color-ink-soft);
+  margin: 0;
+  max-width: 56ch;
+}
+
+.ct-aside-coda {
+  font-style: italic;
+  color: var(--ns-color-ink-muted);
+}
+
+/* Plus-marker list — the engineering-manual highlight list pattern.
+ * Local to this page (not in components.css). Strong leading "+" mark.
+ */
+.ct-list-plus {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--ns-space-md);
+}
+
+.ct-list-plus li {
+  position: relative;
+  padding-left: 1.75rem;
+  font-size: var(--ns-text-regular);
+  line-height: var(--ns-leading-base);
+  color: var(--ns-color-ink-soft);
+  max-width: 56ch;
+}
+
+.ct-list-plus li::before {
+  content: "+";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--ns-color-primary);
+  font-family: var(--ns-font-body);
+  font-weight: var(--ns-weight-bold);
+  font-size: 1.15rem;
+  line-height: 1.45;
+}
+
+.ct-list-plus li strong {
+  color: var(--ns-color-ink);
+  font-weight: var(--ns-weight-semibold);
+}
+
+
+/* ============================================
+ * § 03 — OTHER WAYS TO GET IN TOUCH
+ * Three-column band. Same visual weight per cell.
+ * Numbered grid pattern (engineering-manual list).
+ * ============================================ */
+
+.ct-other-title {
+  font-family: var(--ns-font-display);
+  font-size: var(--ns-heading-h2);
+  line-height: var(--ns-leading-tight);
+  letter-spacing: var(--ns-track-tight);
+  color: var(--ns-color-ink);
+  margin: 0;
+  max-width: 28ch;
+}
+
+.ct-other-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  border-top: 1px solid var(--ns-color-rule);
+  border-bottom: 1px solid var(--ns-color-rule);
+}
+
+@media (min-width: 900px) {
+  .ct-other-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.ct-other-cell {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ns-space-sm);
+  padding: var(--ns-space-xl) 0;
+  border-bottom: 1px solid var(--ns-color-rule);
+}
+
+.ct-other-cell:last-child { border-bottom: 0; }
+
+@media (min-width: 900px) {
+  .ct-other-cell {
+    padding: var(--ns-space-xl);
+    border-bottom: 0;
+    border-right: 1px solid var(--ns-color-rule);
+  }
+  .ct-other-cell:first-child { padding-left: 0; }
+  .ct-other-cell:last-child { padding-right: 0; border-right: 0; }
+}
+
+.ct-other-num {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  font-weight: var(--ns-weight-medium);
+  letter-spacing: var(--ns-track-extrawide);
+  text-transform: uppercase;
+  color: var(--ns-color-ink-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.ct-other-cell-title {
+  font-family: var(--ns-font-display);
+  font-size: var(--ns-heading-h4);
+  line-height: var(--ns-leading-snug);
+  color: var(--ns-color-ink);
+  margin: 0;
+}
+
+.ct-other-cell-figure {
+  margin: 0;
+  font-family: var(--ns-font-display);
+  font-size: clamp(1.4rem, 0.9rem + 1.5vw, 1.9rem);
+  line-height: var(--ns-leading-snug);
+  letter-spacing: var(--ns-track-tight);
+  color: var(--ns-color-ink);
+  word-break: break-word;
+}
+
+.ct-other-cell-figure a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: color-mix(in oklab, var(--ns-color-ink) 25%, transparent);
+  text-underline-offset: 0.18em;
+}
+
+.ct-other-cell-figure a:hover {
+  text-decoration-color: var(--ns-color-ink);
+}
+
+.ct-other-cell-figure-plain {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-large);
+  font-weight: var(--ns-weight-semibold);
+  letter-spacing: 0;
+  color: var(--ns-color-ink);
+}
+
+.ct-other-cell-body {
+  font-size: var(--ns-text-small);
+  line-height: var(--ns-leading-base);
+  color: var(--ns-color-ink-soft);
+  margin: 0;
+  max-width: 38ch;
+}
+
+.ct-other-cell-link { margin-top: var(--ns-space-xs); }
+
+.ct-other-location {
+  margin: var(--ns-space-2xl) 0 0;
+  padding-top: var(--ns-space-md);
+  font-size: var(--ns-text-medium);
+  line-height: var(--ns-leading-base);
+  color: var(--ns-color-ink-soft);
+  max-width: 78ch;
+}
+
+.ct-other-location-lbl {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  font-weight: var(--ns-weight-medium);
+  letter-spacing: var(--ns-track-extrawide);
+  text-transform: uppercase;
+  color: var(--ns-color-ink);
+  margin-right: var(--ns-space-xs);
+}
+
+
+/* ============================================
+ * § 04 — TRUST STRIP
+ * Reuses .spec-block from page-home.css — same visual treatment,
+ * fewer rows. Local override: 4-up grid at desktop.
+ * ============================================ */
+
+.ct-trust-title {
+  font-family: var(--ns-font-display);
+  font-size: var(--ns-heading-h2);
+  line-height: var(--ns-leading-tight);
+  letter-spacing: var(--ns-track-tight);
+  color: var(--ns-color-ink);
+  margin: 0;
+  max-width: 28ch;
+}
+
+.ct-trust .spec-block {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (min-width: 900px) {
+  .ct-trust .spec-block {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .ct-trust .spec-block .spec { border-right: 1px solid var(--ns-color-rule); }
+  .ct-trust .spec-block .spec:last-child { border-right: 0; }
+  .ct-trust .spec-block .spec:nth-last-child(-n+4) { border-bottom: 0; }
+}

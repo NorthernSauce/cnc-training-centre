@@ -661,22 +661,54 @@
     </section>
 
     <!-- ============================================
-         § 11 — CONTACT BAND
-         Anchor surface — reuses home contact treatment.
+         § 11 — FIND (location map block)
+         Classroom-specific. Sits between FAQ and the
+         canonical .svc-cta enquiry block. Paper-tint surface.
          ============================================ -->
-    <section class="contact" id="apply" aria-labelledby="contact-title">
+    <section class="ct-find" aria-labelledby="ct-find-title">
       <div class="container">
-        <span class="sec-pretitle sec-pretitle-light">§ 11 — Contact</span>
-        <div class="contact-grid">
-            <div>
-              <h2 class="contact-title" id="contact-title">Tell David what you need.</h2>
-              <p class="contact-lede">Call me direct on <a href="tel:+447834858407">07834 858 407</a> if you'd rather talk it through than fill in a form. Quickest way to work out which course fits.</p>
-              <div class="contact-actions">
-                <a class="btn btn-primary btn-lg" href="#courses">See all courses</a>
-                <a class="btn btn-outline btn-lg" href="tel:+447834858407">07834 858 407</a>
-              </div>
-            </div>
-            <dl class="contact-meta">
+        <span class="sec-pretitle">§ 11 — Where</span>
+        <div class="ct-find-grid">
+          <div class="ct-find-lh">
+            <h2 class="ct-find-title" id="ct-find-title">Find the workshop. <span class="course-flag">[GAP — Dave to confirm headline]</span></h2>
+            <p class="ct-find-body">The classroom is in Barwell, Leicestershire — ten minutes from the M69, half an hour from Birmingham, an hour up from Northampton. Postcode and directions sent on application.</p>
+            <dl class="ct-find-address">
+              <dt>Address</dt>
+              <dd>Barwell, Leicestershire <span class="course-flag">[GAP — Dave to supply full postcode + street]</span></dd>
+              <dt>Parking</dt>
+              <dd>On-site parking for students. <span class="course-flag">[GAP — Dave to confirm parking detail]</span></dd>
+            </dl>
+          </div>
+
+          <figure class="ct-find-map">
+            <iframe
+              src="https://www.openstreetmap.org/export/embed.html?bbox=-1.36%2C52.56%2C-1.30%2C52.60&layer=mapnik&marker=52.5839%2C-1.3322"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Map — Barwell, Leicestershire"
+            ></iframe>
+            <figcaption class="ct-find-map-caption">
+              <span>Barwell, Leicestershire <span class="course-flag" style="text-transform:none;letter-spacing:0;">[GAP — exact workshop coordinates]</span></span>
+              <a class="link-arrow" href="https://www.google.com/maps/search/?api=1&query=Barwell%2C+Leicestershire" target="_blank" rel="noopener">Get directions</a>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         § 12 — ENQUIRY BLOCK (canonical .svc-cta)
+         Reused verbatim across all 3 service pages.
+         Surface: paper-deep. Content swaps per page.
+         ============================================ -->
+    <section class="svc-cta" id="apply" aria-labelledby="svc-cta-title">
+      <div class="container">
+        <span class="sec-pretitle">§ 12 — Contact</span>
+        <div class="svc-cta-grid">
+          <div class="svc-cta-lh">
+            <h2 class="svc-cta-title" id="svc-cta-title">Tell David what you need.</h2>
+            <p class="svc-cta-lede">Call me direct on <a href="tel:+447834858407">07834 858 407</a> if you'd rather talk it through than fill in a form — quickest way to work out which course fits. Otherwise, send a paragraph below and I'll come back inside a working day.</p>
+            <dl class="svc-cta-meta">
               <div>
                 <dt>Phone</dt>
                 <dd><a href="tel:+447834858407">07834 858 407</a></dd>
@@ -690,6 +722,44 @@
                 <dd>Barwell, Leicestershire.</dd>
               </div>
             </dl>
+          </div>
+
+          <form class="form-stack frm-fluent-form" action="#" method="post" novalidate aria-label="Classroom training enquiry">
+            <div class="form-head">
+              <span class="num">§ Enquire</span>
+              <h3 class="title">Classroom enquiry</h3>
+              <p class="sub">Tell me which course caught your eye, or describe where you're at and I'll point you to the right one.</p>
+            </div>
+
+            <div class="svc-cta-hidden" aria-hidden="true">
+              <input type="hidden" name="service" value="Classroom training" />
+            </div>
+
+            <div class="form-field">
+              <label class="form-label" for="ct-name">Your name</label>
+              <input class="form-input" id="ct-name" name="name" type="text" autocomplete="name" required />
+            </div>
+
+            <div class="form-field">
+              <label class="form-label" for="ct-email">Email</label>
+              <input class="form-input" id="ct-email" name="email" type="email" autocomplete="email" required />
+            </div>
+
+            <div class="form-field">
+              <label class="form-label" for="ct-phone">Phone <span class="form-hint" style="display:inline; margin:0;">(optional)</span></label>
+              <input class="form-input" id="ct-phone" name="phone" type="tel" autocomplete="tel" />
+            </div>
+
+            <div class="form-field">
+              <label class="form-label" for="ct-brief">Where you're at, what you want next</label>
+              <textarea class="form-textarea" id="ct-brief" name="brief" rows="6" placeholder="e.g. I've been an operator on a Hurco for two years. I can press cycle-start but I've never set a job from scratch or written a programme. Looking at Setter/Operator — Milling, or possibly Learn to Program if that's a stretch too far."></textarea>
+            </div>
+
+            <div class="form-actions">
+              <button class="form-submit" type="submit">Send enquiry</button>
+              <p class="form-hint">I reply inside a working day, with a proper answer.</p>
+            </div>
+          </form>
         </div>
       </div>
     </section>

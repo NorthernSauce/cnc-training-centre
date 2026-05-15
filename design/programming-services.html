@@ -558,21 +558,18 @@
     </section>
 
     <!-- ============================================
-         § 10 — CONTACT BAND (anchor surface — locked pattern)
+         § 10 — ENQUIRY BLOCK (canonical .svc-cta)
+         Reused verbatim across all 3 service pages.
+         Surface: paper-deep. Content swaps per page.
          ============================================ -->
-    <section class="contact" aria-labelledby="contact-title">
+    <section class="svc-cta" aria-labelledby="svc-cta-title">
       <div class="container">
-        <span class="sec-pretitle sec-pretitle-light">§ 10 — Contact</span>
-        <div class="contact-grid">
-            <div>
-              <h2 class="contact-title" id="contact-title">Tell David what you need.</h2>
-              <p class="contact-lede">Call me direct on <a href="tel:+447834858407">07834 858 407</a>, or send the drawing and the brief through the form. Quickest route to a quote.</p>
-              <div class="contact-actions">
-                <a class="btn btn-primary btn-lg" href="contact.html">Send a drawing</a>
-                <a class="btn btn-outline btn-lg" href="tel:+447834858407">07834 858 407</a>
-              </div>
-            </div>
-            <dl class="contact-meta">
+        <span class="sec-pretitle">§ 10 — Contact</span>
+        <div class="svc-cta-grid">
+          <div class="svc-cta-lh">
+            <h2 class="svc-cta-title" id="svc-cta-title">Tell David what you need.</h2>
+            <p class="svc-cta-lede">Call me direct on <a href="tel:+447834858407">07834 858 407</a>, or send the drawing and the brief through the form below. Quickest route to a quote — programming is done off-site, the drawing is all I need.</p>
+            <dl class="svc-cta-meta">
               <div>
                 <dt>Phone</dt>
                 <dd><a href="tel:+447834858407">07834 858 407</a></dd>
@@ -583,9 +580,47 @@
               </div>
               <div>
                 <dt>Location</dt>
-                <dd>Barwell, Leicestershire. Programming is done off-site — the drawing is all I need.</dd>
+                <dd>Barwell, Leicestershire. Programming done off-site.</dd>
               </div>
             </dl>
+          </div>
+
+          <form class="form-stack frm-fluent-form" action="#" method="post" novalidate aria-label="Programming services enquiry">
+            <div class="form-head">
+              <span class="num">§ Enquire</span>
+              <h3 class="title">Programming enquiry</h3>
+              <p class="sub">The more honest the brief — drawing, machine, control, batch, deadline — the cleaner the quote.</p>
+            </div>
+
+            <div class="svc-cta-hidden" aria-hidden="true">
+              <input type="hidden" name="service" value="Programming services" />
+            </div>
+
+            <div class="form-field">
+              <label class="form-label" for="ps-name">Your name</label>
+              <input class="form-input" id="ps-name" name="name" type="text" autocomplete="name" required />
+            </div>
+
+            <div class="form-field">
+              <label class="form-label" for="ps-email">Email</label>
+              <input class="form-input" id="ps-email" name="email" type="email" autocomplete="email" required />
+            </div>
+
+            <div class="form-field">
+              <label class="form-label" for="ps-phone">Phone <span class="form-hint" style="display:inline; margin:0;">(optional)</span></label>
+              <input class="form-input" id="ps-phone" name="phone" type="tel" autocomplete="tel" />
+            </div>
+
+            <div class="form-field">
+              <label class="form-label" for="ps-brief">The job, the machine, the deadline</label>
+              <textarea class="form-textarea" id="ps-brief" name="brief" rows="6" placeholder="e.g. 8-off complex aerospace bracket, 5-axis on a Mazak Integrex i200 (Mazatrol). STEP and PDF in hand. Need posted G-code by next Friday for a customer trial. Material: 6082-T6 ali."></textarea>
+            </div>
+
+            <div class="form-actions">
+              <button class="form-submit" type="submit">Send enquiry</button>
+              <p class="form-hint">I reply inside a working day. Attach the drawing on the follow-up email.</p>
+            </div>
+          </form>
         </div>
       </div>
     </section>

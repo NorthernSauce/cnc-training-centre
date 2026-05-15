@@ -1,0 +1,200 @@
+/* =================================================
+ * page-about.css
+ * Additive-only. Styles unique to the About page.
+ * Inherits everything else from
+ * tokens.css → components.css → page-home.css.
+ * Shared section classes (.hero, .problem, .authority,
+ * .plan, .faq, .contact, .spec-block, .pull-quote,
+ * .marginalia, .faq-list, .faq-item) are NOT
+ * re-declared — re-use only.
+ * ================================================= */
+
+
+/* -------------------------------------------------
+ * § 01 — HERO TWEAKS
+ * Inherits .hero / .hero-grid from page-home.css.
+ * Swaps RH column from .hero-specs to .marginalia
+ * (same move classroom + programming pages make).
+ * ------------------------------------------------- */
+
+.about-hero .hero-title {
+  max-width: 22ch;
+  font-size: clamp(2.6rem, 1.8rem + 4.8vw, 6rem);
+}
+
+.about-hero-side {
+  position: relative;
+  align-self: start;
+  padding: var(--ns-space-lg);
+}
+.about-hero-side::before,
+.about-hero-side::after {
+  content: "";
+  position: absolute;
+  left: -6px;
+  width: 12px;
+  height: 1px;
+  background: var(--ns-color-ink);
+}
+.about-hero-side::before { top: -1px; }
+.about-hero-side::after  { bottom: -1px; }
+.about-hero-side .marginalia-head {
+  justify-content: space-between;
+}
+.about-hero-side-num {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  font-weight: var(--ns-weight-medium);
+  letter-spacing: var(--ns-track-wide);
+  font-variant-numeric: tabular-nums;
+  color: var(--ns-color-ink-muted);
+  text-transform: none;
+}
+.about-hero-side dl dt {
+  padding-top: 0.2rem;
+}
+.about-hero-side dl dd strong {
+  color: var(--ns-color-ink);
+}
+
+
+/* -------------------------------------------------
+ * § 02 — ABOUT THE TRAINER coda + pull-quote spacing
+ * Inherits .problem / .problem-cols / .problem-pull
+ * from page-home.css. Adds a third paragraph coda
+ * beneath the two-col body and a foot line under
+ * the pull-quote.
+ * ------------------------------------------------- */
+
+.about-trainer-coda {
+  grid-column: 1 / -1;
+  margin-top: var(--ns-space-lg);
+  font-size: var(--ns-text-medium);
+  line-height: var(--ns-leading-base);
+  color: var(--ns-color-ink);
+  max-width: 70ch;
+}
+
+.about-trainer-pull {
+  margin-top: var(--ns-space-2xl);
+}
+
+.about-trainer-foot {
+  margin-top: var(--ns-space-xl);
+  font-size: var(--ns-text-medium);
+  line-height: var(--ns-leading-base);
+  color: var(--ns-color-ink-soft);
+  max-width: 60ch;
+}
+
+
+/* -------------------------------------------------
+ * § 04 — WHY INDEPENDENT coda + closing pull-quote
+ * ------------------------------------------------- */
+
+.indep-coda {
+  margin-top: var(--ns-space-xl);
+  font-size: var(--ns-text-medium);
+  line-height: var(--ns-leading-base);
+  color: var(--ns-color-ink);
+  max-width: 70ch;
+}
+
+.indep-pull {
+  margin-top: var(--ns-space-2xl);
+}
+
+
+/* -------------------------------------------------
+ * § 05 — HOW I TEACH lede
+ * Inherits .plan / .plan-grid / .plan-step from
+ * page-home.css. Adds a long-form lede paragraph
+ * above the three steps that the home version
+ * doesn't carry.
+ * ------------------------------------------------- */
+
+.how-lede {
+  margin-top: var(--ns-space-lg);
+  margin-bottom: var(--ns-space-2xl);
+  max-width: 64ch;
+  font-size: var(--ns-text-medium);
+  line-height: var(--ns-leading-base);
+  color: var(--ns-color-ink-soft);
+}
+
+
+/* -------------------------------------------------
+ * § 06 — AUTHORITY pull-quote + foot
+ * Inherits .authority / .authority-grid / .spec-block
+ * from page-home.css. Adds a centred review pull-quote
+ * (with [GAP] marker) and a "read all reviews" link.
+ * ------------------------------------------------- */
+
+.about-auth-pull {
+  margin-top: var(--ns-space-2xl);
+}
+
+.about-auth-foot {
+  margin-top: var(--ns-space-xl);
+  text-align: center;
+}
+
+
+/* -------------------------------------------------
+ * § 07 — WHERE I WORK FROM coda
+ * ------------------------------------------------- */
+
+.where-coda {
+  margin-top: var(--ns-space-xl);
+  font-size: var(--ns-text-medium);
+  font-style: italic;
+  line-height: var(--ns-leading-base);
+  color: var(--ns-color-ink);
+  max-width: 60ch;
+}
+
+
+/* -------------------------------------------------
+ * [GAP] inline marker — used inside FAQ body where
+ * a line of copy is awaiting Dave confirmation.
+ * Matches the visual treatment of .course-flag on the
+ * Classroom page, locally scoped to the About page so
+ * we don't reach across page CSS boundaries.
+ * ------------------------------------------------- */
+
+.about-faq .course-flag {
+  display: inline-block;
+  margin-left: var(--ns-space-xs);
+  padding: 0 6px;
+  font-size: var(--ns-text-tiny);
+  font-weight: var(--ns-weight-medium);
+  letter-spacing: var(--ns-track-wide);
+  text-transform: uppercase;
+  color: var(--ns-color-warning);
+  border: 1px solid var(--ns-color-warning);
+  border-radius: var(--ns-radius-tight);
+  vertical-align: middle;
+}
+
+
+/* -------------------------------------------------
+ * Mobile fine-tune — make sure the hero marginalia
+ * stacks correctly under the lede stack at < 900px.
+ * The .hero-grid in page-home.css already collapses
+ * to single column at the responsive breakpoint;
+ * this just trims the side panel padding so the
+ * stacked panel doesn't waste vertical space on
+ * small screens.
+ * ------------------------------------------------- */
+
+@media (max-width: 900px) {
+  .about-hero-side {
+    padding: var(--ns-space-md);
+  }
+  .about-trainer-coda {
+    font-size: var(--ns-text-regular);
+  }
+  .how-lede {
+    margin-bottom: var(--ns-space-xl);
+  }
+}

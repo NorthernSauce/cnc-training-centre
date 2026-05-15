@@ -1896,3 +1896,114 @@ body.drawer-open { overflow: hidden; }
     transition: none;
   }
 }
+
+
+/* ============================================
+ * SVC-CTA — canonical service-page enquiry block.
+ * REUSED VERBATIM across onsite-training.html,
+ * classroom-training.html, programming-services.html.
+ * Content swaps per page; markup + classes are identical.
+ *
+ * Surface: paper-deep (NOT anchor — DESIGN.md caps anchor
+ * at once per page; footer keeps that slot). Real form on
+ * RH using the .form-stack pattern from components.css.
+ * ============================================ */
+
+.svc-cta {
+  background: var(--ns-color-paper-deep);
+  padding-block: clamp(4rem, 7vw, 7rem);
+  border-top: 1px solid var(--ns-color-rule);
+}
+
+.svc-cta-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ns-space-2xl);
+  align-items: start;
+}
+
+@media (min-width: 900px) {
+  .svc-cta-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+    gap: var(--ns-space-4xl);
+  }
+}
+
+.svc-cta-lh {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ns-space-lg);
+}
+
+.svc-cta-title {
+  font-family: var(--ns-font-display);
+  font-size: clamp(2rem, 1.3rem + 2.8vw, 3.5rem);
+  line-height: 1.02;
+  letter-spacing: -0.015em;
+  color: var(--ns-color-ink);
+  margin: 0;
+  max-width: 14ch;
+}
+
+.svc-cta-lede {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-large);
+  line-height: var(--ns-leading-base);
+  color: var(--ns-color-ink-soft);
+  margin: 0;
+  max-width: 52ch;
+}
+
+.svc-cta-lede a {
+  color: var(--ns-color-ink);
+  font-weight: var(--ns-weight-semibold);
+}
+
+.svc-cta-meta {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ns-space-lg);
+  margin: 0;
+  padding-top: var(--ns-space-md);
+  border-top: 1px solid var(--ns-color-rule);
+}
+
+@media (min-width: 500px) {
+  .svc-cta-meta {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--ns-space-md);
+  }
+}
+
+.svc-cta-meta dt {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  font-weight: var(--ns-weight-medium);
+  letter-spacing: var(--ns-track-extrawide);
+  text-transform: uppercase;
+  color: var(--ns-color-ink-muted);
+  margin-bottom: var(--ns-space-2xs);
+}
+
+.svc-cta-meta dd {
+  margin: 0;
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-small);
+  color: var(--ns-color-ink);
+  line-height: var(--ns-leading-base);
+}
+
+.svc-cta-meta dd a {
+  color: var(--ns-color-ink);
+}
+
+/* RH form panel — uses .form-stack from components.css.
+ * Override max-width so it fills its grid column. */
+.svc-cta .form-stack {
+  max-width: none;
+  width: 100%;
+}
+
+/* Hidden service field — keeps the value in the form
+ * payload for Fluent Forms routing at build, no UI. */
+.svc-cta-hidden { display: none; }
