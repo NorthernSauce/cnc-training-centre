@@ -1,216 +1,152 @@
 # Handover — CNC Training Centre Website
 
-**For:** PM agent picking this up in a new chat.
-**Written:** 2026-05-15 by previous PM session.
-**Read this end-to-end before doing anything.** Don't re-run intake. Don't re-pitch direction. The work is already mid-flight.
+**For:** Dave, returning to the project in the morning.
+**Written:** 2026-05-15 evening — by PM at end of overnight run.
+**Read this end-to-end before reviewing.**
 
 ---
 
-## Where we are right now
+## What got done overnight
 
-Phase 3a (Copy) is mid-flight. Home page draft is signed off (voice locked). Next session's first action is **Phase 4 Design — starting with the Homepage**. Wireframing was deliberately cancelled by Dave — Designer works directly from approved copy + the locked style guide.
+Per your offline brief: copy + design for the three top-level service pages. All four service-touch pages (Home + Onsite + Classroom + Programming) are now in `design/` ready for your review.
 
-### Phases — current state
+### Phase 3a — Copy
 
-| # | Phase | Linear | State |
-|---|---|---|---|
-| 1 | Strategy | NOR-49 | ✅ Done (approved 2026-05-15) |
-| 2 | Design Brief | NOR-50 | ✅ Done (approved 2026-05-15) — full token + component system + style guide signed off |
-| 3a | Copy | NOR-51 | 🟡 In Progress — Home signed off; 11 pages still to write |
-| 3b | Wireframes | NOR-52 | ❌ **CANCELLED** — Dave's call. Skip this phase. |
-| 4 | Design | NOR-53 | ⏳ Backlog → moves to In Progress on Homepage when next session starts |
-| 5 | Build | NOR-54 | ⏳ Backlog |
-| 6 | Launch | NOR-55 | ⏳ Backlog |
+Three canonical copy files written by the copywriter subagent, full Phase 3a quality, mirroring the structure of `copy/home.md`:
 
-### Deadline
+- `copy/onsite-training.md` (Buyer A primary, £700/day whole-team hook)
+- `copy/classroom-training.md` (Buyer B primary, 8 courses, £300/student/day)
+- `copy/programming-services.md` (Buyer A who'd rather hand work over, £60–£100/hr tiered)
 
-Hard deadline: **21 May 2026 (Thu)**. Today is 15 May (Fri). 4 working days remaining including launch day. Tight but Dave is confident.
+Every fact sourced from `strategy/`, `copy/home.md`, `PRODUCT.md`. First-person singular throughout. Banned humaniser words avoided. Open `[GAP]` markers visible in each file where source material didn't exist — see § "Gaps for Dave" below.
 
----
+### Phase 4 — Design (3 pages, parallel subagents)
 
-## Dave's plan for the next session (verbatim)
+Three high-fidelity HTML/CSS pages built by parallel designer subagents, each inheriting the LOCKED visual language from `home.html`:
 
-> "I'd like to skip the wireframing, cancel it off on this project. Once i start the new chat we'll be getting straight on with the design of the homepage. Once thats done we'll be finishing up copy then finishing the design."
+- `design/onsite-training.html` + `design/page-onsite-training.css` — 10 sections
+- `design/classroom-training.html` + `design/page-classroom-training.css` — 11 sections
+- `design/programming-services.html` + `design/page-programming-services.css` — 10 sections
 
-Translation:
-1. Start the new chat → designer phase kicks off **Homepage design** using `copy/home.md`.
-2. While Homepage design is going, **finish the rest of copy in parallel** (10 service / hub / about / contact / detail pages).
-3. Once homepage design is signed off, **complete the remaining page designs** off the back of finished copy.
+Each page:
+- Byte-identical LOCKED nav / drawer / footer / scroll JS copied verbatim from `home.html` (with `aria-current="page"` on the matching drawer link).
+- Direction-A signatures: marginalia spec panel in hero, ghost numerals, section pretitle pattern, surface alternation (paper → paper-tint → … → anchor for contact).
+- New patterns introduced where the section type demanded it: native `<details name="...">` exclusive FAQ accordions, disqualifier callout boxes, pricing-tier blocks, course rosters, capability spec grids.
+- Mobile nav verified at 375px: logo at left edge, hamburger at right edge, full-width nav (the rule logged to `~/.claude/skills/ns-website-designer/learnings.md` after the earlier session).
+- First-person singular voice throughout — zero "we/us/our" anywhere on these pages.
 
-So the workflow is non-linear from this point: Phase 4 (homepage design) and Phase 3a (remaining copy) overlap. PM needs to dispatch both threads and reconcile in Linear.
+### Linear board
 
----
-
-## The single most important voice rule
-
-**Copy is FIRST PERSON SINGULAR — "I", "me", "my". NEVER "we", "us", "our".** David is the only person in the business. Any copy that drifts to plural gets bounced.
-
-Exception: "Contact David" / "Tell David what you need" are kept as direct CTAs (proper-noun form is warmer than "Contact me"). Body copy: first person.
-
-This rule is locked in `PRODUCT.md` (Voice section) and `learnings.md`. Any copywriter dispatch must surface it explicitly in the brief.
+All sub-issues for tonight's scope are at `Needs Review` (Onsite / Classroom / Programming designs) or `Done` (the three copy sub-issues). Phase issues NOR-51 (Copy) and NOR-53 (Design) stay `In Progress` until all sub-pages are signed off and the remaining pages (About, Contact, Hub index + article, Courses placeholder) are completed.
 
 ---
 
-## Project location + key files
+## Where to start in the morning
 
-**Working directory:** `~/Documents/Clients/cnc-training-centre/`
-
-**Read these first, in order:**
-
-1. `PROJECT.md` — single source of truth for phase state, handoffs, decisions.
-2. `learnings.md` — **BINDING** client-specific rules. Re-read every time. First-person voice rule lives here.
-3. `PRODUCT.md` — strategic register, voice, anti-references, design principles.
-4. `DESIGN.md` — Google Stitch 6-section format. Phase 4 designer reads this as canonical visual spec.
-5. `DESIGN.json` — machine-readable sidecar for designer + builder.
-6. `strategy/strategy.md` — full BrandScript, P-E-A-C-E, voice samples, proof bank.
-7. `strategy/cnctc-proposed-sitemap.md` — finalised 4-services + Hub + About + Contact sitemap.
-8. `brief/tokens.css` + `brief/components.css` — ships verbatim into the theme at Phase 5.
-9. `brief/style-guide.html` — full rendered style guide. Open this in a browser before designing.
-10. `copy/home.md` — Home page copy, signed off. The only copy file written so far.
+1. **Read all four canonical copy files end to end.** They're the truth of what's on each page; the design renders verbatim from them.
+2. **Open each page in the preview** at `http://localhost:3847/design/`:
+   - `home.html` (already approved at "miles better")
+   - `onsite-training.html`
+   - `classroom-training.html`
+   - `programming-services.html`
+3. **Review each page at desktop and at 375 mobile.**
+4. **Sign off, send back for revisions, or call out specific section changes.** I'll route revisions through copywriter (if copy) or designer (if visual).
 
 ---
 
-## Direction A — what's locked
+## Gaps for Dave (visible `[GAP]` markers on each page)
 
-**Engineering Manual.** Industrial-premium, type-led, photography-light. Asymmetric editorial layouts. Marginalia rail + dimension-callout rule-cap as the two visual signatures. Light theme only. WCAG 2.1 AA.
+Each gap is currently rendered as a visible `[GAP — describe what's needed]` placeholder so nothing is silently invented.
 
-**Type pair:** Tanker (display, Fontshare, free) + Synonym (body, Fontshare 400/500/600/700, free).
+### Across all three service pages
+- **Testimonials** — 2 quote placeholders per page (6 total). I have your earlier Google review paste; can wire those quotes verbatim once you confirm which reviewer goes on which page. Suggested mapping (already in copy `[GAP]` notes):
+  - Onsite — Albert Hall (manual→CNC conversion, onsite, code streamlining) + a second onsite/company quote.
+  - Classroom — Ka Bo ("not YouTube" line) + Thomas Earl (10-yr manual turner → CNC) or Mark Guttridge (small biz owner forced to learn turning).
+  - Programming — needs a quote about programming/turnkey work specifically. None in your paste fits — possible `[GAP]` to chase a separate testimonial, or repurpose Albert Hall's "streamlined the code" line.
+- **Hub article cross-links** — 3 article slots per page (9 total). Pending content import strategy + your picks. I've labelled control + topic for each slot so they're filterable when the import runs.
 
-**Anti-references:** corporate SaaS landers, OEM training brand pages, the existing site's AI-generated SEO pages (Doosan / Hurco).
+### Onsite-specific
+- **Lead time / availability** — copy currently flags "I aim to come back inside a working day" (sourced). The marginalia mark-highlighted lead-time wording in §01 hero is a `[GAP]` — what's a realistic typical onsite booking lead time you want stated? 1–2 weeks? 3–4 weeks?
+
+### Classroom-specific
+- **Macro Programming + Edgecam course prices** — sitemap lists the 8 classroom courses but only the standard £300/student/day base rate is sourced. Two course rows in §03 (Macro Programming, Edgecam) carry `[GAP]` chips — confirm pricing per course or whether everything's standard £300/day.
+- **Weekend course variants** — sitemap open question. FAQ Q7 currently flags `[GAP — Dave to confirm]`. Are weekend variants distinct products, or a scheduling option of the same course?
+
+### Programming-specific
+- **Hourly pricing tiering** — copy says "£60–£100/hr" but tiers are uncertain. The pricing section currently flags `[GAP]` for the boundaries (e.g. what work falls at £60? What's £100?). Confirm or simplify.
+- **"Network of trusted machine shops"** — the CNC machining sub-service depends on this. Either confirm the wording or pivot to "as required" / single trusted partner.
+
+### Carried over from previous handover (still open)
+
+- **Founding year** locked = 1996 (you confirmed).
+- **YouTube subs** locked = 8,930 exact (you implicitly confirmed by moving on).
+- **Logo SVG** — still PNG only. Renders fine in nav + footer (footer back on anchor surface after we tried paper). SVG-only swap remains a nice-to-have.
+- **PM bookmark** — content import (≈300 articles + 332 YouTube videos) is a Phase 5/6 task. Out of scope for design phase. Flagged in earlier handover too.
 
 ---
 
-## Linear project
+## What's still pending in Phase 3a (Copy)
 
-**URL:** https://linear.app/northern-sauce/project/cnc-training-centre-website-ec6281752867
+The sitemap has 12 top-level + template pages. Five down (Home + 3 services + the older `home.md` revisions), seven outstanding:
 
-### Phase issues
-- NOR-49 Strategy — Done
-- NOR-50 Design Brief — Done
-- NOR-51 Copy — In Progress (Home complete; 11 pages outstanding)
-- NOR-52 Wireframes — **Canceled** (skip this phase, do not reactivate)
-- NOR-53 Design — Backlog → move to In Progress when next session starts
-- NOR-54 Build — Backlog
-- NOR-55 Launch — Backlog
-
-### Active sub-issues
-- NOR-153 Copy: Home — In Progress (waiting on Dave's final sign-off before marking Done)
-
-### Sub-issues yet to create
-- Copy: Onsite Training (overview)
-- Copy: Onsite detail-page template
-- Copy: Classroom Training (overview)
-- Copy: Classroom course detail-page template
-- Copy: Courses (coming soon)
-- Copy: Programming Services (overview)
-- Copy: Programming detail-page template
-- Copy: Learning Hub (index)
-- Copy: Hub category page template
 - Copy: About
 - Copy: Contact
-- Design: Home (kicks off first under NOR-53)
+- Copy: Learning Hub (index)
+- Copy: Hub category page template
+- Copy: Hub article single template
+- Copy: Courses (coming soon)
+- Copy: Onsite / Classroom / Programming detail-page templates (per machine, per course, per sub-service)
+
+These can be batched the same way once you've signed off on tonight's three services.
+
+## What's still pending in Phase 4 (Design)
+
+After tonight: 4 page designs done out of ~12. Remaining:
+
+- Design: About
+- Design: Contact (lives partially on every page via the contact band — but a standalone contact page with the prominent Fluent Forms `.form-stack` is still owed)
+- Design: Learning Hub (index — taxonomy filter UI, article grid)
+- Design: Learning Hub article (single template)
+- Design: Courses (coming soon placeholder + notify-me form)
+- Design: Onsite detail template (per machine/control)
+- Design: Classroom course detail template
+- Design: Programming detail template (per sub-service)
 
 ---
 
-## Open gaps for Dave
+## Notes on tonight's process
 
-These need answers before specific sections can lock. Surface them at the right moment, don't ambush Dave with all four at once.
-
-1. **Testimonials.** Need 3 specific Google review quotes with reviewer attribution (preferably 1 company decision-maker + 1 classroom student + 1 long-form before/after). Home page has placeholders. Hub + About pages will reuse the same quotes.
-2. **Founding year.** Home eyebrow currently reads "Independent CNC training · since 1994" (30 years backwards from 2024). Dave to confirm.
-3. **YouTube subs stat.** Home Authority section rounded 8,930 → "8,900+". Dave OK'd implicitly, confirm at next sign-off.
-4. **Do-nothing cost in David's words.** Strategy flagged this. Useful on Onsite / Classroom overview pages and About.
-5. **Photography.** No usable people / classroom / teaching photography at brief sign-off. Workshop fragment shots planned at launch; David-teaching shoot deferred post-launch.
-6. **Logo SVG.** PNG carried through (`assets/logos/cnc-training-centre-logo.png`). SVG version preferred — to be requested from Dave at next handoff.
+- **No `/critique` numerical scores logged** — subagents self-iterated against Nielsen's heuristics in their head per their brief but did not produce a formal score artefact. Each page passes the pattern audit (no banned patterns, first-person voice, locked nav verified, surface rhythm correct).
+- **Preview-screenshot quirk** noted by all three subagents — the preview server screenshot tool was returning blank captures past the hero region on some scroll positions. The Classroom subagent confirmed this is a tool quirk (also reproduces on the already-approved home.html). All layout verification was done via `preview_inspect` and `preview_eval` `getBoundingClientRect` — these gave conclusive positional readouts. **If you see anything visually wrong on the pages in your morning review, trust your eyes — the inspect data may have missed a rendering edge case.**
+- **`page-home.css` is the shared CSS spine for now.** Locked nav, drawer, footer, sec-head, sec-pretitle, ghost-num, section utilities, hero specs panel, contact band — all live there. Each service page links it, then layers `page-{slug}.css` for service-specific patterns. A future clean-up will lift the shared chunks into a `design/site.css` and shrink `page-home.css` to home-only. Not urgent — works fine as is.
+- **Team standards file** committed at `~/.claude/skills/ns-website-project/references/team-standards.md` with your verbatim "110/100 every time" statement. Now read-first item #1 on every NS specialist skill.
 
 ---
 
-## Action plan for next session — exact steps
+## Linear sub-issues seeded tonight
 
-### Step 1 — Read state (don't skip)
-Read every file in the "Read these first" list above. Especially `learnings.md` and `PRODUCT.md`. Confirm to Dave you've absorbed the voice rule (first person singular).
-
-### Step 2 — Move Linear
-- NOR-53 Design → `In Progress`
-- Create sub-issue `Design: Home` under NOR-53, status `In Progress`
-
-### Step 3 — Dispatch the designer
-Run `/ns-website-designer` with:
-- Slug: `cnc-training-centre`
-- Inputs: `copy/home.md`, `brief/tokens.css`, `brief/components.css`, `brief/style-guide.html`, `DESIGN.md`, `DESIGN.json`, `PRODUCT.md`
-- Note: this is a **Dave-collaborative phase**. Designer doesn't work in isolation. Dave reviews iterations.
-- Critical voice flag for the designer: copy is **first person singular**. Any drift to "we" is a fail.
-- Wireframes are skipped — designer goes straight from copy to high-fidelity HTML/CSS.
-
-### Step 4 — Run copy in parallel
-While the designer is working on Homepage with Dave, dispatch `/ns-website-copywriter` to write the remaining 11 pages. The copywriter has:
-- Voice locked from PRODUCT.md + learnings.md (first person)
-- Home page as the gold-standard reference for tone
-- Sitemap from `strategy/cnctc-proposed-sitemap.md`
-- All open gaps documented above
-
-Pages to write (in roughly this order):
-1. Onsite Training (overview) — Buyer A's primary landing
-2. Classroom Training (overview) — Buyer B's primary landing
-3. Programming Services (overview)
-4. About
-5. Contact
-6. Learning Hub (index)
-7. Courses (coming soon placeholder)
-8. Onsite detail-page template (per machine brand / control)
-9. Classroom course detail-page template
-10. Programming detail-page template
-11. Hub category page template
-
-### Step 5 — Reconcile + handoff to build
-Once homepage design is signed off AND all copy is signed off, the designer produces the remaining page designs. Then NOR-53 → Done, dispatch `/ns-acf-block-builder` (Sonnet 4.6) for Phase 5 Build.
+- NOR-155 Copy: Onsite training — **Done**
+- NOR-156 Copy: Classroom training — **Done**
+- NOR-157 Copy: Programming services — **Done**
+- NOR-158 Design: Onsite training — **Needs Review** (awaiting-dave)
+- NOR-159 Design: Classroom training — **Needs Review** (awaiting-dave)
+- NOR-160 Design: Programming services — **Needs Review** (awaiting-dave)
 
 ---
 
-## Skills you'll use, in order
+## How to give feedback in the morning
 
-| Phase | Skill | Mode |
-|---|---|---|
-| Design (Homepage first) | `/ns-website-designer` | Dave-collaborative |
-| Copy (remaining pages) | `/ns-website-copywriter` | Then runs `/ns-humaniser` + self-critique per page |
-| Build | `/ns-acf-block-builder` | Sonnet 4.6 (set `model: "sonnet"`) |
+For each page, drop me one of:
+- **"approve [page]"** → I mark Linear Done + dispatch the next page in Phase 4
+- **"revise [page]: [feedback]"** → routes back to designer for iteration
+- **"copy change on [page] §X: [what]"** → routes through copywriter, updates `copy/{page}.md`, designer re-pulls
 
-The brief skill is done — do not re-run.
-
----
-
-## Things NOT to do
-
-- **Don't re-run intake** (`/start-project`). Project is mid-flight.
-- **Don't re-pitch direction.** Direction A is locked.
-- **Don't write wireframes.** Phase 3b is cancelled.
-- **Don't propose alternative type pairs.** Tanker + Synonym is locked.
-- **Don't suggest "we" anywhere in copy.** First person, always.
-- **Don't invent facts.** Every claim comes from `strategy/strategy.md`, `PRODUCT.md`, or Dave. If a fact isn't sourced, flag a `[GAP]` and ask.
-- **Don't skip the humaniser pass.** Every page goes through `/ns-humaniser` before Dave sees it.
-- **Don't burn time on critique loops past 38/40.** The bar is met; ship.
+If you want all four service-touch pages reviewed together, just say "let's go through them" and I'll surface each in turn with the preview URL.
 
 ---
 
-## Communication shape with Dave (caveman by default for PM, full voice for copy)
+## Token budget
 
-- PM conversational output: caveman mode (concise, fragments OK, no filler).
-- Copy you write: full natural prose, David's voice.
-- Status updates: terse — point at Linear, not paragraphs of recap.
-- Sign-off gates: present the artefact, ask one specific question, wait.
+I stopped here because we delivered everything you asked for tonight and there's plenty of room to start the morning review fresh. No remaining work in flight — every subagent has reported back and exited cleanly.
 
----
-
-## Last commit state
-
-Working directory is a git repo. Last commit: brief phase complete, logo wired into G.29, learnings logged. `copy/home.md` is committed at the previous Home-draft state. The first-person voice swap is in the working tree but not yet committed — commit it as part of the next session's first action.
-
-GitHub URL: TBC — Dave will create the remote repo and provide the URL.
-
----
-
-## Final note
-
-Dave is sharp, has good taste, and trusts the process. He'll tell you when something's off. He'll also tell you when he's happy — short and clear. Don't overthink the language; mirror his energy. He works fast, expects you to keep up, but flags collaborative phases (Design Brief, Design) where he wants to be in the room.
-
-Good luck. The foundation is solid — visual system, voice, strategy, Home page copy. Phase 4 is where the project starts looking like a real site.
+Good night.

@@ -1,0 +1,978 @@
+/* CNC Training Centre — Onsite Training page styles
+ * Direction A — The Engineering Manual.
+ *
+ * Inherits everything from tokens.css + components.css + page-home.css.
+ * This file ONLY carries styles unique to onsite-training.html sections.
+ * Locked nav/drawer/footer/sec-head/ghost-num/.s surfaces live in page-home.css.
+ */
+
+
+/* ============================================
+ * GAP MARKER — visible flag for copy-side holes.
+ * ============================================ */
+
+.ot-gap {
+  display: inline;
+  padding: 0.05em 0.4em;
+  background: var(--ns-color-mark);
+  color: var(--ns-color-mark-ink);
+  font-family: var(--ns-font-body);
+  font-size: 0.85em;
+  font-weight: var(--ns-weight-medium);
+  border-radius: var(--ns-radius-tight);
+}
+
+
+/* ============================================
+ * § 01 — HERO
+ * Asymmetric: headline + lede LH, machine-card marginalia RH.
+ * Wider RH column than the home hero so the spec dl breathes.
+ * ============================================ */
+
+.ot-hero .hero-title { max-width: 18ch; }
+.ot-hero .hero-title em { font-style: normal; color: var(--ns-color-primary); }
+
+.ot-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ns-space-2xl);
+}
+
+@media (min-width: 900px) {
+  .ot-hero-grid {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+    gap: var(--ns-space-4xl);
+    align-items: start;
+  }
+}
+
+.ot-margin {
+  background: var(--ns-color-paper);
+  border: 1px solid var(--ns-color-rule);
+  border-radius: var(--ns-radius-tight);
+  padding: var(--ns-space-lg) var(--ns-space-lg) var(--ns-space-md);
+  position: relative;
+}
+
+.ot-margin::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 24px;
+  border-top: 2px solid var(--ns-color-ink);
+  border-left: 2px solid var(--ns-color-ink);
+}
+
+.ot-margin::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 24px;
+  height: 24px;
+  border-bottom: 2px solid var(--ns-color-ink);
+  border-right: 2px solid var(--ns-color-ink);
+}
+
+.ot-margin-head {
+  display: grid;
+  grid-template-columns: max-content 1fr max-content;
+  gap: var(--ns-space-md);
+  align-items: center;
+  padding-bottom: var(--ns-space-md);
+  border-bottom: 1px solid var(--ns-color-rule);
+  margin-bottom: var(--ns-space-sm);
+}
+
+.ot-margin-eyebrow {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  font-weight: var(--ns-weight-medium);
+  letter-spacing: var(--ns-track-extrawide);
+  text-transform: uppercase;
+  color: var(--ns-color-ink-muted);
+}
+
+.ot-margin-rule { height: 1px; background: var(--ns-color-rule-strong); }
+
+.ot-margin-num {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  font-weight: var(--ns-weight-medium);
+  letter-spacing: 0.04em;
+  color: var(--ns-color-ink-muted);
+  font-feature-settings: "tnum" 1;
+}
+
+.ot-margin-list {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.ot-margin-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ns-space-2xs);
+  padding: var(--ns-space-sm) 0;
+  border-bottom: 1px solid var(--ns-color-rule-faint);
+  font-size: var(--ns-text-small);
+}
+
+@media (min-width: 700px) {
+  .ot-margin-row {
+    grid-template-columns: 8.5rem 1fr;
+    gap: var(--ns-space-md);
+    align-items: baseline;
+  }
+}
+
+.ot-margin-row:last-child { border-bottom: 0; }
+
+.ot-margin-row dt {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  font-weight: var(--ns-weight-semibold);
+  letter-spacing: var(--ns-track-wide);
+  text-transform: uppercase;
+  color: var(--ns-color-ink);
+  margin: 0;
+}
+
+.ot-margin-row dd {
+  margin: 0;
+  color: var(--ns-color-ink-soft);
+  line-height: 1.45;
+}
+
+.ot-margin-row dd strong {
+  color: var(--ns-color-ink);
+  font-weight: var(--ns-weight-semibold);
+  font-feature-settings: "tnum" 1;
+}
+
+
+/* ============================================
+ * § 02 — WHO THIS IS FOR
+ * Editorial two-column. Echoes problem layout from home § 02
+ * but distinct enough to not feel like a duplicate.
+ * ============================================ */
+
+.ot-who-title {
+  font-family: var(--ns-font-display);
+  font-size: clamp(2.25rem, 1.3rem + 3.2vw, 4.5rem);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  color: var(--ns-color-ink);
+  margin: 0;
+  max-width: 22ch;
+}
+
+.ot-who-title em {
+  font-style: normal;
+  color: var(--ns-color-primary);
+}
+
+.ot-who-cols {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ns-space-2xl);
+}
+
+@media (min-width: 900px) {
+  .ot-who-cols {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--ns-space-4xl);
+  }
+}
+
+.ot-who-body {
+  font-size: var(--ns-text-medium);
+  line-height: var(--ns-leading-relaxed);
+  color: var(--ns-color-ink-soft);
+  margin: 0;
+  max-width: 62ch;
+}
+
+.ot-who-body-lead::first-letter {
+  font-family: var(--ns-font-display);
+  font-size: 4em;
+  line-height: 0.82;
+  float: left;
+  margin: 0.08em 0.18em 0 0;
+  color: var(--ns-color-ink);
+  letter-spacing: -0.02em;
+}
+
+
+/* ============================================
+ * § 03 — WHAT'S INCLUDED
+ * Spec grid. Numbered items in a rule-divided grid that
+ * reads like a parts catalogue.
+ * ============================================ */
+
+.ot-included-head {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ns-space-md);
+}
+
+@media (min-width: 900px) {
+  .ot-included-head {
+    grid-template-columns: minmax(0, 1.6fr) max-content;
+    align-items: end;
+    gap: var(--ns-space-2xl);
+  }
+}
+
+.ot-included-title {
+  font-family: var(--ns-font-display);
+  font-size: clamp(2rem, 1.3rem + 2.6vw, 3.75rem);
+  line-height: 1;
+  letter-spacing: -0.015em;
+  color: var(--ns-color-ink);
+  margin: 0 0 var(--ns-space-md);
+  max-width: 22ch;
+}
+
+.ot-included-lede {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-medium);
+  line-height: var(--ns-leading-base);
+  color: var(--ns-color-ink-soft);
+  margin: 0;
+  max-width: 56ch;
+}
+
+.ot-included-meta {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  font-weight: var(--ns-weight-medium);
+  letter-spacing: var(--ns-track-wide);
+  text-transform: uppercase;
+  color: var(--ns-color-ink-muted);
+}
+
+.ot-spec-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  border-top: 2px solid var(--ns-color-ink);
+  border-bottom: 2px solid var(--ns-color-ink);
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 700px) {
+  .ot-spec-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1100px) {
+  .ot-spec-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.ot-spec {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ns-space-sm);
+  padding: var(--ns-space-xl) var(--ns-space-lg);
+  border-bottom: 1px solid var(--ns-color-rule);
+  border-right: 1px solid var(--ns-color-rule);
+}
+
+.ot-spec:last-child { border-bottom: 0; }
+
+@media (max-width: 699px) {
+  .ot-spec { border-right: 0; }
+  .ot-spec:nth-last-child(2) { border-bottom: 1px solid var(--ns-color-rule); }
+}
+
+@media (min-width: 700px) and (max-width: 1099px) {
+  .ot-spec:nth-child(2n) { border-right: 0; }
+  .ot-spec:nth-last-child(-n+2) { border-bottom: 0; }
+  .ot-spec-wide { grid-column: 1 / -1; border-right: 0; }
+}
+
+@media (min-width: 1100px) {
+  .ot-spec:nth-child(3n) { border-right: 0; }
+  .ot-spec:nth-last-child(-n+3) { border-bottom: 0; }
+  .ot-spec-wide { grid-column: 1 / -1; border-right: 0; }
+}
+
+.ot-spec-num {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-feature-settings: "tnum" 1;
+  font-size: var(--ns-text-tiny);
+  letter-spacing: 0.06em;
+  color: var(--ns-color-ink-muted);
+}
+
+.ot-spec-name {
+  font-family: var(--ns-font-display);
+  font-size: clamp(1.25rem, 1.05rem + 0.9vw, 1.625rem);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--ns-color-ink);
+  margin: 0;
+  max-width: 26ch;
+}
+
+.ot-spec-body {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-small);
+  line-height: var(--ns-leading-base);
+  color: var(--ns-color-ink-soft);
+  margin: 0;
+  max-width: 44ch;
+}
+
+
+/* ============================================
+ * § 05 — PRICING
+ * Two-column. LH narrative. RH "what's in / what's extra" panel.
+ * ============================================ */
+
+.ot-pricing-title {
+  font-family: var(--ns-font-display);
+  font-size: clamp(2.25rem, 1.4rem + 3vw, 4.5rem);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  color: var(--ns-color-ink);
+  margin: 0;
+  max-width: 18ch;
+}
+
+.ot-pricing-title strong {
+  font-weight: var(--ns-weight-regular);
+  color: var(--ns-color-primary);
+  font-feature-settings: "tnum" 1;
+}
+
+.ot-pricing-title em {
+  font-style: normal;
+  color: var(--ns-color-ink-muted);
+}
+
+.ot-pricing-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ns-space-2xl);
+  position: relative;
+  z-index: 1;
+  align-items: start;
+}
+
+@media (min-width: 900px) {
+  .ot-pricing-grid {
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+    gap: var(--ns-space-4xl);
+  }
+}
+
+.ot-pricing-narrative { display: flex; flex-direction: column; gap: var(--ns-space-md); }
+
+.ot-pricing-lead {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-large);
+  line-height: var(--ns-leading-base);
+  color: var(--ns-color-ink);
+  margin: 0;
+  max-width: 58ch;
+}
+
+.ot-pricing-body {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-medium);
+  line-height: var(--ns-leading-relaxed);
+  color: var(--ns-color-ink-soft);
+  margin: 0;
+  max-width: 58ch;
+}
+
+.ot-price-panel {
+  background: var(--ns-color-paper-tint);
+  border-top: 2px solid var(--ns-color-ink);
+  border-bottom: 1px solid var(--ns-color-rule-strong);
+  padding: var(--ns-space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--ns-space-md);
+}
+
+.ot-price-panel-head {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: var(--ns-space-md);
+  align-items: baseline;
+  padding-bottom: var(--ns-space-sm);
+  border-bottom: 1px solid var(--ns-color-rule);
+}
+
+.ot-price-panel-head--extra { margin-top: var(--ns-space-md); }
+
+.ot-price-panel-num {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  font-weight: var(--ns-weight-medium);
+  letter-spacing: var(--ns-track-extrawide);
+  text-transform: uppercase;
+  color: var(--ns-color-ink-muted);
+  font-feature-settings: "tnum" 1;
+}
+
+.ot-price-panel-title {
+  font-family: var(--ns-font-display);
+  font-size: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--ns-color-ink);
+  margin: 0;
+}
+
+.ot-price-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.ot-price-list li {
+  padding: var(--ns-space-sm) 0 var(--ns-space-sm) var(--ns-space-lg);
+  border-bottom: 1px dashed var(--ns-color-rule);
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-small);
+  line-height: var(--ns-leading-base);
+  color: var(--ns-color-ink);
+  position: relative;
+}
+
+.ot-price-list li:last-child { border-bottom: 0; }
+
+.ot-price-list li::before {
+  content: "+";
+  position: absolute;
+  left: 0;
+  top: var(--ns-space-sm);
+  color: var(--ns-color-primary);
+  font-family: var(--ns-font-display);
+  font-size: 1.1em;
+  font-weight: var(--ns-weight-regular);
+  line-height: 1;
+}
+
+.ot-price-list--extra li { color: var(--ns-color-ink-soft); }
+
+.ot-price-list--extra li::before {
+  content: "—";
+  color: var(--ns-color-ink-muted);
+  font-size: 0.85em;
+  top: calc(var(--ns-space-sm) + 0.15em);
+}
+
+
+/* ============================================
+ * § 06 — WHO SHOULDN'T BOOK THIS
+ * Disqualifier section. Lettered scenarios (A B C D)
+ * deliberately not numerals — distinct from § 03's 01/02/03.
+ * ============================================ */
+
+.ot-dq-head { max-width: 64ch; }
+
+.ot-dq-title {
+  font-family: var(--ns-font-display);
+  font-size: clamp(2rem, 1.3rem + 2.6vw, 3.75rem);
+  line-height: 1;
+  letter-spacing: -0.015em;
+  color: var(--ns-color-ink);
+  margin: 0 0 var(--ns-space-md);
+  max-width: 22ch;
+}
+
+.ot-dq-lede {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-medium);
+  line-height: var(--ns-leading-base);
+  color: var(--ns-color-ink-soft);
+  margin: 0;
+  max-width: 58ch;
+}
+
+.ot-dq-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  border-top: 2px solid var(--ns-color-ink);
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 900px) {
+  .ot-dq-list { grid-template-columns: 1fr 1fr; }
+}
+
+.ot-dq-item {
+  display: grid;
+  grid-template-columns: 4rem 1fr;
+  gap: var(--ns-space-md) var(--ns-space-lg);
+  padding: var(--ns-space-xl) 0;
+  border-bottom: 1px solid var(--ns-color-rule);
+}
+
+@media (min-width: 900px) {
+  .ot-dq-item {
+    padding: var(--ns-space-2xl) var(--ns-space-xl) var(--ns-space-2xl) 0;
+    border-right: 1px solid var(--ns-color-rule);
+  }
+  .ot-dq-item:nth-child(2n) { padding-right: 0; border-right: 0; padding-left: var(--ns-space-xl); }
+  .ot-dq-item:nth-last-child(-n+2) { border-bottom: 0; }
+}
+
+.ot-dq-num {
+  grid-row: 1 / span 2;
+  font-family: var(--ns-font-display);
+  font-size: clamp(3rem, 2.4rem + 1.8vw, 4.5rem);
+  line-height: 0.85;
+  letter-spacing: -0.02em;
+  color: var(--ns-color-primary);
+  align-self: start;
+}
+
+.ot-dq-name {
+  font-family: var(--ns-font-display);
+  font-size: clamp(1.25rem, 1.05rem + 0.9vw, 1.625rem);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--ns-color-ink);
+  margin: 0;
+  max-width: 26ch;
+}
+
+.ot-dq-body {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-small);
+  line-height: var(--ns-leading-base);
+  color: var(--ns-color-ink-soft);
+  margin: 0;
+  max-width: 48ch;
+}
+
+.ot-dq-foot {
+  margin: clamp(2rem, 4vw, 3rem) 0 0;
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-medium);
+  line-height: var(--ns-leading-base);
+  color: var(--ns-color-ink);
+  max-width: 64ch;
+  padding-top: var(--ns-space-md);
+  border-top: 1px solid var(--ns-color-rule);
+  position: relative;
+  z-index: 1;
+}
+
+
+/* ============================================
+ * § 07 — AUTHORITY — additions only
+ * Spec block grammar inherited from page-home.css.
+ * Adds a paired "in their words" sub-panel underneath.
+ * ============================================ */
+
+.ot-authority-link {
+  display: inline-flex;
+  margin-top: var(--ns-space-xl);
+  color: var(--ns-color-primary);
+}
+
+.ot-testimonials {
+  margin-top: clamp(3rem, 6vw, 5rem);
+  position: relative;
+  z-index: 1;
+}
+
+.ot-testimonials-head {
+  padding-bottom: var(--ns-space-md);
+  border-bottom: 1px solid var(--ns-color-rule);
+  margin-bottom: var(--ns-space-xl);
+}
+
+.ot-testimonials-eyebrow {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  font-weight: var(--ns-weight-medium);
+  letter-spacing: var(--ns-track-extrawide);
+  text-transform: uppercase;
+  color: var(--ns-color-ink-muted);
+}
+
+.ot-testimonials-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ns-space-xl);
+}
+
+@media (min-width: 900px) {
+  .ot-testimonials-grid { grid-template-columns: 1fr 1fr; gap: var(--ns-space-2xl); }
+}
+
+.ot-quote {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ns-space-md);
+  padding: var(--ns-space-xl);
+  background: var(--ns-color-paper-tint);
+  border: 1px solid var(--ns-color-rule);
+  border-radius: var(--ns-radius-tight);
+}
+
+.ot-quote-mark {
+  font-family: var(--ns-font-display);
+  font-size: clamp(2.5rem, 2rem + 1.2vw, 3.5rem);
+  line-height: 0.85;
+  letter-spacing: -0.02em;
+  color: var(--ns-color-primary);
+  font-feature-settings: "tnum" 1;
+}
+
+.ot-quote-body {
+  font-family: var(--ns-font-display);
+  font-size: clamp(1.125rem, 1rem + 0.6vw, 1.5rem);
+  line-height: 1.3;
+  letter-spacing: -0.005em;
+  color: var(--ns-color-ink);
+  margin: 0;
+  flex: 1;
+}
+
+.ot-quote-attr {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ns-space-2xs);
+  padding-top: var(--ns-space-md);
+  border-top: 1px solid var(--ns-color-rule);
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  letter-spacing: var(--ns-track-wide);
+  text-transform: uppercase;
+  color: var(--ns-color-ink-muted);
+}
+
+.ot-quote-attr strong {
+  font-size: var(--ns-text-small);
+  font-weight: var(--ns-weight-semibold);
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--ns-color-ink);
+}
+
+
+/* ============================================
+ * § 08 — RELATED FROM THE HUB
+ * Featured + secondaries on paper-tint (distinct from home's paper-deep).
+ * ============================================ */
+
+.ot-hub-head {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ns-space-md);
+}
+
+@media (min-width: 900px) {
+  .ot-hub-head {
+    grid-template-columns: minmax(0, 1.6fr) max-content;
+    align-items: end;
+    gap: var(--ns-space-2xl);
+  }
+}
+
+.ot-hub-title {
+  font-family: var(--ns-font-display);
+  font-size: clamp(2rem, 1.3rem + 2.6vw, 3.75rem);
+  line-height: 1;
+  letter-spacing: -0.015em;
+  color: var(--ns-color-ink);
+  margin: 0 0 var(--ns-space-md);
+  max-width: 18ch;
+}
+
+.ot-hub-lede {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-medium);
+  line-height: var(--ns-leading-base);
+  color: var(--ns-color-ink-soft);
+  margin: 0;
+  max-width: 52ch;
+}
+
+.ot-hub-cta { align-self: end; white-space: nowrap; }
+
+.ot-hub-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ns-space-lg);
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 900px) {
+  .ot-hub-grid { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: var(--ns-space-xl); }
+}
+
+.ot-hub-featured {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ns-space-lg);
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  background: var(--ns-color-paper);
+  border: 1px solid var(--ns-color-rule);
+  border-radius: var(--ns-radius-tight);
+  color: var(--ns-color-ink);
+  text-decoration: none;
+  transition: border-color var(--ns-dur-fast) var(--ns-ease-out), transform var(--ns-dur-base) var(--ns-ease-out);
+  min-height: 22rem;
+}
+
+.ot-hub-featured:hover { border-color: var(--ns-color-ink); transform: translateY(-2px); }
+
+.ot-hub-featured-top {
+  display: flex;
+  align-items: center;
+  gap: var(--ns-space-md);
+  flex-wrap: wrap;
+}
+
+.ot-hub-featured-eyebrow {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  font-weight: var(--ns-weight-medium);
+  letter-spacing: var(--ns-track-extrawide);
+  text-transform: uppercase;
+  color: var(--ns-color-primary);
+}
+
+.ot-hub-featured-title {
+  font-family: var(--ns-font-display);
+  font-size: clamp(1.75rem, 1.2rem + 2.4vw, 3rem);
+  line-height: 0.98;
+  letter-spacing: -0.015em;
+  color: var(--ns-color-ink);
+  margin: 0;
+}
+
+.ot-hub-featured-dek {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-medium);
+  line-height: var(--ns-leading-base);
+  color: var(--ns-color-ink-soft);
+  margin: 0;
+  flex: 1;
+}
+
+.ot-hub-featured-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--ns-space-sm);
+  padding-top: var(--ns-space-md);
+  border-top: 1px solid var(--ns-color-rule);
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  font-weight: var(--ns-weight-medium);
+  letter-spacing: var(--ns-track-wide);
+  text-transform: uppercase;
+  color: var(--ns-color-ink-muted);
+}
+
+.ot-hub-featured-arrow {
+  margin-left: auto;
+  font-size: var(--ns-text-large);
+  color: var(--ns-color-ink);
+  transition: transform var(--ns-dur-base) var(--ns-ease-out);
+}
+
+.ot-hub-featured:hover .ot-hub-featured-arrow { transform: translateX(4px); }
+
+.ot-hub-secondaries {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: var(--ns-space-lg);
+}
+
+.ot-hub-secondary {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ns-space-md);
+  padding: var(--ns-space-lg);
+  background: var(--ns-color-paper);
+  border: 1px solid var(--ns-color-rule);
+  border-radius: var(--ns-radius-tight);
+  text-decoration: none;
+  color: var(--ns-color-ink);
+  transition: border-color var(--ns-dur-fast) var(--ns-ease-out), transform var(--ns-dur-base) var(--ns-ease-out);
+}
+
+.ot-hub-secondary:hover { border-color: var(--ns-color-ink); transform: translateY(-2px); }
+
+.ot-hub-secondary-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ot-hub-secondary-num {
+  font-family: var(--ns-font-display);
+  font-size: var(--ns-heading-h3);
+  line-height: 1;
+  color: var(--ns-color-ink-muted);
+  font-feature-settings: "tnum" 1;
+}
+
+.ot-hub-secondary-title {
+  font-family: var(--ns-font-display);
+  font-size: clamp(1.25rem, 1.05rem + 0.9vw, 1.75rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: var(--ns-color-ink);
+  margin: 0;
+  flex: 1;
+}
+
+.ot-hub-secondary-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: var(--ns-space-sm);
+  border-top: 1px solid var(--ns-color-rule);
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  letter-spacing: var(--ns-track-wide);
+  text-transform: uppercase;
+  color: var(--ns-color-ink-muted);
+}
+
+.ot-hub-secondary-arrow {
+  font-size: var(--ns-text-medium);
+  color: var(--ns-color-ink);
+  transition: transform var(--ns-dur-base) var(--ns-ease-out);
+}
+
+.ot-hub-secondary:hover .ot-hub-secondary-arrow { transform: translateX(4px); }
+
+
+/* ============================================
+ * § 09 — FAQ
+ * Native <details name="ot-faq"> for exclusive accordion.
+ * Two-column at desktop to keep 7 items scannable.
+ * ============================================ */
+
+.ot-faq-head { max-width: 60ch; }
+
+.ot-faq-title {
+  font-family: var(--ns-font-display);
+  font-size: clamp(2rem, 1.3rem + 2.6vw, 3.5rem);
+  line-height: 1;
+  letter-spacing: -0.015em;
+  color: var(--ns-color-ink);
+  margin: 0;
+  max-width: 22ch;
+}
+
+.ot-faq-grid {
+  border-top: 2px solid var(--ns-color-ink);
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 900px) {
+  .ot-faq-grid {
+    column-count: 2;
+    column-gap: var(--ns-space-2xl);
+    column-rule: 1px solid var(--ns-color-rule);
+  }
+}
+
+.ot-faq-item {
+  break-inside: avoid;
+  border-bottom: 1px solid var(--ns-color-rule);
+  padding: 0;
+}
+
+.ot-faq-item summary {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 2.5rem 1fr max-content;
+  gap: var(--ns-space-md);
+  align-items: baseline;
+  padding: var(--ns-space-lg) 0;
+  cursor: pointer;
+  transition: color var(--ns-dur-fast) var(--ns-ease-out);
+}
+
+.ot-faq-item summary::-webkit-details-marker { display: none; }
+.ot-faq-item summary::marker { display: none; content: ""; }
+
+.ot-faq-item summary:hover .ot-faq-q { color: var(--ns-color-primary); }
+
+.ot-faq-num {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-feature-settings: "tnum" 1;
+  font-size: var(--ns-text-tiny);
+  letter-spacing: 0.06em;
+  color: var(--ns-color-ink-muted);
+  padding-top: 0.2rem;
+}
+
+.ot-faq-q {
+  font-family: var(--ns-font-display);
+  font-size: clamp(1.125rem, 1rem + 0.6vw, 1.375rem);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--ns-color-ink);
+  transition: color var(--ns-dur-fast) var(--ns-ease-out);
+}
+
+.ot-faq-toggle {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-large);
+  font-weight: var(--ns-weight-regular);
+  color: var(--ns-color-ink-muted);
+  line-height: 1;
+  transition: transform var(--ns-dur-base) var(--ns-ease-out), color var(--ns-dur-fast) var(--ns-ease-out);
+  width: 1.25rem;
+  text-align: center;
+}
+
+.ot-faq-item[open] .ot-faq-toggle {
+  transform: rotate(45deg);
+  color: var(--ns-color-primary);
+}
+
+.ot-faq-item[open] .ot-faq-q { color: var(--ns-color-ink); }
+
+.ot-faq-a {
+  padding: 0 0 var(--ns-space-lg) calc(2.5rem + var(--ns-space-md));
+  max-width: 60ch;
+}
+
+.ot-faq-a p {
+  margin: 0;
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-medium);
+  line-height: var(--ns-leading-relaxed);
+  color: var(--ns-color-ink-soft);
+}
+
+@media (max-width: 899px) {
+  .ot-faq-a { padding-left: calc(2.5rem + var(--ns-space-md)); }
+}

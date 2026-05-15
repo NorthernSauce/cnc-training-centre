@@ -9,7 +9,7 @@
 
 ## Hero
 
-**Eyebrow:** Independent CNC training · since 1994
+**Eyebrow:** Independent CNC training · since 1996
 
 ### Close the CNC skills gap.
 
@@ -84,7 +84,7 @@ Self-paced online learning. Built around the same approach as the classroom: no 
 | Stat | Detail |
 |---|---|
 | 30 years | Training on CNC machines, on every major control |
-| 332 videos | YouTube channel, 8,900+ subscribers |
+| 332 videos | YouTube channel, 8,930 subscribers |
 | 27,000 | LinkedIn followers, reading my weekly content |
 | 30 | Five-star reviews on Google |
 | 8+ OEMs | I've trained on every major control: Mazak, Fanuc, Heidenhain, Hurco, Brother, Doosan, Haas, XYZ |
@@ -143,8 +143,8 @@ Call me direct on **07834 858 407**, or send a paragraph below. I aim to come ba
 
 - **[GAP]** Testimonials section currently has placeholder structure. Need 3 specific Google review quotes (preferably mixing a company decision-maker quote and a classroom-student quote) with reviewer attribution. Awaiting Dave.
 - **[GAP]** Hub preview cards reference "[Article title]" placeholders — wireframer / designer to pull 3 real recent or most-popular articles when the page is built.
-- **[Confirmation needed from Dave]** "Independent CNC training · since 1994" eyebrow uses a founding year — strategy mentions "30 years" but not the start date explicitly. Confirm 1994 or correct.
-- **[Confirmation needed from Dave]** Stat in Authority section — "8,900+ subscribers" came from strategy ("8,930 YouTube subscribers"). Rounded down for honesty. OK?
+- ~~**[Confirmation needed from Dave]** founding year~~ — **Locked 2026-05-15 by Dave: 1996.** (30 yrs back from 2026.)
+- ~~**[Confirmation needed from Dave]** YT subs rounding~~ — **Locked 2026-05-15 by Dave: use exact 8,930.**
 - **[For wireframer]** Hero pairs left-column copy with right-column marginalia carrying the controls / format / day rate / location facts. Direction A's signature pattern — keep it tight.
 - **[For wireframer]** Services section is 4 items in an asymmetric grid (Direction A's spec). Onsite gets visual prominence — it's the primary onsite enquiry route — but never as a single oversized card with three small ones underneath.
 - **[For designer]** Contact band sits on anchor surface (dark) at the end of the page — only anchor-tier section. Don't repeat it elsewhere.

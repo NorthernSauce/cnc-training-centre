@@ -1,0 +1,546 @@
+/* =================================================
+ * page-classroom-training.css
+ * Additive-only. Styles unique to the Classroom
+ * Training page. Inherits everything else from
+ * tokens.css → components.css → page-home.css.
+ * ================================================= */
+
+
+/* -------------------------------------------------
+ * § 01 — HERO TWEAKS
+ * The hero shape (.hero-grid) is inherited. We adjust:
+ * (a) hero title scale — the classroom headline is
+ *     longer than home's, so the 9rem max from
+ *     page-home.css overruns. Cap at ~6.5rem here.
+ * (b) RH column swapped from .hero-specs to the
+ *     .marginalia component so the page-edge marginalia
+ *     signature lands on this service page.
+ * ------------------------------------------------- */
+
+.ct-hero .hero-title {
+  font-size: clamp(2.5rem, 1rem + 5.5vw, 5.5rem);
+  max-width: 22ch;
+}
+
+.ct-hero-side {
+  /* Marginalia base styles already give it the panel
+     look. Match the hero column min-height + paint a
+     dimension-callout end-tick to echo the home spec
+     panel ticks without duplicating that markup. */
+  position: relative;
+  align-self: start;
+  padding: var(--ns-space-lg);
+}
+.ct-hero-side::before,
+.ct-hero-side::after {
+  content: "";
+  position: absolute;
+  left: -6px;
+  width: 12px;
+  height: 1px;
+  background: var(--ns-color-ink);
+}
+.ct-hero-side::before { top: -1px; }
+.ct-hero-side::after  { bottom: -1px; }
+.ct-hero-side .marginalia-head {
+  justify-content: space-between;
+}
+.ct-hero-side-num {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  font-weight: var(--ns-weight-medium);
+  letter-spacing: var(--ns-track-wide);
+  font-variant-numeric: tabular-nums;
+  color: var(--ns-color-ink-muted);
+  text-transform: none;
+}
+.ct-hero-side dl dt {
+  padding-top: 0.2rem;
+}
+.ct-hero-side dl dd strong {
+  font-variant-numeric: tabular-nums;
+  color: var(--ns-color-ink);
+}
+
+
+/* -------------------------------------------------
+ * § 03 — COURSES (spec-sheet variant)
+ * Inherits .svc-sheet + .svc-row from page-home.css.
+ * Adds: 8-row grid, course-flag tag for [GAP] markers.
+ * ------------------------------------------------- */
+
+.course-sheet > li + li {
+  margin-top: 0; /* .svc-sheet handles row borders */
+}
+.courses-lede {
+  margin-top: var(--ns-space-md);
+  max-width: 60ch;
+  font-size: var(--ns-text-medium);
+  line-height: var(--ns-leading-base);
+  color: var(--ns-color-ink-soft);
+}
+.course-flag {
+  display: inline-block;
+  margin-left: var(--ns-space-xs);
+  padding: 0 6px;
+  font-size: var(--ns-text-tiny);
+  font-weight: var(--ns-weight-medium);
+  letter-spacing: var(--ns-track-wide);
+  text-transform: uppercase;
+  color: var(--ns-color-warning);
+  border: 1px solid var(--ns-color-warning);
+  border-radius: var(--ns-radius-tight);
+  vertical-align: middle;
+}
+
+
+/* -------------------------------------------------
+ * § 04 — WHAT TO EXPECT (spec-grid)
+ * 2-column dt/dd grid sitting in the RH of the
+ * .authority-grid frame (inherited from page-home.css).
+ * ------------------------------------------------- */
+
+.expect-spec {
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  border-top: 2px solid var(--ns-color-ink);
+}
+.expect-spec > div {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ns-space-2xs);
+  padding: var(--ns-space-lg) 0;
+  border-bottom: 1px solid var(--ns-color-rule);
+}
+.expect-spec dt {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  font-weight: var(--ns-weight-semibold);
+  letter-spacing: var(--ns-track-wide);
+  text-transform: uppercase;
+  color: var(--ns-color-ink-muted);
+}
+.expect-spec dd {
+  margin: 0;
+  font-size: var(--ns-text-regular);
+  line-height: var(--ns-leading-base);
+  color: var(--ns-color-ink-soft);
+  max-width: 56ch;
+}
+@media (min-width: 700px) {
+  .expect-spec > div {
+    grid-template-columns: 12rem 1fr;
+    align-items: baseline;
+    gap: var(--ns-space-lg);
+  }
+}
+
+
+/* -------------------------------------------------
+ * § 06 — PRICING
+ * Two-column composition: LH lede stack, RH split
+ * into two named lists (included / not included).
+ * ------------------------------------------------- */
+
+.pricing-title {
+  font-family: var(--ns-font-display);
+  font-size: var(--ns-heading-h2);
+  line-height: var(--ns-leading-tight);
+  letter-spacing: var(--ns-track-tight);
+  color: var(--ns-color-ink);
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+}
+.pricing-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ns-space-2xl);
+  margin-top: var(--ns-space-2xl);
+  align-items: start;
+}
+@media (min-width: 900px) {
+  .pricing-grid {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: var(--ns-space-3xl);
+  }
+}
+.pricing-lede {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ns-space-md);
+  max-width: 60ch;
+}
+.pricing-lists {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ns-space-xl);
+}
+@media (min-width: 700px) {
+  .pricing-lists {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--ns-space-2xl);
+  }
+}
+.pricing-list-title {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  font-weight: var(--ns-weight-semibold);
+  letter-spacing: var(--ns-track-wide);
+  text-transform: uppercase;
+  color: var(--ns-color-ink);
+  margin: 0 0 var(--ns-space-md);
+  padding-bottom: var(--ns-space-sm);
+  border-bottom: 1px solid var(--ns-color-rule);
+}
+
+
+/* -------------------------------------------------
+ * § 07 — WHO SHOULDN'T BOOK (disqualifier rows)
+ * Bordered row list. Distinct from the courses
+ * svc-sheet pattern — no hover-row lift (not clickable),
+ * named heading + body block.
+ * ------------------------------------------------- */
+
+.disq-title {
+  font-family: var(--ns-font-display);
+  font-size: var(--ns-heading-h2);
+  line-height: var(--ns-leading-tight);
+  letter-spacing: var(--ns-track-tight);
+  color: var(--ns-color-ink);
+  margin: 0;
+}
+.disq-lede {
+  margin-top: var(--ns-space-md);
+  max-width: 60ch;
+  font-size: var(--ns-text-medium);
+  line-height: var(--ns-leading-base);
+  color: var(--ns-color-ink-soft);
+}
+.disq-list {
+  list-style: none;
+  margin: var(--ns-space-2xl) 0 0;
+  padding: 0;
+  border-top: 2px solid var(--ns-color-ink);
+}
+.disq-row {
+  display: grid;
+  grid-template-columns: 3.5rem 1fr;
+  gap: var(--ns-space-md) var(--ns-space-lg);
+  padding: var(--ns-space-lg) 0;
+  border-bottom: 1px solid var(--ns-color-rule);
+}
+@media (min-width: 700px) {
+  .disq-row {
+    grid-template-columns: 4rem 18rem 1fr;
+    align-items: baseline;
+    padding: var(--ns-space-xl) 0;
+  }
+}
+.disq-row-idx {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-small);
+  font-weight: var(--ns-weight-semibold);
+  letter-spacing: var(--ns-track-wide);
+  font-variant-numeric: tabular-nums;
+  color: var(--ns-color-ink-muted);
+}
+.disq-row-name {
+  font-family: var(--ns-font-display);
+  font-size: var(--ns-heading-h4);
+  line-height: var(--ns-leading-snug);
+  letter-spacing: var(--ns-track-tight);
+  color: var(--ns-color-ink);
+  margin: 0;
+}
+.disq-row-body {
+  margin: 0;
+  font-size: var(--ns-text-regular);
+  line-height: var(--ns-leading-base);
+  color: var(--ns-color-ink-soft);
+  max-width: 60ch;
+}
+@media (max-width: 699.98px) {
+  .disq-row-idx { grid-column: 1; grid-row: 1; }
+  .disq-row-name { grid-column: 2; grid-row: 1; }
+  .disq-row-body { grid-column: 2; grid-row: 2; }
+}
+
+
+/* -------------------------------------------------
+ * § 08 — AUTHORITY QUOTES
+ * Two student quotes — display-font pull-quote
+ * treatment. Reads like the home testimonials grid
+ * but two-up, in the authority section.
+ * ------------------------------------------------- */
+
+.auth-quotes {
+  list-style: none;
+  margin: var(--ns-space-3xl) 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ns-space-xl);
+}
+@media (min-width: 900px) {
+  .auth-quotes {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--ns-space-2xl);
+  }
+}
+.auth-quote {
+  position: relative;
+  padding: var(--ns-space-xl) 0 var(--ns-space-lg);
+  border-top: 2px solid var(--ns-color-ink);
+  display: flex;
+  flex-direction: column;
+  gap: var(--ns-space-md);
+}
+.auth-quote-mark {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  font-weight: var(--ns-weight-semibold);
+  letter-spacing: var(--ns-track-wide);
+  font-variant-numeric: tabular-nums;
+  color: var(--ns-color-ink-muted);
+}
+.auth-quote-body {
+  font-family: var(--ns-font-display);
+  font-size: var(--ns-heading-h4);
+  line-height: var(--ns-leading-snug);
+  letter-spacing: var(--ns-track-tight);
+  color: var(--ns-color-ink);
+  margin: 0;
+}
+.auth-quote-attr {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: var(--ns-text-small);
+  color: var(--ns-color-ink-muted);
+  border-top: 1px solid var(--ns-color-rule);
+  padding-top: var(--ns-space-md);
+  margin-top: auto;
+}
+.auth-quote-attr strong {
+  color: var(--ns-color-ink);
+  font-weight: var(--ns-weight-semibold);
+}
+.auth-foot {
+  margin: var(--ns-space-2xl) 0 0;
+}
+
+
+/* -------------------------------------------------
+ * § 09 — RELATED FROM THE HUB
+ * Three article-row teasers. Spec-sheet grammar
+ * matching the courses sheet, but lighter — no rate
+ * column, just index / title / hint / arrow.
+ * ------------------------------------------------- */
+
+.related-title {
+  font-family: var(--ns-font-display);
+  font-size: var(--ns-heading-h2);
+  line-height: var(--ns-leading-tight);
+  letter-spacing: var(--ns-track-tight);
+  color: var(--ns-color-ink);
+  margin: 0;
+}
+.related-lede {
+  margin-top: var(--ns-space-md);
+  max-width: 60ch;
+  font-size: var(--ns-text-medium);
+  line-height: var(--ns-leading-base);
+  color: var(--ns-color-ink-soft);
+}
+.related-list {
+  list-style: none;
+  margin: var(--ns-space-2xl) 0 0;
+  padding: 0;
+  border-top: 2px solid var(--ns-color-ink);
+}
+.related-row {
+  display: grid;
+  grid-template-columns: 3.5rem 1fr auto;
+  gap: var(--ns-space-md);
+  align-items: baseline;
+  padding: var(--ns-space-lg) 0;
+  border-bottom: 1px solid var(--ns-color-rule);
+  color: var(--ns-color-ink);
+  text-decoration: none;
+  transition: padding-inline var(--ns-dur-fast) var(--ns-ease-out),
+              color var(--ns-dur-fast) var(--ns-ease-out);
+}
+@media (min-width: 700px) {
+  .related-row {
+    grid-template-columns: 4rem minmax(0, 1.2fr) minmax(0, 1fr) auto;
+    padding: var(--ns-space-xl) 0;
+  }
+}
+.related-row:hover {
+  padding-inline: 6px;
+  background: var(--ns-color-paper-tint);
+}
+.related-row-idx {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-small);
+  font-weight: var(--ns-weight-semibold);
+  letter-spacing: var(--ns-track-wide);
+  font-variant-numeric: tabular-nums;
+  color: var(--ns-color-ink-muted);
+}
+.related-row-name {
+  font-family: var(--ns-font-display);
+  font-size: var(--ns-heading-h4);
+  line-height: var(--ns-leading-snug);
+  letter-spacing: var(--ns-track-tight);
+  color: var(--ns-color-ink);
+  margin: 0;
+  text-decoration: underline;
+  text-decoration-color: var(--ns-color-rule);
+  text-underline-offset: 4px;
+}
+.related-row:hover .related-row-name {
+  text-decoration-color: var(--ns-color-ink);
+}
+.related-row-hint {
+  font-size: var(--ns-text-small);
+  color: var(--ns-color-ink-muted);
+  line-height: var(--ns-leading-base);
+  max-width: 48ch;
+}
+.related-row-arrow {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-medium);
+  color: var(--ns-color-ink);
+  transition: transform var(--ns-dur-fast) var(--ns-ease-out);
+  align-self: center;
+}
+.related-row:hover .related-row-arrow {
+  transform: translateX(4px);
+}
+@media (max-width: 699.98px) {
+  .related-row-hint {
+    grid-column: 2 / 4;
+  }
+  .related-row-arrow {
+    grid-column: 3;
+    grid-row: 1;
+  }
+}
+
+
+/* -------------------------------------------------
+ * § 10 — FAQ (native details accordion)
+ * <details name="faq"> for exclusive single-open
+ * behaviour. No JS required.
+ * ------------------------------------------------- */
+
+.faq-title {
+  font-family: var(--ns-font-display);
+  font-size: var(--ns-heading-h2);
+  line-height: var(--ns-leading-tight);
+  letter-spacing: var(--ns-track-tight);
+  color: var(--ns-color-ink);
+  margin: 0;
+}
+.faq-list {
+  margin-top: var(--ns-space-2xl);
+  border-top: 2px solid var(--ns-color-ink);
+}
+.faq-item {
+  border-bottom: 1px solid var(--ns-color-rule);
+}
+.faq-item > summary {
+  list-style: none;
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: 3.5rem 1fr auto;
+  gap: var(--ns-space-md);
+  align-items: baseline;
+  padding: var(--ns-space-lg) 0;
+  font-family: var(--ns-font-body);
+  color: var(--ns-color-ink);
+  transition: color var(--ns-dur-fast) var(--ns-ease-out);
+}
+@media (min-width: 700px) {
+  .faq-item > summary {
+    grid-template-columns: 4rem 1fr auto;
+    padding: var(--ns-space-xl) 0;
+  }
+}
+.faq-item > summary::-webkit-details-marker { display: none; }
+.faq-item > summary::marker { content: ""; }
+.faq-item > summary:hover {
+  color: var(--ns-color-primary);
+}
+.faq-item > summary:focus-visible {
+  outline: 2px solid var(--ns-color-focus);
+  outline-offset: 4px;
+}
+.faq-q-idx {
+  font-size: var(--ns-text-small);
+  font-weight: var(--ns-weight-semibold);
+  letter-spacing: var(--ns-track-wide);
+  font-variant-numeric: tabular-nums;
+  color: var(--ns-color-ink-muted);
+}
+.faq-q-text {
+  font-family: var(--ns-font-display);
+  font-size: var(--ns-heading-h4);
+  line-height: var(--ns-leading-snug);
+  letter-spacing: var(--ns-track-tight);
+  color: currentColor;
+  margin: 0;
+}
+.faq-q-mark {
+  position: relative;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  align-self: center;
+}
+.faq-q-mark::before,
+.faq-q-mark::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 1.5px;
+  background: var(--ns-color-ink);
+  transform-origin: center;
+  transition: transform var(--ns-dur-base) var(--ns-ease-in-out);
+}
+.faq-q-mark::after {
+  transform: rotate(90deg);
+}
+.faq-item[open] .faq-q-mark::after {
+  transform: rotate(0deg);
+}
+.faq-a {
+  display: grid;
+  grid-template-columns: 3.5rem 1fr;
+  gap: var(--ns-space-md);
+  padding: 0 0 var(--ns-space-xl);
+}
+@media (min-width: 700px) {
+  .faq-a {
+    grid-template-columns: 4rem 1fr auto;
+    padding-bottom: var(--ns-space-2xl);
+  }
+}
+.faq-a > p {
+  grid-column: 2;
+  margin: 0;
+  font-size: var(--ns-text-regular);
+  line-height: var(--ns-leading-relaxed);
+  color: var(--ns-color-ink-soft);
+  max-width: 65ch;
+}
+@media (prefers-reduced-motion: reduce) {
+  .faq-q-mark::before,
+  .faq-q-mark::after {
+    transition: none;
+  }
+}

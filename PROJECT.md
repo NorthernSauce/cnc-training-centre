@@ -5,7 +5,9 @@
 **Local theme path:** to be filled at phase 5 kickoff — e.g. ~/Local Sites/cnc-training-centre/app/public/wp-content/themes/_ns
 **Linear project:** https://linear.app/northern-sauce/project/cnc-training-centre-website-ec6281752867
 **Linear phase issues:** NOR-49 Strategy · NOR-50 Brief · NOR-51 Copy · NOR-52 Wireframes · NOR-53 Design · NOR-54 Build · NOR-55 Launch
-**Active Brief sub-issues:** NOR-148 Direction (In Progress) · NOR-149 Tokens · NOR-150 Components · NOR-151 Style guide · NOR-152 DESIGN.md
+**Active Brief sub-issues:** NOR-148 Direction (Done) · NOR-149 Tokens (Done) · NOR-150 Components (Done) · NOR-151 Style guide (Done) · NOR-152 DESIGN.md (Done)
+**Active Copy sub-issues:** NOR-153 Home (Done) · NOR-155 Onsite (Done) · NOR-156 Classroom (Done) · NOR-157 Programming (Done)
+**Active Design sub-issues:** NOR-154 Home (Done) · NOR-158 Onsite (Needs Review) · NOR-159 Classroom (Needs Review) · NOR-160 Programming (Needs Review)
 
 ## Project intake
 
@@ -24,17 +26,19 @@
 
 ## Current phase
 
-Copy (Phase 3a)
+Phase 3a (Copy) + Phase 4 (Design) running in parallel.
 
-**Status:** Todo — dispatching `/ns-website-copywriter`
+**Status:**
+- Phase 3a — Home + 3 service pages copy Done. About / Contact / Hub / Courses / detail templates outstanding.
+- Phase 4 — Home + 3 service pages design **Needs Review** (awaiting Dave morning sign-off). About / Contact / Hub / Courses / detail templates outstanding.
 
 ## Phases
 
 - [x] 1. Strategy
 - [x] 2. Design Brief
-- [~] 3a. Copy (in progress — Home signed off, 11 pages remaining)
+- [~] 3a. Copy (4 of ~12 pages done — Home, Onsite, Classroom, Programming)
 - [x̶] 3b. Wireframes — CANCELLED 2026-05-15 at Dave's direction
-- [ ] 4. Design (next session — starting with Homepage, parallel with remaining Copy)
+- [~] 4. Design (4 of ~12 pages done — Home approved; Onsite / Classroom / Programming awaiting morning sign-off)
 - [ ] 5. Build
 - [ ] 6. Launch
 

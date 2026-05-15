@@ -1,0 +1,1777 @@
+/* CNC Training Centre — Home page styles
+ * Direction A — The Engineering Manual.
+ *
+ * This file also defines the LOCKED nav + drawer + scroll-progress + footer
+ * that copy verbatim to every other page on the site.
+ *
+ * Loads after tokens.css + components.css.
+ * Page-local section classes only — nothing here overrides token values.
+ */
+
+/* ============================================
+ * BASE — page-level resets specific to Home
+ * (kept minimal; tokens.css handles root)
+ * ============================================ */
+
+body {
+  background: var(--ns-color-paper);
+  color: var(--ns-color-ink);
+  overflow-x: hidden;
+}
+
+main {
+  display: block;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Page container — used inside every section to hold content at max width */
+.container {
+  max-width: var(--ns-max-content);
+  margin-inline: auto;
+  padding-inline: var(--ns-pad-inline);
+}
+
+
+/* ============================================
+ * NAV — LOCKED ELEMENT — copy verbatim to every page.
+ *
+ * Transparent over hero (paper surface). Dark ink text.
+ * On scroll past 24px, gains a paper background with hairline rule.
+ * No backdrop-filter — restraint > flourish.
+ * Mobile: collapses to wordmark + hamburger only; drawer carries links.
+ * ============================================ */
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--ns-z-sticky);
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition:
+    background var(--ns-dur-base) var(--ns-ease-out),
+    border-color var(--ns-dur-base) var(--ns-ease-out);
+}
+
+.nav.is-scrolled {
+  background: color-mix(in oklab, var(--ns-color-paper) 92%, transparent);
+  border-bottom-color: var(--ns-color-rule);
+  backdrop-filter: saturate(140%) blur(8px);
+  -webkit-backdrop-filter: saturate(140%) blur(8px);
+}
+
+.nav-inner {
+  max-width: var(--ns-max-content);
+  margin-inline: auto;
+  padding: var(--ns-space-md) var(--ns-pad-inline);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ns-space-md);
+}
+
+.nav-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ns-space-xs);
+  text-decoration: none;
+  color: var(--ns-color-ink);
+  font-family: var(--ns-font-display);
+  font-size: var(--ns-text-medium);
+  letter-spacing: -0.005em;
+  line-height: 1;
+}
+
+.nav-brand img {
+  height: 56px;
+  width: auto;
+  display: block;
+}
+
+@media (min-width: 900px) {
+  .nav-brand img { height: 64px; }
+}
+
+.nav-links {
+  display: none;
+  gap: var(--ns-space-md);
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@media (min-width: 900px) {
+  .nav-links {
+    display: inline-flex;
+    flex: 1;
+    justify-content: center;
+  }
+}
+
+.nav-links li { display: inline-flex; }
+
+.nav-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ns-space-sm);
+}
+
+.nav-actions .nav-phone {
+  display: none;
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-small);
+  font-weight: var(--ns-weight-medium);
+  color: var(--ns-color-ink);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+}
+
+.nav-actions .nav-phone:hover {
+  color: var(--ns-color-primary);
+}
+
+@media (min-width: 700px) {
+  .nav-actions .nav-phone { display: inline-flex; }
+}
+
+.nav-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid var(--ns-color-rule-strong);
+  border-radius: var(--ns-radius-tight);
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  color: var(--ns-color-ink);
+  transition:
+    background var(--ns-dur-fast) var(--ns-ease-out),
+    border-color var(--ns-dur-fast) var(--ns-ease-out);
+}
+
+.nav-toggle:hover {
+  border-color: var(--ns-color-ink);
+}
+
+.nav-toggle:focus-visible {
+  outline: 2px solid var(--ns-color-focus);
+  outline-offset: 2px;
+}
+
+@media (min-width: 900px) {
+  .nav-toggle { display: none; }
+}
+
+.nav-toggle-bar {
+  display: block;
+  width: 18px;
+  height: 1.5px;
+  background: currentColor;
+  position: relative;
+}
+
+.nav-toggle-bar::before,
+.nav-toggle-bar::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 18px;
+  height: 1.5px;
+  background: currentColor;
+}
+
+.nav-toggle-bar::before { top: -6px; }
+.nav-toggle-bar::after  { top:  6px; }
+
+
+/* ============================================
+ * DRAWER — full-page mobile / off-canvas menu.
+ * LOCKED ELEMENT — copy verbatim to every page.
+ * ============================================ */
+
+.drawer {
+  position: fixed;
+  inset: 0;
+  background: var(--ns-color-paper);
+  z-index: var(--ns-z-overlay);
+  display: grid;
+  grid-template-rows: max-content 1fr max-content;
+  padding: var(--ns-space-lg) var(--ns-pad-inline) var(--ns-space-2xl);
+  transform: translateY(-100%);
+  transition: transform var(--ns-dur-slow) var(--ns-ease-out);
+  pointer-events: none;
+}
+
+.drawer.is-open {
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.drawer-head {
+  display: grid;
+  grid-template-columns: max-content 1fr max-content;
+  align-items: center;
+  gap: var(--ns-space-md);
+  padding-bottom: var(--ns-space-lg);
+  border-bottom: 1px solid var(--ns-color-rule);
+}
+
+.drawer-close {
+  background: transparent;
+  border: 1px solid var(--ns-color-rule-strong);
+  border-radius: var(--ns-radius-tight);
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-medium);
+  color: var(--ns-color-ink);
+  cursor: pointer;
+  line-height: 1;
+}
+
+.drawer-close:hover { border-color: var(--ns-color-ink); }
+.drawer-close:focus-visible {
+  outline: 2px solid var(--ns-color-focus);
+  outline-offset: 2px;
+}
+
+.drawer-body {
+  padding-top: var(--ns-space-2xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--ns-space-md);
+  overflow-y: auto;
+}
+
+.drawer-link {
+  font-family: var(--ns-font-display);
+  font-size: clamp(2rem, 1.3rem + 3vw, 3rem);
+  line-height: 1;
+  letter-spacing: -0.01em;
+  color: var(--ns-color-ink);
+  text-decoration: none;
+  padding: var(--ns-space-sm) 0;
+  border-bottom: 1px solid var(--ns-color-rule-faint);
+  display: grid;
+  grid-template-columns: 1fr max-content;
+  align-items: end;
+  gap: var(--ns-space-md);
+}
+
+.drawer-link:hover { color: var(--ns-color-primary); }
+.drawer-link[aria-current="page"] { color: var(--ns-color-primary); }
+
+.drawer-link .num {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  font-weight: var(--ns-weight-medium);
+  letter-spacing: var(--ns-track-extrawide);
+  text-transform: uppercase;
+  color: var(--ns-color-ink-muted);
+  padding-bottom: 0.6rem;
+}
+
+.drawer-foot {
+  padding-top: var(--ns-space-lg);
+  border-top: 1px solid var(--ns-color-rule);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--ns-space-md);
+  font-size: var(--ns-text-small);
+}
+
+.drawer-foot dt {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  font-weight: var(--ns-weight-medium);
+  letter-spacing: var(--ns-track-extrawide);
+  text-transform: uppercase;
+  color: var(--ns-color-ink-muted);
+  margin-bottom: var(--ns-space-2xs);
+}
+
+.drawer-foot dd {
+  margin: 0;
+  color: var(--ns-color-ink);
+}
+
+.drawer-foot a { color: var(--ns-color-ink); text-decoration: underline; text-decoration-color: var(--ns-color-rule-strong); }
+.drawer-foot a:hover { text-decoration-color: var(--ns-color-ink); }
+
+/* Lock body scroll while drawer is open */
+body.drawer-open { overflow: hidden; }
+
+
+/* ============================================
+ * SECTION SCAFFOLD — every major section uses this rail.
+ * Section number on a 4–6rem rail; content on the right column.
+ * Matches the engineering-manual section-num pattern.
+ * ============================================ */
+
+.s {
+  padding-block: clamp(4rem, 8vw, 8rem);
+}
+
+.s-paper      { background: var(--ns-color-paper); }
+.s-paper-tint { background: var(--ns-color-paper-tint); }
+.s-anchor     { background: var(--ns-color-anchor); color: var(--ns-color-ink-inverse); }
+.s-anchor .section-num,
+.s-anchor .tagline { color: color-mix(in oklab, var(--ns-color-ink-inverse) 70%, transparent); }
+.s-anchor .section-num { border-top-color: var(--ns-color-ink-inverse); }
+.s-anchor h1, .s-anchor h2, .s-anchor h3, .s-anchor h4 { color: var(--ns-color-ink-inverse); }
+
+.s-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ns-space-lg);
+}
+
+@media (min-width: 900px) {
+  .s-grid { grid-template-columns: 6rem 1fr; gap: var(--ns-space-2xl); align-items: start; }
+}
+
+.s-num {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  font-weight: var(--ns-weight-medium);
+  letter-spacing: var(--ns-track-extrawide);
+  text-transform: uppercase;
+  color: var(--ns-color-ink-muted);
+  padding-top: var(--ns-space-xs);
+  border-top: 1px solid var(--ns-color-ink);
+}
+
+.s-anchor .s-num {
+  color: color-mix(in oklab, var(--ns-color-ink-inverse) 70%, transparent);
+  border-top-color: var(--ns-color-ink-inverse);
+}
+
+
+/* ============================================
+ * SEC-HEAD + PRETITLE — consistent section opener pattern.
+ * ============================================ */
+
+.sec-head {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ns-space-md);
+  margin-bottom: clamp(2.5rem, 5vw, 4.5rem);
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 900px) {
+  .sec-head.plan-head,
+  .sec-head.services-head,
+  .sec-head.hub-head {
+    grid-template-columns: minmax(0, 1.6fr) max-content;
+    align-items: end;
+    gap: var(--ns-space-2xl);
+  }
+}
+
+.sec-pretitle {
+  display: inline-block;
+  padding-top: var(--ns-space-xs);
+  margin-bottom: var(--ns-space-md);
+  border-top: 1px solid var(--ns-color-ink);
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  font-weight: var(--ns-weight-medium);
+  letter-spacing: var(--ns-track-extrawide);
+  text-transform: uppercase;
+  color: var(--ns-color-ink-muted);
+}
+
+.sec-pretitle-light {
+  border-top-color: color-mix(in oklab, var(--ns-color-ink-inverse) 50%, transparent);
+  color: color-mix(in oklab, var(--ns-color-ink-inverse) 65%, transparent);
+  margin-bottom: var(--ns-space-xl);
+}
+
+
+/* ============================================
+ * GHOST NUMERAL — giant Tanker section-num background.
+ * Direction-A signature. Applied to several sections.
+ * ============================================ */
+
+.ghost-num,
+.hero-ghost {
+  position: absolute;
+  font-family: var(--ns-font-display);
+  font-size: clamp(20rem, 35vw, 44rem);
+  line-height: 0.78;
+  letter-spacing: -0.04em;
+  color: var(--ns-color-ink);
+  opacity: 0.035;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
+.hero-ghost {
+  right: -3vw;
+  bottom: -4vw;
+}
+
+.s,
+.hero,
+.problem,
+.plan,
+.services,
+.testimonials,
+.contact { position: relative; overflow: hidden; }
+
+.s .container,
+.hero .container { position: relative; z-index: 1; }
+
+.s-anchor .ghost-num,
+.contact + .site-footer .ghost-num { color: var(--ns-color-ink-inverse); opacity: 0.06; }
+
+
+/* ============================================
+ * HERO — § 01
+ * Engineering-drawing motif. Massive headline,
+ * dimension-annotated spec readout RH.
+ * Ghost numeral "01" sits behind the page edge.
+ * ============================================ */
+
+.hero {
+  padding-block: clamp(8rem, 14vw, 12rem) clamp(3rem, 5vw, 5rem);
+  background: var(--ns-color-paper);
+}
+
+.hero-eyebrow-top {
+  margin-bottom: clamp(2rem, 4vw, 3.5rem);
+}
+
+.hero-title {
+  font-family: var(--ns-font-display);
+  font-size: clamp(3.5rem, 1.4rem + 9vw, 9rem);
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  color: var(--ns-color-ink);
+  margin: 0 0 clamp(2.5rem, 5vw, 5rem);
+  max-width: 18ch;
+}
+
+.hero-title em {
+  font-style: normal;
+  color: var(--ns-color-primary);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ns-space-2xl);
+}
+
+@media (min-width: 900px) {
+  .hero-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: var(--ns-space-4xl);
+    align-items: start;
+  }
+}
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ns-space-sm);
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  font-weight: var(--ns-weight-medium);
+  letter-spacing: var(--ns-track-extrawide);
+  text-transform: uppercase;
+  color: var(--ns-color-ink-muted);
+  margin: 0 0 var(--ns-space-lg);
+}
+
+.hero-eyebrow::before {
+  content: "";
+  width: 32px;
+  height: 1px;
+  background: var(--ns-color-ink);
+}
+
+.hero-stack { padding-top: var(--ns-space-md); }
+
+.hero-lede {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-large);
+  line-height: var(--ns-leading-base);
+  color: var(--ns-color-ink-soft);
+  margin: 0 0 var(--ns-space-2xl);
+  max-width: 48ch;
+}
+
+.hero-ctas {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: var(--ns-space-md);
+}
+
+/* Hero specs panel — engineering-spec sheet treatment */
+.hero-specs {
+  background: var(--ns-color-paper);
+  border: 1px solid var(--ns-color-rule);
+  border-radius: var(--ns-radius-tight);
+  padding: var(--ns-space-lg) var(--ns-space-lg) var(--ns-space-md);
+  position: relative;
+}
+
+.hero-specs::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 24px;
+  border-top: 2px solid var(--ns-color-ink);
+  border-left: 2px solid var(--ns-color-ink);
+}
+.hero-specs::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 24px;
+  height: 24px;
+  border-bottom: 2px solid var(--ns-color-ink);
+  border-right: 2px solid var(--ns-color-ink);
+}
+
+.hero-specs-head {
+  display: grid;
+  grid-template-columns: max-content 1fr max-content;
+  gap: var(--ns-space-md);
+  align-items: center;
+  padding-bottom: var(--ns-space-md);
+  border-bottom: 1px solid var(--ns-color-rule);
+  margin-bottom: var(--ns-space-sm);
+}
+
+.hero-specs-eyebrow {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  font-weight: var(--ns-weight-medium);
+  letter-spacing: var(--ns-track-extrawide);
+  text-transform: uppercase;
+  color: var(--ns-color-ink-muted);
+}
+
+.hero-specs-rule { height: 1px; background: var(--ns-color-rule-strong); }
+
+.hero-specs-num {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  font-weight: var(--ns-weight-medium);
+  letter-spacing: 0.04em;
+  color: var(--ns-color-ink-muted);
+  font-feature-settings: "tnum" 1;
+}
+
+.hero-specs-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.hspec {
+  display: grid;
+  grid-template-columns: 1.8rem max-content 1fr;
+  gap: var(--ns-space-md);
+  align-items: baseline;
+  padding: var(--ns-space-sm) 0;
+  border-bottom: 1px solid var(--ns-color-rule-faint);
+  font-size: var(--ns-text-small);
+}
+
+.hspec:last-child { border-bottom: 0; }
+
+.hspec-key {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  font-weight: var(--ns-weight-medium);
+  letter-spacing: 0.04em;
+  color: var(--ns-color-ink-muted);
+  font-feature-settings: "tnum" 1;
+}
+
+.hspec-name {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  font-weight: var(--ns-weight-semibold);
+  letter-spacing: var(--ns-track-wide);
+  text-transform: uppercase;
+  color: var(--ns-color-ink);
+}
+
+.hspec-val {
+  color: var(--ns-color-ink-soft);
+  line-height: 1.4;
+}
+
+.hspec-val strong {
+  color: var(--ns-color-ink);
+  font-weight: var(--ns-weight-semibold);
+  font-feature-settings: "tnum" 1;
+}
+
+/* Hero base rule with scroll-cue */
+.hero-base {
+  display: flex;
+  align-items: center;
+  gap: var(--ns-space-sm);
+  color: var(--ns-color-ink-muted);
+  margin-top: clamp(3rem, 6vw, 5rem);
+}
+
+.hero-base-tick {
+  width: 6px;
+  height: 6px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.hero-base-line {
+  flex: 1;
+  height: 1px;
+  background: var(--ns-color-rule);
+}
+
+.hero-base-label {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  font-weight: var(--ns-weight-medium);
+  letter-spacing: var(--ns-track-extrawide);
+  text-transform: uppercase;
+}
+
+
+/* ============================================
+ * PROBLEM — § 02
+ * Editorial newspaper. Pretitle + big headline,
+ * 2-col body underneath, full-width pull-quote at the foot.
+ * ============================================ */
+
+.problem-title {
+  font-family: var(--ns-font-display);
+  font-size: clamp(2.25rem, 1.3rem + 3.2vw, 4.5rem);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  color: var(--ns-color-ink);
+  margin: 0;
+  max-width: 24ch;
+}
+
+.problem-title em {
+  font-style: normal;
+  color: var(--ns-color-primary);
+}
+
+.problem-cols {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ns-space-2xl);
+}
+
+@media (min-width: 900px) {
+  .problem-cols {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--ns-space-4xl);
+  }
+}
+
+.problem-body {
+  font-size: var(--ns-text-medium);
+  line-height: var(--ns-leading-relaxed);
+  color: var(--ns-color-ink-soft);
+  margin: 0;
+  max-width: 62ch;
+}
+
+.problem-body-lead::first-letter {
+  font-family: var(--ns-font-display);
+  font-size: 4em;
+  line-height: 0.82;
+  float: left;
+  margin: 0.08em 0.18em 0 0;
+  color: var(--ns-color-ink);
+  letter-spacing: -0.02em;
+}
+
+.problem-pull {
+  font-family: var(--ns-font-display);
+  font-size: clamp(1.75rem, 1.2rem + 2.4vw, 3.25rem);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  color: var(--ns-color-ink);
+  text-align: center;
+  margin: clamp(3rem, 6vw, 5rem) auto 0;
+  padding: clamp(2rem, 4vw, 3rem) 0 0;
+  border-top: 2px solid var(--ns-color-ink);
+  max-width: 28ch;
+  position: relative;
+  z-index: 1;
+}
+
+.problem-pull::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  width: 14px;
+  height: 14px;
+  background: var(--ns-color-paper-tint);
+  border: 2px solid var(--ns-color-ink);
+  border-radius: 50%;
+}
+
+.problem-pull p { margin: 0; }
+
+
+/* ============================================
+ * PLAN — § 03
+ * Horizontal 3-up. Giant Tanker decimal numerals.
+ * Connecting rule line runs through all three at desktop.
+ * ============================================ */
+
+.plan-title {
+  font-family: var(--ns-font-display);
+  font-size: clamp(2rem, 1.3rem + 2.6vw, 3.75rem);
+  line-height: 1;
+  letter-spacing: -0.015em;
+  color: var(--ns-color-ink);
+  margin: 0;
+  max-width: 28ch;
+}
+
+.plan-cta { align-self: end; }
+
+.plan-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ns-space-xl);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 900px) {
+  .plan-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+  }
+}
+
+.plan-step {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ns-space-md);
+  padding-top: var(--ns-space-md);
+  border-top: 1px solid var(--ns-color-rule);
+  position: relative;
+}
+
+@media (min-width: 900px) {
+  .plan-step {
+    padding: var(--ns-space-lg) var(--ns-space-xl) var(--ns-space-lg) 0;
+    border-top: 2px solid var(--ns-color-ink);
+    border-right: 1px dashed var(--ns-color-rule);
+  }
+  .plan-step:last-child { border-right: 0; padding-right: 0; }
+  .plan-step + .plan-step { padding-left: var(--ns-space-xl); }
+}
+
+.plan-step-num {
+  font-family: var(--ns-font-display);
+  font-size: clamp(5rem, 4rem + 7vw, 11rem);
+  line-height: 0.82;
+  letter-spacing: -0.04em;
+  color: var(--ns-color-ink);
+  font-feature-settings: "tnum" 1;
+}
+
+.plan-step-line {
+  display: block;
+  width: 48px;
+  height: 2px;
+  background: var(--ns-color-primary);
+  margin: var(--ns-space-md) 0;
+}
+
+.plan-step-title {
+  font-family: var(--ns-font-display);
+  font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  margin: 0;
+  color: var(--ns-color-ink);
+  max-width: 18ch;
+}
+
+.plan-step-body {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-medium);
+  line-height: var(--ns-leading-base);
+  color: var(--ns-color-ink-soft);
+  margin: 0;
+  max-width: 40ch;
+}
+
+
+/* ============================================
+ * SERVICES — § 04
+ * Spec-sheet row layout. Each service is a single wide row:
+ * index / huge name / lede / rate / arrow.
+ * Reads like a parts catalogue.
+ * ============================================ */
+
+.services-title {
+  font-family: var(--ns-font-display);
+  font-size: clamp(2rem, 1.3rem + 2.6vw, 3.75rem);
+  line-height: 1;
+  letter-spacing: -0.015em;
+  color: var(--ns-color-ink);
+  margin: 0;
+  max-width: 26ch;
+}
+
+.services-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ns-space-xs);
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  font-weight: var(--ns-weight-medium);
+  letter-spacing: var(--ns-track-wide);
+  text-transform: uppercase;
+  color: var(--ns-color-ink-muted);
+}
+
+.svc-sheet {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 2px solid var(--ns-color-ink);
+  position: relative;
+  z-index: 1;
+}
+
+.svc-row {
+  display: grid;
+  grid-template-columns: max-content 1fr max-content;
+  grid-template-rows: max-content max-content;
+  grid-template-areas:
+    "idx  name rate"
+    "idx  lede arrow";
+  gap: var(--ns-space-xs) var(--ns-space-lg);
+  padding: var(--ns-space-xl) 0;
+  border-bottom: 1px solid var(--ns-color-rule);
+  text-decoration: none;
+  color: var(--ns-color-ink);
+  position: relative;
+  transition: background var(--ns-dur-base) var(--ns-ease-out);
+}
+
+.svc-row::before {
+  content: "";
+  position: absolute;
+  left: -16px;
+  top: 0;
+  width: 3px;
+  height: 100%;
+  background: var(--ns-color-primary);
+  opacity: 0;
+  transition: opacity var(--ns-dur-fast) var(--ns-ease-out), left var(--ns-dur-base) var(--ns-ease-out);
+}
+
+.svc-row:hover::before { opacity: 1; left: -24px; }
+
+@media (min-width: 900px) {
+  .svc-row {
+    grid-template-columns: 4.5rem minmax(0, 2fr) minmax(0, 1.4fr) max-content 2.5rem;
+    grid-template-rows: max-content;
+    grid-template-areas: "idx name lede rate arrow";
+    align-items: center;
+    padding: var(--ns-space-2xl) 0;
+  }
+}
+
+.svc-row-idx {
+  grid-area: idx;
+  align-self: start;
+  padding-top: 0.5rem;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-feature-settings: "tnum" 1;
+  font-size: var(--ns-text-tiny);
+  letter-spacing: 0.06em;
+  color: var(--ns-color-ink-muted);
+}
+
+.svc-row-name {
+  grid-area: name;
+  font-family: var(--ns-font-display);
+  font-size: clamp(1.5rem, 1.1rem + 2vw, 2.75rem);
+  line-height: 0.95;
+  letter-spacing: -0.015em;
+  margin: 0;
+  color: var(--ns-color-ink);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 0.12em;
+  transition: text-decoration-color var(--ns-dur-fast) var(--ns-ease-out);
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--ns-space-sm);
+  flex-wrap: wrap;
+}
+
+.svc-row:hover .svc-row-name { text-decoration-color: var(--ns-color-ink); }
+
+.svc-row-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.15rem 0.55rem;
+  font-family: var(--ns-font-body);
+  font-size: 0.7rem;
+  font-weight: var(--ns-weight-semibold);
+  letter-spacing: var(--ns-track-wide);
+  text-transform: uppercase;
+  color: var(--ns-color-ink-soft);
+  background: var(--ns-color-paper);
+  border: 1px solid var(--ns-color-rule);
+  border-radius: var(--ns-radius-pill);
+  text-decoration: none !important;
+}
+
+.svc-row-lede {
+  grid-area: lede;
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-small);
+  line-height: var(--ns-leading-base);
+  color: var(--ns-color-ink-soft);
+  max-width: 52ch;
+  margin: 0;
+}
+
+@media (max-width: 899px) {
+  .svc-row-lede { padding-top: var(--ns-space-xs); }
+}
+
+.svc-row-rate {
+  grid-area: rate;
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-small);
+  font-weight: var(--ns-weight-medium);
+  letter-spacing: var(--ns-track-wide);
+  text-transform: uppercase;
+  color: var(--ns-color-ink-muted);
+  font-feature-settings: "tnum" 1;
+  white-space: nowrap;
+  justify-self: end;
+  text-align: right;
+}
+
+.svc-row-rate strong {
+  display: inline-block;
+  margin-right: 0.2em;
+  color: var(--ns-color-ink);
+  font-family: var(--ns-font-display);
+  font-size: 1.6em;
+  font-weight: var(--ns-weight-regular);
+  letter-spacing: -0.01em;
+  vertical-align: -0.05em;
+}
+
+.svc-row-arrow {
+  grid-area: arrow;
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-large);
+  color: var(--ns-color-ink-muted);
+  transition: transform var(--ns-dur-base) var(--ns-ease-out), color var(--ns-dur-fast) var(--ns-ease-out);
+  justify-self: end;
+  display: none;
+}
+
+@media (min-width: 900px) {
+  .svc-row-arrow { display: inline-block; }
+}
+
+.svc-row:hover .svc-row-arrow {
+  transform: translateX(6px);
+  color: var(--ns-color-ink);
+}
+
+.svc-row-soon { opacity: 0.85; }
+.svc-row-soon:hover { opacity: 1; }
+
+
+/* ============================================
+ * AUTHORITY — § 05
+ * Two-column: LH headline + supporting / RH spec-block.
+ * ============================================ */
+
+.authority-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ns-space-2xl);
+  align-items: start;
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 900px) {
+  .authority-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+    gap: var(--ns-space-4xl);
+  }
+}
+
+.authority-head { display: flex; flex-direction: column; }
+
+.authority-title {
+  font-family: var(--ns-font-display);
+  font-size: clamp(2rem, 1.3rem + 2.6vw, 3.75rem);
+  line-height: 1;
+  letter-spacing: -0.015em;
+  color: var(--ns-color-ink);
+  margin: 0 0 var(--ns-space-xl);
+  max-width: 18ch;
+}
+
+.authority-lede {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-medium);
+  line-height: var(--ns-leading-base);
+  color: var(--ns-color-ink-soft);
+  margin: 0;
+  max-width: 48ch;
+}
+
+.spec-block {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-top: 2px solid var(--ns-color-ink);
+  border-bottom: 2px solid var(--ns-color-ink);
+}
+
+.spec {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: var(--ns-space-sm);
+  padding: var(--ns-space-xl) var(--ns-space-lg);
+  border-bottom: 1px solid var(--ns-color-rule);
+  border-right: 1px solid var(--ns-color-rule);
+  min-height: 11rem;
+}
+
+.spec:nth-child(2n) { border-right: 0; }
+.spec:nth-last-child(-n+2) { border-bottom: 0; }
+.spec-wide { grid-column: 1 / -1; min-height: auto; padding: var(--ns-space-lg) var(--ns-space-lg); }
+.spec-wide { flex-direction: row; align-items: baseline; gap: var(--ns-space-lg); }
+.spec-wide .spec-label { flex: 1; }
+
+.spec-figure {
+  font-family: var(--ns-font-display);
+  font-size: clamp(3rem, 2rem + 4vw, 5rem);
+  line-height: 0.85;
+  letter-spacing: -0.025em;
+  color: var(--ns-color-ink);
+  font-feature-settings: "tnum" 1;
+}
+
+.spec-figure small {
+  font-family: var(--ns-font-body);
+  font-size: 0.34em;
+  font-weight: var(--ns-weight-medium);
+  letter-spacing: var(--ns-track-extrawide);
+  text-transform: uppercase;
+  color: var(--ns-color-ink-muted);
+  margin-left: 0.2em;
+  vertical-align: 0.55em;
+}
+
+.spec-label {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-small);
+  line-height: var(--ns-leading-base);
+  color: var(--ns-color-ink-soft);
+  margin: 0;
+}
+
+
+/* ============================================
+ * TESTIMONIALS — § 06
+ * Horizontal 3-up at desktop. Big Tanker pull-quote
+ * treatment with numbered mark. Stacked on mobile.
+ * ============================================ */
+
+.t-head { max-width: 60ch; }
+
+.testimonials-title {
+  font-family: var(--ns-font-display);
+  font-size: clamp(2rem, 1.3rem + 2.6vw, 3.5rem);
+  line-height: 1;
+  letter-spacing: -0.015em;
+  color: var(--ns-color-ink);
+  margin: 0;
+  max-width: 22ch;
+}
+
+.t-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ns-space-xl);
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 900px) {
+  .t-grid { grid-template-columns: repeat(3, 1fr); gap: var(--ns-space-xl); }
+}
+
+.t-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ns-space-lg);
+  padding: var(--ns-space-xl);
+  background: var(--ns-color-paper);
+  border: 1px solid var(--ns-color-rule);
+  border-radius: var(--ns-radius-tight);
+  position: relative;
+  transition: transform var(--ns-dur-base) var(--ns-ease-out), border-color var(--ns-dur-fast) var(--ns-ease-out);
+}
+
+.t-card:hover {
+  border-color: var(--ns-color-ink);
+  transform: translateY(-2px);
+}
+
+.t-card-mark {
+  font-family: var(--ns-font-display);
+  font-size: clamp(3rem, 2.4rem + 1.5vw, 4.5rem);
+  line-height: 0.85;
+  letter-spacing: -0.02em;
+  color: var(--ns-color-primary);
+  font-feature-settings: "tnum" 1;
+}
+
+.t-card-quote {
+  font-family: var(--ns-font-display);
+  font-size: clamp(1.125rem, 1rem + 0.6vw, 1.5rem);
+  line-height: 1.3;
+  letter-spacing: -0.005em;
+  color: var(--ns-color-ink);
+  margin: 0;
+  flex: 1;
+}
+
+.t-card-attr {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ns-space-2xs);
+  padding-top: var(--ns-space-md);
+  border-top: 1px solid var(--ns-color-rule);
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  letter-spacing: var(--ns-track-wide);
+  text-transform: uppercase;
+  color: var(--ns-color-ink-muted);
+}
+
+.t-card-attr strong {
+  font-size: var(--ns-text-small);
+  font-weight: var(--ns-weight-semibold);
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--ns-color-ink);
+}
+
+.t-foot {
+  margin-top: clamp(2rem, 4vw, 3rem);
+  position: relative;
+  z-index: 1;
+}
+
+
+/* ============================================
+ * HUB PREVIEW — § 07
+ * The marketing engine. Stat strip + taxonomy chips
+ * + 1 featured + 2 secondaries. Paper-deep surface.
+ * ============================================ */
+
+.hub {
+  background: var(--ns-color-paper-deep);
+  padding-block: clamp(5rem, 9vw, 9rem);
+}
+
+.hub-title {
+  font-family: var(--ns-font-display);
+  font-size: clamp(2.5rem, 1.5rem + 3.6vw, 5rem);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  color: var(--ns-color-ink);
+  margin: 0 0 var(--ns-space-md);
+  max-width: 18ch;
+}
+
+.hub-lede {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-medium);
+  line-height: var(--ns-leading-base);
+  color: var(--ns-color-ink-soft);
+  margin: 0;
+  max-width: 52ch;
+}
+
+.hub-cta { align-self: end; white-space: nowrap; }
+
+/* Stat strip */
+.hub-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+  border-top: 2px solid var(--ns-color-ink);
+  border-bottom: 1px solid var(--ns-color-rule);
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 700px) {
+  .hub-stats { grid-template-columns: repeat(4, 1fr); }
+}
+
+.hub-stat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ns-space-2xs);
+  padding: var(--ns-space-lg) var(--ns-space-md);
+  border-right: 1px solid var(--ns-color-rule);
+  border-bottom: 1px solid var(--ns-color-rule);
+}
+
+.hub-stat:nth-child(2n) { border-right: 0; }
+@media (min-width: 700px) {
+  .hub-stat { border-bottom: 0; }
+  .hub-stat:nth-child(2n) { border-right: 1px solid var(--ns-color-rule); }
+  .hub-stat:last-child { border-right: 0; }
+}
+
+.hub-stat-fig {
+  font-family: var(--ns-font-display);
+  font-size: clamp(2rem, 1.4rem + 2vw, 3rem);
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  color: var(--ns-color-ink);
+  font-feature-settings: "tnum" 1;
+}
+
+.hub-stat-lbl {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  font-weight: var(--ns-weight-medium);
+  letter-spacing: var(--ns-track-wide);
+  text-transform: uppercase;
+  color: var(--ns-color-ink-muted);
+}
+
+/* Taxonomy chip row */
+.hub-filters {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ns-space-md);
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 900px) {
+  .hub-filters {
+    grid-template-columns: max-content 1fr;
+    align-items: center;
+    gap: var(--ns-space-lg);
+  }
+}
+
+.hub-filters-tag {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  font-weight: var(--ns-weight-medium);
+  letter-spacing: var(--ns-track-extrawide);
+  text-transform: uppercase;
+  color: var(--ns-color-ink-muted);
+}
+
+.hub-filters ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ns-space-xs);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.hub-filters .tag {
+  background: var(--ns-color-paper);
+  color: var(--ns-color-ink);
+  border: 1px solid var(--ns-color-rule);
+}
+
+.hub-filters .tag:hover {
+  background: var(--ns-color-ink);
+  color: var(--ns-color-ink-inverse);
+  border-color: var(--ns-color-ink);
+}
+
+/* Featured + secondaries grid */
+.hub-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ns-space-lg);
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 900px) {
+  .hub-grid { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: var(--ns-space-xl); }
+}
+
+.hub-featured {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ns-space-lg);
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  background: var(--ns-color-paper);
+  border: 1px solid var(--ns-color-rule);
+  border-radius: var(--ns-radius-tight);
+  color: var(--ns-color-ink);
+  text-decoration: none;
+  transition: border-color var(--ns-dur-fast) var(--ns-ease-out), transform var(--ns-dur-base) var(--ns-ease-out);
+  position: relative;
+  min-height: 22rem;
+}
+
+.hub-featured:hover { border-color: var(--ns-color-ink); transform: translateY(-2px); }
+
+.hub-featured-top {
+  display: flex;
+  align-items: center;
+  gap: var(--ns-space-md);
+  flex-wrap: wrap;
+}
+
+.hub-featured-eyebrow {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  font-weight: var(--ns-weight-medium);
+  letter-spacing: var(--ns-track-extrawide);
+  text-transform: uppercase;
+  color: var(--ns-color-primary);
+}
+
+.hub-featured-title {
+  font-family: var(--ns-font-display);
+  font-size: clamp(1.75rem, 1.2rem + 2.4vw, 3rem);
+  line-height: 0.98;
+  letter-spacing: -0.015em;
+  color: var(--ns-color-ink);
+  margin: 0;
+}
+
+.hub-featured-dek {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-medium);
+  line-height: var(--ns-leading-base);
+  color: var(--ns-color-ink-soft);
+  margin: 0;
+  flex: 1;
+}
+
+.hub-featured-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--ns-space-sm);
+  padding-top: var(--ns-space-md);
+  border-top: 1px solid var(--ns-color-rule);
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  font-weight: var(--ns-weight-medium);
+  letter-spacing: var(--ns-track-wide);
+  text-transform: uppercase;
+  color: var(--ns-color-ink-muted);
+}
+
+.hub-featured-arrow {
+  margin-left: auto;
+  font-size: var(--ns-text-large);
+  color: var(--ns-color-ink);
+  transition: transform var(--ns-dur-base) var(--ns-ease-out);
+}
+
+.hub-featured:hover .hub-featured-arrow { transform: translateX(4px); }
+
+.hub-secondaries {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: var(--ns-space-lg);
+}
+
+.hub-secondary {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ns-space-md);
+  padding: var(--ns-space-lg);
+  background: var(--ns-color-paper);
+  border: 1px solid var(--ns-color-rule);
+  border-radius: var(--ns-radius-tight);
+  text-decoration: none;
+  color: var(--ns-color-ink);
+  transition: border-color var(--ns-dur-fast) var(--ns-ease-out), transform var(--ns-dur-base) var(--ns-ease-out);
+}
+
+.hub-secondary:hover { border-color: var(--ns-color-ink); transform: translateY(-2px); }
+
+.hub-secondary-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hub-secondary-num {
+  font-family: var(--ns-font-display);
+  font-size: var(--ns-heading-h3);
+  line-height: 1;
+  color: var(--ns-color-ink-muted);
+  font-feature-settings: "tnum" 1;
+}
+
+.hub-secondary-title {
+  font-family: var(--ns-font-display);
+  font-size: clamp(1.25rem, 1.05rem + 0.9vw, 1.75rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: var(--ns-color-ink);
+  margin: 0;
+  flex: 1;
+}
+
+.hub-secondary-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: var(--ns-space-sm);
+  border-top: 1px solid var(--ns-color-rule);
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  letter-spacing: var(--ns-track-wide);
+  text-transform: uppercase;
+  color: var(--ns-color-ink-muted);
+}
+
+.hub-secondary-arrow {
+  font-size: var(--ns-text-medium);
+  color: var(--ns-color-ink);
+  transition: transform var(--ns-dur-base) var(--ns-ease-out);
+}
+
+.hub-secondary:hover .hub-secondary-arrow { transform: translateX(4px); }
+
+
+/* ============================================
+ * CONTACT BAND — § 08
+ * Anchor surface. Page's only anchor-tier section
+ * (footer is a continuation of the same surface).
+ * ============================================ */
+
+.contact {
+  background: var(--ns-color-anchor);
+  color: var(--ns-color-ink-inverse);
+  padding-block: clamp(5rem, 9vw, 9rem);
+  border-top: 1px solid var(--ns-color-anchor-soft);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ns-space-2xl);
+}
+
+@media (min-width: 900px) {
+  .contact-grid {
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    gap: var(--ns-space-4xl);
+    align-items: start;
+  }
+}
+
+.contact-title {
+  font-family: var(--ns-font-display);
+  font-size: clamp(2.25rem, 1.5rem + 3.2vw, 4.25rem);
+  line-height: 0.98;
+  letter-spacing: -0.015em;
+  color: var(--ns-color-ink-inverse);
+  margin: 0 0 var(--ns-space-xl);
+  max-width: 14ch;
+}
+
+.contact-lede {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-large);
+  line-height: var(--ns-leading-base);
+  color: color-mix(in oklab, var(--ns-color-ink-inverse) 80%, transparent);
+  margin: 0 0 var(--ns-space-xl);
+  max-width: 52ch;
+}
+
+.contact-lede a {
+  color: var(--ns-color-ink-inverse);
+  font-weight: var(--ns-weight-semibold);
+  text-decoration-color: color-mix(in oklab, var(--ns-color-ink-inverse) 60%, transparent);
+}
+
+.contact-actions {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: var(--ns-space-md);
+}
+
+.contact .btn-primary {
+  background: var(--ns-color-ink-inverse);
+  color: var(--ns-color-ink);
+  border-color: var(--ns-color-ink-inverse);
+}
+
+.contact .btn-primary:hover {
+  background: color-mix(in oklab, var(--ns-color-ink-inverse) 85%, var(--ns-color-anchor));
+  border-color: color-mix(in oklab, var(--ns-color-ink-inverse) 85%, var(--ns-color-anchor));
+}
+
+.contact .btn-outline {
+  background: transparent;
+  color: var(--ns-color-ink-inverse);
+  border-color: var(--ns-color-ink-inverse);
+}
+
+.contact .btn-outline:hover {
+  background: var(--ns-color-ink-inverse);
+  color: var(--ns-color-ink);
+}
+
+.contact-meta {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ns-space-lg);
+  padding-top: var(--ns-space-md);
+  border-top: 1px solid color-mix(in oklab, var(--ns-color-ink-inverse) 30%, transparent);
+}
+
+.contact-meta dt {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  font-weight: var(--ns-weight-medium);
+  letter-spacing: var(--ns-track-extrawide);
+  text-transform: uppercase;
+  color: color-mix(in oklab, var(--ns-color-ink-inverse) 65%, transparent);
+  margin-bottom: var(--ns-space-2xs);
+}
+
+.contact-meta dd {
+  margin: 0;
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-medium);
+  color: var(--ns-color-ink-inverse);
+}
+
+.contact-meta dd a {
+  color: var(--ns-color-ink-inverse);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in oklab, var(--ns-color-ink-inverse) 35%, transparent);
+}
+
+.contact-meta dd a:hover { text-decoration-color: var(--ns-color-ink-inverse); }
+
+
+/* ============================================
+ * FOOTER — anchor surface. Real PNG logo carries.
+ * LOCKED ELEMENT — copy verbatim to every page.
+ * ============================================ */
+
+.site-footer {
+  background: var(--ns-color-anchor);
+  color: var(--ns-color-ink-inverse);
+  padding-block: clamp(3rem, 6vw, 5rem) clamp(2rem, 4vw, 3rem);
+  border-top: 1px solid color-mix(in oklab, var(--ns-color-ink-inverse) 18%, transparent);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ns-space-2xl);
+}
+
+@media (min-width: 700px) {
+  .footer-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1100px) {
+  .footer-grid { grid-template-columns: minmax(0, 1.6fr) repeat(3, minmax(0, 1fr)); gap: var(--ns-space-2xl); }
+}
+
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ns-space-md);
+}
+
+.footer-logo {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.footer-logo img {
+  height: 64px;
+  width: auto;
+  display: block;
+}
+
+.footer-tag {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-small);
+  color: color-mix(in oklab, var(--ns-color-ink-inverse) 75%, transparent);
+  margin: 0;
+  max-width: 32ch;
+}
+
+.footer-social {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--ns-space-xs);
+  list-style: none;
+  margin: var(--ns-space-md) 0 0;
+  padding: 0;
+}
+
+.footer-social li {
+  display: inline-flex;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  color: var(--ns-color-ink-inverse);
+  background: transparent;
+  border: 1px solid color-mix(in oklab, var(--ns-color-ink-inverse) 35%, transparent);
+  border-radius: var(--ns-radius-tight);
+  transition: background var(--ns-dur-fast) var(--ns-ease-out),
+              color var(--ns-dur-fast) var(--ns-ease-out),
+              border-color var(--ns-dur-fast) var(--ns-ease-out);
+}
+
+.footer-social a:hover {
+  background: var(--ns-color-ink-inverse);
+  color: var(--ns-color-ink);
+  border-color: var(--ns-color-ink-inverse);
+}
+
+.footer-social svg {
+  display: block;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.footer-col h4 {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  font-weight: var(--ns-weight-medium);
+  letter-spacing: var(--ns-track-extrawide);
+  text-transform: uppercase;
+  color: color-mix(in oklab, var(--ns-color-ink-inverse) 65%, transparent);
+  margin: 0 0 var(--ns-space-md);
+  padding-bottom: var(--ns-space-sm);
+  border-bottom: 1px solid color-mix(in oklab, var(--ns-color-ink-inverse) 25%, transparent);
+}
+
+.footer-col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--ns-space-xs);
+}
+
+.footer-col a {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-small);
+  color: var(--ns-color-ink-inverse);
+  text-decoration: none;
+  transition: color var(--ns-dur-fast) var(--ns-ease-out);
+}
+
+.footer-col a:hover {
+  color: color-mix(in oklab, var(--ns-color-ink-inverse) 75%, transparent);
+  text-decoration: underline;
+  text-decoration-color: currentColor;
+  text-underline-offset: 0.18em;
+}
+
+.footer-meta {
+  margin-top: var(--ns-space-2xl);
+  padding-top: var(--ns-space-lg);
+  border-top: 1px solid color-mix(in oklab, var(--ns-color-ink-inverse) 20%, transparent);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ns-space-md) var(--ns-space-2xl);
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  letter-spacing: var(--ns-track-wide);
+  text-transform: uppercase;
+  color: color-mix(in oklab, var(--ns-color-ink-inverse) 60%, transparent);
+}
+
+
+/* ============================================
+ * REDUCED MOTION — safety net on top of token cascade.
+ * ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}

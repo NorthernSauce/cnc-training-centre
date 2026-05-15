@@ -1,0 +1,619 @@
+/* CNC Training Centre — Programming services page
+ * Additive only. Inherits tokens.css, components.css, page-home.css.
+ * Page-specific section classes only.
+ */
+
+
+/* ============================================
+ * HERO — § 01
+ * Type-led: hero-title + lede LH, marginalia spec panel RH.
+ * Reuses .hero / .hero-* patterns from page-home.css.
+ * ============================================ */
+
+.prog-hero .hero-title { max-width: 22ch; }
+
+.prog-hero-marg {
+  position: relative;
+  background: var(--ns-color-paper-tint);
+}
+
+.prog-hero-marg .marginalia-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--ns-space-md);
+}
+
+.prog-hero-marg-num {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  font-weight: var(--ns-weight-medium);
+  letter-spacing: var(--ns-track-extrawide);
+  text-transform: uppercase;
+  color: var(--ns-color-ink-muted);
+}
+
+.prog-hero-marg dd strong {
+  font-family: var(--ns-font-display);
+  font-size: 1.25em;
+  font-weight: var(--ns-weight-regular);
+  color: var(--ns-color-ink);
+  letter-spacing: -0.01em;
+  font-feature-settings: "tnum" 1;
+}
+
+
+/* ============================================
+ * WHO THIS IS FOR — § 02
+ * Editorial 2-col with pull-quote.
+ * ============================================ */
+
+.prog-fit-title {
+  font-family: var(--ns-font-display);
+  font-size: clamp(2.25rem, 1.3rem + 3.2vw, 4.5rem);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  color: var(--ns-color-ink);
+  margin: 0;
+  max-width: 22ch;
+}
+.prog-fit-title em {
+  font-style: normal;
+  color: var(--ns-color-primary);
+}
+
+.prog-fit-cols {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ns-space-2xl);
+}
+@media (min-width: 900px) {
+  .prog-fit-cols { grid-template-columns: 1fr 1fr; gap: var(--ns-space-4xl); }
+}
+
+.prog-fit-body {
+  font-size: var(--ns-text-medium);
+  line-height: var(--ns-leading-relaxed);
+  color: var(--ns-color-ink-soft);
+  margin: 0;
+  max-width: 62ch;
+}
+
+.prog-fit-body-lead::first-letter {
+  font-family: var(--ns-font-display);
+  font-size: 4em;
+  line-height: 0.82;
+  float: left;
+  margin: 0.08em 0.18em 0 0;
+  color: var(--ns-color-ink);
+  letter-spacing: -0.02em;
+}
+
+.prog-fit-pull {
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+  max-width: 56ch;
+}
+
+
+/* ============================================
+ * WHAT I OFFER — § 03
+ * Spec-sheet rows. Index / name / lede.
+ * Distinct from .svc-row to avoid identical-grid feel
+ * and because each row here has no rate column.
+ * ============================================ */
+
+.prog-offer-title {
+  font-family: var(--ns-font-display);
+  font-size: clamp(2rem, 1.3rem + 2.6vw, 3.75rem);
+  line-height: 1;
+  letter-spacing: -0.015em;
+  color: var(--ns-color-ink);
+  margin: 0;
+  max-width: 24ch;
+}
+
+.prog-offer-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ns-space-xs);
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  font-weight: var(--ns-weight-medium);
+  letter-spacing: var(--ns-track-wide);
+  text-transform: uppercase;
+  color: var(--ns-color-ink-muted);
+  flex-wrap: wrap;
+}
+
+.prog-offer-sheet {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 2px solid var(--ns-color-ink);
+  position: relative;
+  z-index: 1;
+}
+
+.prog-offer-row {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: var(--ns-space-md) var(--ns-space-lg);
+  padding: var(--ns-space-xl) 0;
+  border-bottom: 1px solid var(--ns-color-rule);
+}
+
+@media (min-width: 900px) {
+  .prog-offer-row {
+    grid-template-columns: 5rem minmax(0, 1fr);
+    padding: var(--ns-space-2xl) 0;
+    gap: var(--ns-space-2xl);
+  }
+}
+
+.prog-offer-idx {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-feature-settings: "tnum" 1;
+  font-size: var(--ns-text-tiny);
+  letter-spacing: 0.06em;
+  color: var(--ns-color-ink-muted);
+  padding-top: 0.5rem;
+}
+
+.prog-offer-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ns-space-sm);
+}
+
+.prog-offer-name {
+  font-family: var(--ns-font-display);
+  font-size: clamp(1.5rem, 1.1rem + 2vw, 2.5rem);
+  line-height: 1;
+  letter-spacing: -0.015em;
+  margin: 0;
+  color: var(--ns-color-ink);
+}
+
+.prog-offer-lede {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-medium);
+  line-height: var(--ns-leading-base);
+  color: var(--ns-color-ink-soft);
+  margin: 0;
+  max-width: 62ch;
+}
+
+
+/* ============================================
+ * PRICING — § 05
+ * Two-col: title/lede LH, three-tier rate sheet RH.
+ * ============================================ */
+
+.prog-price-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ns-space-2xl);
+  align-items: start;
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 900px) {
+  .prog-price-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
+    gap: var(--ns-space-4xl);
+  }
+}
+
+.prog-price-title {
+  font-family: var(--ns-font-display);
+  font-size: clamp(2rem, 1.3rem + 2.6vw, 3.75rem);
+  line-height: 1;
+  letter-spacing: -0.015em;
+  color: var(--ns-color-ink);
+  margin: 0 0 var(--ns-space-lg);
+  max-width: 18ch;
+}
+
+.prog-price-lede {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-medium);
+  line-height: var(--ns-leading-base);
+  color: var(--ns-color-ink-soft);
+  margin: 0 0 var(--ns-space-lg);
+  max-width: 52ch;
+}
+
+.prog-price-foot {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-small);
+  line-height: var(--ns-leading-base);
+  color: var(--ns-color-ink-muted);
+  margin: 0;
+  max-width: 52ch;
+  padding-top: var(--ns-space-md);
+  border-top: 1px solid var(--ns-color-rule);
+}
+
+.prog-price-sheet {
+  border-top: 2px solid var(--ns-color-ink);
+}
+
+.prog-price-row {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: var(--ns-space-md) var(--ns-space-lg);
+  align-items: baseline;
+  padding: var(--ns-space-lg) 0;
+  border-bottom: 1px solid var(--ns-color-rule);
+}
+
+@media (min-width: 700px) {
+  .prog-price-row {
+    grid-template-columns: 9rem 1fr;
+    gap: var(--ns-space-2xl);
+    padding: var(--ns-space-xl) 0;
+  }
+}
+
+.prog-price-rate {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-small);
+  font-weight: var(--ns-weight-medium);
+  letter-spacing: var(--ns-track-wide);
+  text-transform: uppercase;
+  color: var(--ns-color-ink-muted);
+  font-feature-settings: "tnum" 1;
+  white-space: nowrap;
+}
+
+.prog-price-rate strong {
+  display: inline-block;
+  margin-right: 0.2em;
+  color: var(--ns-color-ink);
+  font-family: var(--ns-font-display);
+  font-size: 1.9em;
+  font-weight: var(--ns-weight-regular);
+  letter-spacing: -0.01em;
+  vertical-align: -0.05em;
+}
+
+.prog-price-rate-soft strong { font-size: 1em; }
+
+.prog-price-detail h3 {
+  font-family: var(--ns-font-display);
+  font-size: var(--ns-heading-h4);
+  line-height: var(--ns-leading-snug);
+  margin: 0 0 var(--ns-space-2xs);
+  color: var(--ns-color-ink);
+}
+
+.prog-price-tier {
+  font-family: var(--ns-font-display);
+}
+
+.prog-price-detail p {
+  margin: 0;
+  font-size: var(--ns-text-small);
+  line-height: var(--ns-leading-base);
+  color: var(--ns-color-ink-soft);
+  max-width: 56ch;
+}
+
+
+/* ============================================
+ * WHO SHOULDN'T BOOK — § 06
+ * Three numbered items, large numerals, asymmetric.
+ * Distinct rhythm vs the § 04 plan grid.
+ * ============================================ */
+
+.prog-warn-title {
+  font-family: var(--ns-font-display);
+  font-size: clamp(2.25rem, 1.3rem + 3.2vw, 4rem);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  color: var(--ns-color-ink);
+  margin: 0 0 var(--ns-space-lg);
+  max-width: 22ch;
+}
+.prog-warn-title em { font-style: normal; color: var(--ns-color-primary); }
+
+.prog-warn-lede {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-medium);
+  line-height: var(--ns-leading-base);
+  color: var(--ns-color-ink-soft);
+  margin: 0;
+  max-width: 56ch;
+}
+
+.prog-warn-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.prog-warn-item {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: var(--ns-space-md) var(--ns-space-lg);
+  padding: var(--ns-space-xl) 0;
+  border-bottom: 1px solid var(--ns-color-rule);
+  align-items: baseline;
+}
+
+.prog-warn-item:first-child { border-top: 2px solid var(--ns-color-ink); }
+
+@media (min-width: 900px) {
+  .prog-warn-item {
+    grid-template-columns: 8rem minmax(0, 1fr) minmax(0, 1.4fr);
+    gap: var(--ns-space-2xl);
+    padding: var(--ns-space-2xl) 0;
+  }
+}
+
+.prog-warn-num {
+  font-family: var(--ns-font-display);
+  font-size: clamp(3rem, 2rem + 4vw, 5rem);
+  line-height: 0.85;
+  letter-spacing: -0.025em;
+  color: var(--ns-color-ink);
+  font-feature-settings: "tnum" 1;
+}
+
+.prog-warn-name {
+  font-family: var(--ns-font-display);
+  font-size: clamp(1.25rem, 1rem + 1.2vw, 1.875rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  margin: 0;
+  color: var(--ns-color-ink);
+  max-width: 22ch;
+}
+
+.prog-warn-body {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-medium);
+  line-height: var(--ns-leading-base);
+  color: var(--ns-color-ink-soft);
+  margin: 0;
+  max-width: 56ch;
+}
+
+@media (max-width: 899px) {
+  .prog-warn-name { grid-column: 2; }
+  .prog-warn-body { grid-column: 1 / -1; }
+}
+
+
+/* ============================================
+ * AUTHORITY — § 07
+ * Reuses .authority-grid + .spec-block from home.css.
+ * Adds two-quote strip below.
+ * ============================================ */
+
+.prog-auth-quotes {
+  list-style: none;
+  margin: clamp(3rem, 6vw, 5rem) 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ns-space-xl);
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 900px) {
+  .prog-auth-quotes { grid-template-columns: 1fr 1fr; gap: var(--ns-space-2xl); }
+}
+
+.prog-auth-quote {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ns-space-md);
+  padding: var(--ns-space-xl);
+  background: var(--ns-color-paper);
+  border: 1px solid var(--ns-color-rule);
+  border-radius: var(--ns-radius-tight);
+}
+
+.prog-auth-quote-mark {
+  font-family: var(--ns-font-display);
+  font-size: clamp(2.5rem, 2rem + 1.5vw, 3.5rem);
+  line-height: 0.85;
+  letter-spacing: -0.02em;
+  color: var(--ns-color-primary);
+  font-feature-settings: "tnum" 1;
+}
+
+.prog-auth-quote-text {
+  font-family: var(--ns-font-display);
+  font-size: clamp(1.125rem, 1rem + 0.5vw, 1.375rem);
+  line-height: 1.3;
+  color: var(--ns-color-ink);
+  margin: 0;
+  flex: 1;
+}
+
+.prog-auth-quote-attr {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ns-space-2xs);
+  padding-top: var(--ns-space-md);
+  border-top: 1px solid var(--ns-color-rule);
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  letter-spacing: var(--ns-track-wide);
+  text-transform: uppercase;
+  color: var(--ns-color-ink-muted);
+}
+
+.prog-auth-quote-attr strong {
+  font-size: var(--ns-text-small);
+  font-weight: var(--ns-weight-semibold);
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--ns-color-ink);
+}
+
+.prog-auth-foot {
+  margin-top: clamp(2rem, 4vw, 3rem);
+  position: relative;
+  z-index: 1;
+}
+
+
+/* ============================================
+ * RELATED HUB — § 08
+ * Article-row pattern (already in components.css).
+ * Local layout + arrow column.
+ * ============================================ */
+
+.prog-hub-title {
+  font-family: var(--ns-font-display);
+  font-size: clamp(2rem, 1.3rem + 2.6vw, 3.5rem);
+  line-height: 1;
+  letter-spacing: -0.015em;
+  color: var(--ns-color-ink);
+  margin: 0 0 var(--ns-space-md);
+  max-width: 22ch;
+}
+.prog-hub-title em { font-style: normal; color: var(--ns-color-primary); }
+
+.prog-hub-lede {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-medium);
+  line-height: var(--ns-leading-base);
+  color: var(--ns-color-ink-soft);
+  margin: 0;
+  max-width: 52ch;
+}
+
+.prog-hub-cta { align-self: end; white-space: nowrap; }
+
+.prog-hub-rows {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 2px solid var(--ns-color-ink);
+  position: relative;
+  z-index: 1;
+}
+
+.prog-hub-rows li:last-child .article-row { border-bottom: 0; }
+
+.prog-hub-rows .article-row { color: var(--ns-color-ink); }
+.prog-hub-rows .article-row:hover { background: color-mix(in oklab, var(--ns-color-paper) 60%, transparent); }
+.prog-hub-rows .article-row:hover .article-row-title { text-decoration-color: var(--ns-color-ink); }
+
+.prog-hub-arrow {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-large);
+  color: var(--ns-color-ink-muted);
+  transition: transform var(--ns-dur-base) var(--ns-ease-out), color var(--ns-dur-fast) var(--ns-ease-out);
+  justify-self: end;
+  align-self: center;
+  display: none;
+}
+
+@media (min-width: 700px) {
+  .prog-hub-arrow { display: inline-block; }
+}
+
+.prog-hub-rows .article-row:hover .prog-hub-arrow {
+  transform: translateX(6px);
+  color: var(--ns-color-ink);
+}
+
+
+/* ============================================
+ * FAQ — § 09
+ * Native exclusive details accordion. Uses name="prog-faq".
+ * ============================================ */
+
+.prog-faq-title {
+  font-family: var(--ns-font-display);
+  font-size: clamp(2rem, 1.3rem + 2.6vw, 3.5rem);
+  line-height: 1;
+  letter-spacing: -0.015em;
+  color: var(--ns-color-ink);
+  margin: 0;
+  max-width: 24ch;
+}
+
+.prog-faq-list {
+  border-top: 2px solid var(--ns-color-ink);
+  position: relative;
+  z-index: 1;
+}
+
+.prog-faq-item {
+  border-bottom: 1px solid var(--ns-color-rule);
+}
+
+.prog-faq-item > summary {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr max-content;
+  gap: var(--ns-space-md);
+  align-items: center;
+  padding: var(--ns-space-lg) 0;
+  font-family: var(--ns-font-display);
+  font-size: clamp(1.25rem, 1.05rem + 0.9vw, 1.75rem);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--ns-color-ink);
+  cursor: pointer;
+  transition: color var(--ns-dur-fast) var(--ns-ease-out);
+}
+
+.prog-faq-item > summary::-webkit-details-marker { display: none; }
+
+.prog-faq-item > summary::after {
+  content: "+";
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-heading-h4);
+  font-weight: var(--ns-weight-regular);
+  color: var(--ns-color-ink-muted);
+  width: 2rem;
+  height: 2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--ns-color-rule-strong);
+  border-radius: var(--ns-radius-tight);
+  transition: transform var(--ns-dur-base) var(--ns-ease-out), border-color var(--ns-dur-fast) var(--ns-ease-out), color var(--ns-dur-fast) var(--ns-ease-out);
+}
+
+.prog-faq-item[open] > summary::after {
+  content: "−";
+  border-color: var(--ns-color-ink);
+  color: var(--ns-color-ink);
+}
+
+.prog-faq-item > summary:hover { color: var(--ns-color-primary); }
+.prog-faq-item > summary:hover::after { border-color: var(--ns-color-ink); color: var(--ns-color-ink); }
+.prog-faq-item > summary:focus-visible {
+  outline: 2px solid var(--ns-color-focus);
+  outline-offset: 2px;
+  border-radius: var(--ns-radius-tight);
+}
+
+.prog-faq-body {
+  padding: 0 0 var(--ns-space-xl);
+  max-width: 64ch;
+}
+
+.prog-faq-body p {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-medium);
+  line-height: var(--ns-leading-relaxed);
+  color: var(--ns-color-ink-soft);
+  margin: 0;
+}
