@@ -24,14 +24,14 @@
 
 ## Current phase
 
-Design Brief (restart) → awaiting final sign-off
+Copy (Phase 3a)
 
-**Status:** Needs Review · awaiting-dave
+**Status:** Todo — dispatching `/ns-website-copywriter`
 
 ## Phases
 
 - [x] 1. Strategy
-- [~] 2. Design Brief (Needs Review)
+- [x] 2. Design Brief
 - [ ] 3. Copy + Wireframes
 - [ ] 4. Design
 - [ ] 5. Build

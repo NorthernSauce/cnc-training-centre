@@ -12,6 +12,8 @@ Phase 4 (Designer) and Phase 5 (Block Builder) read this file as the visual cont
 
 **Voice in chrome:** Neutral. Voice lives in long-form copy (Hub articles, service-page paragraphs) only. Nav labels, footer microcopy, error pages stay clean and professional.
 
+**Logo:** Existing CNC Training Centre wordmark at `assets/logos/cnc-training-centre-logo.png`. Carried through from the existing site. SVG version preferred for crisp rendering — to be requested from the client.
+
 **Photography:** Non-load-bearing. Type + technical-drawing motifs do the visual work. When photography is used, tightly cropped fragments of real equipment only — never generic stock, never people-with-laptop.
 
 **The two visual signatures** that make Direction A recognisable across the site:
