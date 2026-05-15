@@ -1,0 +1,199 @@
+/* CNC Training Centre — design tokens
+ * Direction: A — The Engineering Manual
+ * Type pair: Tanker (display) + Synonym (body)  · Fontshare · free
+ * Theme: light only (no dark mode at launch)
+ *
+ * Token naming follows Northern Sauce theme-contract.md.
+ * Every value below ships verbatim into the _ns WordPress theme at phase 5.
+ *
+ * Notes on intent:
+ * - Cool-tinted neutrals (toward brand-blue hue, 250) — reads precise, not cozy.
+ * - Brand-blue refined to a chroma the eye reads as confident, not garish.
+ * - Green is reserved for video-content tagging ONLY. Never a second brand.
+ * - Pure black + pure white are banned (tint everything toward brand hue).
+ * - Font sizes use clamp(min_rem, intercept_rem + slope_vw, max_rem)
+ *   per the NS clamp formula across the 375 → 1440px viewport range.
+ */
+
+/* ---------- Fonts ---------- */
+@import url("https://api.fontshare.com/v2/css?f[]=tanker@400&f[]=synonym@400,500,600,700&display=swap");
+
+:root {
+  /* ============================================
+   * COLOUR — OKLCH throughout, neutrals tinted toward brand hue (250).
+   * ============================================ */
+
+  /* Surfaces — paper */
+  --ns-color-paper:           oklch(98%  0.005 250);   /* primary background */
+  --ns-color-paper-tint:      oklch(96%  0.010 250);   /* secondary surfaces, marginalia background */
+  --ns-color-paper-deep:      oklch(93%  0.015 250);   /* inset / panel backgrounds */
+
+  /* Surfaces — anchor (deep) */
+  --ns-color-anchor:          oklch(22%  0.030 250);   /* footer, deep panels */
+  --ns-color-anchor-soft:     oklch(28%  0.030 250);   /* hover state on anchor surfaces */
+
+  /* Type */
+  --ns-color-ink:             oklch(20%  0.025 250);   /* primary text, near-black, slight blue tint */
+  --ns-color-ink-soft:        oklch(38%  0.020 250);   /* secondary text */
+  --ns-color-ink-muted:       oklch(55%  0.015 250);   /* tertiary text, meta, captions */
+  --ns-color-ink-faint:       oklch(70%  0.012 250);   /* placeholder text, disabled */
+  --ns-color-ink-inverse:     oklch(98%  0.005 250);   /* text on anchor / on primary */
+
+  /* Rules / borders */
+  --ns-color-rule:            oklch(88%  0.012 250);   /* default border / hairline rule */
+  --ns-color-rule-strong:     oklch(75%  0.018 250);   /* emphasised rule */
+  --ns-color-rule-faint:      oklch(94%  0.010 250);   /* subtle divider */
+
+  /* Brand primary — refined CNC blue (cool, confident, not garish) */
+  --ns-color-primary:         oklch(48%  0.16  250);   /* base brand */
+  --ns-color-primary-hover:   oklch(42%  0.18  250);   /* hover */
+  --ns-color-primary-active:  oklch(36%  0.18  250);   /* pressed */
+  --ns-color-primary-soft:    oklch(94%  0.04  250);   /* tinted background, e.g. selected filter chip */
+
+  /* Marginalia / mark — sand-paper accent for highlighted callouts */
+  --ns-color-mark:            oklch(94%  0.025 90);    /* warm marginalia tint */
+  --ns-color-mark-ink:        oklch(35%  0.06  90);    /* type on mark */
+
+  /* Video (RESERVED — video content tags only, never a second brand) */
+  --ns-color-video:           oklch(58%  0.14  155);   /* green, used only for video-type tags */
+  --ns-color-video-soft:      oklch(94%  0.05  155);   /* video-tag background tint */
+
+  /* Status — restraint: use sparingly, never compete with brand */
+  --ns-color-success:         oklch(55%  0.12  155);
+  --ns-color-warning:         oklch(68%  0.13  72);
+  --ns-color-danger:          oklch(55%  0.18  28);
+
+  /* Focus — visible accessible blue ring */
+  --ns-color-focus:           oklch(56%  0.20  250);
+
+
+  /* ============================================
+   * TYPOGRAPHY
+   * ============================================ */
+
+  /* Font families */
+  --ns-font-display:          "Tanker", "Times New Roman", serif;
+  --ns-font-body:             "Synonym", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Heading sizes — clamp 375 → 1440 px viewports.
+   * Each pair below is documented as (mobile_px → desktop_px). */
+
+  --ns-heading-h1:            clamp(2.25rem,  1.63rem + 2.63vw, 4rem);     /* 36 → 64 */
+  --ns-heading-h2:            clamp(1.75rem,  1.31rem + 1.88vw, 3rem);     /* 28 → 48 */
+  --ns-heading-h3:            clamp(1.5rem,   1.32rem + 0.75vw, 2rem);     /* 24 → 32 */
+  --ns-heading-h4:            clamp(1.25rem,  1.16rem + 0.38vw, 1.5rem);   /* 20 → 24 */
+  --ns-heading-h5:            clamp(1.125rem, 1.08rem + 0.19vw, 1.25rem);  /* 18 → 20 */
+  --ns-heading-h6:            clamp(1rem,     0.96rem + 0.19vw, 1.125rem); /* 16 → 18 */
+
+  /* Text sizes */
+  --ns-text-large:            clamp(1.125rem, 1.08rem + 0.19vw, 1.25rem);  /* 18 → 20 */
+  --ns-text-medium:           clamp(1rem,     0.96rem + 0.19vw, 1.125rem); /* 16 → 18 */
+  --ns-text-regular:          1rem;                                         /* 16 */
+  --ns-text-small:            0.875rem;                                     /* 14 */
+  --ns-text-tiny:             0.75rem;                                      /* 12 */
+
+  /* Line heights */
+  --ns-leading-tight:         1.05;   /* display headings */
+  --ns-leading-snug:          1.2;    /* h3 / h4 */
+  --ns-leading-base:          1.55;   /* body */
+  --ns-leading-relaxed:       1.7;    /* long-form Hub article body */
+
+  /* Letter spacing */
+  --ns-track-tight:           -0.01em;   /* display */
+  --ns-track-normal:          0;
+  --ns-track-wide:            0.08em;    /* uppercase eyebrows */
+  --ns-track-extrawide:       0.14em;    /* section labels */
+
+  /* Weights — Synonym ships 400/500/600/700 from Fontshare */
+  --ns-weight-regular:        400;
+  --ns-weight-medium:         500;
+  --ns-weight-semibold:       600;
+  --ns-weight-bold:           700;
+
+
+  /* ============================================
+   * SPACING — 4pt scale, semantic names.
+   * Use `gap` for sibling spacing, not margins.
+   * ============================================ */
+
+  --ns-space-2xs:             0.25rem;   /* 4  */
+  --ns-space-xs:              0.5rem;    /* 8  */
+  --ns-space-sm:              0.75rem;   /* 12 */
+  --ns-space-md:              1rem;      /* 16 */
+  --ns-space-lg:              1.5rem;    /* 24 */
+  --ns-space-xl:              2rem;      /* 32 */
+  --ns-space-2xl:             3rem;      /* 48 */
+  --ns-space-3xl:             4rem;      /* 64 */
+  --ns-space-4xl:             6rem;      /* 96 */
+  --ns-space-5xl:             8rem;      /* 128 — section breaks on long pages */
+
+  /* Page chrome — fluid section pad */
+  --ns-pad-inline:            clamp(1.25rem, 3vw, 2.5rem);     /* page edge padding */
+  --ns-pad-block:             clamp(2.5rem, 5vw, 5rem);        /* section block padding */
+  --ns-max-content:           1280px;                          /* page max width */
+  --ns-max-prose:             65ch;                            /* long-form body cap */
+
+
+  /* ============================================
+   * RADIUS — engineering-precise. Small radii only.
+   * ============================================ */
+
+  --ns-radius-none:           0;
+  --ns-radius-tight:          2px;
+  --ns-radius-soft:           4px;
+  --ns-radius-pill:           999px;   /* tags + chips only */
+
+
+  /* ============================================
+   * OPACITY
+   * ============================================ */
+
+  --ns-opacity-faint:         0.6;
+  --ns-opacity-muted:         0.4;
+  --ns-opacity-disabled:      0.32;
+
+
+  /* ============================================
+   * MOTION — restraint. ≤ 6 intensity per Impeccable.
+   * ============================================ */
+
+  --ns-ease-out:              cubic-bezier(0.16, 1, 0.3, 1);   /* out-quart */
+  --ns-ease-in-out:           cubic-bezier(0.65, 0, 0.35, 1);
+  --ns-dur-fast:              120ms;
+  --ns-dur-base:              200ms;
+  --ns-dur-slow:              320ms;
+
+
+  /* ============================================
+   * Z-INDEX
+   * ============================================ */
+
+  --ns-z-base:                0;
+  --ns-z-raised:              10;
+  --ns-z-sticky:              100;
+  --ns-z-overlay:             1000;
+  --ns-z-modal:               2000;
+}
+
+/* Reduced-motion: kill non-essential motion */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --ns-dur-fast:  0ms;
+    --ns-dur-base:  0ms;
+    --ns-dur-slow:  0ms;
+  }
+}
+
+/* Universal reset — border-box everywhere. */
+*, *::before, *::after { box-sizing: border-box; }
+
+/* Headings + body — applied at root so theme inherits */
+html { font-family: var(--ns-font-body); color: var(--ns-color-ink); background: var(--ns-color-paper); }
+body { font-size: var(--ns-text-regular); line-height: var(--ns-leading-base); font-feature-settings: "ss01", "ss02", "tnum"; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, h5, h6 { font-family: var(--ns-font-display); font-weight: var(--ns-weight-regular); line-height: var(--ns-leading-tight); letter-spacing: var(--ns-track-tight); margin: 0; color: var(--ns-color-ink); }
+h1 { font-size: var(--ns-heading-h1); }
+h2 { font-size: var(--ns-heading-h2); }
+h3 { font-size: var(--ns-heading-h3); line-height: var(--ns-leading-snug); }
+h4 { font-size: var(--ns-heading-h4); line-height: var(--ns-leading-snug); font-family: var(--ns-font-body); font-weight: var(--ns-weight-semibold); }
+h5 { font-size: var(--ns-heading-h5); font-family: var(--ns-font-body); font-weight: var(--ns-weight-semibold); }
+h6 { font-size: var(--ns-heading-h6); font-family: var(--ns-font-body); font-weight: var(--ns-weight-medium); letter-spacing: var(--ns-track-wide); text-transform: uppercase; }

@@ -1,0 +1,1186 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Style Guide — CNC Training Centre</title>
+  <link rel="stylesheet" href="tokens.css" />
+  <link rel="stylesheet" href="components.css" />
+  <style>
+    /* Style-guide chrome only — not production CSS */
+    body { margin: 0; padding: 0; }
+    .sg-wrap { max-width: var(--ns-max-content); margin: 0 auto; padding: var(--ns-pad-block) var(--ns-pad-inline); }
+
+    /* Cover */
+    .sg-cover { padding: var(--ns-space-4xl) 0 var(--ns-space-3xl); border-bottom: 2px solid var(--ns-color-ink); margin-bottom: var(--ns-space-5xl); }
+    .sg-cover-eyebrow { font-family: var(--ns-font-body); font-size: var(--ns-text-tiny); font-weight: var(--ns-weight-medium); letter-spacing: var(--ns-track-extrawide); text-transform: uppercase; color: var(--ns-color-ink-muted); margin: 0 0 var(--ns-space-md); }
+    .sg-cover h1 { font-family: var(--ns-font-display); font-size: clamp(3rem, 1.8rem + 5vw, 6.5rem); line-height: 0.92; max-width: 14ch; margin: 0 0 var(--ns-space-lg); }
+    .sg-cover .lead { font-family: var(--ns-font-body); font-size: var(--ns-text-large); line-height: var(--ns-leading-base); max-width: 60ch; color: var(--ns-color-ink-soft); margin: 0 0 var(--ns-space-2xl); }
+    .sg-cover dl.meta { display: grid; grid-template-columns: max-content 1fr; gap: var(--ns-space-xs) var(--ns-space-lg); font-size: var(--ns-text-small); max-width: 56ch; padding-top: var(--ns-space-lg); border-top: 1px solid var(--ns-color-rule); }
+    .sg-cover dl.meta dt { font-weight: var(--ns-weight-medium); text-transform: uppercase; letter-spacing: var(--ns-track-wide); font-size: var(--ns-text-tiny); padding-top: 0.15rem; color: var(--ns-color-ink); }
+    .sg-cover dl.meta dd { margin: 0; color: var(--ns-color-ink-soft); }
+
+    /* TOC */
+    .sg-toc { margin: 0 0 var(--ns-space-5xl); padding: var(--ns-space-2xl) 0; border-top: 1px solid var(--ns-color-rule); border-bottom: 1px solid var(--ns-color-rule); }
+    .sg-toc h2 { font-family: var(--ns-font-body); font-weight: var(--ns-weight-medium); font-size: var(--ns-text-tiny); letter-spacing: var(--ns-track-extrawide); text-transform: uppercase; color: var(--ns-color-ink-muted); margin: 0 0 var(--ns-space-lg); }
+    .sg-toc-group { display: grid; grid-template-columns: max-content 1fr; gap: var(--ns-space-md) var(--ns-space-lg); padding: var(--ns-space-md) 0; border-top: 1px solid var(--ns-color-rule-faint); }
+    .sg-toc-group:first-of-type { border-top: 0; padding-top: 0; }
+    .sg-toc-group h3 { font-family: var(--ns-font-body); font-weight: var(--ns-weight-semibold); font-size: var(--ns-text-small); text-transform: uppercase; letter-spacing: var(--ns-track-wide); margin: 0; color: var(--ns-color-ink); padding-top: 0.2rem; min-width: 8rem; }
+    .sg-toc-items { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: var(--ns-space-2xs) var(--ns-space-md); }
+    .sg-toc-items a { font-family: var(--ns-font-body); font-size: var(--ns-text-small); text-decoration: none; color: var(--ns-color-ink); padding: 0.2rem 0; display: flex; gap: var(--ns-space-xs); border-bottom: 1px solid transparent; transition: border-color var(--ns-dur-fast) var(--ns-ease-out), color var(--ns-dur-fast) var(--ns-ease-out); }
+    .sg-toc-items a:hover { color: var(--ns-color-primary); border-bottom-color: var(--ns-color-primary); }
+    .sg-toc-items a .num { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: var(--ns-text-tiny); color: var(--ns-color-ink-muted); padding-top: 0.18em; min-width: 2.2rem; }
+
+    /* Section */
+    .sg-section { margin: 0 0 var(--ns-space-5xl); scroll-margin-top: var(--ns-space-3xl); }
+    .sg-section-head { display: grid; grid-template-columns: 6rem 1fr; gap: var(--ns-space-lg); align-items: start; margin-bottom: var(--ns-space-2xl); padding-top: var(--ns-space-md); border-top: 2px solid var(--ns-color-ink); }
+    .sg-section-num { padding-top: var(--ns-space-xs); font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: var(--ns-text-tiny); letter-spacing: 0.04em; color: var(--ns-color-ink-muted); }
+    .sg-section-title { font-family: var(--ns-font-display); font-size: var(--ns-heading-h2); line-height: var(--ns-leading-tight); margin: 0 0 var(--ns-space-xs); }
+    .sg-section-desc { color: var(--ns-color-ink-muted); margin: 0; max-width: 60ch; font-size: var(--ns-text-medium); line-height: var(--ns-leading-base); }
+
+    /* Subsection */
+    .sg-sub { margin: var(--ns-space-2xl) 0 var(--ns-space-md); }
+    .sg-sub-title { font-family: var(--ns-font-body); font-weight: var(--ns-weight-medium); font-size: var(--ns-text-small); text-transform: uppercase; letter-spacing: var(--ns-track-extrawide); color: var(--ns-color-ink-muted); margin: 0 0 var(--ns-space-md); }
+
+    /* Patterns reused from earlier previews */
+    .swatch-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--ns-space-md); margin-bottom: var(--ns-space-xl); }
+    .swatch { border: 1px solid var(--ns-color-rule); border-radius: var(--ns-radius-tight); overflow: hidden; background: var(--ns-color-paper); }
+    .swatch-chip { height: 96px; border-bottom: 1px solid var(--ns-color-rule); }
+    .swatch-meta { padding: var(--ns-space-sm) var(--ns-space-md); font-size: var(--ns-text-small); }
+    .swatch-name { font-weight: var(--ns-weight-medium); margin: 0 0 var(--ns-space-2xs); font-family: var(--ns-font-body); }
+    .swatch-token { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: var(--ns-text-tiny); color: var(--ns-color-ink-muted); }
+    .swatch-rule { font-size: var(--ns-text-tiny); color: var(--ns-color-ink-soft); margin: var(--ns-space-2xs) 0 0; }
+
+    .type-row { display: grid; grid-template-columns: 4rem 1fr; gap: var(--ns-space-md); align-items: baseline; padding: var(--ns-space-md) 0; border-bottom: 1px solid var(--ns-color-rule-faint); }
+    .type-row:last-child { border-bottom: 0; }
+    .type-label { font-family: var(--ns-font-body); font-size: var(--ns-text-tiny); letter-spacing: var(--ns-track-wide); text-transform: uppercase; color: var(--ns-color-ink-muted); font-weight: var(--ns-weight-medium); padding-top: 0.5rem; }
+    .type-sample { line-height: 1.05; font-family: var(--ns-font-display); letter-spacing: var(--ns-track-tight); }
+    .type-row[data-body] .type-sample { line-height: var(--ns-leading-base); font-family: var(--ns-font-body); letter-spacing: 0; }
+    .type-spec { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: var(--ns-text-tiny); color: var(--ns-color-ink-muted); margin-top: var(--ns-space-2xs); }
+
+    .space-row { display: grid; grid-template-columns: 6rem 1fr; gap: var(--ns-space-md); align-items: center; padding: var(--ns-space-xs) 0; }
+    .space-bar { background: var(--ns-color-anchor); height: 14px; }
+    .space-label { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: var(--ns-text-small); color: var(--ns-color-ink-muted); }
+
+    .radius-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: var(--ns-space-md); }
+    .radius-card { padding: var(--ns-space-md); border: 1px solid var(--ns-color-rule); background: var(--ns-color-paper-tint); font-size: var(--ns-text-small); color: var(--ns-color-ink-muted); }
+    .radius-card strong { display: block; color: var(--ns-color-ink); font-weight: var(--ns-weight-medium); margin-bottom: var(--ns-space-2xs); }
+
+    .demo-row { display: flex; flex-wrap: wrap; gap: var(--ns-space-md); align-items: center; padding: var(--ns-space-md) 0; border-bottom: 1px solid var(--ns-color-rule-faint); }
+    .demo-row:last-child { border-bottom: 0; }
+    .demo-label { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: var(--ns-text-tiny); color: var(--ns-color-ink-muted); min-width: 12rem; }
+
+    /* Fonts on this project — prominent callout */
+    .fonts-callout { padding: var(--ns-space-2xl); border: 2px solid var(--ns-color-ink); border-radius: var(--ns-radius-tight); background: var(--ns-color-paper); margin-bottom: var(--ns-space-2xl); }
+    .fonts-callout h3 { font-family: var(--ns-font-body); font-size: var(--ns-text-tiny); font-weight: var(--ns-weight-medium); letter-spacing: var(--ns-track-extrawide); text-transform: uppercase; color: var(--ns-color-ink-muted); margin: 0 0 var(--ns-space-md); }
+    .fonts-callout dl { display: grid; grid-template-columns: 1fr 1fr; gap: var(--ns-space-xl); margin: 0; }
+    @media (max-width: 700px) { .fonts-callout dl { grid-template-columns: 1fr; } }
+    .fonts-callout dt { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: var(--ns-text-tiny); color: var(--ns-color-ink-muted); text-transform: uppercase; letter-spacing: var(--ns-track-wide); margin: 0 0 var(--ns-space-xs); }
+    .fonts-callout .face { margin: 0 0 var(--ns-space-2xs); font-size: clamp(2rem, 1.4rem + 2vw, 3rem); line-height: 1; letter-spacing: -0.01em; }
+    .fonts-callout .face.display { font-family: var(--ns-font-display); }
+    .fonts-callout .face.body { font-family: var(--ns-font-body); font-weight: var(--ns-weight-semibold); }
+    .fonts-callout .face-meta { font-size: var(--ns-text-small); color: var(--ns-color-ink-soft); margin: 0; }
+
+    /* Breakpoints viz */
+    .bp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: var(--ns-space-md); }
+    .bp-card { padding: var(--ns-space-md); border: 1px solid var(--ns-color-rule); border-radius: var(--ns-radius-tight); background: var(--ns-color-paper-tint); font-size: var(--ns-text-small); }
+    .bp-card strong { font-family: var(--ns-font-display); font-size: var(--ns-heading-h4); display: block; margin-bottom: var(--ns-space-2xs); }
+    .bp-card .bp-meta { color: var(--ns-color-ink-muted); font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: var(--ns-text-tiny); }
+
+    /* Section rhythm viz */
+    .rhythm-strip { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 1px; background: var(--ns-color-ink); padding: 1px; border: 1px solid var(--ns-color-ink); margin: var(--ns-space-md) 0; }
+    .rhythm-strip > div { padding: var(--ns-space-md); font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: var(--ns-text-tiny); }
+    .rhythm-strip > div:nth-child(1) { background: var(--ns-color-paper); }
+    .rhythm-strip > div:nth-child(2) { background: var(--ns-color-paper-tint); }
+    .rhythm-strip > div:nth-child(3) { background: var(--ns-color-paper-deep); }
+    .rhythm-strip > div:nth-child(4) { background: var(--ns-color-anchor); color: var(--ns-color-ink-inverse); }
+
+    /* Iconography */
+    .icon-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: var(--ns-space-md); }
+    .icon-card { padding: var(--ns-space-md); border: 1px solid var(--ns-color-rule); border-radius: var(--ns-radius-tight); text-align: center; font-size: var(--ns-text-tiny); color: var(--ns-color-ink-muted); display: flex; flex-direction: column; align-items: center; gap: var(--ns-space-sm); }
+    .icon-card svg { width: 32px; height: 32px; color: var(--ns-color-ink); }
+
+    /* Spec block */
+    .spec-block { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--ns-color-rule); border-radius: var(--ns-radius-tight); overflow: hidden; max-width: 36rem; }
+    @media (min-width: 700px) { .spec-block { grid-template-columns: 1fr 1fr 1fr; } }
+    .spec-cell { padding: var(--ns-space-md); border-right: 1px solid var(--ns-color-rule); border-bottom: 1px solid var(--ns-color-rule); background: var(--ns-color-paper); }
+    .spec-cell:last-child { border-right: 0; }
+    .spec-cell .spec-num { font-family: var(--ns-font-display); font-size: var(--ns-heading-h2); line-height: 1; margin: 0 0 var(--ns-space-2xs); display: block; font-variant-numeric: tabular-nums; }
+    .spec-cell .spec-label { font-family: var(--ns-font-body); font-size: var(--ns-text-tiny); font-weight: var(--ns-weight-medium); letter-spacing: var(--ns-track-wide); text-transform: uppercase; color: var(--ns-color-ink-muted); }
+
+    /* Tables */
+    .ns-table { width: 100%; border-collapse: collapse; font-size: var(--ns-text-small); border-top: 2px solid var(--ns-color-ink); border-bottom: 1px solid var(--ns-color-ink); margin: var(--ns-space-md) 0; }
+    .ns-table th, .ns-table td { padding: var(--ns-space-sm) var(--ns-space-md); text-align: left; border-bottom: 1px solid var(--ns-color-rule); vertical-align: top; }
+    .ns-table th { font-family: var(--ns-font-body); font-weight: var(--ns-weight-semibold); font-size: var(--ns-text-tiny); letter-spacing: var(--ns-track-wide); text-transform: uppercase; color: var(--ns-color-ink-muted); }
+    .ns-table tbody tr:last-child td { border-bottom: 0; }
+    .ns-table tbody tr:hover td { background: var(--ns-color-paper-tint); }
+    .ns-table .tick { color: var(--ns-color-primary); font-weight: var(--ns-weight-semibold); }
+    .ns-table .dash { color: var(--ns-color-ink-faint); }
+
+    /* Lists */
+    .ns-list { padding: 0; list-style: none; margin: 0; display: flex; flex-direction: column; gap: var(--ns-space-sm); }
+    .ns-list li { padding-left: 1.5rem; position: relative; }
+    .ns-list-bullet li::before { content: "—"; position: absolute; left: 0; color: var(--ns-color-ink-muted); }
+    .ns-list-num { counter-reset: ns-list; }
+    .ns-list-num li { padding-left: 2rem; counter-increment: ns-list; }
+    .ns-list-num li::before { content: counter(ns-list, decimal-leading-zero); font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: var(--ns-text-tiny); color: var(--ns-color-ink-muted); position: absolute; left: 0; top: 0.3em; }
+    .ns-list-plus li::before { content: "+"; position: absolute; left: 0; color: var(--ns-color-primary); font-weight: var(--ns-weight-semibold); }
+
+    /* Breadcrumb */
+    .breadcrumb { display: flex; gap: var(--ns-space-xs); align-items: center; font-size: var(--ns-text-tiny); letter-spacing: var(--ns-track-wide); text-transform: uppercase; color: var(--ns-color-ink-muted); }
+    .breadcrumb a { color: var(--ns-color-ink-muted); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--ns-color-ink); }
+    .breadcrumb .sep { opacity: 0.5; }
+    .breadcrumb .current { color: var(--ns-color-ink); font-weight: var(--ns-weight-medium); }
+
+    /* Pagination */
+    .pagination { display: flex; gap: var(--ns-space-xs); align-items: center; }
+    .pagination a, .pagination span {
+      min-width: 2.5rem; height: 2.5rem; padding: 0 var(--ns-space-sm);
+      display: inline-flex; align-items: center; justify-content: center;
+      font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: var(--ns-text-small);
+      border: 1px solid var(--ns-color-rule); border-radius: var(--ns-radius-tight);
+      text-decoration: none; color: var(--ns-color-ink); background: var(--ns-color-paper);
+      transition: background var(--ns-dur-fast) var(--ns-ease-out);
+    }
+    .pagination a:hover { background: var(--ns-color-paper-tint); }
+    .pagination [aria-current="page"] { background: var(--ns-color-ink); color: var(--ns-color-ink-inverse); border-color: var(--ns-color-ink); }
+    .pagination .ellipsis { border: 0; color: var(--ns-color-ink-muted); }
+
+    /* Alerts */
+    .alert { padding: var(--ns-space-md) var(--ns-space-lg); border: 1px solid var(--ns-color-rule); border-radius: var(--ns-radius-tight); background: var(--ns-color-paper-tint); display: flex; gap: var(--ns-space-md); margin-bottom: var(--ns-space-md); }
+    .alert-icon { flex-shrink: 0; }
+    .alert-body { flex: 1; }
+    .alert-title { font-family: var(--ns-font-body); font-weight: var(--ns-weight-semibold); font-size: var(--ns-text-small); margin: 0 0 var(--ns-space-2xs); line-height: var(--ns-leading-snug); }
+    h3.alert-title, h3.signature-title, h3.dodont-title { font-family: var(--ns-font-body); font-weight: var(--ns-weight-semibold); font-size: var(--ns-text-small); letter-spacing: 0; text-transform: none; line-height: var(--ns-leading-snug); margin: 0 0 var(--ns-space-md); }
+    .alert-body p { margin: 0; font-size: var(--ns-text-small); color: var(--ns-color-ink-soft); }
+    .alert-info .alert-icon { color: var(--ns-color-primary); }
+    .alert-success { border-color: color-mix(in oklab, var(--ns-color-success) 50%, var(--ns-color-rule)); }
+    .alert-success .alert-icon { color: var(--ns-color-success); }
+    .alert-warning { border-color: color-mix(in oklab, var(--ns-color-warning) 60%, var(--ns-color-rule)); }
+    .alert-warning .alert-icon { color: var(--ns-color-warning); }
+    .alert-danger { border-color: color-mix(in oklab, var(--ns-color-danger) 50%, var(--ns-color-rule)); }
+    .alert-danger .alert-icon { color: var(--ns-color-danger); }
+
+    /* Visual signature callout */
+    .signature {
+      background: var(--ns-color-paper-tint);
+      padding: var(--ns-space-2xl);
+      border-top: 2px solid var(--ns-color-ink);
+      border-bottom: 2px solid var(--ns-color-ink);
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--ns-space-xl);
+    }
+    @media (min-width: 800px) { .signature { grid-template-columns: 1fr 1fr; } }
+    .signature .signature-title { font-family: var(--ns-font-display); font-size: var(--ns-heading-h3); line-height: var(--ns-leading-snug); letter-spacing: var(--ns-track-tight); font-weight: var(--ns-weight-regular); text-transform: none; margin: 0 0 var(--ns-space-md); }
+    .signature p { margin: 0; color: var(--ns-color-ink-soft); }
+
+    /* Open-item flag */
+    .open-flag { display: inline-flex; align-items: center; gap: var(--ns-space-xs); padding: 0.25rem 0.6rem; background: var(--ns-color-mark); color: var(--ns-color-mark-ink); font-family: var(--ns-font-body); font-size: var(--ns-text-tiny); font-weight: var(--ns-weight-semibold); letter-spacing: var(--ns-track-wide); text-transform: uppercase; border-radius: var(--ns-radius-tight); }
+
+    /* Do/Don't */
+    .do-dont { display: grid; grid-template-columns: 1fr; gap: var(--ns-space-lg); }
+    @media (min-width: 800px) { .do-dont { grid-template-columns: 1fr 1fr; } }
+    .do-dont section { padding: var(--ns-space-lg); border: 1px solid var(--ns-color-rule); border-radius: var(--ns-radius-tight); }
+    .do-dont .do { border-top: 3px solid var(--ns-color-primary); }
+    .do-dont .dont { border-top: 3px solid var(--ns-color-danger); }
+    .do-dont .dodont-title { font-family: var(--ns-font-body); font-weight: var(--ns-weight-semibold); font-size: var(--ns-text-small); text-transform: uppercase; letter-spacing: var(--ns-track-extrawide); margin: 0 0 var(--ns-space-md); }
+    .do-dont ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: var(--ns-space-sm); }
+    .do-dont li { padding-left: 1.6rem; position: relative; font-size: var(--ns-text-small); color: var(--ns-color-ink-soft); }
+    .do-dont .do li::before { content: "✓"; position: absolute; left: 0; color: var(--ns-color-primary); font-weight: var(--ns-weight-bold); }
+    .do-dont .dont li::before { content: "✗"; position: absolute; left: 0; color: var(--ns-color-danger); font-weight: var(--ns-weight-bold); }
+
+    /* Footer */
+    .sg-footer { padding: var(--ns-space-3xl) 0 var(--ns-space-2xl); border-top: 1px solid var(--ns-color-rule); margin-top: var(--ns-space-5xl); font-size: var(--ns-text-small); color: var(--ns-color-ink-muted); display: grid; grid-template-columns: 1fr 1fr; gap: var(--ns-space-md); }
+    @media (max-width: 600px) { .sg-footer { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<div class="sg-wrap">
+
+  <!-- COVER -->
+  <header class="sg-cover">
+    <p class="sg-cover-eyebrow">Brief · v1.0 · 2026-05-15</p>
+    <h1>CNC Training Centre — Style Guide</h1>
+    <p class="lead">The visual foundation for the rebuild. Direction <strong>A — The Engineering Manual</strong>. This document binds every later phase: copy, wireframes, design, build. Tokens + components ship verbatim into the WordPress theme.</p>
+    <dl class="meta">
+      <dt>Direction</dt><dd>A — The Engineering Manual (locked 2026-05-15)</dd>
+      <dt>Theme</dt><dd>Light only · WCAG 2.1 AA</dd>
+      <dt>Display font</dt><dd>Tanker 400 · Fontshare · free for commercial use</dd>
+      <dt>Body font</dt><dd>Synonym 400 / 500 / 600 / 700 · Fontshare · free for commercial use</dd>
+      <dt>Source files</dt><dd>brief/tokens.css · brief/components.css</dd>
+      <dt>Strategy</dt><dd>strategy/strategy.md · strategy/cnctc-proposed-sitemap.md</dd>
+      <dt>Anti-references</dt><dd>SaaS landers · OEM brand training pages · the current site's AI-generated SEO pages</dd>
+    </dl>
+  </header>
+
+  <!-- TOC -->
+  <nav class="sg-toc">
+    <h2>Contents</h2>
+    <div class="sg-toc-group">
+      <h3>A · Foundations</h3>
+      <div class="sg-toc-items">
+        <a href="#sec-01"><span class="num">A.01</span><span>Palette</span></a>
+        <a href="#sec-02"><span class="num">A.02</span><span>Typography</span></a>
+        <a href="#sec-03"><span class="num">A.03</span><span>Spacing scale</span></a>
+        <a href="#sec-04"><span class="num">A.04</span><span>Grid + breakpoints</span></a>
+        <a href="#sec-05"><span class="num">A.05</span><span>Radius</span></a>
+        <a href="#sec-06"><span class="num">A.06</span><span>Shadow + depth</span></a>
+        <a href="#sec-07"><span class="num">A.07</span><span>Motion</span></a>
+        <a href="#sec-08"><span class="num">A.08</span><span>Iconography</span></a>
+      </div>
+    </div>
+    <div class="sg-toc-group">
+      <h3>B · Surface rhythm</h3>
+      <div class="sg-toc-items">
+        <a href="#sec-09"><span class="num">B.09</span><span>Container widths</span></a>
+        <a href="#sec-10"><span class="num">B.10</span><span>Section rhythm</span></a>
+      </div>
+    </div>
+    <div class="sg-toc-group">
+      <h3>C · Components</h3>
+      <div class="sg-toc-items">
+        <a href="#sec-11"><span class="num">C.11</span><span>Buttons</span></a>
+        <a href="#sec-12"><span class="num">C.12</span><span>Cards</span></a>
+        <a href="#sec-13"><span class="num">C.13</span><span>Spec / stat blocks</span></a>
+        <a href="#sec-14"><span class="num">C.14</span><span>Tables</span></a>
+        <a href="#sec-15"><span class="num">C.15</span><span>Form fields</span></a>
+        <a href="#sec-16"><span class="num">C.16</span><span>Tags</span></a>
+        <a href="#sec-17"><span class="num">C.17</span><span>Links</span></a>
+        <a href="#sec-18"><span class="num">C.18</span><span>Lists</span></a>
+        <a href="#sec-19"><span class="num">C.19</span><span>Quote</span></a>
+        <a href="#sec-20"><span class="num">C.20</span><span>Breadcrumb</span></a>
+        <a href="#sec-21"><span class="num">C.21</span><span>Pagination</span></a>
+        <a href="#sec-22"><span class="num">C.22</span><span>Alerts</span></a>
+      </div>
+    </div>
+    <div class="sg-toc-group">
+      <h3>D · Imagery</h3>
+      <div class="sg-toc-items">
+        <a href="#sec-23"><span class="num">D.23</span><span>Image treatment</span></a>
+        <a href="#sec-24"><span class="num">D.24</span><span>Icon set + style</span></a>
+      </div>
+    </div>
+    <div class="sg-toc-group">
+      <h3>E · States + responsive</h3>
+      <div class="sg-toc-items">
+        <a href="#sec-25"><span class="num">E.25</span><span>Empty / loading / error</span></a>
+        <a href="#sec-26"><span class="num">E.26</span><span>Responsive behaviour</span></a>
+        <a href="#sec-27"><span class="num">E.27</span><span>Print stylesheet</span></a>
+      </div>
+    </div>
+    <div class="sg-toc-group">
+      <h3>F · Voice</h3>
+      <div class="sg-toc-items">
+        <a href="#sec-28"><span class="num">F.28</span><span>Microcopy rules</span></a>
+      </div>
+    </div>
+    <div class="sg-toc-group">
+      <h3>G · Brand</h3>
+      <div class="sg-toc-items">
+        <a href="#sec-29"><span class="num">G.29</span><span>Logo usage</span></a>
+        <a href="#sec-30"><span class="num">G.30</span><span>Visual signature</span></a>
+      </div>
+    </div>
+    <div class="sg-toc-group">
+      <h3>H · Perf + a11y</h3>
+      <div class="sg-toc-items">
+        <a href="#sec-31"><span class="num">H.31</span><span>Accessibility</span></a>
+        <a href="#sec-32"><span class="num">H.32</span><span>Performance</span></a>
+      </div>
+    </div>
+    <div class="sg-toc-group">
+      <h3>I · Closed system</h3>
+      <div class="sg-toc-items">
+        <a href="#sec-33"><span class="num">I.33</span><span>Do / Don't</span></a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- A.01 PALETTE -->
+  <section class="sg-section" id="sec-01">
+    <div class="sg-section-head">
+      <div class="sg-section-num">A.01</div>
+      <div>
+        <h2 class="sg-section-title">Palette</h2>
+        <p class="sg-section-desc">OKLCH throughout. Cool-tinted neutrals (hue 250, toward brand-blue) — reads precise, not cozy. Brand-blue refined for confidence without garishness. Green is reserved for video-content tagging only. No pure black or white.</p>
+      </div>
+    </div>
+
+    <p class="sg-sub-title">Surfaces — paper</p>
+    <div class="swatch-grid">
+      <div class="swatch"><div class="swatch-chip" style="background:var(--ns-color-paper)"></div><div class="swatch-meta"><p class="swatch-name">Paper</p><p class="swatch-token">--ns-color-paper · oklch(98% 0.005 250)</p><p class="swatch-rule">Primary page background.</p></div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:var(--ns-color-paper-tint)"></div><div class="swatch-meta"><p class="swatch-name">Paper Tint</p><p class="swatch-token">--ns-color-paper-tint · oklch(96% 0.010 250)</p><p class="swatch-rule">Secondary surface, alternate sections, marginalia.</p></div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:var(--ns-color-paper-deep)"></div><div class="swatch-meta"><p class="swatch-name">Paper Deep</p><p class="swatch-token">--ns-color-paper-deep · oklch(93% 0.015 250)</p><p class="swatch-rule">Insets, prominent panels (e.g. enquiry form).</p></div></div>
+    </div>
+
+    <p class="sg-sub-title">Surfaces — anchor (deep)</p>
+    <div class="swatch-grid">
+      <div class="swatch"><div class="swatch-chip" style="background:var(--ns-color-anchor)"></div><div class="swatch-meta"><p class="swatch-name">Anchor</p><p class="swatch-token">--ns-color-anchor · oklch(22% 0.030 250)</p><p class="swatch-rule">Footer surface, deep panels, primary button background.</p></div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:var(--ns-color-anchor-soft)"></div><div class="swatch-meta"><p class="swatch-name">Anchor Soft</p><p class="swatch-token">--ns-color-anchor-soft · oklch(28% 0.030 250)</p><p class="swatch-rule">Hover state on anchor surfaces.</p></div></div>
+    </div>
+
+    <p class="sg-sub-title">Type</p>
+    <div class="swatch-grid">
+      <div class="swatch"><div class="swatch-chip" style="background:var(--ns-color-ink)"></div><div class="swatch-meta"><p class="swatch-name">Ink</p><p class="swatch-token">--ns-color-ink · oklch(20% 0.025 250)</p><p class="swatch-rule">Primary text. Near-black, slight blue tint.</p></div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:var(--ns-color-ink-soft)"></div><div class="swatch-meta"><p class="swatch-name">Ink Soft</p><p class="swatch-token">--ns-color-ink-soft · oklch(38% 0.020 250)</p><p class="swatch-rule">Secondary text, body emphasis.</p></div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:var(--ns-color-ink-muted)"></div><div class="swatch-meta"><p class="swatch-name">Ink Muted</p><p class="swatch-token">--ns-color-ink-muted · oklch(55% 0.015 250)</p><p class="swatch-rule">Meta, captions, eyebrows.</p></div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:var(--ns-color-ink-faint)"></div><div class="swatch-meta"><p class="swatch-name">Ink Faint</p><p class="swatch-token">--ns-color-ink-faint · oklch(70% 0.012 250)</p><p class="swatch-rule">Placeholder text, disabled state.</p></div></div>
+    </div>
+
+    <p class="sg-sub-title">Rules / borders</p>
+    <div class="swatch-grid">
+      <div class="swatch"><div class="swatch-chip" style="background:var(--ns-color-rule-faint)"></div><div class="swatch-meta"><p class="swatch-name">Rule Faint</p><p class="swatch-token">--ns-color-rule-faint</p><p class="swatch-rule">Subtle dividers between list rows.</p></div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:var(--ns-color-rule)"></div><div class="swatch-meta"><p class="swatch-name">Rule</p><p class="swatch-token">--ns-color-rule · oklch(88% 0.012 250)</p><p class="swatch-rule">Default border / hairline rule.</p></div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:var(--ns-color-rule-strong)"></div><div class="swatch-meta"><p class="swatch-name">Rule Strong</p><p class="swatch-token">--ns-color-rule-strong · oklch(75% 0.018 250)</p><p class="swatch-rule">Emphasised rule, input default border on forms.</p></div></div>
+    </div>
+
+    <p class="sg-sub-title">Brand primary</p>
+    <div class="swatch-grid">
+      <div class="swatch"><div class="swatch-chip" style="background:var(--ns-color-primary)"></div><div class="swatch-meta"><p class="swatch-name">Primary</p><p class="swatch-token">--ns-color-primary · oklch(48% 0.16 250)</p><p class="swatch-rule">Brand. Used for links, tags, secondary buttons, focus.</p></div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:var(--ns-color-primary-hover)"></div><div class="swatch-meta"><p class="swatch-name">Primary Hover</p><p class="swatch-token">--ns-color-primary-hover · oklch(42% 0.18 250)</p></div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:var(--ns-color-primary-active)"></div><div class="swatch-meta"><p class="swatch-name">Primary Active</p><p class="swatch-token">--ns-color-primary-active · oklch(36% 0.18 250)</p></div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:var(--ns-color-primary-soft)"></div><div class="swatch-meta"><p class="swatch-name">Primary Soft</p><p class="swatch-token">--ns-color-primary-soft · oklch(94% 0.04 250)</p><p class="swatch-rule">Tinted background, selected filter chip.</p></div></div>
+    </div>
+
+    <p class="sg-sub-title">Mark · video · status</p>
+    <div class="swatch-grid">
+      <div class="swatch"><div class="swatch-chip" style="background:var(--ns-color-mark)"></div><div class="swatch-meta"><p class="swatch-name">Mark</p><p class="swatch-token">--ns-color-mark</p><p class="swatch-rule">Marginalia tint, open-item flags. Warm.</p></div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:var(--ns-color-video)"></div><div class="swatch-meta"><p class="swatch-name">Video</p><p class="swatch-token">--ns-color-video · oklch(58% 0.14 155)</p><p class="swatch-rule">Video-content tags only. Never a second brand.</p></div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:var(--ns-color-success)"></div><div class="swatch-meta"><p class="swatch-name">Success</p><p class="swatch-token">--ns-color-success</p><p class="swatch-rule">Confirmations. Sparing use.</p></div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:var(--ns-color-warning)"></div><div class="swatch-meta"><p class="swatch-name">Warning</p><p class="swatch-token">--ns-color-warning</p></div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:var(--ns-color-danger)"></div><div class="swatch-meta"><p class="swatch-name">Danger</p><p class="swatch-token">--ns-color-danger</p><p class="swatch-rule">Validation errors. Never decorative.</p></div></div>
+    </div>
+  </section>
+
+  <!-- A.02 TYPOGRAPHY -->
+  <section class="sg-section" id="sec-02">
+    <div class="sg-section-head">
+      <div class="sg-section-num">A.02</div>
+      <div>
+        <h2 class="sg-section-title">Typography</h2>
+        <p class="sg-section-desc">Two typefaces only. Display delivers presence; body delivers calm long-form. No monospace face — tabular figures handled via <code>font-variant-numeric</code>. Avoid the reflex set (Inter, Roboto, DM Sans, Fraunces, Playfair, Söhne, Plus Jakarta, IBM Plex, Space Mono, Space Grotesk, etc.).</p>
+      </div>
+    </div>
+
+    <div class="fonts-callout">
+      <h3>Fonts on this project</h3>
+      <dl>
+        <div>
+          <dt>Display</dt>
+          <p class="face display">Tanker.</p>
+          <p class="face-meta"><strong>Tanker</strong> · weight 400 · Fontshare CDN · free for commercial use · <code>--ns-font-display</code> · used for headings, hero, pull-quotes.</p>
+        </div>
+        <div>
+          <dt>Body</dt>
+          <p class="face body">Synonym</p>
+          <p class="face-meta"><strong>Synonym</strong> · weights 400 / 500 / 600 / 700 · Fontshare CDN · free for commercial use · <code>--ns-font-body</code> · used for UI, paragraphs, forms, navigation.</p>
+        </div>
+      </dl>
+    </div>
+
+    <p class="sg-sub-title">Heading ramp</p>
+    <div class="type-row"><div class="type-label">H1</div><div><div class="type-sample" style="font-size:var(--ns-heading-h1)">Close the CNC skills gap.</div><div class="type-spec">Tanker 400 · clamp(2.25rem → 4rem) · 36 → 64 px · line-height 1.05</div></div></div>
+    <div class="type-row"><div class="type-label">H2</div><div><div class="type-sample" style="font-size:var(--ns-heading-h2)">Built around your work, not a syllabus.</div><div class="type-spec">Tanker 400 · clamp(1.75rem → 3rem) · 28 → 48 px</div></div></div>
+    <div class="type-row"><div class="type-label">H3</div><div><div class="type-sample" style="font-size:var(--ns-heading-h3)">Onsite, classroom, or programming services.</div><div class="type-spec">Tanker 400 · clamp(1.5rem → 2rem) · 24 → 32 px</div></div></div>
+    <div class="type-row" data-body><div class="type-label">H4</div><div><div class="type-sample" style="font-size:var(--ns-heading-h4);font-weight:600">Who this is for</div><div class="type-spec">Synonym 600 · clamp(1.25rem → 1.5rem) · 20 → 24 px</div></div></div>
+    <div class="type-row" data-body><div class="type-label">H5</div><div><div class="type-sample" style="font-size:var(--ns-heading-h5);font-weight:600">What's included</div><div class="type-spec">Synonym 600 · clamp(1.125rem → 1.25rem) · 18 → 20 px</div></div></div>
+    <div class="type-row" data-body><div class="type-label">H6</div><div><div class="type-sample" style="font-size:var(--ns-heading-h6);font-weight:500;text-transform:uppercase;letter-spacing:var(--ns-track-wide)">Section eyebrow</div><div class="type-spec">Synonym 500 · uppercase · clamp(1rem → 1.125rem) · 16 → 18 px</div></div></div>
+
+    <p class="sg-sub-title" style="margin-top:var(--ns-space-2xl)">Body ramp</p>
+    <div class="type-row" data-body><div class="type-label">Lg</div><div><div class="type-sample" style="font-size:var(--ns-text-large)">The site reads as a thoughtful engineering reference book reinterpreted for the web. Technical-drawing motifs do load-bearing visual work.</div><div class="type-spec">Synonym 400 · clamp(1.125rem → 1.25rem) · 18 → 20 px · lead paragraphs</div></div></div>
+    <div class="type-row" data-body><div class="type-label">Md</div><div><div class="type-sample" style="font-size:var(--ns-text-medium)">Thirty years of training on every major control — Fanuc, Heidenhain, Siemens, Mazak, Hurco, Brother, sliding head.</div><div class="type-spec">Synonym 400 · clamp(1rem → 1.125rem) · 16 → 18 px · body emphasis</div></div></div>
+    <div class="type-row" data-body><div class="type-label">Body</div><div><div class="type-sample" style="font-size:var(--ns-text-regular)">You've got CNC machines that cost more than most people's houses. And the people running them learned from whoever was free on their first day, or from a manual nobody's opened since 2014.</div><div class="type-spec">Synonym 400 · 1rem · 16 px · default body</div></div></div>
+    <div class="type-row" data-body><div class="type-label">Sm</div><div><div class="type-sample" style="font-size:var(--ns-text-small)">A 6 min read on Fanuc G73 peck-drilling cycles, with worked examples.</div><div class="type-spec">Synonym 400 · 0.875rem · 14 px · meta, captions, UI</div></div></div>
+    <div class="type-row" data-body><div class="type-label">Xs</div><div><div class="type-sample" style="font-size:var(--ns-text-tiny);letter-spacing:var(--ns-track-wide);text-transform:uppercase;color:var(--ns-color-ink-muted)">Article · 6 min · Fanuc</div><div class="type-spec">Synonym 500 · 0.75rem · 12 px · uppercase · tags + eyebrows</div></div></div>
+
+    <p class="sg-sub-title" style="margin-top:var(--ns-space-2xl)">Eyebrow + tagline</p>
+    <div class="demo-row" style="flex-direction:column; align-items:flex-start; gap:var(--ns-space-md);">
+      <p class="tagline">Learning Hub</p>
+      <p class="eyebrow"><span class="eyebrow-num">§02.04</span> <span>Onsite training</span></p>
+    </div>
+  </section>
+
+  <!-- A.03 SPACING -->
+  <section class="sg-section" id="sec-03">
+    <div class="sg-section-head">
+      <div class="sg-section-num">A.03</div>
+      <div>
+        <h2 class="sg-section-title">Spacing scale</h2>
+        <p class="sg-section-desc">4 pt scale, semantic names. Use <code>gap</code> for sibling spacing — never margin between siblings. Section padding is fluid via <code>--ns-pad-block</code>.</p>
+      </div>
+    </div>
+
+    <div class="space-row"><div class="space-bar" style="width:4px"></div><div><div style="font-weight:500">2XS · 4 px · 0.25 rem</div><div class="space-label">--ns-space-2xs · component-internal nudge</div></div></div>
+    <div class="space-row"><div class="space-bar" style="width:8px"></div><div><div style="font-weight:500">XS · 8 px · 0.5 rem</div><div class="space-label">--ns-space-xs · tag padding, button gap, form label → input</div></div></div>
+    <div class="space-row"><div class="space-bar" style="width:12px"></div><div><div style="font-weight:500">SM · 12 px · 0.75 rem</div><div class="space-label">--ns-space-sm · small component gaps</div></div></div>
+    <div class="space-row"><div class="space-bar" style="width:16px"></div><div><div style="font-weight:500">MD · 16 px · 1 rem</div><div class="space-label">--ns-space-md · default sibling gap</div></div></div>
+    <div class="space-row"><div class="space-bar" style="width:24px"></div><div><div style="font-weight:500">LG · 24 px · 1.5 rem</div><div class="space-label">--ns-space-lg · paragraph spacing, form two-column grid gap</div></div></div>
+    <div class="space-row"><div class="space-bar" style="width:32px"></div><div><div style="font-weight:500">XL · 32 px · 2 rem</div><div class="space-label">--ns-space-xl · subsection gap, form field stacking</div></div></div>
+    <div class="space-row"><div class="space-bar" style="width:48px"></div><div><div style="font-weight:500">2XL · 48 px · 3 rem</div><div class="space-label">--ns-space-2xl · section gap, section-head margin</div></div></div>
+    <div class="space-row"><div class="space-bar" style="width:64px"></div><div><div style="font-weight:500">3XL · 64 px · 4 rem</div><div class="space-label">--ns-space-3xl · major section gap</div></div></div>
+    <div class="space-row"><div class="space-bar" style="width:96px"></div><div><div style="font-weight:500">4XL · 96 px · 6 rem</div><div class="space-label">--ns-space-4xl · page-block gap</div></div></div>
+    <div class="space-row"><div class="space-bar" style="width:128px"></div><div><div style="font-weight:500">5XL · 128 px · 8 rem</div><div class="space-label">--ns-space-5xl · long-page section break</div></div></div>
+  </section>
+
+  <!-- A.04 GRID + BREAKPOINTS -->
+  <section class="sg-section" id="sec-04">
+    <div class="sg-section-head">
+      <div class="sg-section-num">A.04</div>
+      <div>
+        <h2 class="sg-section-title">Grid + breakpoints</h2>
+        <p class="sg-section-desc">Container width 1280 px max. Page edge padding fluid via <code>clamp(1.25rem, 3vw, 2.5rem)</code>. Section block padding fluid via <code>clamp(2.5rem, 5vw, 5rem)</code>. Long-form prose capped at 65 ch. Editorial layouts are asymmetric — break the grid intentionally for emphasis.</p>
+      </div>
+    </div>
+
+    <div class="bp-grid">
+      <div class="bp-card"><strong>375 px</strong><span>Mobile · single column</span><br><span class="bp-meta">--ns-space-md gutters</span></div>
+      <div class="bp-card"><strong>700 px</strong><span>Tablet · two-column starts</span><br><span class="bp-meta">article-row, form-grid-2</span></div>
+      <div class="bp-card"><strong>900 px</strong><span>Desktop · asymmetric splits</span><br><span class="bp-meta">hero, marginalia layouts</span></div>
+      <div class="bp-card"><strong>1280 px</strong><span>Max content width</span><br><span class="bp-meta">--ns-max-content</span></div>
+    </div>
+
+    <p style="margin-top:var(--ns-space-lg); color:var(--ns-color-ink-soft);">Container queries (<code>@container</code>) handle component-level responsiveness where a card or block needs to adapt to a sidebar's width rather than the viewport. Viewport queries handle page layout only.</p>
+  </section>
+
+  <!-- A.05 RADIUS -->
+  <section class="sg-section" id="sec-05">
+    <div class="sg-section-head">
+      <div class="sg-section-num">A.05</div>
+      <div>
+        <h2 class="sg-section-title">Radius</h2>
+        <p class="sg-section-desc">Engineering-precise. Small radii only. Pills are the single exception — reserved for tags + filter chips, never any other element.</p>
+      </div>
+    </div>
+
+    <div class="radius-grid">
+      <div class="radius-card" style="border-radius:var(--ns-radius-none)"><strong>None · 0 px</strong>buttons, callouts, headers, marginalia headers</div>
+      <div class="radius-card" style="border-radius:var(--ns-radius-tight)"><strong>Tight · 2 px</strong>cards, panels, form inputs, alerts</div>
+      <div class="radius-card" style="border-radius:var(--ns-radius-soft)"><strong>Soft · 4 px</strong>occasional softening, badges, secondary chips</div>
+      <div class="radius-card" style="border-radius:var(--ns-radius-pill)"><strong>Pill · 999 px</strong>tags + filter chips only</div>
+    </div>
+  </section>
+
+  <!-- A.06 SHADOW + DEPTH -->
+  <section class="sg-section" id="sec-06">
+    <div class="sg-section-head">
+      <div class="sg-section-num">A.06</div>
+      <div>
+        <h2 class="sg-section-title">Shadow + depth</h2>
+        <p class="sg-section-desc"><strong>No drop shadows.</strong> Direction A — The Engineering Manual relies on rules, borders, and surface alternation to define depth. Decorative drop shadows are an AI-design fingerprint and are banned across the project.</p>
+      </div>
+    </div>
+
+    <ul class="ns-list ns-list-bullet" style="max-width:60ch; margin:0;">
+      <li>Hierarchy via 1 px hairline rules + 2 px ink rules at panel openings.</li>
+      <li>Surface tier (paper / paper-tint / paper-deep / anchor) creates implicit depth without shadow.</li>
+      <li>The single permitted "lift" is the 1 px translateY on card and primary-button hover — a feedback signal, not a depth signal.</li>
+      <li>Focus rings use a soft 3 px box-shadow tinted from the focus colour. This is functional, not decorative.</li>
+    </ul>
+  </section>
+
+  <!-- A.07 MOTION -->
+  <section class="sg-section" id="sec-07">
+    <div class="sg-section-head">
+      <div class="sg-section-num">A.07</div>
+      <div>
+        <h2 class="sg-section-title">Motion</h2>
+        <p class="sg-section-desc">Restraint. Motion intensity capped at 6/10. Use motion for state change only — never for decoration. Reduced-motion users get the end state with no transition.</p>
+      </div>
+    </div>
+
+    <p class="sg-sub-title">Durations</p>
+    <div class="demo-row"><div class="demo-label">--ns-dur-fast</div><div><strong>120 ms</strong> · hover state, button arrow nudge, link underline</div></div>
+    <div class="demo-row"><div class="demo-label">--ns-dur-base</div><div><strong>200 ms</strong> · panel transitions, accordion open/close</div></div>
+    <div class="demo-row"><div class="demo-label">--ns-dur-slow</div><div><strong>320 ms</strong> · page-section reveal, hero entrance</div></div>
+
+    <p class="sg-sub-title" style="margin-top:var(--ns-space-lg)">Easings</p>
+    <div class="demo-row"><div class="demo-label">--ns-ease-out (out-quart)</div><div>Default for entrances, hovers, anything decelerating into rest.</div></div>
+    <div class="demo-row"><div class="demo-label">--ns-ease-in-out</div><div>Symmetric transitions (open/close).</div></div>
+
+    <p class="sg-sub-title" style="margin-top:var(--ns-space-lg)">Rules</p>
+    <ul class="ns-list ns-list-bullet" style="max-width:60ch;">
+      <li>Animate <strong>transform</strong> and <strong>opacity</strong> only. Never width, height, padding, margin.</li>
+      <li>Height changes use <code>grid-template-rows</code> transitions, not height directly.</li>
+      <li>No bounce or elastic easing. Real objects decelerate smoothly.</li>
+      <li>No perpetual animation. If it loops, it earned its place — otherwise remove.</li>
+      <li><code>prefers-reduced-motion: reduce</code> zeros out every duration via the tokens cascade.</li>
+    </ul>
+  </section>
+
+  <!-- A.08 ICONOGRAPHY -->
+  <section class="sg-section" id="sec-08">
+    <div class="sg-section-head">
+      <div class="sg-section-num">A.08</div>
+      <div>
+        <h2 class="sg-section-title">Iconography</h2>
+        <p class="sg-section-desc">Library: <strong>Lucide</strong> (MIT licensed). 1.5 px stroke, rounded line-caps, 24 px native — scales down to 16 px / up to 32 px without redrawing. Used sparingly: arrows for direction, marks for status, never as decoration above headings.</p>
+      </div>
+    </div>
+
+    <div class="icon-grid">
+      <div class="icon-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg><span>arrow-right</span></div>
+      <div class="icon-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></svg><span>phone</span></div>
+      <div class="icon-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg><span>email</span></div>
+      <div class="icon-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span>clock</span></div>
+      <div class="icon-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg><span>camera</span></div>
+      <div class="icon-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg><span>video</span></div>
+      <div class="icon-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 11-6 6v3h3l6-6"/><path d="m22 12-4.6 4.6a2 2 0 0 1-2.8 0l-5.2-5.2a2 2 0 0 1 0-2.8L14 4"/></svg><span>tool</span></div>
+      <div class="icon-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>check</span></div>
+    </div>
+  </section>
+
+  <!-- B.09 CONTAINER WIDTHS -->
+  <section class="sg-section" id="sec-09">
+    <div class="sg-section-head">
+      <div class="sg-section-num">B.09</div>
+      <div>
+        <h2 class="sg-section-title">Container widths</h2>
+        <p class="sg-section-desc">Three modes — page-edge, content, prose. Hero elements may break full-bleed when imagery / motif demands it.</p>
+      </div>
+    </div>
+
+    <ul class="ns-list ns-list-bullet" style="max-width:65ch;">
+      <li><strong>Page edge</strong> — <code>padding-inline: clamp(1.25rem, 3vw, 2.5rem)</code>. Default outer padding for everything except full-bleed sections.</li>
+      <li><strong>Content width</strong> — <code>max-width: var(--ns-max-content)</code> (1280 px). Used for the main <code>.wrap</code> container.</li>
+      <li><strong>Prose width</strong> — <code>max-width: 65ch</code>. Long-form body cap (Hub articles, About copy). Anything wider is fatiguing.</li>
+      <li><strong>Full-bleed</strong> — allowed for hero technical-drawing motifs, anchor-tier footers, mark/highlight surfaces. Default to contained.</li>
+    </ul>
+  </section>
+
+  <!-- B.10 SECTION RHYTHM -->
+  <section class="sg-section" id="sec-10">
+    <div class="sg-section-head">
+      <div class="sg-section-num">B.10</div>
+      <div>
+        <h2 class="sg-section-title">Section rhythm</h2>
+        <p class="sg-section-desc">Pages alternate surface tier to create visual rhythm. Default sequence on long pages: <strong>paper → paper-tint → paper → anchor</strong>. Never two adjacent sections on the same tier without an explicit rule divider between them.</p>
+      </div>
+    </div>
+
+    <div class="rhythm-strip">
+      <div>Paper · default</div>
+      <div>Paper Tint · secondary</div>
+      <div>Paper Deep · inset</div>
+      <div>Anchor · contrast</div>
+    </div>
+
+    <p style="color: var(--ns-color-ink-soft); max-width: 60ch;">The anchor tier appears at most once per page — typically the footer or a high-contrast CTA band. Overuse erodes its impact.</p>
+  </section>
+
+  <!-- C.11 BUTTONS -->
+  <section class="sg-section" id="sec-11">
+    <div class="sg-section-head">
+      <div class="sg-section-num">C.11</div>
+      <div>
+        <h2 class="sg-section-title">Buttons</h2>
+        <p class="sg-section-desc">Three classes only — <code>.btn-primary</code>, <code>.btn-secondary</code>, <code>.btn-outline</code>. Rectangular, 2 px radius, directional arrow that nudges on hover. Never write button styles inline.</p>
+      </div>
+    </div>
+
+    <div class="demo-row">
+      <div class="demo-label">.btn-primary</div>
+      <a class="btn btn-primary" href="#">Contact David</a>
+      <a class="btn btn-primary" href="#">Browse the Learning Hub</a>
+      <a class="btn btn-primary btn-sm" href="#">Apply</a>
+      <a class="btn btn-primary btn-lg" href="#">Enquire about onsite training</a>
+    </div>
+    <div class="demo-row">
+      <div class="demo-label">.btn-secondary</div>
+      <a class="btn btn-secondary" href="#">Get a quote</a>
+      <a class="btn btn-secondary btn-sm" href="#">Subscribe</a>
+    </div>
+    <div class="demo-row">
+      <div class="demo-label">.btn-outline</div>
+      <a class="btn btn-outline" href="#">View the courses</a>
+      <a class="btn btn-outline btn-sm" href="#">More</a>
+    </div>
+    <div class="demo-row">
+      <div class="demo-label">disabled</div>
+      <a class="btn btn-primary" aria-disabled="true">Booked</a>
+      <a class="btn btn-outline" aria-disabled="true">Coming soon</a>
+    </div>
+    <div class="demo-row">
+      <div class="demo-label">.btn-flat (no arrow)</div>
+      <a class="btn btn-primary btn-flat" href="#">Download spec PDF</a>
+      <a class="btn btn-outline btn-flat" href="#">Copy course code</a>
+    </div>
+  </section>
+
+  <!-- C.12 CARDS -->
+  <section class="sg-section" id="sec-12">
+    <div class="sg-section-head">
+      <div class="sg-section-num">C.12</div>
+      <div>
+        <h2 class="sg-section-title">Cards</h2>
+        <p class="sg-section-desc">Used sparingly — only when content is a distinct action. Direction A favours rules + whitespace + typography over containerised cards. Hover lifts 1 px, underlines the title.</p>
+      </div>
+    </div>
+
+    <div style="display:grid; gap:var(--ns-space-md); grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
+      <a class="card" href="#">
+        <div class="card-meta"><span class="tag tag-meta">Article</span><span class="tag tag-meta">8 min</span><span class="tag">Fanuc</span></div>
+        <h3 class="card-title">Fanuc G73 — peck drilling with worked examples</h3>
+        <p class="card-excerpt">A walk-through of the high-speed peck cycle, the gotchas with retract distance, and what to change when the chip evacuates badly.</p>
+        <span class="link-arrow">Read the guide</span>
+      </a>
+      <a class="card" href="#">
+        <div class="card-meta"><span class="tag tag-video">Video · 12 min</span><span class="tag">Heidenhain</span></div>
+        <h3 class="card-title">Heidenhain TNC640 — first tool setting walkthrough</h3>
+        <p class="card-excerpt">Setting your first tool on a TNC640 from cold. The probe sequence, the touch-off cheats, and what to do when the offsets look wrong.</p>
+        <span class="link-arrow">Watch on YouTube</span>
+      </a>
+      <a class="card" href="#">
+        <div class="card-meta"><span class="tag tag-meta">Guide</span><span class="tag">Sliding head</span></div>
+        <h3 class="card-title">Buying your first sliding head — what nobody tells you</h3>
+        <p class="card-excerpt">The brutally honest list of everything that goes wrong in the first six months and how to avoid most of it.</p>
+        <span class="link-arrow">Read the guide</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- C.13 SPEC / STAT BLOCKS -->
+  <section class="sg-section" id="sec-13">
+    <div class="sg-section-head">
+      <div class="sg-section-num">C.13</div>
+      <div>
+        <h2 class="sg-section-title">Spec / stat blocks</h2>
+        <p class="sg-section-desc">Numeric readouts. Tabular figures via <code>font-variant-numeric: tabular-nums</code> so digits align. Used for proof points (30 years, 332 videos, 30 reviews) and service specs (day rate, lead time, location).</p>
+      </div>
+    </div>
+
+    <div class="spec-block">
+      <div class="spec-cell"><span class="spec-num">30</span><span class="spec-label">Years training</span></div>
+      <div class="spec-cell"><span class="spec-num">332</span><span class="spec-label">YouTube videos</span></div>
+      <div class="spec-cell"><span class="spec-num">£700</span><span class="spec-label">Day rate · whole team</span></div>
+      <div class="spec-cell"><span class="spec-num">27k</span><span class="spec-label">LinkedIn followers</span></div>
+      <div class="spec-cell"><span class="spec-num">30</span><span class="spec-label">Five-star Google reviews</span></div>
+      <div class="spec-cell"><span class="spec-num">8</span><span class="spec-label">Major controls covered</span></div>
+    </div>
+  </section>
+
+  <!-- C.14 TABLES -->
+  <section class="sg-section" id="sec-14">
+    <div class="sg-section-head">
+      <div class="sg-section-num">C.14</div>
+      <div>
+        <h2 class="sg-section-title">Tables</h2>
+        <p class="sg-section-desc">Capability + comparison tables. Bold top/bottom rules, hairline row dividers, hover-highlight rows. Tick marks use the brand-primary colour.</p>
+      </div>
+    </div>
+
+    <table class="ns-table">
+      <thead>
+        <tr><th>Service</th><th>Onsite</th><th>Classroom</th><th>Programming</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Trains your team on your machines</td><td class="tick">●</td><td class="dash">—</td><td class="dash">—</td></tr>
+        <tr><td>1–6 students on simulators</td><td class="dash">—</td><td class="tick">●</td><td class="dash">—</td></tr>
+        <tr><td>Certificate of completion</td><td class="tick">●</td><td class="tick">●</td><td class="dash">—</td></tr>
+        <tr><td>We do the work, you don't train</td><td class="dash">—</td><td class="dash">—</td><td class="tick">●</td></tr>
+        <tr><td>Day rate</td><td>£700 / day (team)</td><td>£300 / student / day</td><td>£60 – £100 / hr</td></tr>
+        <tr><td>Location</td><td>Your site</td><td>Barwell, Leics</td><td>Remote</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- C.15 FORM FIELDS -->
+  <section class="sg-section" id="sec-15">
+    <div class="sg-section-head">
+      <div class="sg-section-num">C.15</div>
+      <div>
+        <h2 class="sg-section-title">Form fields</h2>
+        <p class="sg-section-desc">Vocabulary of input primitives. The designer composes actual forms in phase 4 (and the enquiry form is the only assembled form in the build). Submit button uses <code>!important</code> overrides to beat Fluent Forms plugin inline styles.</p>
+      </div>
+    </div>
+
+    <div style="max-width: 36rem; display: flex; flex-direction: column; gap: var(--ns-space-lg);">
+      <div class="form-field">
+        <label class="form-label" for="sg-name">Text input · default</label>
+        <input class="form-input" id="sg-name" placeholder="Bob from Acme Engineering" />
+      </div>
+      <div class="form-field">
+        <label class="form-label" for="sg-name-focus">Text input · focus</label>
+        <input class="form-input" id="sg-name-focus" value="Bob from Acme Engineering" style="border-color:var(--ns-color-focus); box-shadow: 0 0 0 3px color-mix(in oklab, var(--ns-color-focus) 18%, transparent);" />
+      </div>
+      <div class="form-field">
+        <label class="form-label" for="sg-name-error">Text input · error</label>
+        <input class="form-input" id="sg-name-error" value="" aria-invalid="true" placeholder="Required" />
+        <span class="form-hint" style="color:var(--ns-color-danger);">Please tell us your name so we can reply.</span>
+      </div>
+      <div class="form-field">
+        <label class="form-label" for="sg-textarea">Textarea</label>
+        <textarea class="form-textarea" id="sg-textarea" placeholder="Quick paragraph on where your team's at and what you need them to be able to do."></textarea>
+      </div>
+      <div class="form-field">
+        <label class="form-label" for="sg-select">Select</label>
+        <select class="form-select" id="sg-select">
+          <option>Onsite training</option>
+          <option>Classroom training</option>
+          <option>Programming services</option>
+          <option>I'm not sure yet</option>
+        </select>
+      </div>
+      <div class="form-field" style="flex-direction: row; align-items: center; gap: var(--ns-space-sm);">
+        <input type="checkbox" id="sg-check" checked />
+        <label for="sg-check" style="font-size:var(--ns-text-small); margin:0;">Subscribe to occasional CNC tutorials</label>
+      </div>
+      <div class="form-field" style="flex-direction: row; align-items: center; gap: var(--ns-space-sm);">
+        <input type="radio" id="sg-r1" name="r" checked />
+        <label for="sg-r1" style="font-size:var(--ns-text-small); margin:0;">Whole team training</label>
+        <input type="radio" id="sg-r2" name="r" style="margin-left:var(--ns-space-md);" />
+        <label for="sg-r2" style="font-size:var(--ns-text-small); margin:0;">One or two operators</label>
+      </div>
+    </div>
+  </section>
+
+  <!-- C.16 TAGS -->
+  <section class="sg-section" id="sec-16">
+    <div class="sg-section-head">
+      <div class="sg-section-num">C.16</div>
+      <div>
+        <h2 class="sg-section-title">Tags</h2>
+        <p class="sg-section-desc">Intrinsic-width chips. Pill radius (the only place that uses it). Brand-blue default. Green variant reserved for video tags only.</p>
+      </div>
+    </div>
+
+    <div class="demo-row">
+      <div class="demo-label">.tag (default)</div>
+      <a class="tag" href="#">Fanuc</a>
+      <a class="tag" href="#">Heidenhain</a>
+      <a class="tag" href="#">Siemens</a>
+      <a class="tag" href="#">Mazak</a>
+      <a class="tag is-active" href="#">Edgecam · selected</a>
+    </div>
+    <div class="demo-row">
+      <div class="demo-label">.tag-video</div>
+      <a class="tag tag-video" href="#">Video · 12 min</a>
+      <a class="tag tag-video" href="#">YouTube · Fanuc G73</a>
+    </div>
+    <div class="demo-row">
+      <div class="demo-label">.tag-meta</div>
+      <span class="tag tag-meta">Article</span>
+      <span class="tag tag-meta">6 min read</span>
+      <span class="tag tag-meta">Setter / operator</span>
+    </div>
+  </section>
+
+  <!-- C.17 LINKS -->
+  <section class="sg-section" id="sec-17">
+    <div class="sg-section-head">
+      <div class="sg-section-num">C.17</div>
+      <div>
+        <h2 class="sg-section-title">Links</h2>
+        <p class="sg-section-desc">Inline links: brand-blue with restrained underline that strengthens on hover. <code>.link-arrow</code> for "Read on" cross-links from articles back to relevant services. <code>.nav-link</code> for horizontal nav.</p>
+      </div>
+    </div>
+
+    <div class="prose" style="max-width:62ch;">
+      <p>You've thought about training before. The <a href="#">OEMs will do it</a> — for double what you'd expect to pay, locked to their brand only, following a rigid syllabus that doesn't match your actual jobs. Or there's the internet route: hours of free content, no structure, no one to ask when something doesn't make sense. <a href="#">Neither option fits</a>.</p>
+    </div>
+
+    <div style="margin-top:var(--ns-space-lg); display: flex; flex-direction: column; gap: var(--ns-space-sm);">
+      <a class="link-arrow" href="#">Read the full Fanuc G73 guide</a>
+      <a class="link-arrow" href="#">Onsite Fanuc training</a>
+    </div>
+  </section>
+
+  <!-- C.18 LISTS -->
+  <section class="sg-section" id="sec-18">
+    <div class="sg-section-head">
+      <div class="sg-section-num">C.18</div>
+      <div>
+        <h2 class="sg-section-title">Lists</h2>
+        <p class="sg-section-desc">Three patterns. Em-dash bullet for default content. Decimal-leading-zero numbered list for steps (matches the section-numbering aesthetic). Plus-marker for highlight lists.</p>
+      </div>
+    </div>
+
+    <div style="display: grid; gap: var(--ns-space-xl); grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
+      <div>
+        <p class="sg-sub-title">Bulleted (em-dash)</p>
+        <ul class="ns-list ns-list-bullet">
+          <li>Trains on your actual machines and parts</li>
+          <li>Covers beginner through advanced</li>
+          <li>Certificates issued on completion</li>
+          <li>No fixed agenda — assesses students as we go</li>
+        </ul>
+      </div>
+      <div>
+        <p class="sg-sub-title">Numbered</p>
+        <ol class="ns-list ns-list-num">
+          <li>Tell David what you need</li>
+          <li>He builds training around your work</li>
+          <li>Your team walks away capable and certified</li>
+        </ol>
+      </div>
+      <div>
+        <p class="sg-sub-title">Plus (highlight)</p>
+        <ul class="ns-list ns-list-plus">
+          <li>Trained on every major control</li>
+          <li>30 five-star Google reviews</li>
+          <li>Recognised by every major OEM</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- C.19 QUOTE -->
+  <section class="sg-section" id="sec-19">
+    <div class="sg-section-head">
+      <div class="sg-section-num">C.19</div>
+      <div>
+        <h2 class="sg-section-title">Quote / pull-quote</h2>
+        <p class="sg-section-desc">Display-font pull-quote with a left rule. Used for testimonials and for high-impact lines in Hub articles. No quote-mark glyphs — the typography carries it.</p>
+      </div>
+    </div>
+
+    <div class="prose">
+      <p class="pull-quote">David walked in, sized up the team in twenty minutes, and rebuilt our setup process. We're running parts in half the time.</p>
+      <p style="font-size: var(--ns-text-small); color: var(--ns-color-ink-muted); margin: 0;">— Production Manager, SMB engineering company, Google review.</p>
+    </div>
+  </section>
+
+  <!-- C.20 BREADCRUMB -->
+  <section class="sg-section" id="sec-20">
+    <div class="sg-section-head">
+      <div class="sg-section-num">C.20</div>
+      <div>
+        <h2 class="sg-section-title">Breadcrumb</h2>
+        <p class="sg-section-desc">Used on Hub article pages and service detail pages — wherever the visitor sits two or more levels deep. Uppercase, tight tracking, soft separators.</p>
+      </div>
+    </div>
+
+    <p class="breadcrumb"><a href="#">Home</a><span class="sep">/</span><a href="#">Hub</a><span class="sep">/</span><a href="#">Fanuc</a><span class="sep">/</span><span class="current">G73 peck drilling</span></p>
+    <p class="breadcrumb" style="margin-top:var(--ns-space-md);"><a href="#">Home</a><span class="sep">/</span><a href="#">Onsite training</a><span class="sep">/</span><span class="current">Mazatrol</span></p>
+  </section>
+
+  <!-- C.21 PAGINATION -->
+  <section class="sg-section" id="sec-21">
+    <div class="sg-section-head">
+      <div class="sg-section-num">C.21</div>
+      <div>
+        <h2 class="sg-section-title">Pagination</h2>
+        <p class="sg-section-desc">Hub list-page navigation. Tabular figures, 2 px radius, current page inverted. Prev / next as text buttons.</p>
+      </div>
+    </div>
+
+    <div class="pagination">
+      <a href="#">←</a>
+      <a href="#">1</a>
+      <span aria-current="page">2</span>
+      <a href="#">3</a>
+      <a href="#">4</a>
+      <span class="ellipsis">…</span>
+      <a href="#">18</a>
+      <a href="#">→</a>
+    </div>
+  </section>
+
+  <!-- C.22 ALERTS -->
+  <section class="sg-section" id="sec-22">
+    <div class="sg-section-head">
+      <div class="sg-section-num">C.22</div>
+      <div>
+        <h2 class="sg-section-title">Alerts / notices</h2>
+        <p class="sg-section-desc">Four variants — info, success, warning, danger. Used in-flow, never as floating toasts at launch. Bordered, not background-filled — restraint over loudness.</p>
+      </div>
+    </div>
+
+    <div class="alert alert-info">
+      <span class="alert-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="16" y2="12"/><line x1="12" x2="12.01" y1="8" y2="8"/></svg></span>
+      <div class="alert-body"><h3 class="alert-title">Course dates for autumn 2026 are now live.</h3><p>Beginners Milling on the 14th, Setter Operator on the 28th. Eight seats per session.</p></div>
+    </div>
+    <div class="alert alert-success">
+      <span class="alert-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></span>
+      <div class="alert-body"><h3 class="alert-title">Enquiry sent.</h3><p>David will be back within a working day. If it's urgent, call 07834 858 407.</p></div>
+    </div>
+    <div class="alert alert-warning">
+      <span class="alert-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" x2="12" y1="9" y2="13"/><line x1="12" x2="12.01" y1="17" y2="17"/></svg></span>
+      <div class="alert-body"><h3 class="alert-title">This course is filling fast.</h3><p>Two seats left for the November session.</p></div>
+    </div>
+    <div class="alert alert-danger">
+      <span class="alert-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" x2="9" y1="9" y2="15"/><line x1="9" x2="15" y1="9" y2="15"/></svg></span>
+      <div class="alert-body"><h3 class="alert-title">We couldn't send the enquiry.</h3><p>Check the highlighted fields and try again. If it still won't go through, call David direct on 07834 858 407.</p></div>
+    </div>
+  </section>
+
+  <!-- D.23 IMAGE TREATMENT -->
+  <section class="sg-section" id="sec-23">
+    <div class="sg-section-head">
+      <div class="sg-section-num">D.23</div>
+      <div>
+        <h2 class="sg-section-title">Image treatment</h2>
+        <p class="sg-section-desc">Photography is <strong>non-load-bearing</strong> on Direction A. Type and technical-drawing motifs do the visual work. When photography is used, it's a tightly-cropped fragment of real equipment — never a smiling engineer with a laptop, never generic stock.</p>
+      </div>
+    </div>
+
+    <p class="open-flag">Open · Photography</p>
+    <p style="color: var(--ns-color-ink-soft); max-width: 62ch; margin-top: var(--ns-space-md);">Client has no usable people / classroom / teaching photography at brief sign-off. Workshop fragment shots (control panels, tool magazines, chip evacuation, fixturing) are the only photography category planned at launch. A proper shoot of David teaching is deferred to a post-launch swap-in.</p>
+
+    <p class="sg-sub-title" style="margin-top:var(--ns-space-xl)">Photography rules</p>
+    <ul class="ns-list ns-list-bullet" style="max-width:62ch;">
+      <li>Tightly cropped, never the whole machine — the fragment carries more authority than the wide shot.</li>
+      <li>Real CNC equipment only. Tool magazines, control panels, chip evacuation, real fixturing.</li>
+      <li>Captions in <code>--ns-text-tiny</code> uppercase tracking, identifying the machine + control where relevant.</li>
+      <li>No filter / duotone / saturation effects. Real shop colour, lit honestly.</li>
+      <li>No people-with-laptop shots, no high-vis-vest stock, no smiling engineer hands clasped.</li>
+    </ul>
+  </section>
+
+  <!-- D.24 ICON SET -->
+  <section class="sg-section" id="sec-24">
+    <div class="sg-section-head">
+      <div class="sg-section-num">D.24</div>
+      <div>
+        <h2 class="sg-section-title">Icon set + style</h2>
+        <p class="sg-section-desc">Covered in A.08 — Lucide library, 1.5 px stroke, rounded line-caps, 16 / 20 / 24 / 32 px sizes only. Single-tone, currentColor. Use sparingly: arrows for direction, marks for status, never as decoration above headings.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- E.25 EMPTY / LOADING / ERROR -->
+  <section class="sg-section" id="sec-25">
+    <div class="sg-section-head">
+      <div class="sg-section-num">E.25</div>
+      <div>
+        <h2 class="sg-section-title">Empty · loading · error states</h2>
+        <p class="sg-section-desc">Component-level states. Phase 4 will assemble the page-level 404 / error templates; this section covers the in-component patterns.</p>
+      </div>
+    </div>
+
+    <p class="sg-sub-title">Empty Hub filter result</p>
+    <div class="state-blank">
+      <p class="state-blank-eyebrow">Learning Hub · Filter empty</p>
+      <h3 class="state-blank-title">Nothing here yet for this combination.</h3>
+      <p class="state-blank-body">Try a single filter at a time — most articles are tagged by control rather than skill level.</p>
+      <div class="state-blank-actions">
+        <a class="btn btn-outline" href="#">Clear filters</a>
+      </div>
+    </div>
+
+    <p class="sg-sub-title" style="margin-top:var(--ns-space-2xl)">Loading — Hub search results</p>
+    <div style="display: flex; flex-direction: column; gap: var(--ns-space-md); max-width: 36rem;">
+      <div style="height: 18px; background: var(--ns-color-paper-tint); border-radius: 2px; width: 80%;"></div>
+      <div style="height: 14px; background: var(--ns-color-paper-tint); border-radius: 2px; width: 60%;"></div>
+      <div style="height: 18px; background: var(--ns-color-paper-tint); border-radius: 2px; width: 70%;"></div>
+      <div style="height: 14px; background: var(--ns-color-paper-tint); border-radius: 2px; width: 50%;"></div>
+    </div>
+    <p style="font-size:var(--ns-text-tiny); color: var(--ns-color-ink-muted); margin-top: var(--ns-space-md);">Skeleton placeholder, no spinner. Width variation gives an impression of real content arriving.</p>
+
+    <p class="sg-sub-title" style="margin-top:var(--ns-space-2xl)">Form submit states</p>
+    <ul class="ns-list ns-list-bullet" style="max-width:62ch;">
+      <li><strong>Pending</strong> — submit button stays in place, label changes to "Sending…", aria-disabled.</li>
+      <li><strong>Success</strong> — form replaced with an inline confirmation: a one-line headline + the alert-success pattern.</li>
+      <li><strong>Error</strong> — fields highlighted with <code>aria-invalid="true"</code>, inline hint per field, alert-danger above the form with a summary.</li>
+    </ul>
+  </section>
+
+  <!-- E.26 RESPONSIVE -->
+  <section class="sg-section" id="sec-26">
+    <div class="sg-section-head">
+      <div class="sg-section-num">E.26</div>
+      <div>
+        <h2 class="sg-section-title">Responsive behaviour</h2>
+        <p class="sg-section-desc">Mobile-first. Components flex from 375 → 1440 px. Never hide critical functionality on mobile — adapt the interface, don't amputate it.</p>
+      </div>
+    </div>
+
+    <ul class="ns-list ns-list-bullet" style="max-width:65ch;">
+      <li><strong>Hero</strong> — single column on mobile, asymmetric 1.5fr/1fr split at 900 px+.</li>
+      <li><strong>Marginalia</strong> — folds beneath the body column on mobile; sits to the right at 900 px+. Always full-width within its container.</li>
+      <li><strong>Article rows</strong> — single column on mobile; <code>max-content / 1fr / max-content</code> at 700 px+ (number / title+meta / arrow).</li>
+      <li><strong>Card grid</strong> — <code>auto-fit, minmax(260px, 1fr)</code>. Breakpoint-free.</li>
+      <li><strong>Form two-column</strong> — single column under 600 px; two columns at 600 px+.</li>
+      <li><strong>Spec block</strong> — 2 columns under 700 px; 3 columns at 700 px+.</li>
+      <li><strong>Navigation</strong> — horizontal bar on desktop (designed in phase 4); real menu toggle + stacked panels on mobile.</li>
+      <li><strong>Type</strong> — headings clamp continuously; body / UI text steps at fixed sizes (no fluid body type — fluid type creates accessibility friction in product UI).</li>
+    </ul>
+  </section>
+
+  <!-- E.27 PRINT -->
+  <section class="sg-section" id="sec-27">
+    <div class="sg-section-head">
+      <div class="sg-section-num">E.27</div>
+      <div>
+        <h2 class="sg-section-title">Print stylesheet</h2>
+        <p class="sg-section-desc">Buyers print enquiry confirmations, course details, and About / capability sheets. Print stylesheet ships with the theme — basic, functional, ink-saving.</p>
+      </div>
+    </div>
+
+    <ul class="ns-list ns-list-bullet" style="max-width:62ch;">
+      <li>Hide nav, hide footer mark-up that's pure ornament, hide ads / CTAs.</li>
+      <li>Force <code>--ns-color-paper</code> = white, <code>--ns-color-ink</code> = near-black for crisp print.</li>
+      <li>Strip surface tints — Paper-tint / Paper-deep / Anchor render as white with hairline borders only.</li>
+      <li>Body type at 11 pt, headings step down one size from screen.</li>
+      <li>Show full URL after inline links (<code>a::after { content: " (" attr(href) ")"; }</code>).</li>
+      <li>Page breaks: avoid breaking inside marginalia, spec blocks, pull-quotes.</li>
+    </ul>
+  </section>
+
+  <!-- F.28 MICROCOPY -->
+  <section class="sg-section" id="sec-28">
+    <div class="sg-section-head">
+      <div class="sg-section-num">F.28</div>
+      <div>
+        <h2 class="sg-section-title">Microcopy rules</h2>
+        <p class="sg-section-desc">UI copy follows the Northern Sauce humaniser standard. Chrome (nav, footer, error pages) stays neutral and professional — voice lives in long-form. Buttons, labels, placeholders, and error messages are specific, plain, and human.</p>
+      </div>
+    </div>
+
+    <ul class="ns-list ns-list-bullet" style="max-width:65ch;">
+      <li><strong>Buttons.</strong> Specific verbs over generic ones. "Contact David" not "Submit". "Browse the Hub" not "Learn more". "Apply for this course" not "Get started".</li>
+      <li><strong>Form labels.</strong> Short, capitalised first word only, no colons. "Your name", "Company (optional)", "Which machines or controls?"</li>
+      <li><strong>Placeholders.</strong> Specific real-world examples, not generic. "07700 900 000" not "Phone". "Mazak Integrex i200 + Hurco VM10" not "Enter machine model".</li>
+      <li><strong>Error messages.</strong> What went wrong + what to do. "Please tell us your name so we can reply" not "Required field". "We couldn't send your enquiry — try again or call 07834 858 407" not "Error".</li>
+      <li><strong>Capitalisation.</strong> Sentence case throughout. Title Case is reserved for proper nouns (Fanuc, Mazak, Edgecam).</li>
+      <li><strong>Numbers.</strong> Always digits in UI. "5 working days", not "five working days". Use thousands separators. £ prefix, no decimal on whole pounds (£700, not £700.00).</li>
+      <li><strong>Banned phrases.</strong> "Submit your enquiry today!", "Click here", "Learn more", "Get started", "Read more". Each is a missed opportunity for specificity.</li>
+    </ul>
+  </section>
+
+  <!-- G.29 LOGO -->
+  <section class="sg-section" id="sec-29">
+    <div class="sg-section-head">
+      <div class="sg-section-num">G.29</div>
+      <div>
+        <h2 class="sg-section-title">Logo usage</h2>
+        <p class="sg-section-desc">CNC Training Centre wordmark. Used in nav (top-left), footer, and any official PDF / email signature. Clearspace = the height of the wordmark on all sides. Minimum print size 25 mm wide. Never recolour.</p>
+      </div>
+    </div>
+
+    <p class="open-flag">Open · Logo asset</p>
+    <p style="color: var(--ns-color-ink-soft); max-width: 62ch; margin-top: var(--ns-space-md);">Existing logo is to be carried through. Asset file (SVG + transparent PNG, on-light + on-dark variants) to be supplied by the client. If the existing logo needs a light refresh — colour swap to refined brand-blue, stroke clean-up — that decision is deferred to phase 4 with Dave.</p>
+
+    <p class="sg-sub-title" style="margin-top:var(--ns-space-xl)">Rules</p>
+    <ul class="ns-list ns-list-bullet" style="max-width:62ch;">
+      <li>Clearspace = 1× wordmark cap-height on all four sides.</li>
+      <li>Minimum digital size: 120 px wide.</li>
+      <li>Minimum print size: 25 mm wide.</li>
+      <li>On-light: full-colour wordmark over paper / paper-tint surfaces.</li>
+      <li>On-dark: inverse wordmark over anchor surfaces (footer).</li>
+      <li>Never recolour outside the approved set. Never apply effects (drop shadow, glow, gradient).</li>
+      <li>Never letter-space or stretch.</li>
+    </ul>
+  </section>
+
+  <!-- G.30 VISUAL SIGNATURE -->
+  <section class="sg-section" id="sec-30">
+    <div class="sg-section-head">
+      <div class="sg-section-num">G.30</div>
+      <div>
+        <h2 class="sg-section-title">Visual signature</h2>
+        <p class="sg-section-desc">The two distinctive design moves that make Direction A — The Engineering Manual instantly recognisable as CNC Training Centre. Applied with restraint; if everywhere, they stop being signature.</p>
+      </div>
+    </div>
+
+    <div class="signature">
+      <div>
+        <h3 class="signature-title">The marginalia rail.</h3>
+        <p>Service pages and long-form Hub articles carry a structured sidebar with machine / control / spec / quick-fact callouts. The page edge does work — it reads as the margin of a technical paper, not the empty space of a marketing site.</p>
+      </div>
+      <div>
+        <h3 class="signature-title">The dimension-callout rule-cap.</h3>
+        <p>Section openings and closings use a thin rule with end-ticks and a small uppercase label. Mimics the dimension callouts on a workshop drawing. Used sparingly — section breaks only, never as section dividers within a single section.</p>
+      </div>
+    </div>
+
+    <p style="margin-top:var(--ns-space-lg); color: var(--ns-color-ink-soft); max-width: 62ch;">Supporting motifs: numbered section headers (§02.04), tabular numerics on spec blocks, em-dash bullets. These reinforce the manual aesthetic without becoming load-bearing signatures.</p>
+  </section>
+
+  <!-- H.31 ACCESSIBILITY -->
+  <section class="sg-section" id="sec-31">
+    <div class="sg-section-head">
+      <div class="sg-section-num">H.31</div>
+      <div>
+        <h2 class="sg-section-title">Accessibility</h2>
+        <p class="sg-section-desc">WCAG 2.1 AA across the project. Every palette pairing tested for contrast; every interactive element has a visible focus state; reduced-motion respected; alt text rule documented below.</p>
+      </div>
+    </div>
+
+    <ul class="ns-list ns-list-bullet" style="max-width:65ch;">
+      <li><strong>Contrast.</strong> Body text (Ink on Paper) passes AAA; secondary (Ink-soft on Paper) passes AA Large; placeholder (Ink-faint) is non-functional text only.</li>
+      <li><strong>Focus states.</strong> Every interactive element renders a 2 px outline in Focus colour, offset 2 px. Visible on every tier (paper, tint, deep, anchor).</li>
+      <li><strong>Keyboard navigation.</strong> Tab order matches reading order. Skip-to-content link as the first nav item. Mega menus open on click, never hover-only.</li>
+      <li><strong>Alt text.</strong> Photography: describe the equipment, not the aesthetic ("Mazak Integrex i200 control panel, soft chuck mid-cycle"). Decorative motifs: <code>alt=""</code> with <code>role="presentation"</code>. Icons inline with text: <code>aria-hidden="true"</code> if the adjacent text already describes the action.</li>
+      <li><strong>Reduced motion.</strong> All durations zero out under <code>prefers-reduced-motion: reduce</code>. No essential information conveyed by motion alone.</li>
+      <li><strong>Semantic HTML.</strong> Real <code>&lt;button&gt;</code> for actions, real <code>&lt;a href&gt;</code> for navigation. Headings nested in order. Landmarks on every page (header, nav, main, footer).</li>
+      <li><strong>Form labels.</strong> Every input has an associated <code>&lt;label&gt;</code>. Error messages linked via <code>aria-describedby</code>. <code>aria-invalid="true"</code> on fields in error.</li>
+    </ul>
+  </section>
+
+  <!-- H.32 PERFORMANCE -->
+  <section class="sg-section" id="sec-32">
+    <div class="sg-section-head">
+      <div class="sg-section-num">H.32</div>
+      <div>
+        <h2 class="sg-section-title">Performance</h2>
+        <p class="sg-section-desc">Two-font web project, no hero video, minimal photography. Targets: LCP under 2.5 s on 4G, CLS &lt; 0.1, total page weight under 600 KB for a typical Hub article.</p>
+      </div>
+    </div>
+
+    <ul class="ns-list ns-list-bullet" style="max-width:65ch;">
+      <li><strong>Fonts.</strong> Tanker + Synonym via Fontshare CDN. <code>display=swap</code>. <code>preconnect</code> to <code>api.fontshare.com</code>. Two faces, six weights total.</li>
+      <li><strong>Images.</strong> WebP only. Workshop fragments under 80 KB at 2x. Hub article in-line images under 60 KB. No autoplay video. YouTube embeds lazy-loaded with a thumbnail-first pattern.</li>
+      <li><strong>JavaScript.</strong> Zero at first paint for static pages. Hub filter, mega menu, mobile drawer are progressive enhancements only. No framework.</li>
+      <li><strong>CSS.</strong> tokens.css + components.css ship as critical inline at build time. Tailwind utilities layered on top for page assembly (phase 5).</li>
+      <li><strong>Forbidden.</strong> Hero autoplay video. Heavy JS-driven scroll animation. Third-party chat widgets. Pixel trackers from anything other than analytics. Web-font fallback flashes longer than 100 ms.</li>
+    </ul>
+  </section>
+
+  <!-- I.33 DO / DON'T -->
+  <section class="sg-section" id="sec-33">
+    <div class="sg-section-head">
+      <div class="sg-section-num">I.33</div>
+      <div>
+        <h2 class="sg-section-title">The closed system — Do / Don't</h2>
+        <p class="sg-section-desc">The hard rules that bind every later phase. Phase 4 designers, phase 5 developers, future content writers: this is the contract.</p>
+      </div>
+    </div>
+
+    <div class="do-dont">
+      <section class="do">
+        <h3 class="dodont-title">Do</h3>
+        <ul>
+          <li>Use tokens for every colour, type size, spacing, radius, and motion value — no hard-coded values.</li>
+          <li>Name actual machines, controls, problems in body copy. Specificity is the proof.</li>
+          <li>Use the marginalia rail for spec / control / quick-fact callouts on service pages and long Hub articles.</li>
+          <li>Use rule-cap dividers at section openings and closings, sparingly.</li>
+          <li>Cap body line length at 65 ch. Wider is fatiguing.</li>
+          <li>Reach for type, rule, and surface tier before reaching for a card or container.</li>
+          <li>Reserve green for video-content tags only.</li>
+          <li>Make focus states visible on every surface.</li>
+          <li>Use <code>gap</code> for sibling spacing, never margin.</li>
+          <li>Animate transform + opacity only. Use ease-out cubics. Honour reduced-motion.</li>
+        </ul>
+      </section>
+      <section class="dont">
+        <h3 class="dodont-title">Don't</h3>
+        <ul>
+          <li>Use the reflex font set — Inter, Roboto, DM Sans, Plus Jakarta, Fraunces, Newsreader, Lora, Crimson, Playfair, Cormorant, IBM Plex, Space Mono, Space Grotesk, Outfit, Instrument *, Syne.</li>
+          <li>Use gradient text. Anywhere. Ever.</li>
+          <li>Use <code>border-left</code> accent stripes wider than 1 px on cards, list items, callouts.</li>
+          <li>Use cyan-on-dark or purple-to-blue palettes.</li>
+          <li>Use identical 3-card icon grids stacked section after section.</li>
+          <li>Centre everything. Asymmetric editorial layouts are the default.</li>
+          <li>Use the hero metric template (big number / small label / supporting stat / gradient accent).</li>
+          <li>Use glassmorphism, decorative drop shadows, or neon accents.</li>
+          <li>Use generic stock photography. People-with-laptop is an automatic fail.</li>
+          <li>Add a second brand colour. Green is reserved for video tags, nothing else.</li>
+          <li>Write voice into chrome (nav, footer, error pages). Voice lives in long-form only.</li>
+          <li>Animate width, height, padding, or margin. Transform + opacity only.</li>
+        </ul>
+      </section>
+    </div>
+  </section>
+
+  <footer class="sg-footer">
+    <span>Style Guide v1.0 · CNC Training Centre · 2026-05-15</span>
+    <span style="text-align: right;">Direction A — The Engineering Manual</span>
+  </footer>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Components preview — CNC Training Centre</title>
+  <link rel="stylesheet" href="tokens.css" />
+  <link rel="stylesheet" href="components.css" />
+  <style>
+    /* Preview chrome only — not production CSS */
+    body { margin: 0; padding: 0; }
+    .wrap { max-width: var(--ns-max-content); margin: 0 auto; padding: var(--ns-pad-block) var(--ns-pad-inline); }
+    .meta-head { display: flex; flex-wrap: wrap; gap: var(--ns-space-md); align-items: end; justify-content: space-between; padding-bottom: var(--ns-space-lg); border-bottom: 1px solid var(--ns-color-rule); margin-bottom: var(--ns-space-3xl); }
+    .meta-head h1 { font-family: var(--ns-font-display); font-size: clamp(2.5rem, 1.5rem + 4vw, 5rem); line-height: 0.95; max-width: 14ch; margin: 0; }
+    .meta { font-size: var(--ns-text-small); color: var(--ns-color-ink-muted); display: grid; grid-template-columns: max-content 1fr; gap: var(--ns-space-2xs) var(--ns-space-md); max-width: 36ch; }
+    .meta dt { font-weight: var(--ns-weight-medium); color: var(--ns-color-ink); text-transform: uppercase; letter-spacing: var(--ns-track-wide); font-size: var(--ns-text-tiny); padding-top: 0.15rem; }
+    .meta dd { margin: 0; }
+
+    .section { margin: 0 0 var(--ns-space-5xl); }
+    .section-desc { color: var(--ns-color-ink-muted); margin: var(--ns-space-2xs) 0 0; max-width: 60ch; font-size: var(--ns-text-small); }
+
+    .demo-row { display: flex; flex-wrap: wrap; gap: var(--ns-space-md); align-items: center; padding: var(--ns-space-lg) 0; border-bottom: 1px solid var(--ns-color-rule-faint); }
+    .demo-row:last-child { border-bottom: 0; }
+    .demo-label { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: var(--ns-text-tiny); color: var(--ns-color-ink-muted); min-width: 12rem; }
+
+    .grid-2 { display: grid; gap: var(--ns-space-2xl); grid-template-columns: 1fr; }
+    @media (min-width: 800px) { .grid-2 { grid-template-columns: 1.5fr 1fr; } }
+
+    .nav-demo { display: flex; gap: var(--ns-space-xs); align-items: center; padding: var(--ns-space-md); border: 1px solid var(--ns-color-rule); border-radius: var(--ns-radius-tight); background: var(--ns-color-paper); flex-wrap: wrap; }
+
+    .card-grid { display: grid; gap: var(--ns-space-md); grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+
+    .form-grid-2 { display: grid; gap: var(--ns-space-md); grid-template-columns: 1fr 1fr; }
+    @media (max-width: 600px) { .form-grid-2 { grid-template-columns: 1fr; } }
+
+    code.inline { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 0.85em; background: var(--ns-color-paper-tint); padding: 0.1rem 0.35rem; border-radius: 2px; }
+  </style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="meta-head">
+    <h1>Components · Engineering Manual</h1>
+    <dl class="meta">
+      <dt>File</dt><dd>brief/components.css</dd>
+      <dt>Built on</dt><dd>brief/tokens.css</dd>
+      <dt>Stage</dt><dd>2b · Components preview</dd>
+      <dt>Status</dt><dd>Iteration</dd>
+    </dl>
+  </header>
+
+  <!-- ===== 01 BUTTONS ===== -->
+  <section class="section">
+    <div class="section-head">
+      <div class="section-num">01</div>
+      <div>
+        <h2 class="section-title">Buttons</h2>
+        <p class="section-desc">Three classes only — <code class="inline">.btn-primary</code>, <code class="inline">.btn-secondary</code>, <code class="inline">.btn-outline</code>. Rectangular, 2 px radius, directional arrow that nudges on hover. Never write button styles inline.</p>
+      </div>
+    </div>
+
+    <div class="demo-row">
+      <div class="demo-label">.btn-primary</div>
+      <a class="btn btn-primary" href="#">Contact David</a>
+      <a class="btn btn-primary" href="#">Browse the Learning Hub</a>
+      <a class="btn btn-primary btn-sm" href="#">Apply</a>
+      <a class="btn btn-primary btn-lg" href="#">Enquire about onsite training</a>
+    </div>
+
+    <div class="demo-row">
+      <div class="demo-label">.btn-secondary</div>
+      <a class="btn btn-secondary" href="#">Get a quote</a>
+      <a class="btn btn-secondary" href="#">Read the Fanuc guide</a>
+      <a class="btn btn-secondary btn-sm" href="#">Subscribe</a>
+    </div>
+
+    <div class="demo-row">
+      <div class="demo-label">.btn-outline</div>
+      <a class="btn btn-outline" href="#">View the courses</a>
+      <a class="btn btn-outline" href="#">All Fanuc articles</a>
+      <a class="btn btn-outline btn-sm" href="#">More</a>
+    </div>
+
+    <div class="demo-row">
+      <div class="demo-label">disabled</div>
+      <a class="btn btn-primary" aria-disabled="true">Booked</a>
+      <a class="btn btn-outline" aria-disabled="true">Coming soon</a>
+    </div>
+
+    <div class="demo-row">
+      <div class="demo-label">.btn-flat (no arrow)</div>
+      <a class="btn btn-primary btn-flat" href="#">Download spec PDF</a>
+      <a class="btn btn-outline btn-flat" href="#">Copy course code</a>
+    </div>
+  </section>
+
+  <!-- ===== 02 EYEBROW + TAGLINE ===== -->
+  <section class="section">
+    <div class="section-head">
+      <div class="section-num">02</div>
+      <div>
+        <h2 class="section-title">Eyebrow · Tagline · Section numbering</h2>
+        <p class="section-desc">Direction-A signature opener for every major section. Eyebrow with leading rule for sub-sections. Tagline for major headings. Section number on the rail for hero / major panels.</p>
+      </div>
+    </div>
+
+    <div class="demo-row" style="flex-direction:column; align-items:flex-start; gap:var(--ns-space-md);">
+      <div>
+        <p class="eyebrow"><span>Section</span> <span class="eyebrow-num">§02.04</span> <span>· Onsite training</span></p>
+        <h3 style="font-family:var(--ns-font-display);font-size:var(--ns-heading-h2);line-height:1.05;margin:0;">Training on your machines, with your parts, at your pace.</h3>
+      </div>
+      <hr class="divider" style="width:100%;margin:0;">
+      <div>
+        <p class="tagline">Learning Hub</p>
+        <h3 style="font-family:var(--ns-font-display);font-size:var(--ns-heading-h2);line-height:1.05;margin:0;">Everything we've written about CNC, in one place.</h3>
+      </div>
+      <hr class="divider" style="width:100%;margin:0;">
+      <div class="section-head" style="margin-bottom:0; width:100%;">
+        <div class="section-num">03 · §</div>
+        <div>
+          <h3 class="section-title">Programming services</h3>
+          <p class="section-desc">Sub-contract CNC programming work. Edgecam, turnkey solutions, complete machining packages — for when you need the work done rather than the people trained.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 03 TAGS ===== -->
+  <section class="section">
+    <div class="section-head">
+      <div class="section-num">03</div>
+      <div>
+        <h2 class="section-title">Tags</h2>
+        <p class="section-desc">Intrinsic-width chips — never stretched to fill space. Pill radius (the only place that uses it). Brand-blue default. Green variant reserved for video-content tags only. Neutral meta variant for read-time / duration.</p>
+      </div>
+    </div>
+
+    <div class="demo-row">
+      <div class="demo-label">.tag (default)</div>
+      <a class="tag" href="#">Fanuc</a>
+      <a class="tag" href="#">Heidenhain</a>
+      <a class="tag" href="#">Siemens</a>
+      <a class="tag" href="#">Mazak</a>
+      <a class="tag" href="#">Hurco</a>
+      <a class="tag" href="#">Sliding head</a>
+      <a class="tag is-active" href="#">Edgecam · selected</a>
+    </div>
+
+    <div class="demo-row">
+      <div class="demo-label">.tag-video</div>
+      <a class="tag tag-video" href="#">Video · 12 min</a>
+      <a class="tag tag-video" href="#">YouTube · Fanuc G73</a>
+    </div>
+
+    <div class="demo-row">
+      <div class="demo-label">.tag-meta</div>
+      <span class="tag tag-meta">Article</span>
+      <span class="tag tag-meta">6 min read</span>
+      <span class="tag tag-meta">Setter / operator</span>
+      <span class="tag tag-meta">Beginners</span>
+    </div>
+  </section>
+
+  <!-- ===== 04 LINKS ===== -->
+  <section class="section">
+    <div class="section-head">
+      <div class="section-num">04</div>
+      <div>
+        <h2 class="section-title">Links</h2>
+        <p class="section-desc">Inline links: brand-blue, restrained underline that strengthens on hover. <code class="inline">.link-arrow</code> for "Read on" cross-links from articles back to relevant services.</p>
+      </div>
+    </div>
+
+    <div class="prose" style="max-width:62ch;">
+      <p>You've thought about training before. The <a href="#">OEMs will do it</a> — for double what you'd expect to pay, locked to their brand only, following a rigid syllabus that doesn't match your actual jobs. Or there's the internet route: hours of free content, no structure, no one to ask when something doesn't make sense. <a href="#">Neither option fits</a>.</p>
+    </div>
+
+    <div style="margin-top:var(--ns-space-lg)">
+      <a class="link-arrow" href="#">Read the full Fanuc G73 guide</a>
+      <br /><br />
+      <a class="link-arrow" href="#">Onsite Fanuc training</a>
+    </div>
+  </section>
+
+  <!-- ===== 05 RULE-CAP + MARGINALIA ===== -->
+  <section class="section">
+    <div class="section-head">
+      <div class="section-num">05</div>
+      <div>
+        <h2 class="section-title">Rule-cap · Marginalia</h2>
+        <p class="section-desc">Direction-A signature patterns. Rule-cap is a technical-drawing section divider — sparing use. Marginalia is the sidebar callout that carries spec / control / quick-fact information without breaking the body reading flow.</p>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div>
+        <h3 style="font-family:var(--ns-font-display);font-size:var(--ns-heading-h3);line-height:1.05;margin:0 0 var(--ns-space-md);">Sub-contract programming</h3>
+        <p class="text-medium" style="max-width:56ch;margin:0;">When you've got the work but not the time. We program parts in Edgecam on a professional licence, deliver tested code, and stay on the phone if anything kicks back from the shop floor.</p>
+        <div class="rule-cap"><span class="tick"></span><span class="line"></span><span class="label">End ¶</span><span class="line"></span><span class="tick"></span></div>
+      </div>
+
+      <aside class="marginalia">
+        <div class="marginalia-head"><span>§</span> <span>At a glance</span></div>
+        <dl>
+          <dt>Software</dt><dd>Edgecam · professional licence</dd>
+          <hr />
+          <dt>Rate</dt><dd>£60 – £100 / hr</dd>
+          <hr />
+          <dt>Lead time</dt><dd>Typical 2 – 4 working days</dd>
+          <hr />
+          <dt>Format</dt><dd>Tested G-code · setup sheets · tool list</dd>
+        </dl>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ===== 06 CARDS + ARTICLE ROW ===== -->
+  <section class="section">
+    <div class="section-head">
+      <div class="section-num">06</div>
+      <div>
+        <h2 class="section-title">Cards · Article rows</h2>
+        <p class="section-desc">Cards used sparingly — only when content is a distinct action. For long Hub listings, <code class="inline">.article-row</code> replaces card grids: a typographic index, like a contents page in a technical manual.</p>
+      </div>
+    </div>
+
+    <h4 class="tagline" style="margin-bottom:var(--ns-space-md);">Card pattern</h4>
+    <div class="card-grid" style="margin-bottom:var(--ns-space-3xl)">
+      <a class="card" href="#">
+        <div class="card-meta"><span class="tag tag-meta">Article</span><span class="tag tag-meta">8 min</span><span class="tag">Fanuc</span></div>
+        <h3 class="card-title">Fanuc G73 — peck drilling with worked examples</h3>
+        <p class="card-excerpt">A walk-through of the high-speed peck cycle, the gotchas with retract distance, and what to change when the chip evacuates badly.</p>
+        <span class="link-arrow">Read the guide</span>
+      </a>
+      <a class="card" href="#">
+        <div class="card-meta"><span class="tag tag-video">Video · 12 min</span><span class="tag">Heidenhain</span></div>
+        <h3 class="card-title">Heidenhain TNC640 — first tool setting walkthrough</h3>
+        <p class="card-excerpt">Setting your first tool on a TNC640 from cold. The probe sequence, the touch-off cheats, and what to do when the offsets look wrong.</p>
+        <span class="link-arrow">Watch on YouTube</span>
+      </a>
+      <a class="card" href="#">
+        <div class="card-meta"><span class="tag tag-meta">Guide</span><span class="tag">Sliding head</span></div>
+        <h3 class="card-title">Buying your first sliding head — what nobody tells you</h3>
+        <p class="card-excerpt">The brutally honest list of everything that goes wrong in the first six months and how to avoid most of it.</p>
+        <span class="link-arrow">Read the guide</span>
+      </a>
+    </div>
+
+    <h4 class="tagline" style="margin-bottom:var(--ns-space-md);">Article row · Hub listing</h4>
+    <div style="border-top:1px solid var(--ns-color-rule);">
+      <a class="article-row" href="#">
+        <span class="article-row-num">001</span>
+        <span class="article-row-body">
+          <p class="article-row-title">Fanuc G73 — peck drilling with worked examples</p>
+          <span class="article-row-meta"><span class="tag tag-meta">Article</span> <span class="tag">Fanuc</span> <span>8 min</span></span>
+        </span>
+        <span class="link-arrow"></span>
+      </a>
+      <a class="article-row" href="#">
+        <span class="article-row-num">002</span>
+        <span class="article-row-body">
+          <p class="article-row-title">Heidenhain TNC640 — first tool setting walkthrough</p>
+          <span class="article-row-meta"><span class="tag tag-video">Video · 12 min</span> <span class="tag">Heidenhain</span></span>
+        </span>
+        <span class="link-arrow"></span>
+      </a>
+      <a class="article-row" href="#">
+        <span class="article-row-num">003</span>
+        <span class="article-row-body">
+          <p class="article-row-title">Mazatrol vs G-code — when to use which, and what people get wrong</p>
+          <span class="article-row-meta"><span class="tag tag-meta">Article</span> <span class="tag">Mazak</span> <span>11 min</span></span>
+        </span>
+        <span class="link-arrow"></span>
+      </a>
+      <a class="article-row" href="#">
+        <span class="article-row-num">004</span>
+        <span class="article-row-body">
+          <p class="article-row-title">Macro programming — the four things that unlock everything else</p>
+          <span class="article-row-meta"><span class="tag tag-meta">Article</span> <span class="tag">Fanuc</span> <span class="tag">Advanced</span> <span>14 min</span></span>
+        </span>
+        <span class="link-arrow"></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== 07 FORM ===== -->
+  <section class="section">
+    <div class="section-head">
+      <div class="section-num">07</div>
+      <div>
+        <h2 class="section-title">Form · Enquiry</h2>
+        <p class="section-desc">Fluent Forms baseline. Single enquiry form, service / course pre-filled by referring page. Submit uses <code class="inline">!important</code> to beat the plugin's inline styles.</p>
+      </div>
+    </div>
+
+    <form class="form-stack" onsubmit="event.preventDefault()">
+      <header class="form-head">
+        <span class="num">§ Enquire</span>
+        <h3 class="title">Tell David what you need.</h3>
+        <p class="sub">A quick paragraph is enough. He'll come back within a working day with a proper answer — not a generic reply.</p>
+      </header>
+
+      <div class="form-grid-2">
+        <div class="form-field">
+          <label class="form-label" for="f-name">Your name</label>
+          <input class="form-input" id="f-name" name="name" placeholder="Bob from Acme Engineering" />
+        </div>
+        <div class="form-field">
+          <label class="form-label" for="f-co">Company (optional)</label>
+          <input class="form-input" id="f-co" name="company" placeholder="Acme Engineering Ltd" />
+        </div>
+      </div>
+      <div class="form-grid-2">
+        <div class="form-field">
+          <label class="form-label" for="f-phone">Phone</label>
+          <input class="form-input" id="f-phone" name="phone" type="tel" placeholder="07700 900 000" />
+        </div>
+        <div class="form-field">
+          <label class="form-label" for="f-email">Email</label>
+          <input class="form-input" id="f-email" name="email" type="email" placeholder="bob@acme.co.uk" />
+        </div>
+      </div>
+      <div class="form-field">
+        <label class="form-label" for="f-machines">Which machines or controls?</label>
+        <input class="form-input" id="f-machines" name="machines" placeholder="e.g. Mazak Integrex i200 + Hurco VM10 (Fanuc + Mazatrol)" />
+      </div>
+      <div class="form-field">
+        <label class="form-label" for="f-msg">What do you need?</label>
+        <textarea class="form-textarea" id="f-msg" name="message" placeholder="Quick paragraph on where your team's at and what you need them to be able to do."></textarea>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary btn-lg">Send enquiry</button>
+        <span class="form-hint">Or call David direct on 07834 858 407.</span>
+      </div>
+    </form>
+  </section>
+
+  <!-- ===== 08 NAV ===== -->
+  <section class="section">
+    <div class="section-head">
+      <div class="section-num">08</div>
+      <div>
+        <h2 class="section-title">Nav link · Inline nav</h2>
+        <p class="section-desc">Used in the horizontal nav bar. Underline animates in on hover and on the current page. Click-to-open mega menus on desktop (not hover) — easier on touchpads and screen readers.</p>
+      </div>
+    </div>
+
+    <div class="nav-demo">
+      <a class="nav-link" href="#">Onsite training</a>
+      <a class="nav-link" href="#" aria-current="page">Classroom training</a>
+      <a class="nav-link" href="#">Programming services</a>
+      <a class="nav-link" href="#">Learning Hub</a>
+      <a class="nav-link" href="#">About</a>
+      <span style="margin-left:auto"></span>
+      <a class="btn btn-primary btn-sm" href="#">Contact David</a>
+    </div>
+  </section>
+
+  <!-- ===== 09 PROSE + PULL-QUOTE ===== -->
+  <section class="section">
+    <div class="section-head">
+      <div class="section-num">09</div>
+      <div>
+        <h2 class="section-title">Prose · Pull-quote</h2>
+        <p class="section-desc">Long-form body container. Max width 65 ch, relaxed leading. Pull-quote for Hub articles where a line earns the call-out.</p>
+      </div>
+    </div>
+
+    <div class="prose">
+      <p>You've got CNC machines that cost more than most people's houses. And the people running them learned from whoever was free on their first day, or from a manual nobody's opened since 2014, or from <a href="#">YouTube videos</a> that contradict each other every third clip. The machines work. They just don't work like they should.</p>
+
+      <p class="pull-quote">I get really pissed off now if I google something to do with CNC machines and I don't find my own article.</p>
+
+      <p>Getting started is a phone call. Tell David what machines you've got, what level your team is at, and what you need them to be able to do. He'll come to you, train on your actual machines, with your actual parts. Or your people come to the classroom in Leicestershire and learn on simulators across two days. Either way, they walk out certified and capable — not with a folder of theory they'll never look at again.</p>
+    </div>
+  </section>
+
+  <!-- ===== 10 EMPTY / 404 ===== -->
+  <section class="section">
+    <div class="section-head">
+      <div class="section-num">10</div>
+      <div>
+        <h2 class="section-title">Empty state · 404</h2>
+        <p class="section-desc">Neutral chrome — voice lives in long-form, not error pages. Clear, calm, gets the visitor back to something useful.</p>
+      </div>
+    </div>
+
+    <div class="state-blank">
+      <p class="state-blank-eyebrow">404 · Page not found</p>
+      <h3 class="state-blank-title">The page you were after isn't here.</h3>
+      <p class="state-blank-body">It might have moved when we rebuilt the site, or the URL is wrong. The two best places to start from here are the Learning Hub and the homepage.</p>
+      <div class="state-blank-actions">
+        <a class="btn btn-primary" href="#">Back to homepage</a>
+        <a class="btn btn-outline" href="#">Browse the Learning Hub</a>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="state-blank">
+      <p class="state-blank-eyebrow">Learning Hub · Filter empty</p>
+      <h3 class="state-blank-title">Nothing here yet for this combination.</h3>
+      <p class="state-blank-body">Try a single filter at a time — most articles are tagged by control rather than skill level.</p>
+      <div class="state-blank-actions">
+        <a class="btn btn-outline" href="#">Clear filters</a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+</body>
+</html>

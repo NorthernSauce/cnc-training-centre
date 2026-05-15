@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Type pair preview — CNC Training Centre</title>
+  <link rel="preconnect" href="https://api.fontshare.com" />
+  <link href="https://api.fontshare.com/v2/css?f[]=author@700,500&f[]=switzer@400,500,700&f[]=khand@500,700&f[]=sentient@400,500,700&f[]=tanker@400&f[]=synonym@400,500,700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: oklch(20% 0.02 250);
+      --paper: oklch(98% 0.005 250);
+      --rule: oklch(86% 0.01 250);
+      --muted: oklch(48% 0.015 250);
+      --brand: oklch(48% 0.16 250);
+      --mark: oklch(85% 0.04 250);
+      --pad: clamp(1.25rem, 3vw, 2.5rem);
+      --max: 1280px;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; background: var(--paper); color: var(--ink); }
+    body { font-family: "Switzer", system-ui, sans-serif; font-size: clamp(1rem, 0.95rem + 0.2vw, 1.1rem); line-height: 1.55; -webkit-font-smoothing: antialiased; }
+
+    /* Page chrome */
+    .page-head {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: var(--pad);
+      padding-bottom: calc(var(--pad) * 0.5);
+      border-bottom: 1px solid var(--rule);
+    }
+    .page-title { font-family: "Switzer", sans-serif; font-weight: 500; font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin: 0 0 0.4rem; }
+    .page-sub { font-family: "Switzer", sans-serif; font-weight: 400; color: var(--muted); margin: 0; max-width: 60ch; }
+
+    .panel {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: calc(var(--pad) * 1.25) var(--pad);
+      border-bottom: 1px solid var(--rule);
+    }
+    .panel:last-of-type { border-bottom: 0; }
+
+    .panel-head {
+      display: grid;
+      grid-template-columns: 4rem 1fr;
+      gap: 1.25rem;
+      align-items: start;
+      margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+    }
+    .panel-num {
+      font-family: "Switzer", sans-serif;
+      font-weight: 500;
+      font-size: 0.85rem;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      padding-top: 0.4rem;
+      border-top: 1px solid var(--ink);
+    }
+    .panel-meta { color: var(--muted); margin: 0.5rem 0 0; font-size: 0.95rem; }
+    .panel-name { font-family: "Switzer", sans-serif; font-weight: 700; font-size: 1.2rem; margin: 0; letter-spacing: -0.005em; }
+    .panel-name em { font-style: normal; color: var(--muted); font-weight: 400; }
+
+    .spread { display: grid; grid-template-columns: 1fr; gap: clamp(1.5rem, 3vw, 2.5rem); }
+    @media (min-width: 900px) { .spread { grid-template-columns: 1.4fr 1fr; gap: clamp(2rem, 4vw, 3.5rem); } }
+
+    .hero-eyebrow {
+      font-family: "Switzer", sans-serif;
+      font-weight: 500;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .hero-eyebrow::before { content: ""; width: 1.5rem; height: 1px; background: currentColor; }
+
+    .body-copy { max-width: 56ch; margin: 1.25rem 0 0; color: var(--ink); }
+    .body-copy p { margin: 0 0 0.9em; }
+    .body-copy p:last-child { margin-bottom: 0; }
+
+    .marginalia {
+      border-top: 1px solid var(--ink);
+      padding-top: 0.6rem;
+      font-family: "Switzer", sans-serif;
+      font-size: 0.85rem;
+      color: var(--muted);
+      align-self: start;
+    }
+    .marginalia dl { margin: 0; display: grid; grid-template-columns: max-content 1fr; gap: 0.35rem 1rem; }
+    .marginalia dt { font-weight: 500; color: var(--ink); letter-spacing: 0.04em; text-transform: uppercase; font-size: 0.72rem; padding-top: 0.18rem; }
+    .marginalia dd { margin: 0; }
+    .marginalia .sep { grid-column: 1 / -1; height: 1px; background: var(--rule); margin: 0.4rem 0; }
+
+    .btn-row { margin-top: 1.5rem; display: flex; gap: 0.75rem; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.65rem 1rem;
+      font-family: "Switzer", sans-serif;
+      font-weight: 500;
+      font-size: 0.95rem;
+      text-decoration: none;
+      border-radius: 2px;
+      border: 1px solid transparent;
+      transition: transform 120ms ease-out, background 120ms ease-out, border-color 120ms ease-out;
+    }
+    .btn-primary { background: var(--ink); color: var(--paper); }
+    .btn-primary::after { content: "→"; }
+    .btn-primary:hover { transform: translateY(-1px); }
+    .btn-outline { background: transparent; color: var(--ink); border-color: var(--ink); }
+    .btn-outline:hover { background: var(--ink); color: var(--paper); }
+
+    /* Pair 1 — Author + Switzer */
+    .p1 .display, .p1 h2 { font-family: "Author", "Switzer", sans-serif; font-weight: 700; letter-spacing: -0.018em; line-height: 1.02; }
+    .p1 .display { font-size: clamp(2.6rem, 5vw + 1rem, 5.2rem); margin: 0; }
+    .p1 .display .small { display: block; font-size: 0.5em; font-weight: 500; color: var(--muted); letter-spacing: 0; line-height: 1.2; margin-top: 0.6rem; }
+
+    /* Pair 2 — Khand + Sentient */
+    .p2 { font-family: "Sentient", Georgia, serif; }
+    .p2 .body-copy { font-family: "Sentient", Georgia, serif; }
+    .p2 .display, .p2 h2 { font-family: "Khand", "Switzer", sans-serif; font-weight: 700; letter-spacing: 0.005em; line-height: 0.95; text-transform: uppercase; }
+    .p2 .display { font-size: clamp(2.8rem, 5.8vw + 1rem, 6rem); margin: 0; }
+    .p2 .display .small { display: block; font-size: 0.32em; font-weight: 500; color: var(--muted); letter-spacing: 0.04em; line-height: 1.2; margin-top: 0.7rem; text-transform: none; font-family: "Sentient", serif; font-style: italic; }
+    .p2 .hero-eyebrow { font-family: "Khand", sans-serif; font-weight: 500; letter-spacing: 0.18em; }
+    .p2 .marginalia { font-family: "Khand", sans-serif; }
+    .p2 .marginalia dt { font-family: "Khand", sans-serif; letter-spacing: 0.08em; }
+    .p2 .btn { font-family: "Khand", sans-serif; letter-spacing: 0.04em; }
+
+    /* Pair 3 — Tanker + Synonym */
+    .p3 { font-family: "Synonym", system-ui, sans-serif; }
+    .p3 .body-copy { font-family: "Synonym", system-ui, sans-serif; }
+    .p3 .display, .p3 h2 { font-family: "Tanker", "Switzer", sans-serif; font-weight: 400; letter-spacing: -0.005em; line-height: 0.94; }
+    .p3 .display { font-size: clamp(3rem, 6vw + 1rem, 6.4rem); margin: 0; }
+    .p3 .display .small { display: block; font-size: 0.3em; font-weight: 500; color: var(--muted); letter-spacing: 0; line-height: 1.25; margin-top: 0.7rem; font-family: "Synonym", sans-serif; }
+    .p3 .marginalia, .p3 .marginalia dt, .p3 .btn, .p3 .hero-eyebrow { font-family: "Synonym", sans-serif; }
+
+    /* Decorative section dividers — technical-drawing line work */
+    .rule-cap { display: flex; align-items: center; gap: 0.75rem; color: var(--muted); margin: 1.5rem 0 0; }
+    .rule-cap .line { flex: 1; height: 1px; background: var(--rule); }
+    .rule-cap .tick { width: 6px; height: 6px; border: 1px solid var(--muted); border-radius: 50%; }
+    .rule-cap span { font-family: "Switzer", sans-serif; font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; }
+
+    /* Reference row */
+    .refs { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.5rem; margin: 1.5rem 0 0; }
+    .ref { font-family: "Switzer", sans-serif; font-size: 0.78rem; padding: 0.55rem 0.7rem; border: 1px solid var(--rule); border-radius: 2px; color: var(--muted); display: flex; justify-content: space-between; gap: 0.5rem; align-items: center; }
+    .ref strong { color: var(--ink); font-weight: 500; }
+  </style>
+</head>
+<body>
+
+<header class="page-head">
+  <p class="page-title">Brief · Stage 2a · Type pair preview</p>
+  <p class="page-sub">Three candidate type pairings for the locked Engineering Manual direction. Each pairing is shown as a full hero spread so Dave can see how display + body, eyebrow, marginalia, and button labels read together. All faces are Fontshare free — zero licensing.</p>
+</header>
+
+<!-- PAIRING 1 -->
+<section class="panel p1">
+  <header class="panel-head">
+    <div class="panel-num">01</div>
+    <div>
+      <h2 class="panel-name">Pairing 1 — Catalogue <em>· Author + Switzer</em></h2>
+      <p class="panel-meta">Wide editorial sans display over a calm humanist body. Reads like a 1970s machine-tool catalogue cover, modernised.</p>
+    </div>
+  </header>
+
+  <div class="spread">
+    <div>
+      <p class="hero-eyebrow">Onsite training · §02.04</p>
+      <h1 class="display">Close the CNC skills gap on your machines.<span class="small">Independent training on every major control. Onsite, classroom, or programming services — built around your work, not a syllabus.</span></h1>
+      <div class="body-copy">
+        <p>You've got CNC machines that cost more than most people's houses. And the people running them learned from whoever was free on their first day, or from a manual nobody's opened since 2014. Thirty years of training on every major control — Fanuc, Heidenhain, Mazak, Hurco, Brother, sliding head — means the gap closes faster than you'd expect.</p>
+      </div>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="#">Contact David</a>
+        <a class="btn btn-outline" href="#">Browse the Learning Hub</a>
+      </div>
+    </div>
+    <aside class="marginalia">
+      <dl>
+        <dt>Controls</dt><dd>Fanuc · Heidenhain · Siemens · Mazak · Hurco · Brother · Haas · XYZ</dd>
+        <div class="sep"></div>
+        <dt>Format</dt><dd>Onsite · Classroom · Programming</dd>
+        <div class="sep"></div>
+        <dt>Day rate</dt><dd>£700 / day (whole team, not per person)</dd>
+        <div class="sep"></div>
+        <dt>Location</dt><dd>Barwell, Leicestershire — we come to you</dd>
+      </dl>
+    </aside>
+  </div>
+
+  <div class="rule-cap"><span class="tick"></span><span class="line"></span><span>End ¶</span><span class="line"></span><span class="tick"></span></div>
+
+  <div class="refs">
+    <div class="ref"><strong>Display</strong> Author 700</div>
+    <div class="ref"><strong>Body</strong> Switzer 400 / 500</div>
+    <div class="ref"><strong>UI</strong> Switzer 500</div>
+    <div class="ref"><strong>License</strong> Fontshare · free</div>
+  </div>
+</section>
+
+<!-- PAIRING 2 -->
+<section class="panel p2">
+  <header class="panel-head">
+    <div class="panel-num">02</div>
+    <div>
+      <h2 class="panel-name">Pairing 2 — Drawing <em>· Khand + Sentient</em></h2>
+      <p class="panel-meta">Condensed stencil-mechanical sans display over an engineering-rigour serif body. The headings feel like workshop signage; the body reads like a printed technical paper.</p>
+    </div>
+  </header>
+
+  <div class="spread">
+    <div>
+      <p class="hero-eyebrow">Onsite training · §02.04</p>
+      <h1 class="display">Close the CNC skills gap on your machines.<span class="small">Independent training on every major control. Onsite, classroom, or programming services — built around your work, not a syllabus.</span></h1>
+      <div class="body-copy">
+        <p>You've got CNC machines that cost more than most people's houses. And the people running them learned from whoever was free on their first day, or from a manual nobody's opened since 2014. Thirty years of training on every major control — Fanuc, Heidenhain, Mazak, Hurco, Brother, sliding head — means the gap closes faster than you'd expect.</p>
+      </div>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="#">CONTACT DAVID</a>
+        <a class="btn btn-outline" href="#">BROWSE THE LEARNING HUB</a>
+      </div>
+    </div>
+    <aside class="marginalia">
+      <dl>
+        <dt>CONTROLS</dt><dd>Fanuc · Heidenhain · Siemens · Mazak · Hurco · Brother · Haas · XYZ</dd>
+        <div class="sep"></div>
+        <dt>FORMAT</dt><dd>Onsite · Classroom · Programming</dd>
+        <div class="sep"></div>
+        <dt>DAY RATE</dt><dd>£700 / day (whole team, not per person)</dd>
+        <div class="sep"></div>
+        <dt>LOCATION</dt><dd>Barwell, Leicestershire — we come to you</dd>
+      </dl>
+    </aside>
+  </div>
+
+  <div class="rule-cap"><span class="tick"></span><span class="line"></span><span>END ¶</span><span class="line"></span><span class="tick"></span></div>
+
+  <div class="refs">
+    <div class="ref"><strong>Display</strong> Khand 700</div>
+    <div class="ref"><strong>Body</strong> Sentient 400 / 500</div>
+    <div class="ref"><strong>UI</strong> Khand 500</div>
+    <div class="ref"><strong>License</strong> Fontshare · free</div>
+  </div>
+</section>
+
+<!-- PAIRING 3 -->
+<section class="panel p3">
+  <header class="panel-head">
+    <div class="panel-num">03</div>
+    <div>
+      <h2 class="panel-name">Pairing 3 — Spec <em>· Tanker + Synonym</em></h2>
+      <p class="panel-meta">Industrial nameplate display over a geometric humanist body. Heaviest of the three, closest to a machine-tool spec page or a high-end audio brand product page.</p>
+    </div>
+  </header>
+
+  <div class="spread">
+    <div>
+      <p class="hero-eyebrow">Onsite training · §02.04</p>
+      <h1 class="display">Close the CNC skills gap on your machines.<span class="small">Independent training on every major control. Onsite, classroom, or programming services — built around your work, not a syllabus.</span></h1>
+      <div class="body-copy">
+        <p>You've got CNC machines that cost more than most people's houses. And the people running them learned from whoever was free on their first day, or from a manual nobody's opened since 2014. Thirty years of training on every major control — Fanuc, Heidenhain, Mazak, Hurco, Brother, sliding head — means the gap closes faster than you'd expect.</p>
+      </div>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="#">Contact David</a>
+        <a class="btn btn-outline" href="#">Browse the Learning Hub</a>
+      </div>
+    </div>
+    <aside class="marginalia">
+      <dl>
+        <dt>Controls</dt><dd>Fanuc · Heidenhain · Siemens · Mazak · Hurco · Brother · Haas · XYZ</dd>
+        <div class="sep"></div>
+        <dt>Format</dt><dd>Onsite · Classroom · Programming</dd>
+        <div class="sep"></div>
+        <dt>Day rate</dt><dd>£700 / day (whole team, not per person)</dd>
+        <div class="sep"></div>
+        <dt>Location</dt><dd>Barwell, Leicestershire — we come to you</dd>
+      </dl>
+    </aside>
+  </div>
+
+  <div class="rule-cap"><span class="tick"></span><span class="line"></span><span>End ¶</span><span class="line"></span><span class="tick"></span></div>
+
+  <div class="refs">
+    <div class="ref"><strong>Display</strong> Tanker 400</div>
+    <div class="ref"><strong>Body</strong> Synonym 400 / 500</div>
+    <div class="ref"><strong>UI</strong> Synonym 500</div>
+    <div class="ref"><strong>License</strong> Fontshare · free</div>
+  </div>
+</section>
+
+</body>
+</html>

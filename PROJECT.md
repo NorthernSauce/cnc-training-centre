@@ -3,7 +3,9 @@
 **Started:** 2026-05-15 (re-kickoff; original project began earlier in 2026)
 **Design repo:** {TBC — Dave to provide GitHub URL}
 **Local theme path:** to be filled at phase 5 kickoff — e.g. ~/Local Sites/cnc-training-centre/app/public/wp-content/themes/_ns
-**Linear project:** {TBC}
+**Linear project:** https://linear.app/northern-sauce/project/cnc-training-centre-website-ec6281752867
+**Linear phase issues:** NOR-49 Strategy · NOR-50 Brief · NOR-51 Copy · NOR-52 Wireframes · NOR-53 Design · NOR-54 Build · NOR-55 Launch
+**Active Brief sub-issues:** NOR-148 Direction (In Progress) · NOR-149 Tokens · NOR-150 Components · NOR-151 Style guide · NOR-152 DESIGN.md
 
 ## Project intake
 
@@ -22,14 +24,14 @@
 
 ## Current phase
 
-Design Brief (restart)
+Design Brief (restart) → awaiting final sign-off
 
-**Status:** Awaiting kickoff
+**Status:** Needs Review · awaiting-dave
 
 ## Phases
 
 - [x] 1. Strategy
-- [ ] 2. Design Brief
+- [~] 2. Design Brief (Needs Review)
 - [ ] 3. Copy + Wireframes
 - [ ] 4. Design
 - [ ] 5. Build
@@ -39,12 +41,41 @@ Design Brief (restart)
 
 (Newest first.)
 
-### 2026-05-15 — PM → Designer-Copywriter (Design Brief, restart)
+### 2026-05-15 — Designer-Copywriter → PM (Design Brief complete, awaiting Dave sign-off)
 
-**From:** PM
-**To:** ns-website-design-brief
+**From:** ns-website-design-brief
+**To:** PM → Dave
 **Phase:** 2. Design Brief
-**Status:** Dispatched
+**Status:** Needs Review · awaiting-dave
+
+**Artefacts produced:**
+- `PRODUCT.md` — strategic register, voice, anti-refs, principles
+- `.impeccable.md` — Impeccable-format mirror for downstream commands
+- `brief/design-brief.md` — shape output, layout strategy, CTA architecture
+- `brief/references/` — Dave's inspiration drops
+- `brief/tokens.css` — full token set (palette OKLCH, type clamps, spacing 4pt, radius, motion)
+- `brief/components.css` — buttons, tags, marginalia, rule-cap, form-stack, article-row, alerts, lists, pagination, breadcrumb, etc.
+- `brief/tokens-preview.html` — working preview of tokens
+- `brief/components-preview.html` — working preview of components
+- `brief/style-guide.html` — **canonical browseable style guide, 33 sections per `brief-checklist.md`**
+- `DESIGN.md` — Google Stitch 6-section format (Overview / Colors / Typography / Elevation / Components / Do's and Don'ts)
+- `DESIGN.json` — machine-readable sidecar for Phase 4 designer + Phase 5 builder
+
+**Direction locked:** A — The Engineering Manual. Industrial-premium, type-led, photography-light. Asymmetric editorial layouts. Marginalia rail + dimension-callout rule-cap as the two visual signatures.
+
+**Type pair locked:** Tanker (display, Fontshare) + Synonym (body, Fontshare). Both free for commercial use.
+
+**Quality gate:** `/critique` passed at 38/40, zero P0/P1. One detector warning remains (low-contrast) — confirmed false-positive (detector can't parse OKLCH on inverse light-on-dark surfaces).
+
+**Open items flagged for later phases:**
+- Photography (D.23) — no usable people / classroom / teaching assets at sign-off. Workshop fragments planned at launch; David-teaching shoot deferred post-launch.
+- Logo asset (G.29) — existing wordmark to be carried through; asset files (SVG + PNG, on-light + on-dark) to be supplied by client.
+
+**Handoff to Phase 3 (Copy):**
+- Voice direction in `PRODUCT.md` is canonical.
+- CTA architecture in `brief/design-brief.md` § 8 is locked: services push Contact, Hub articles push relevant service, homepage shows both.
+- Tag conventions (brand / control / format / topic / skill-level) in `DESIGN.md` § 5.
+- Microcopy rules + banned phrases in style-guide §F.28.
 
 **Inputs:**
 - `strategy/strategy.md` — full BrandScript, positioning, voice, P-E-A-C-E, narrative, extracted client language, voice samples, tone notes, proof bank

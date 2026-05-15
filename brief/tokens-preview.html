@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tokens preview — CNC Training Centre</title>
+  <link rel="stylesheet" href="tokens.css" />
+  <style>
+    /* ---- Preview chrome only — not part of the production tokens ---- */
+    body { margin: 0; padding: 0; }
+    .wrap { max-width: var(--ns-max-content); margin: 0 auto; padding: var(--ns-pad-block) var(--ns-pad-inline); }
+
+    .meta-head { display: flex; flex-wrap: wrap; gap: var(--ns-space-md); align-items: end; justify-content: space-between; padding-bottom: var(--ns-space-lg); border-bottom: 1px solid var(--ns-color-rule); margin-bottom: var(--ns-space-3xl); }
+    .meta-head h1 { font-family: var(--ns-font-display); font-size: clamp(2.5rem, 1.5rem + 4vw, 5rem); line-height: 0.95; max-width: 12ch; }
+    .meta-head .meta { font-size: var(--ns-text-small); color: var(--ns-color-ink-muted); display: grid; grid-template-columns: max-content 1fr; gap: var(--ns-space-2xs) var(--ns-space-md); max-width: 36ch; }
+    .meta-head .meta dt { font-weight: var(--ns-weight-medium); color: var(--ns-color-ink); text-transform: uppercase; letter-spacing: var(--ns-track-wide); font-size: var(--ns-text-tiny); padding-top: 0.15rem; }
+    .meta-head .meta dd { margin: 0; }
+
+    .section { margin: 0 0 var(--ns-space-5xl); }
+    .section-head { display: grid; grid-template-columns: 4rem 1fr; gap: var(--ns-space-lg); align-items: start; margin-bottom: var(--ns-space-2xl); }
+    .section-num { padding-top: var(--ns-space-xs); border-top: 1px solid var(--ns-color-ink); font-size: var(--ns-text-tiny); letter-spacing: var(--ns-track-wide); text-transform: uppercase; color: var(--ns-color-ink-muted); font-weight: var(--ns-weight-medium); }
+    .section-title { font-family: var(--ns-font-body); font-weight: var(--ns-weight-semibold); font-size: var(--ns-text-large); letter-spacing: 0; margin: 0; }
+    .section-desc { color: var(--ns-color-ink-muted); margin: var(--ns-space-2xs) 0 0; max-width: 60ch; font-size: var(--ns-text-small); }
+
+    /* Palette */
+    .swatch-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--ns-space-md); }
+    .swatch { border: 1px solid var(--ns-color-rule); border-radius: var(--ns-radius-tight); overflow: hidden; background: var(--ns-color-paper); }
+    .swatch-chip { height: 96px; border-bottom: 1px solid var(--ns-color-rule); }
+    .swatch-meta { padding: var(--ns-space-sm) var(--ns-space-md); font-size: var(--ns-text-small); }
+    .swatch-name { font-weight: var(--ns-weight-medium); margin: 0 0 var(--ns-space-2xs); font-family: var(--ns-font-body); }
+    .swatch-token { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: var(--ns-text-tiny); color: var(--ns-color-ink-muted); }
+
+    /* Type scale */
+    .type-row { display: grid; grid-template-columns: 4rem 1fr; gap: var(--ns-space-md); align-items: baseline; padding: var(--ns-space-md) 0; border-bottom: 1px solid var(--ns-color-rule-faint); }
+    .type-row:last-child { border-bottom: 0; }
+    .type-label { font-family: var(--ns-font-body); font-size: var(--ns-text-tiny); letter-spacing: var(--ns-track-wide); text-transform: uppercase; color: var(--ns-color-ink-muted); font-weight: var(--ns-weight-medium); padding-top: 0.5rem; }
+    .type-sample { line-height: 1.05; }
+    .type-row[data-body] .type-sample { line-height: var(--ns-leading-base); font-family: var(--ns-font-body); }
+    .type-spec { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: var(--ns-text-tiny); color: var(--ns-color-ink-muted); margin-top: var(--ns-space-2xs); }
+
+    /* Spacing */
+    .space-row { display: grid; grid-template-columns: 6rem 1fr; gap: var(--ns-space-md); align-items: center; padding: var(--ns-space-xs) 0; }
+    .space-bar { background: var(--ns-color-anchor); height: 14px; }
+    .space-label { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: var(--ns-text-small); color: var(--ns-color-ink-muted); }
+
+    /* Radius */
+    .radius-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: var(--ns-space-md); }
+    .radius-card { padding: var(--ns-space-md); border: 1px solid var(--ns-color-rule); background: var(--ns-color-paper-tint); font-size: var(--ns-text-small); color: var(--ns-color-ink-muted); }
+    .radius-card strong { display: block; color: var(--ns-color-ink); font-weight: var(--ns-weight-medium); margin-bottom: var(--ns-space-2xs); }
+
+    /* Sample hero block — proves the system reads right at scale */
+    .hero { display: grid; grid-template-columns: 1fr; gap: var(--ns-space-2xl); align-items: start; padding: var(--ns-space-3xl) 0; border-top: 1px solid var(--ns-color-ink); border-bottom: 1px solid var(--ns-color-ink); }
+    @media (min-width: 900px) { .hero { grid-template-columns: 1.5fr 1fr; gap: var(--ns-space-4xl); } }
+    .hero-eyebrow { display: inline-flex; align-items: center; gap: var(--ns-space-xs); font-size: var(--ns-text-tiny); letter-spacing: var(--ns-track-extrawide); text-transform: uppercase; color: var(--ns-color-ink-muted); margin: 0 0 var(--ns-space-md); font-family: var(--ns-font-body); font-weight: var(--ns-weight-medium); }
+    .hero-eyebrow::before { content: ""; width: 24px; height: 1px; background: currentColor; }
+    .hero h2 { font-size: var(--ns-heading-h1); line-height: var(--ns-leading-tight); margin: 0 0 var(--ns-space-lg); }
+    .hero-body { max-width: 56ch; color: var(--ns-color-ink); font-size: var(--ns-text-medium); }
+    .marginalia { background: var(--ns-color-paper-tint); padding: var(--ns-space-md); border: 1px solid var(--ns-color-rule); font-size: var(--ns-text-small); }
+    .marginalia dl { margin: 0; display: grid; grid-template-columns: max-content 1fr; gap: var(--ns-space-xs) var(--ns-space-md); }
+    .marginalia dt { font-family: var(--ns-font-body); font-weight: var(--ns-weight-medium); font-size: var(--ns-text-tiny); letter-spacing: var(--ns-track-wide); text-transform: uppercase; color: var(--ns-color-ink); padding-top: 0.1rem; }
+    .marginalia dd { margin: 0; color: var(--ns-color-ink-soft); }
+    .marginalia hr { border: 0; border-top: 1px solid var(--ns-color-rule); margin: var(--ns-space-sm) 0; grid-column: 1 / -1; }
+
+    /* Page section dividers — technical-drawing line work */
+    .rule-cap { display: flex; align-items: center; gap: var(--ns-space-sm); color: var(--ns-color-ink-muted); margin: var(--ns-space-md) 0 0; }
+    .rule-cap .line { flex: 1; height: 1px; background: var(--ns-color-rule); }
+    .rule-cap .tick { width: 6px; height: 6px; border: 1px solid var(--ns-color-ink-muted); border-radius: 50%; }
+    .rule-cap span:not(.line):not(.tick) { font-size: var(--ns-text-tiny); letter-spacing: var(--ns-track-extrawide); text-transform: uppercase; }
+  </style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="meta-head">
+    <div>
+      <h1>Tokens · Engineering Manual</h1>
+    </div>
+    <dl class="meta">
+      <dt>Direction</dt><dd>A — The Engineering Manual</dd>
+      <dt>Display</dt><dd>Tanker 400 · Fontshare</dd>
+      <dt>Body</dt><dd>Synonym 400 / 500 / 600 / 700 · Fontshare</dd>
+      <dt>Theme</dt><dd>Light only · WCAG 2.1 AA</dd>
+      <dt>Stage</dt><dd>2a · Tokens preview</dd>
+    </dl>
+  </header>
+
+  <!-- HERO SAMPLE -->
+  <section class="section">
+    <div class="section-head">
+      <div class="section-num">00</div>
+      <div>
+        <h2 class="section-title">Sample hero at scale</h2>
+        <p class="section-desc">Proves the full token system reads right at hero scale — display headline, eyebrow, body, marginalia, hierarchy. Direction A in action.</p>
+      </div>
+    </div>
+
+    <div class="hero">
+      <div>
+        <p class="hero-eyebrow">Onsite training · §02.04</p>
+        <h2>Close the CNC skills gap on your machines.</h2>
+        <p class="hero-body">Thirty years of training on every major control — Fanuc, Heidenhain, Siemens, Mazak, Hurco, Brother, sliding head. Onsite on your kit, in our classroom on simulators, or as sub-contract programming when you need the work doing rather than the people training.</p>
+        <div class="rule-cap"><span class="tick"></span><span class="line"></span><span>End ¶</span><span class="line"></span><span class="tick"></span></div>
+      </div>
+      <aside class="marginalia">
+        <dl>
+          <dt>Controls</dt><dd>Fanuc · Heidenhain · Siemens · Mazak · Hurco · Brother · Haas · XYZ</dd>
+          <hr />
+          <dt>Format</dt><dd>Onsite · Classroom · Programming</dd>
+          <hr />
+          <dt>Day rate</dt><dd>£700 / day · whole team, not per person</dd>
+          <hr />
+          <dt>Location</dt><dd>Barwell, Leicestershire — we come to you</dd>
+        </dl>
+      </aside>
+    </div>
+  </section>
+
+  <!-- PALETTE -->
+  <section class="section">
+    <div class="section-head">
+      <div class="section-num">01</div>
+      <div>
+        <h2 class="section-title">Palette</h2>
+        <p class="section-desc">OKLCH throughout. Cool-tinted neutrals (hue 250, toward brand-blue) read precise, not cozy. Brand-blue refined for confidence without garishness. Green reserved for video tags only.</p>
+      </div>
+    </div>
+
+    <h3 style="font-family:var(--ns-font-body);font-weight:var(--ns-weight-medium);font-size:var(--ns-text-medium);text-transform:uppercase;letter-spacing:var(--ns-track-wide);color:var(--ns-color-ink-muted);margin:0 0 var(--ns-space-md);">Surfaces — paper</h3>
+    <div class="swatch-grid" style="margin-bottom:var(--ns-space-2xl);">
+      <div class="swatch"><div class="swatch-chip" style="background:var(--ns-color-paper)"></div><div class="swatch-meta"><p class="swatch-name">Paper</p><p class="swatch-token">--ns-color-paper · oklch(98% 0.005 250)</p></div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:var(--ns-color-paper-tint)"></div><div class="swatch-meta"><p class="swatch-name">Paper Tint</p><p class="swatch-token">--ns-color-paper-tint · oklch(96% 0.010 250)</p></div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:var(--ns-color-paper-deep)"></div><div class="swatch-meta"><p class="swatch-name">Paper Deep</p><p class="swatch-token">--ns-color-paper-deep · oklch(93% 0.015 250)</p></div></div>
+    </div>
+
+    <h3 style="font-family:var(--ns-font-body);font-weight:var(--ns-weight-medium);font-size:var(--ns-text-medium);text-transform:uppercase;letter-spacing:var(--ns-track-wide);color:var(--ns-color-ink-muted);margin:0 0 var(--ns-space-md);">Surfaces — anchor (deep)</h3>
+    <div class="swatch-grid" style="margin-bottom:var(--ns-space-2xl);">
+      <div class="swatch"><div class="swatch-chip" style="background:var(--ns-color-anchor)"></div><div class="swatch-meta"><p class="swatch-name">Anchor</p><p class="swatch-token">--ns-color-anchor · oklch(22% 0.030 250)</p></div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:var(--ns-color-anchor-soft)"></div><div class="swatch-meta"><p class="swatch-name">Anchor Soft</p><p class="swatch-token">--ns-color-anchor-soft · oklch(28% 0.030 250)</p></div></div>
+    </div>
+
+    <h3 style="font-family:var(--ns-font-body);font-weight:var(--ns-weight-medium);font-size:var(--ns-text-medium);text-transform:uppercase;letter-spacing:var(--ns-track-wide);color:var(--ns-color-ink-muted);margin:0 0 var(--ns-space-md);">Type colours</h3>
+    <div class="swatch-grid" style="margin-bottom:var(--ns-space-2xl);">
+      <div class="swatch"><div class="swatch-chip" style="background:var(--ns-color-ink)"></div><div class="swatch-meta"><p class="swatch-name" style="color:var(--ns-color-ink)">Ink</p><p class="swatch-token">--ns-color-ink · oklch(20% 0.025 250)</p></div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:var(--ns-color-ink-soft)"></div><div class="swatch-meta"><p class="swatch-name">Ink Soft</p><p class="swatch-token">--ns-color-ink-soft · oklch(38% 0.020 250)</p></div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:var(--ns-color-ink-muted)"></div><div class="swatch-meta"><p class="swatch-name">Ink Muted</p><p class="swatch-token">--ns-color-ink-muted · oklch(55% 0.015 250)</p></div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:var(--ns-color-ink-faint)"></div><div class="swatch-meta"><p class="swatch-name">Ink Faint</p><p class="swatch-token">--ns-color-ink-faint · oklch(70% 0.012 250)</p></div></div>
+    </div>
+
+    <h3 style="font-family:var(--ns-font-body);font-weight:var(--ns-weight-medium);font-size:var(--ns-text-medium);text-transform:uppercase;letter-spacing:var(--ns-track-wide);color:var(--ns-color-ink-muted);margin:0 0 var(--ns-space-md);">Rules / borders</h3>
+    <div class="swatch-grid" style="margin-bottom:var(--ns-space-2xl);">
+      <div class="swatch"><div class="swatch-chip" style="background:var(--ns-color-rule-faint)"></div><div class="swatch-meta"><p class="swatch-name">Rule Faint</p><p class="swatch-token">--ns-color-rule-faint</p></div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:var(--ns-color-rule)"></div><div class="swatch-meta"><p class="swatch-name">Rule</p><p class="swatch-token">--ns-color-rule · oklch(88% 0.012 250)</p></div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:var(--ns-color-rule-strong)"></div><div class="swatch-meta"><p class="swatch-name">Rule Strong</p><p class="swatch-token">--ns-color-rule-strong · oklch(75% 0.018 250)</p></div></div>
+    </div>
+
+    <h3 style="font-family:var(--ns-font-body);font-weight:var(--ns-weight-medium);font-size:var(--ns-text-medium);text-transform:uppercase;letter-spacing:var(--ns-track-wide);color:var(--ns-color-ink-muted);margin:0 0 var(--ns-space-md);">Brand primary — refined CNC blue</h3>
+    <div class="swatch-grid" style="margin-bottom:var(--ns-space-2xl);">
+      <div class="swatch"><div class="swatch-chip" style="background:var(--ns-color-primary)"></div><div class="swatch-meta"><p class="swatch-name">Primary</p><p class="swatch-token">--ns-color-primary · oklch(48% 0.16 250)</p></div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:var(--ns-color-primary-hover)"></div><div class="swatch-meta"><p class="swatch-name">Primary Hover</p><p class="swatch-token">--ns-color-primary-hover · oklch(42% 0.18 250)</p></div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:var(--ns-color-primary-active)"></div><div class="swatch-meta"><p class="swatch-name">Primary Active</p><p class="swatch-token">--ns-color-primary-active · oklch(36% 0.18 250)</p></div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:var(--ns-color-primary-soft)"></div><div class="swatch-meta"><p class="swatch-name">Primary Soft</p><p class="swatch-token">--ns-color-primary-soft · oklch(94% 0.04 250)</p></div></div>
+    </div>
+
+    <h3 style="font-family:var(--ns-font-body);font-weight:var(--ns-weight-medium);font-size:var(--ns-text-medium);text-transform:uppercase;letter-spacing:var(--ns-track-wide);color:var(--ns-color-ink-muted);margin:0 0 var(--ns-space-md);">Mark + video</h3>
+    <div class="swatch-grid">
+      <div class="swatch"><div class="swatch-chip" style="background:var(--ns-color-mark)"></div><div class="swatch-meta"><p class="swatch-name">Mark</p><p class="swatch-token">--ns-color-mark · warm marginalia tint</p></div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:var(--ns-color-video)"></div><div class="swatch-meta"><p class="swatch-name">Video (tag only)</p><p class="swatch-token">--ns-color-video · oklch(58% 0.14 155)</p></div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:var(--ns-color-video-soft)"></div><div class="swatch-meta"><p class="swatch-name">Video Soft (tag bg)</p><p class="swatch-token">--ns-color-video-soft</p></div></div>
+    </div>
+  </section>
+
+  <!-- TYPE SCALE -->
+  <section class="section">
+    <div class="section-head">
+      <div class="section-num">02</div>
+      <div>
+        <h2 class="section-title">Type scale</h2>
+        <p class="section-desc">Display in <strong>Tanker</strong> (industrial-nameplate weight). Body + UI in <strong>Synonym</strong> (geometric humanist). Headings clamp 375 → 1440 px viewports. Body sizes step 12 / 14 / 16 / 18 / 20 px.</p>
+      </div>
+    </div>
+
+    <div class="type-row"><div class="type-label">H1</div><div><div class="type-sample" style="font-size:var(--ns-heading-h1)">Close the CNC skills gap.</div><div class="type-spec">Tanker 400 · clamp(2.25rem → 4rem) · 36 → 64 px</div></div></div>
+    <div class="type-row"><div class="type-label">H2</div><div><div class="type-sample" style="font-size:var(--ns-heading-h2)">Built around your work, not a syllabus.</div><div class="type-spec">Tanker 400 · clamp(1.75rem → 3rem) · 28 → 48 px</div></div></div>
+    <div class="type-row"><div class="type-label">H3</div><div><div class="type-sample" style="font-size:var(--ns-heading-h3)">Onsite, classroom, or programming services.</div><div class="type-spec">Tanker 400 · clamp(1.5rem → 2rem) · 24 → 32 px</div></div></div>
+    <div class="type-row" data-body><div class="type-label">H4</div><div><div class="type-sample" style="font-size:var(--ns-heading-h4);font-weight:600">Who this is for</div><div class="type-spec">Synonym 600 · clamp(1.25rem → 1.5rem) · 20 → 24 px</div></div></div>
+    <div class="type-row" data-body><div class="type-label">H5</div><div><div class="type-sample" style="font-size:var(--ns-heading-h5);font-weight:600">What's included</div><div class="type-spec">Synonym 600 · clamp(1.125rem → 1.25rem) · 18 → 20 px</div></div></div>
+    <div class="type-row" data-body><div class="type-label">H6</div><div><div class="type-sample" style="font-size:var(--ns-heading-h6);font-weight:500;text-transform:uppercase;letter-spacing:var(--ns-track-wide)">Section eyebrow</div><div class="type-spec">Synonym 500 · uppercase · clamp(1rem → 1.125rem) · 16 → 18 px</div></div></div>
+
+    <div class="type-row" data-body style="margin-top:var(--ns-space-2xl)"><div class="type-label">Lg</div><div><div class="type-sample" style="font-size:var(--ns-text-large)">The site reads as a thoughtful engineering reference book reinterpreted for the web. Technical-drawing motifs do load-bearing visual work.</div><div class="type-spec">Synonym 400 · clamp(1.125rem → 1.25rem) · 18 → 20 px · for lead paragraphs</div></div></div>
+    <div class="type-row" data-body><div class="type-label">Md</div><div><div class="type-sample" style="font-size:var(--ns-text-medium)">Thirty years of training on every major control — Fanuc, Heidenhain, Siemens, Mazak, Hurco, Brother, sliding head.</div><div class="type-spec">Synonym 400 · clamp(1rem → 1.125rem) · 16 → 18 px · for body emphasis</div></div></div>
+    <div class="type-row" data-body><div class="type-label">Body</div><div><div class="type-sample" style="font-size:var(--ns-text-regular)">You've got CNC machines that cost more than most people's houses. And the people running them learned from whoever was free on their first day, or from a manual nobody's opened since 2014.</div><div class="type-spec">Synonym 400 · 1rem · 16 px · default body</div></div></div>
+    <div class="type-row" data-body><div class="type-label">Sm</div><div><div class="type-sample" style="font-size:var(--ns-text-small)">A 6 min read on Fanuc G73 peck-drilling cycles, with worked examples.</div><div class="type-spec">Synonym 400 · 0.875rem · 14 px · meta, captions, UI</div></div></div>
+    <div class="type-row" data-body><div class="type-label">Xs</div><div><div class="type-sample" style="font-size:var(--ns-text-tiny);letter-spacing:var(--ns-track-wide);text-transform:uppercase;color:var(--ns-color-ink-muted)">Article · 6 min · Fanuc · Tutorial</div><div class="type-spec">Synonym 500 · 0.75rem · 12 px · uppercase · tags, eyebrows</div></div></div>
+  </section>
+
+  <!-- SPACING -->
+  <section class="section">
+    <div class="section-head">
+      <div class="section-num">03</div>
+      <div>
+        <h2 class="section-title">Spacing scale</h2>
+        <p class="section-desc">4 pt scale, semantic names. Use <code>gap</code> for sibling spacing; never margin. Section blocks use <code>--ns-pad-block</code> for fluid section padding.</p>
+      </div>
+    </div>
+
+    <div class="space-row"><div class="space-bar" style="width:4px"></div><div><div style="font-weight:500">2XS · 4 px · 0.25 rem</div><div class="space-label">--ns-space-2xs · component-internal nudge</div></div></div>
+    <div class="space-row"><div class="space-bar" style="width:8px"></div><div><div style="font-weight:500">XS · 8 px · 0.5 rem</div><div class="space-label">--ns-space-xs · tag padding, button gap</div></div></div>
+    <div class="space-row"><div class="space-bar" style="width:12px"></div><div><div style="font-weight:500">SM · 12 px · 0.75 rem</div><div class="space-label">--ns-space-sm · small component gaps</div></div></div>
+    <div class="space-row"><div class="space-bar" style="width:16px"></div><div><div style="font-weight:500">MD · 16 px · 1 rem</div><div class="space-label">--ns-space-md · default sibling gap</div></div></div>
+    <div class="space-row"><div class="space-bar" style="width:24px"></div><div><div style="font-weight:500">LG · 24 px · 1.5 rem</div><div class="space-label">--ns-space-lg · paragraph spacing</div></div></div>
+    <div class="space-row"><div class="space-bar" style="width:32px"></div><div><div style="font-weight:500">XL · 32 px · 2 rem</div><div class="space-label">--ns-space-xl · subsection gap</div></div></div>
+    <div class="space-row"><div class="space-bar" style="width:48px"></div><div><div style="font-weight:500">2XL · 48 px · 3 rem</div><div class="space-label">--ns-space-2xl · section gap</div></div></div>
+    <div class="space-row"><div class="space-bar" style="width:64px"></div><div><div style="font-weight:500">3XL · 64 px · 4 rem</div><div class="space-label">--ns-space-3xl · major section gap</div></div></div>
+    <div class="space-row"><div class="space-bar" style="width:96px"></div><div><div style="font-weight:500">4XL · 96 px · 6 rem</div><div class="space-label">--ns-space-4xl · page-block gap</div></div></div>
+    <div class="space-row"><div class="space-bar" style="width:128px"></div><div><div style="font-weight:500">5XL · 128 px · 8 rem</div><div class="space-label">--ns-space-5xl · section-break on long pages</div></div></div>
+  </section>
+
+  <!-- RADIUS -->
+  <section class="section">
+    <div class="section-head">
+      <div class="section-num">04</div>
+      <div>
+        <h2 class="section-title">Radius</h2>
+        <p class="section-desc">Engineering-precise — small radii only. Tags use the pill radius; everything else stays sharp.</p>
+      </div>
+    </div>
+
+    <div class="radius-grid">
+      <div class="radius-card" style="border-radius:var(--ns-radius-none)"><strong>None · 0</strong>buttons, callouts, headers</div>
+      <div class="radius-card" style="border-radius:var(--ns-radius-tight)"><strong>Tight · 2 px</strong>cards, panels, inputs</div>
+      <div class="radius-card" style="border-radius:var(--ns-radius-soft)"><strong>Soft · 4 px</strong>occasional softening, badges</div>
+      <div class="radius-card" style="border-radius:var(--ns-radius-pill)"><strong>Pill · 999 px</strong>tags + filter chips only</div>
+    </div>
+  </section>
+
+</div>
+
+</body>
+</html>

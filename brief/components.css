@@ -1,0 +1,685 @@
+/* CNC Training Centre — components
+ * Built on tokens.css. All values via CSS variables.
+ * Direction: A — The Engineering Manual.
+ *
+ * Naming follows the NS theme-contract: text classes, btn-* utilities,
+ * and the engineering-manual specific patterns (marginalia, rule-cap, eyebrow).
+ *
+ * Ships verbatim into the _ns WordPress theme at phase 5.
+ */
+
+/* ============================================
+ * TEXT CLASSES — match theme-contract.md exactly.
+ * Heading sizes come from tokens.css automatically.
+ * ============================================ */
+
+.text-large    { font-size: var(--ns-text-large);   line-height: var(--ns-leading-base); }
+.text-medium   { font-size: var(--ns-text-medium);  line-height: var(--ns-leading-base); }
+.text-regular  { font-size: var(--ns-text-regular); line-height: var(--ns-leading-base); }
+.text-small    { font-size: var(--ns-text-small);   line-height: var(--ns-leading-base); }
+.text-tiny     { font-size: var(--ns-text-tiny);    line-height: var(--ns-leading-base); }
+
+
+/* ============================================
+ * TAGLINE — section eyebrow, 16 px small-caps.
+ * Used above key section headings.
+ * ============================================ */
+
+.tagline {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-regular);
+  font-weight: var(--ns-weight-medium);
+  letter-spacing: var(--ns-track-extrawide);
+  text-transform: uppercase;
+  color: var(--ns-color-ink-muted);
+  margin: 0 0 var(--ns-space-md);
+}
+
+
+/* ============================================
+ * EYEBROW — smaller section pre-header with leading rule mark.
+ * The engineering-drawing "callout" pattern.
+ * ============================================ */
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ns-space-xs);
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  font-weight: var(--ns-weight-medium);
+  letter-spacing: var(--ns-track-extrawide);
+  text-transform: uppercase;
+  color: var(--ns-color-ink-muted);
+  margin: 0 0 var(--ns-space-md);
+}
+.eyebrow::before {
+  content: "";
+  width: 24px;
+  height: 1px;
+  background: currentColor;
+}
+.eyebrow-num {
+  color: var(--ns-color-ink);
+  font-weight: var(--ns-weight-medium);
+}
+
+
+/* ============================================
+ * BUTTONS — rectangular, tight radius, directional affordance.
+ * Three classes only: btn-primary, btn-secondary, btn-outline.
+ * NEVER write button styles inline.
+ * ============================================ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ns-space-xs);
+  padding: 0.7rem 1.1rem;
+  min-height: 44px;
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-small);
+  font-weight: var(--ns-weight-medium);
+  line-height: 1;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  border-radius: var(--ns-radius-tight);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition:
+    background var(--ns-dur-fast) var(--ns-ease-out),
+    color var(--ns-dur-fast) var(--ns-ease-out),
+    border-color var(--ns-dur-fast) var(--ns-ease-out),
+    transform var(--ns-dur-fast) var(--ns-ease-out);
+  white-space: nowrap;
+}
+.btn::after {
+  content: "→";
+  font-size: 1em;
+  transition: transform var(--ns-dur-base) var(--ns-ease-out);
+}
+.btn:hover::after { transform: translateX(2px); }
+.btn:focus-visible {
+  outline: 2px solid var(--ns-color-focus);
+  outline-offset: 2px;
+}
+.btn:active { transform: translateY(1px); }
+
+/* PRIMARY — high-contrast anchor on paper */
+.btn-primary {
+  background: var(--ns-color-ink);
+  color: var(--ns-color-ink-inverse);
+  border-color: var(--ns-color-ink);
+}
+.btn-primary:hover {
+  background: var(--ns-color-anchor);
+  border-color: var(--ns-color-anchor);
+}
+
+/* SECONDARY — refined brand-blue */
+.btn-secondary {
+  background: var(--ns-color-primary);
+  color: var(--ns-color-ink-inverse);
+  border-color: var(--ns-color-primary);
+}
+.btn-secondary:hover {
+  background: var(--ns-color-primary-hover);
+  border-color: var(--ns-color-primary-hover);
+}
+
+/* OUTLINE — minimal weight, secondary action */
+.btn-outline {
+  background: transparent;
+  color: var(--ns-color-ink);
+  border-color: var(--ns-color-ink);
+}
+.btn-outline:hover {
+  background: var(--ns-color-ink);
+  color: var(--ns-color-ink-inverse);
+}
+
+/* Size variant */
+.btn-sm { padding: 0.5rem 0.8rem; font-size: var(--ns-text-tiny); min-height: 36px; }
+.btn-lg { padding: 0.9rem 1.4rem; font-size: var(--ns-text-regular); min-height: 52px; }
+
+/* No-arrow variant for buttons that aren't forward-moving (e.g. download, copy) */
+.btn-flat::after { display: none; }
+
+/* Button disabled */
+.btn[disabled],
+.btn[aria-disabled="true"] {
+  opacity: var(--ns-opacity-disabled);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+
+/* ============================================
+ * LINKS — restrained underline-on-hover.
+ * In long-form, links carry a custom underline offset.
+ * ============================================ */
+
+a {
+  color: var(--ns-color-primary);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in oklab, var(--ns-color-primary) 35%, transparent);
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: 1px;
+  transition: text-decoration-color var(--ns-dur-fast) var(--ns-ease-out);
+}
+a:hover {
+  text-decoration-color: var(--ns-color-primary);
+}
+a:focus-visible {
+  outline: 2px solid var(--ns-color-focus);
+  outline-offset: 2px;
+  border-radius: var(--ns-radius-tight);
+}
+
+/* Inline link that has the arrow affordance — used for "Read on" cross-links */
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ns-space-2xs);
+  text-decoration: none;
+  font-weight: var(--ns-weight-medium);
+}
+.link-arrow::after {
+  content: "→";
+  transition: transform var(--ns-dur-base) var(--ns-ease-out);
+}
+.link-arrow:hover::after { transform: translateX(2px); }
+
+
+/* ============================================
+ * TAGS — intrinsic-width chips. Brand-blue default,
+ * green variant for video content tags only.
+ * Tags use the pill radius — the ONLY thing in the system that does.
+ * ============================================ */
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ns-space-2xs);
+  padding: 0.25rem 0.65rem;
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  font-weight: var(--ns-weight-medium);
+  letter-spacing: var(--ns-track-wide);
+  text-transform: uppercase;
+  line-height: 1.6;
+  border-radius: var(--ns-radius-pill);
+  background: var(--ns-color-primary-soft);
+  color: var(--ns-color-primary-active);
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: background var(--ns-dur-fast) var(--ns-ease-out), color var(--ns-dur-fast) var(--ns-ease-out);
+}
+.tag:hover {
+  background: var(--ns-color-primary);
+  color: var(--ns-color-ink-inverse);
+}
+.tag.is-active {
+  background: var(--ns-color-ink);
+  color: var(--ns-color-ink-inverse);
+}
+
+/* Video-content variant (the ONLY use of green in the system) */
+.tag-video {
+  background: var(--ns-color-video-soft);
+  color: color-mix(in oklab, var(--ns-color-video) 80%, var(--ns-color-ink));
+}
+.tag-video:hover {
+  background: var(--ns-color-video);
+  color: var(--ns-color-ink-inverse);
+}
+
+/* Neutral tag — for meta like "6 min read" */
+.tag-meta {
+  background: transparent;
+  color: var(--ns-color-ink-muted);
+  border-color: var(--ns-color-rule);
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: var(--ns-weight-regular);
+}
+
+
+/* ============================================
+ * RULE-CAP — technical-drawing section divider.
+ * Direction-A signature pattern. Sparing use.
+ * ============================================ */
+
+.rule-cap {
+  display: flex;
+  align-items: center;
+  gap: var(--ns-space-sm);
+  color: var(--ns-color-ink-muted);
+  margin: var(--ns-space-md) 0 0;
+}
+.rule-cap .line {
+  flex: 1;
+  height: 1px;
+  background: var(--ns-color-rule);
+}
+.rule-cap .tick {
+  width: 6px;
+  height: 6px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.rule-cap .label {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  font-weight: var(--ns-weight-medium);
+  letter-spacing: var(--ns-track-extrawide);
+  text-transform: uppercase;
+}
+
+
+/* ============================================
+ * MARGINALIA — sidebar callout for specs, controls,
+ * quick facts. The other Direction-A signature pattern.
+ * ============================================ */
+
+.marginalia {
+  background: var(--ns-color-paper-tint);
+  border: 1px solid var(--ns-color-rule);
+  padding: var(--ns-space-md) var(--ns-space-md) var(--ns-space-md);
+  border-radius: var(--ns-radius-tight);
+  font-size: var(--ns-text-small);
+  align-self: start;
+}
+.marginalia-head {
+  display: flex;
+  align-items: center;
+  gap: var(--ns-space-xs);
+  padding-bottom: var(--ns-space-sm);
+  border-bottom: 1px solid var(--ns-color-rule);
+  margin-bottom: var(--ns-space-sm);
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  font-weight: var(--ns-weight-medium);
+  letter-spacing: var(--ns-track-extrawide);
+  text-transform: uppercase;
+  color: var(--ns-color-ink-muted);
+}
+.marginalia dl {
+  margin: 0;
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: var(--ns-space-xs) var(--ns-space-md);
+}
+.marginalia dt {
+  font-family: var(--ns-font-body);
+  font-weight: var(--ns-weight-medium);
+  font-size: var(--ns-text-tiny);
+  letter-spacing: var(--ns-track-wide);
+  text-transform: uppercase;
+  color: var(--ns-color-ink);
+  padding-top: 0.15rem;
+}
+.marginalia dd {
+  margin: 0;
+  color: var(--ns-color-ink-soft);
+}
+.marginalia hr {
+  border: 0;
+  border-top: 1px solid var(--ns-color-rule);
+  margin: var(--ns-space-sm) 0;
+  grid-column: 1 / -1;
+}
+
+
+/* ============================================
+ * CARDS — used sparingly. Direction A favours
+ * type + rule + whitespace over containerised cards.
+ * ============================================ */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ns-space-md);
+  padding: var(--ns-space-lg);
+  background: var(--ns-color-paper);
+  border: 1px solid var(--ns-color-rule);
+  border-radius: var(--ns-radius-tight);
+  color: var(--ns-color-ink);
+  text-decoration: none;
+  transition:
+    border-color var(--ns-dur-fast) var(--ns-ease-out),
+    transform var(--ns-dur-base) var(--ns-ease-out);
+}
+.card,
+.card * { text-decoration: none; }
+.card .link-arrow { color: var(--ns-color-primary); font-weight: var(--ns-weight-medium); }
+.card:hover .card-title { text-decoration: underline; text-decoration-color: var(--ns-color-ink); text-underline-offset: 0.18em; }
+.card:hover {
+  border-color: var(--ns-color-ink);
+  transform: translateY(-1px);
+}
+.card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ns-space-xs);
+  font-size: var(--ns-text-tiny);
+  color: var(--ns-color-ink-muted);
+}
+.card-title {
+  font-family: var(--ns-font-display);
+  font-size: var(--ns-heading-h4);
+  line-height: var(--ns-leading-snug);
+  margin: 0;
+  color: var(--ns-color-ink);
+}
+.card-excerpt {
+  font-size: var(--ns-text-small);
+  color: var(--ns-color-ink-soft);
+  margin: 0;
+}
+
+/* Article-row pattern — for Hub listings. Replaces card grids for long lists. */
+.article-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ns-space-sm);
+  padding: var(--ns-space-lg) 0;
+  border-bottom: 1px solid var(--ns-color-rule);
+  text-decoration: none;
+  color: var(--ns-color-ink);
+}
+@media (min-width: 700px) {
+  .article-row { grid-template-columns: max-content 1fr max-content; gap: var(--ns-space-lg); align-items: start; }
+}
+.article-row:hover .article-row-title { text-decoration-color: var(--ns-color-ink); }
+.article-row-num {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: var(--ns-text-tiny);
+  color: var(--ns-color-ink-muted);
+  letter-spacing: 0.04em;
+  padding-top: 0.4rem;
+}
+.article-row-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ns-space-sm);
+}
+.article-row-title {
+  font-family: var(--ns-font-body);
+  font-weight: var(--ns-weight-semibold);
+  font-size: var(--ns-text-medium);
+  line-height: var(--ns-leading-snug);
+  margin: 0;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 0.18em;
+  transition: text-decoration-color var(--ns-dur-fast) var(--ns-ease-out);
+}
+.article-row-meta {
+  font-size: var(--ns-text-tiny);
+  color: var(--ns-color-ink-muted);
+  display: flex;
+  gap: var(--ns-space-xs);
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+
+/* ============================================
+ * FORM — Fluent Forms baseline. Submit button
+ * needs !important to beat plugin inline styles
+ * (per NS CLAUDE.md rule).
+ * ============================================ */
+
+/* Form layout — prominent panel. Direction-A treatment: bold top rule,
+ * generous vertical padding, paper-deep surface, section-num header.
+ * No side container — opens and closes with rules like a workshop drawing block.
+ */
+.form-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ns-space-xl);
+  max-width: 44rem;
+  padding: var(--ns-space-2xl) var(--ns-space-xl);
+  background: var(--ns-color-paper-deep);
+  border-top: 2px solid var(--ns-color-ink);
+  border-bottom: 1px solid var(--ns-color-rule-strong);
+}
+.form-stack .form-grid-2 { gap: var(--ns-space-lg); }
+.form-field { display: flex; flex-direction: column; gap: var(--ns-space-xs); }
+.form-field + .form-field { margin-top: 0; }
+
+/* Header strip for the form — section-num + tagline pattern */
+.form-head {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: var(--ns-space-md);
+  align-items: baseline;
+  padding-bottom: var(--ns-space-lg);
+  border-bottom: 1px solid var(--ns-color-rule);
+  margin-bottom: var(--ns-space-xs);
+}
+.form-head .num {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  font-weight: var(--ns-weight-medium);
+  letter-spacing: var(--ns-track-extrawide);
+  text-transform: uppercase;
+  color: var(--ns-color-ink-muted);
+}
+.form-head .title {
+  font-family: var(--ns-font-display);
+  font-size: var(--ns-heading-h3);
+  line-height: var(--ns-leading-snug);
+  margin: 0;
+  color: var(--ns-color-ink);
+}
+.form-head .sub {
+  grid-column: 2;
+  font-size: var(--ns-text-small);
+  color: var(--ns-color-ink-soft);
+  margin: var(--ns-space-2xs) 0 0;
+}
+
+/* Bolder label treatment for the prominent form */
+.form-stack .form-label {
+  font-size: var(--ns-text-small);
+  letter-spacing: var(--ns-track-extrawide);
+  color: var(--ns-color-ink);
+  font-weight: var(--ns-weight-semibold);
+}
+
+/* Inputs gain a touch more height + a stronger default border for prominence */
+.form-stack .form-input,
+.form-stack .form-textarea,
+.form-stack .form-select {
+  padding: 0.85rem 0.95rem;
+  background: var(--ns-color-paper);
+  border-color: var(--ns-color-rule-strong);
+}
+.form-stack .form-textarea { min-height: 10rem; }
+
+.form-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--ns-space-md);
+  flex-wrap: wrap;
+  padding-top: var(--ns-space-sm);
+  border-top: 1px solid var(--ns-color-rule);
+}
+.form-actions .form-hint { margin: 0; }
+.form-label {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  font-weight: var(--ns-weight-medium);
+  letter-spacing: var(--ns-track-wide);
+  text-transform: uppercase;
+  color: var(--ns-color-ink);
+}
+.form-hint {
+  font-size: var(--ns-text-tiny);
+  color: var(--ns-color-ink-muted);
+  margin-top: var(--ns-space-2xs);
+}
+
+.form-input,
+.form-textarea,
+.form-select {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-regular);
+  line-height: var(--ns-leading-base);
+  color: var(--ns-color-ink);
+  background: var(--ns-color-paper);
+  border: 1px solid var(--ns-color-rule);
+  border-radius: var(--ns-radius-tight);
+  padding: 0.65rem 0.85rem;
+  width: 100%;
+  transition: border-color var(--ns-dur-fast) var(--ns-ease-out), background var(--ns-dur-fast) var(--ns-ease-out);
+}
+.form-input::placeholder,
+.form-textarea::placeholder { color: var(--ns-color-ink-faint); }
+.form-input:focus-visible,
+.form-textarea:focus-visible,
+.form-select:focus-visible {
+  outline: none;
+  border-color: var(--ns-color-focus);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--ns-color-focus) 18%, transparent);
+}
+.form-textarea { resize: vertical; min-height: 8rem; }
+.form-input[aria-invalid="true"] { border-color: var(--ns-color-danger); }
+
+/* Fluent Forms submit button — !important wins over plugin inline */
+.frm-fluent-form button[type="submit"],
+.form-submit {
+  background: var(--ns-color-ink) !important;
+  color: var(--ns-color-ink-inverse) !important;
+  border: 1px solid var(--ns-color-ink) !important;
+  border-radius: var(--ns-radius-tight) !important;
+  padding: 0.7rem 1.1rem !important;
+  font-family: var(--ns-font-body) !important;
+  font-size: var(--ns-text-small) !important;
+  font-weight: var(--ns-weight-medium) !important;
+}
+.frm-fluent-form button[type="submit"]:hover,
+.form-submit:hover {
+  background: var(--ns-color-anchor) !important;
+}
+
+
+/* ============================================
+ * NAV LINK — used in horizontal nav bar
+ * ============================================ */
+
+.nav-link {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-small);
+  font-weight: var(--ns-weight-medium);
+  color: var(--ns-color-ink);
+  text-decoration: none;
+  padding: var(--ns-space-xs) var(--ns-space-sm);
+  position: relative;
+  transition: color var(--ns-dur-fast) var(--ns-ease-out);
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: var(--ns-space-sm);
+  right: var(--ns-space-sm);
+  bottom: 2px;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--ns-dur-base) var(--ns-ease-out);
+}
+.nav-link:hover::after,
+.nav-link[aria-current="page"]::after { transform: scaleX(1); }
+
+
+/* ============================================
+ * SECTION-NUM — header pattern that opens
+ * every major section (Direction-A signature).
+ * ============================================ */
+
+.section-head {
+  display: grid;
+  grid-template-columns: 4rem 1fr;
+  gap: var(--ns-space-lg);
+  align-items: start;
+  margin-bottom: var(--ns-space-2xl);
+}
+.section-num {
+  padding-top: var(--ns-space-xs);
+  border-top: 1px solid var(--ns-color-ink);
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  font-weight: var(--ns-weight-medium);
+  letter-spacing: var(--ns-track-extrawide);
+  text-transform: uppercase;
+  color: var(--ns-color-ink-muted);
+}
+.section-title {
+  font-family: var(--ns-font-display);
+  font-size: var(--ns-heading-h2);
+  line-height: var(--ns-leading-tight);
+  margin: 0;
+}
+
+
+/* ============================================
+ * 404 / EMPTY STATES — neutral chrome.
+ * Voice in long-form only — chrome stays clean.
+ * ============================================ */
+
+.state-blank {
+  text-align: left;
+  padding: var(--ns-space-3xl) 0;
+  max-width: 56ch;
+}
+.state-blank-eyebrow {
+  font-size: var(--ns-text-tiny);
+  letter-spacing: var(--ns-track-extrawide);
+  text-transform: uppercase;
+  color: var(--ns-color-ink-muted);
+  font-weight: var(--ns-weight-medium);
+  margin: 0 0 var(--ns-space-md);
+}
+.state-blank-title {
+  font-family: var(--ns-font-display);
+  font-size: var(--ns-heading-h2);
+  line-height: var(--ns-leading-tight);
+  margin: 0 0 var(--ns-space-md);
+}
+.state-blank-body {
+  color: var(--ns-color-ink-soft);
+  margin: 0 0 var(--ns-space-lg);
+}
+.state-blank-actions { display: flex; gap: var(--ns-space-sm); flex-wrap: wrap; }
+
+
+/* ============================================
+ * UTILITY — pull-quote, hr, prose container
+ * ============================================ */
+
+.prose { max-width: var(--ns-max-prose); line-height: var(--ns-leading-relaxed); }
+.prose > p + p { margin-top: 1em; }
+.prose strong { font-weight: var(--ns-weight-semibold); }
+
+.pull-quote {
+  font-family: var(--ns-font-display);
+  font-size: var(--ns-heading-h3);
+  line-height: var(--ns-leading-snug);
+  letter-spacing: var(--ns-track-tight);
+  color: var(--ns-color-ink);
+  padding: var(--ns-space-lg) 0 var(--ns-space-lg) var(--ns-space-lg);
+  border-left: 1px solid var(--ns-color-ink);
+  margin: var(--ns-space-xl) 0;
+  max-width: 48ch;
+}
+
+.divider {
+  border: 0;
+  border-top: 1px solid var(--ns-color-rule);
+  margin: var(--ns-space-2xl) 0;
+}

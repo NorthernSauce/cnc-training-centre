@@ -1,0 +1,326 @@
+{
+  "$schema": "https://impeccable.dev/schema/design.json/1",
+  "project": "CNC Training Centre",
+  "version": "1.0",
+  "updated": "2026-05-15",
+  "direction": {
+    "name": "A — The Engineering Manual",
+    "tone": "industrial-premium, type-led, photography-light",
+    "theme": "light",
+    "signatures": [
+      "marginalia rail — sidebar callouts carrying machine / control / spec / quick-fact info on service pages and long Hub articles",
+      "dimension-callout rule-cap — thin rule with end-ticks and uppercase label, marking section openings and closings"
+    ],
+    "antiReferences": [
+      "Corporate SaaS landers (Vercel / Stripe / Linear style)",
+      "OEM training brand pages (Mazak / Fanuc / Haas / Siemens)",
+      "Current site's AI-generated SEO pages (Doosan, Hurco)",
+      "Generic AI-design tells (gradient text, side-stripe borders, glassmorphism, hero metric template)"
+    ]
+  },
+  "fonts": {
+    "display": {
+      "name": "Tanker",
+      "weights": [400],
+      "source": "Fontshare CDN",
+      "license": "free for commercial use",
+      "token": "--ns-font-display"
+    },
+    "body": {
+      "name": "Synonym",
+      "weights": [400, 500, 600, 700],
+      "source": "Fontshare CDN",
+      "license": "free for commercial use",
+      "token": "--ns-font-body"
+    },
+    "rejectList": [
+      "Inter", "Roboto", "DM Sans", "DM Serif Display", "DM Serif Text",
+      "Plus Jakarta Sans", "Fraunces", "Newsreader", "Lora", "Crimson Pro",
+      "Crimson Text", "Crimson", "Playfair Display", "Cormorant", "Cormorant Garamond",
+      "IBM Plex Sans", "IBM Plex Serif", "IBM Plex Mono", "Space Mono", "Space Grotesk",
+      "Outfit", "Instrument Sans", "Instrument Serif", "Syne"
+    ]
+  },
+  "colors": {
+    "surfaces": {
+      "paper": { "value": "oklch(98% 0.005 250)", "usage": "primary background" },
+      "paperTint": { "value": "oklch(96% 0.010 250)", "usage": "secondary surfaces, marginalia" },
+      "paperDeep": { "value": "oklch(93% 0.015 250)", "usage": "insets, prominent panels" },
+      "anchor": { "value": "oklch(22% 0.030 250)", "usage": "footer, deep panels, primary button bg" },
+      "anchorSoft": { "value": "oklch(28% 0.030 250)", "usage": "hover on anchor surfaces" }
+    },
+    "type": {
+      "ink": { "value": "oklch(20% 0.025 250)", "usage": "primary text" },
+      "inkSoft": { "value": "oklch(38% 0.020 250)", "usage": "secondary text" },
+      "inkMuted": { "value": "oklch(55% 0.015 250)", "usage": "meta, captions, eyebrows" },
+      "inkFaint": { "value": "oklch(70% 0.012 250)", "usage": "placeholder, disabled" },
+      "inkInverse": { "value": "oklch(98% 0.005 250)", "usage": "text on anchor / primary" }
+    },
+    "rules": {
+      "ruleFaint": { "value": "oklch(94% 0.010 250)", "usage": "subtle dividers" },
+      "rule": { "value": "oklch(88% 0.012 250)", "usage": "default hairline" },
+      "ruleStrong": { "value": "oklch(75% 0.018 250)", "usage": "emphasised rule, input border" }
+    },
+    "primary": {
+      "primary": { "value": "oklch(48% 0.16 250)", "usage": "links, tags, secondary buttons, focus" },
+      "primaryHover": { "value": "oklch(42% 0.18 250)", "usage": "hover" },
+      "primaryActive": { "value": "oklch(36% 0.18 250)", "usage": "pressed" },
+      "primarySoft": { "value": "oklch(94% 0.04 250)", "usage": "tinted background, selected chip" }
+    },
+    "accents": {
+      "mark": { "value": "oklch(94% 0.025 90)", "usage": "marginalia tint, open-item flags (warm)" },
+      "markInk": { "value": "oklch(35% 0.06 90)", "usage": "type on mark" },
+      "video": { "value": "oklch(58% 0.14 155)", "usage": "video tags ONLY", "reserved": true },
+      "videoSoft": { "value": "oklch(94% 0.05 155)", "usage": "video tag bg" }
+    },
+    "status": {
+      "success": { "value": "oklch(55% 0.12 155)", "usage": "confirmations" },
+      "warning": { "value": "oklch(68% 0.13 72)", "usage": "course filling, alerts" },
+      "danger": { "value": "oklch(55% 0.18 28)", "usage": "form validation errors" },
+      "focus": { "value": "oklch(56% 0.20 250)", "usage": "focus rings" }
+    },
+    "rules60_30_10": "60% paper/tint surfaces, 30% ink/ink-soft text, 10% primary accents"
+  },
+  "typography": {
+    "headings": {
+      "h1": { "face": "display", "rangePx": [36, 64], "weight": 400, "lineHeight": 1.05, "tracking": "-0.01em", "clamp": "clamp(2.25rem, 1.63rem + 2.63vw, 4rem)" },
+      "h2": { "face": "display", "rangePx": [28, 48], "weight": 400, "lineHeight": 1.05, "clamp": "clamp(1.75rem, 1.31rem + 1.88vw, 3rem)" },
+      "h3": { "face": "display", "rangePx": [24, 32], "weight": 400, "lineHeight": 1.2, "clamp": "clamp(1.5rem, 1.32rem + 0.75vw, 2rem)" },
+      "h4": { "face": "body", "rangePx": [20, 24], "weight": 600, "lineHeight": 1.2, "clamp": "clamp(1.25rem, 1.16rem + 0.38vw, 1.5rem)" },
+      "h5": { "face": "body", "rangePx": [18, 20], "weight": 600, "clamp": "clamp(1.125rem, 1.08rem + 0.19vw, 1.25rem)" },
+      "h6": { "face": "body", "rangePx": [16, 18], "weight": 500, "uppercase": true, "tracking": "0.08em", "clamp": "clamp(1rem, 0.96rem + 0.19vw, 1.125rem)" }
+    },
+    "body": {
+      "large": { "rangePx": [18, 20], "usage": "lead paragraphs" },
+      "medium": { "rangePx": [16, 18], "usage": "body emphasis" },
+      "regular": { "px": 16, "usage": "default body" },
+      "small": { "px": 14, "usage": "meta, captions, UI" },
+      "tiny": { "px": 12, "usage": "tags, eyebrows" }
+    },
+    "lineHeight": {
+      "tight": 1.05,
+      "snug": 1.2,
+      "base": 1.55,
+      "relaxed": 1.7
+    },
+    "tracking": {
+      "tight": "-0.01em",
+      "normal": "0",
+      "wide": "0.08em",
+      "extraWide": "0.14em"
+    },
+    "lineLength": "65ch maximum for long-form prose",
+    "monospace": "no monospace family — use font-variant-numeric: tabular-nums for spec readouts"
+  },
+  "spacing": {
+    "scale": "4pt",
+    "tokens": {
+      "2xs": "4px", "xs": "8px", "sm": "12px", "md": "16px", "lg": "24px",
+      "xl": "32px", "2xl": "48px", "3xl": "64px", "4xl": "96px", "5xl": "128px"
+    },
+    "fluidPad": {
+      "inline": "clamp(1.25rem, 3vw, 2.5rem)",
+      "block": "clamp(2.5rem, 5vw, 5rem)"
+    },
+    "rule": "use `gap` for sibling spacing — never margin"
+  },
+  "radius": {
+    "none": "0",
+    "tight": "2px (DEFAULT — cards, panels, inputs, alerts)",
+    "soft": "4px (occasional softening, badges)",
+    "pill": "999px (TAGS AND FILTER CHIPS ONLY)"
+  },
+  "elevation": {
+    "shadows": "none — banned project-wide",
+    "depthMechanisms": [
+      "1 px hairline rules",
+      "2 px ink rules at panel openings",
+      "surface tier alternation (paper → tint → deep → anchor)",
+      "1 px hover translate-Y on cards + primary buttons",
+      "3 px focus box-shadow (focus colour at 18% alpha) — accessibility only"
+    ]
+  },
+  "motion": {
+    "durations": { "fast": "120ms", "base": "200ms", "slow": "320ms" },
+    "easings": {
+      "out": "cubic-bezier(0.16, 1, 0.3, 1) — out-quart, default",
+      "inOut": "cubic-bezier(0.65, 0, 0.35, 1) — symmetric"
+    },
+    "rules": [
+      "animate transform + opacity only",
+      "height via grid-template-rows transitions",
+      "no bounce / elastic easing",
+      "prefers-reduced-motion: reduce zeros all durations",
+      "intensity capped at 6/10"
+    ]
+  },
+  "containers": {
+    "pageEdge": "padding-inline: clamp(1.25rem, 3vw, 2.5rem)",
+    "content": "max-width: 1280px (--ns-max-content)",
+    "prose": "max-width: 65ch (--ns-max-prose)",
+    "fullBleed": "allowed for hero technical-drawing motifs and anchor-tier footer only"
+  },
+  "rhythm": {
+    "surfaceAlternation": "paper → paper-tint → paper → anchor",
+    "rule": "never two adjacent sections on same tier without explicit rule divider",
+    "anchorLimit": "appears at most once per page (typically footer)"
+  },
+  "breakpoints": {
+    "mobile": 375,
+    "tablet": 700,
+    "desktop": 900,
+    "max": 1280,
+    "rule": "container queries for components, viewport queries for page layout"
+  },
+  "components": {
+    "buttons": {
+      "classes": ["btn-primary", "btn-secondary", "btn-outline"],
+      "sizes": ["btn-sm", "default", "btn-lg"],
+      "modifiers": ["btn-flat"],
+      "touchTargets": { "sm": 36, "default": 44, "lg": 52 },
+      "behaviour": "directional arrow → that nudges 2px on hover; never write button styles inline"
+    },
+    "cards": {
+      "class": "card",
+      "usage": "sparingly — only when content is a distinct action",
+      "hover": "1px lift + title underline",
+      "preference": "reach for article-row pattern first for long lists"
+    },
+    "articleRow": {
+      "class": "article-row",
+      "usage": "Hub listings — typographic index, replaces card grids for long lists",
+      "structure": "number (mono) / title + meta / arrow"
+    },
+    "specBlock": {
+      "class": "spec-block",
+      "usage": "numeric readouts (years, videos, day-rate)",
+      "feature": "tabular figures via font-variant-numeric"
+    },
+    "tables": {
+      "class": "ns-table",
+      "usage": "capability + comparison",
+      "marks": { "yes": "● (brand primary)", "no": "— (em-dash, ink-faint)" }
+    },
+    "formFields": {
+      "classes": ["form-input", "form-textarea", "form-select"],
+      "container": "form-stack",
+      "submit": "Fluent Forms submit needs !important to beat plugin inline styles",
+      "states": ["default", "focus", "error", "success", "disabled"]
+    },
+    "tags": {
+      "class": "tag",
+      "radius": "pill (only element with pill radius)",
+      "variants": {
+        "default": "brand-primary-soft",
+        "tagVideo": "green — VIDEO CONTENT ONLY",
+        "tagMeta": "neutral — for meta like '6 min read'"
+      }
+    },
+    "links": {
+      "inline": "brand-primary with restrained hover underline",
+      "linkArrow": "Read on cross-link with nudging arrow",
+      "navLink": "horizontal nav with animated underline + aria-current support"
+    },
+    "lists": {
+      "class": "ns-list",
+      "variants": {
+        "nsListBullet": "em-dash bullet (—)",
+        "nsListNum": "decimal-leading-zero monospace number (01, 02…)",
+        "nsListPlus": "brand-primary plus mark (+) for highlight lists"
+      }
+    },
+    "pullQuote": {
+      "class": "pull-quote",
+      "rule": "no quote-mark glyphs — typography carries it"
+    },
+    "breadcrumb": "uppercase 12px, soft separators, current page in semibold",
+    "pagination": {
+      "class": "pagination",
+      "size": "40x40 min",
+      "feature": "tabular figures, current page inverted"
+    },
+    "alerts": {
+      "variants": ["alert-info", "alert-success", "alert-warning", "alert-danger"],
+      "treatment": "bordered, NEVER background-filled",
+      "icons": "aria-hidden=\"true\""
+    },
+    "marginalia": {
+      "class": "marginalia",
+      "signature": true,
+      "usage": "side panels carrying spec/control/quick-fact callouts on service pages and long Hub articles"
+    },
+    "ruleCap": {
+      "class": "rule-cap",
+      "signature": true,
+      "usage": "section openings + closings — never inside a section"
+    },
+    "sectionHead": {
+      "pattern": "4rem rail with section-num + section-title + section-desc"
+    }
+  },
+  "icons": {
+    "library": "Lucide",
+    "license": "MIT",
+    "strokeWidth": "1.5px",
+    "lineCap": "round",
+    "sizes": [16, 20, 24, 32],
+    "color": "currentColor",
+    "decorativeRule": "aria-hidden=\"true\" when adjacent text describes the action"
+  },
+  "microcopy": {
+    "buttons": "specific verbs (\"Contact David\", not \"Submit\")",
+    "labels": "sentence case, no colons",
+    "placeholders": "real-world examples",
+    "errors": "what went wrong + what to do",
+    "numbers": "always digits in UI; £ prefix, no decimal on whole pounds",
+    "banned": ["Submit your enquiry today!", "Click here", "Learn more", "Get started", "Read more"]
+  },
+  "accessibility": {
+    "level": "WCAG 2.1 AA",
+    "rules": [
+      "body text passes AAA, secondary passes AA Large",
+      "2px focus outline + 2px offset on every interactive element",
+      "tab order matches reading order; skip-to-content first",
+      "real <button> / real <a href> — no role-faking",
+      "mega menus open on click, never hover-only",
+      "form inputs have associated <label>; errors linked via aria-describedby",
+      "decorative icons aria-hidden=\"true\""
+    ]
+  },
+  "performance": {
+    "fonts": "Fontshare CDN, display=swap, preconnect to api.fontshare.com",
+    "images": "WebP; workshop fragments ≤80KB at 2x; in-article ≤60KB",
+    "video": "no autoplay; YouTube embeds lazy-loaded thumbnail-first",
+    "javascript": "zero at first paint on static pages",
+    "css": "tokens.css + components.css inlined as critical at build; Tailwind utilities for page assembly (Phase 5)",
+    "forbidden": [
+      "hero autoplay video",
+      "heavy JS-driven scroll animation",
+      "third-party chat widgets",
+      "web-font fallback flash > 100ms"
+    ]
+  },
+  "absoluteBans": [
+    "gradient text (background-clip: text + gradient)",
+    "border-left or border-right > 1px as accent stripe on cards / list items / callouts",
+    "cyan-on-dark and purple-to-blue palettes",
+    "identical 3-card icon grids stacked section after section",
+    "centred-everything layouts",
+    "hero metric template (big number / small label / supporting stat / gradient accent)",
+    "glassmorphism (blur + glow on cards)",
+    "decorative drop shadows",
+    "generic stock photography (people-with-laptop especially)",
+    "second brand colour — green reserved for video tags only",
+    "voice in chrome (nav / footer / error pages) — voice lives in long-form only",
+    "animating width / height / padding / margin — transform + opacity only"
+  ],
+  "sources": {
+    "tokens": "brief/tokens.css",
+    "components": "brief/components.css",
+    "styleGuide": "brief/style-guide.html",
+    "strategicContext": "PRODUCT.md",
+    "designBrief": "brief/design-brief.md",
+    "strategy": "strategy/strategy.md",
+    "sitemap": "strategy/cnctc-proposed-sitemap.md"
+  }
+}
