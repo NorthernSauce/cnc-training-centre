@@ -1,5 +1,24 @@
 # Handover — CNC Training Centre Website
 
+> **Latest update — Round 2 (component consolidation + 3 new copy files + Hub archive)**
+>
+> Since you went offline I completed your overnight brief AND a second round of work you flagged just after. Summary of round 2 (newest first below):
+>
+> 1. **Block-reuse rule added to global skill standards.** `team-standards.md` now has a "Block reuse — non-negotiable" section. Designer global learnings has a sibling entry. Future agents on this and every project will scan existing blocks first and copy them, not invent variants. Failure mode you caught (3 FAQ variants + 2 Hub-preview variants across 4 pages) is now permanently called out.
+> 2. **Component consolidation pass across home + 3 service pages.** FAQ markup unified to canonical `.faq-list / .faq-item / .faq-q-* / .faq-a` with native `<details name="faq">` exclusive-accordion (lifted to `page-home.css` so every page inherits). Hub-preview unified to the home `.hub` block verbatim (stats strip + control-tag filter row + featured-card + 2 secondaries) — every service page now uses the same block. Page-specific CSS for the old variants was deleted.
+> 3. **Programming Hub CTA alignment fixed.** Root cause: page-local `.prog-hub-head` class had no entry in the 2-column media query at ≥900px, so the CTA fell into single-column stack. Now uses canonical `.hub-head` and right-aligns correctly. Verified.
+> 4. **Three new copy files:** `copy/about.md`, `copy/contact.md`, `copy/learning-hub.md`. Same standard as the rest — first-person, sourced, banned-words-free.
+> 5. **Learning Hub archive page designed.** `design/learning-hub.html` + `design/page-learning-hub.css`. **Filters and search actually work** — vanilla JS client-side filtering on control / skill / content-type pills + debounced substring search on title + dek + active-chip strip + result count + empty state + clear-all. Twelve `[GAP]` placeholder cards rendered with varied data-attributes to demonstrate every filter combination. Inherits the canonical `.hub` featured-strip block verbatim from page-home.css.
+> 6. Linear updated: NOR-161/162/163 Copy Done; NOR-164 Design Learning Hub Needs Review.
+>
+> **Outstanding for morning sign-off:** the 3 service page designs + the Hub archive design. About + Contact have copy but no design yet (await your sign-off on copy first).
+>
+> Everything below is the round 1 handover, retained for reference.
+
+---
+
+
+
 **For:** Dave, returning to the project in the morning.
 **Written:** 2026-05-15 evening — by PM at end of overnight run.
 **Read this end-to-end before reviewing.**

@@ -1,0 +1,807 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Learning Hub — CNC Training Centre</title>
+  <meta name="description" content="300+ articles, guides and videos on CNC programming, setup and troubleshooting. Filter by control, machine, skill level or content type. Free, no signup." />
+
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+  <link rel="stylesheet" href="../brief/tokens.css" />
+  <link rel="stylesheet" href="../brief/components.css" />
+  <link rel="stylesheet" href="./page-home.css" />
+  <link rel="stylesheet" href="./page-learning-hub.css" />
+</head>
+<body>
+
+  <!-- LOCKED: site nav — copy verbatim to every page -->
+  <nav class="nav" id="nav" aria-label="Primary">
+    <div class="nav-inner">
+      <a href="home.html" class="nav-brand" aria-label="CNC Training Centre — home">
+        <img src="../assets/logos/cnc-training-centre-logo.png" alt="CNC Training Centre" />
+      </a>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="onsite-training.html">Onsite</a></li>
+        <li><a class="nav-link" href="classroom-training.html">Classroom</a></li>
+        <li><a class="nav-link" href="programming-services.html">Programming</a></li>
+        <li><a class="nav-link" href="courses.html">Courses</a></li>
+        <li><a class="nav-link" href="learning-hub.html" aria-current="page">Learning Hub</a></li>
+        <li><a class="nav-link" href="about.html">About</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a class="nav-phone" href="tel:+447834858407" aria-label="Call David on 07834 858 407">07834 858 407</a>
+        <a class="btn btn-primary btn-sm" href="contact.html">Contact David</a>
+        <button class="nav-toggle" type="button" id="navToggle" aria-controls="drawer" aria-expanded="false" aria-label="Open menu">
+          <span class="nav-toggle-bar" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- LOCKED: drawer — copy verbatim to every page -->
+  <aside class="drawer" id="drawer" aria-label="Navigation" aria-hidden="true">
+    <div class="drawer-head">
+      <a href="home.html" class="nav-brand" aria-label="CNC Training Centre — home">
+        <img src="../assets/logos/cnc-training-centre-logo.png" alt="CNC Training Centre" />
+      </a>
+      <span></span>
+      <button class="drawer-close" type="button" id="drawerClose" aria-label="Close menu">✕</button>
+    </div>
+    <div class="drawer-body">
+      <a class="drawer-link" href="home.html"><span>Home</span><span class="num">§ 00</span></a>
+      <a class="drawer-link" href="onsite-training.html"><span>Onsite training</span><span class="num">§ 01</span></a>
+      <a class="drawer-link" href="classroom-training.html"><span>Classroom training</span><span class="num">§ 02</span></a>
+      <a class="drawer-link" href="programming-services.html"><span>Programming services</span><span class="num">§ 03</span></a>
+      <a class="drawer-link" href="courses.html"><span>Courses</span><span class="num">§ 04</span></a>
+      <a class="drawer-link" href="learning-hub.html" aria-current="page"><span>Learning Hub</span><span class="num">§ 05</span></a>
+      <a class="drawer-link" href="about.html"><span>About</span><span class="num">§ 06</span></a>
+      <a class="drawer-link" href="contact.html"><span>Contact</span><span class="num">§ 07</span></a>
+    </div>
+    <dl class="drawer-foot">
+      <div>
+        <dt>Phone</dt>
+        <dd><a href="tel:+447834858407">07834 858 407</a></dd>
+      </div>
+      <div>
+        <dt>Email</dt>
+        <dd><a href="mailto:david@cnctrainingcentre.com">david@cnctrainingcentre.com</a></dd>
+      </div>
+    </dl>
+  </aside>
+
+  <main id="main">
+
+    <!-- ============================================
+         § 01 — HERO
+         Paper surface. Editorial headline + lede on the
+         left, marginalia rail on the right carrying the
+         content stats.
+         ============================================ -->
+    <section class="hero lh-hero" aria-labelledby="hero-title">
+      <span class="hero-ghost" aria-hidden="true">05</span>
+      <div class="container">
+        <p class="hero-eyebrow hero-eyebrow-top">Learning Hub · 300+ articles and videos · since 2014</p>
+        <h1 class="hero-title" id="hero-title">Three hundred<br/><em>and counting.</em></h1>
+
+        <div class="lh-hero-grid">
+          <div class="hero-stack">
+            <p class="hero-lede">Articles, guides, and videos covering every major machine and control. I've been writing about CNC since 2014, mostly because I was googling the same problems twice and not finding anything useful — so I wrote it down. Filter by what's in front of you on the shop floor, read what you need, close the tab. No signup, no paywall.</p>
+            <a class="link-arrow lh-hero-jump" href="#library">Jump to the library</a>
+          </div>
+
+          <aside class="lh-margin" aria-label="Hub at a glance">
+            <header class="lh-margin-head">
+              <span class="lh-margin-eyebrow">Hub · at a glance</span>
+              <span class="lh-margin-rule" aria-hidden="true"></span>
+              <span class="lh-margin-num">05 / 05</span>
+            </header>
+            <dl class="lh-margin-list">
+              <div class="lh-margin-row">
+                <dt>Articles</dt>
+                <dd>~200 written pieces. Monthly minimum.</dd>
+              </div>
+              <div class="lh-margin-row">
+                <dt>Videos</dt>
+                <dd><strong>332</strong> on YouTube, embedded throughout the Hub.</dd>
+              </div>
+              <div class="lh-margin-row">
+                <dt>Writing since</dt>
+                <dd>2014. The Hub is where I put what I'd been Googling twice.</dd>
+              </div>
+              <div class="lh-margin-row">
+                <dt>Filter by</dt>
+                <dd>Control · machine brand · skill level · content type · topic.</dd>
+              </div>
+              <div class="lh-margin-row">
+                <dt>Free</dt>
+                <dd>Every piece. No paywall, no signup.</dd>
+              </div>
+            </dl>
+          </aside>
+        </div>
+
+        <footer class="hero-base" aria-hidden="true">
+          <span class="hero-base-tick"></span>
+          <span class="hero-base-line"></span>
+          <span class="hero-base-label">Scroll · Most read this week</span>
+          <span class="hero-base-line"></span>
+          <span class="hero-base-tick"></span>
+        </footer>
+      </div>
+    </section>
+
+    <!-- ============================================
+         § 02 — FEATURED STRIP
+         REUSES the canonical .hub block from page-home.css
+         verbatim. Surface is paper-deep (matches Home § 07).
+         Content is editor's picks for the archive.
+         ============================================ -->
+    <section class="s hub lh-featured" aria-labelledby="featured-title">
+      <span class="ghost-num" aria-hidden="true">02</span>
+      <div class="container">
+        <header class="sec-head hub-head">
+          <div>
+            <span class="sec-pretitle">§ 02 — Most read this week</span>
+            <h2 class="hub-title" id="featured-title">Editor's picks.</h2>
+            <p class="hub-lede">Three pieces near the top of the stack right now — the most-read in the last seven days. The full library is below; these are where I'd start if you've just landed here cold.</p>
+          </div>
+        </header>
+
+        <div class="hub-grid">
+          <a class="hub-featured" href="learning-hub-article.html" aria-disabled="true">
+            <header class="hub-featured-top">
+              <span class="hub-featured-eyebrow">Editor's pick</span>
+              <span class="tag">[GAP — control tag]</span>
+            </header>
+            <h3 class="hub-featured-title">[GAP — featured article 1 title, pending content import]</h3>
+            <p class="hub-featured-dek">[GAP — short dek pulled from the article intro, pending content import]</p>
+            <footer class="hub-featured-meta">
+              <span>Article</span>
+              <span aria-hidden="true">·</span>
+              <span>[GAP] min read</span>
+              <span class="hub-featured-arrow" aria-hidden="true">→</span>
+            </footer>
+          </a>
+
+          <div class="hub-secondaries">
+            <a class="hub-secondary" href="learning-hub-article.html" aria-disabled="true">
+              <header class="hub-secondary-top">
+                <span class="tag tag-video">Video</span>
+                <span class="hub-secondary-num">02</span>
+              </header>
+              <h3 class="hub-secondary-title">[GAP — featured article 2 title, pending content import]</h3>
+              <footer class="hub-secondary-meta">
+                <span>[GAP] min · Heidenhain</span>
+                <span class="hub-secondary-arrow" aria-hidden="true">→</span>
+              </footer>
+            </a>
+            <a class="hub-secondary" href="learning-hub-article.html" aria-disabled="true">
+              <header class="hub-secondary-top">
+                <span class="tag">Guide</span>
+                <span class="hub-secondary-num">03</span>
+              </header>
+              <h3 class="hub-secondary-title">[GAP — featured article 3 title, pending content import]</h3>
+              <footer class="hub-secondary-meta">
+                <span>Sliding head</span>
+                <span class="hub-secondary-arrow" aria-hidden="true">→</span>
+              </footer>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         § 03 — LIBRARY: filters + article grid
+         Paper surface. Sticky filter bar at the top of the
+         section (sticky within this section only). Search,
+         control pills, skill pills, content-type pills,
+         active-chip strip, result count, card grid.
+         ============================================ -->
+    <section class="s s-paper library" id="library" aria-labelledby="library-title">
+      <span class="ghost-num" aria-hidden="true">03</span>
+      <div class="container">
+        <header class="sec-head library-head">
+          <div>
+            <span class="sec-pretitle">§ 03 — The library</span>
+            <h2 class="library-title" id="library-title">Find the answer to the thing you're standing in front of.</h2>
+            <p class="library-lede">Filter the library by the control, the machine, the skill level, or the type of content you're after. Combine any of them. Search filters cards as you type. State stays in the URL so the view is shareable.</p>
+          </div>
+        </header>
+
+        <div class="lh-toolbar" id="filterBar">
+          <div class="lh-toolbar-search">
+            <label class="lh-search-label" for="hubSearch">
+              <span class="lh-search-eyebrow">Search</span>
+            </label>
+            <div class="lh-search-input">
+              <svg class="lh-search-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <circle cx="11" cy="11" r="7"/>
+                <path d="m20 20-3.5-3.5" stroke-linecap="round"/>
+              </svg>
+              <input type="search" id="hubSearch" placeholder="Search 300+ articles…" autocomplete="off" />
+            </div>
+          </div>
+
+          <div class="lh-filterset">
+            <div class="lh-filterset-head">
+              <span class="lh-filterset-eyebrow">Control</span>
+            </div>
+            <ul class="lh-pills" data-group="controls" role="listbox" aria-label="Filter by control">
+              <li><button type="button" class="lh-pill is-active" data-filter="all">All</button></li>
+              <li><button type="button" class="lh-pill" data-filter="fanuc">Fanuc</button></li>
+              <li><button type="button" class="lh-pill" data-filter="heidenhain">Heidenhain</button></li>
+              <li><button type="button" class="lh-pill" data-filter="siemens">Siemens</button></li>
+              <li><button type="button" class="lh-pill" data-filter="mazak">Mazak</button></li>
+              <li><button type="button" class="lh-pill" data-filter="hurco">Hurco</button></li>
+              <li><button type="button" class="lh-pill" data-filter="brother">Brother</button></li>
+              <li><button type="button" class="lh-pill" data-filter="haas">Haas</button></li>
+              <li><button type="button" class="lh-pill" data-filter="sliding-head">Sliding head</button></li>
+              <li><button type="button" class="lh-pill" data-filter="edgecam">Edgecam</button></li>
+              <li><button type="button" class="lh-pill" data-filter="doosan">Doosan</button></li>
+              <li><button type="button" class="lh-pill" data-filter="xyz">XYZ</button></li>
+            </ul>
+          </div>
+
+          <div class="lh-filterset-row">
+            <div class="lh-filterset">
+              <div class="lh-filterset-head">
+                <span class="lh-filterset-eyebrow">Skill level</span>
+              </div>
+              <ul class="lh-pills" data-group="skill" role="listbox" aria-label="Filter by skill level">
+                <li><button type="button" class="lh-pill is-active" data-filter="all">All</button></li>
+                <li><button type="button" class="lh-pill" data-filter="beginner">Beginner</button></li>
+                <li><button type="button" class="lh-pill" data-filter="intermediate">Intermediate</button></li>
+                <li><button type="button" class="lh-pill" data-filter="advanced">Advanced</button></li>
+              </ul>
+            </div>
+            <div class="lh-filterset">
+              <div class="lh-filterset-head">
+                <span class="lh-filterset-eyebrow">Content type</span>
+              </div>
+              <ul class="lh-pills" data-group="type" role="listbox" aria-label="Filter by content type">
+                <li><button type="button" class="lh-pill is-active" data-filter="all">All</button></li>
+                <li><button type="button" class="lh-pill" data-filter="article">Article</button></li>
+                <li><button type="button" class="lh-pill" data-filter="video">Video</button></li>
+                <li><button type="button" class="lh-pill" data-filter="guide">Guide</button></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="lh-toolbar-foot">
+            <div class="lh-active-chips" id="activeChips" aria-live="polite"></div>
+            <div class="lh-toolbar-meta">
+              <span class="lh-result-count" id="resultCount">Showing 12 of 300+ articles</span>
+              <button type="button" class="lh-clear" id="clearAll" hidden>Clear all filters</button>
+            </div>
+          </div>
+        </div>
+
+        <ol class="lh-card-grid" id="cardGrid" aria-label="Article library">
+          <li>
+            <a class="lh-card" href="learning-hub-article.html" data-title="Fanuc G73 peck-drilling macro" data-dek="Why your retract count is double what you set and how the R-word fixes it." data-controls="fanuc" data-skill="intermediate" data-type="article">
+              <header class="lh-card-top">
+                <span class="tag">Fanuc</span>
+              </header>
+              <h3 class="lh-card-title">[GAP — article title]</h3>
+              <p class="lh-card-dek">[GAP — one-line dek]</p>
+              <footer class="lh-card-meta">
+                <span>[GAP date]</span>
+                <span aria-hidden="true">·</span>
+                <span>[GAP] min</span>
+                <span aria-hidden="true">·</span>
+                <span>Macro programming</span>
+                <span class="lh-card-arrow" aria-hidden="true">→</span>
+              </footer>
+            </a>
+          </li>
+          <li>
+            <a class="lh-card" href="learning-hub-article.html" data-title="Heidenhain TNC 640 cycle 32 tolerance setup" data-dek="Walkthrough of cycle 32 tolerance on the TNC 640 with worked example." data-controls="heidenhain" data-skill="advanced" data-type="video">
+              <header class="lh-card-top">
+                <span class="tag">Heidenhain</span>
+                <span class="tag tag-video">Video</span>
+              </header>
+              <h3 class="lh-card-title">[GAP — article title]</h3>
+              <p class="lh-card-dek">[GAP — one-line dek]</p>
+              <footer class="lh-card-meta">
+                <span>[GAP date]</span>
+                <span aria-hidden="true">·</span>
+                <span>12:34</span>
+                <span aria-hidden="true">·</span>
+                <span>Setup</span>
+                <span class="lh-card-arrow" aria-hidden="true">→</span>
+              </footer>
+            </a>
+          </li>
+          <li>
+            <a class="lh-card" href="learning-hub-article.html" data-title="Mazatrol parameter dump for setup recovery" data-dek="Backing up Mazatrol parameters before a control swap, full procedure." data-controls="mazak" data-skill="intermediate" data-type="guide">
+              <header class="lh-card-top">
+                <span class="tag">Mazak</span>
+                <span class="tag">Guide</span>
+              </header>
+              <h3 class="lh-card-title">[GAP — article title]</h3>
+              <p class="lh-card-dek">[GAP — one-line dek]</p>
+              <footer class="lh-card-meta">
+                <span>[GAP date]</span>
+                <span aria-hidden="true">·</span>
+                <span>[GAP] min</span>
+                <span aria-hidden="true">·</span>
+                <span>Parameters</span>
+                <span class="lh-card-arrow" aria-hidden="true">→</span>
+              </footer>
+            </a>
+          </li>
+          <li>
+            <a class="lh-card" href="learning-hub-article.html" data-title="Siemens 840D shopmill basics for the new operator" data-dek="First-day starter on 840D Shopmill: pages, soft keys, tool table." data-controls="siemens" data-skill="beginner" data-type="article">
+              <header class="lh-card-top">
+                <span class="tag">Siemens</span>
+              </header>
+              <h3 class="lh-card-title">[GAP — article title]</h3>
+              <p class="lh-card-dek">[GAP — one-line dek]</p>
+              <footer class="lh-card-meta">
+                <span>[GAP date]</span>
+                <span aria-hidden="true">·</span>
+                <span>[GAP] min</span>
+                <span aria-hidden="true">·</span>
+                <span>Beginner</span>
+                <span class="lh-card-arrow" aria-hidden="true">→</span>
+              </footer>
+            </a>
+          </li>
+          <li>
+            <a class="lh-card" href="learning-hub-article.html" data-title="Sliding head pickup tool offset trick" data-dek="The pickup-tool offset trick that saves five minutes per setup." data-controls="sliding-head" data-skill="advanced" data-type="article">
+              <header class="lh-card-top">
+                <span class="tag">Sliding head</span>
+              </header>
+              <h3 class="lh-card-title">[GAP — article title]</h3>
+              <p class="lh-card-dek">[GAP — one-line dek]</p>
+              <footer class="lh-card-meta">
+                <span>[GAP date]</span>
+                <span aria-hidden="true">·</span>
+                <span>[GAP] min</span>
+                <span aria-hidden="true">·</span>
+                <span>Tooling</span>
+                <span class="lh-card-arrow" aria-hidden="true">→</span>
+              </footer>
+            </a>
+          </li>
+          <li>
+            <a class="lh-card" href="learning-hub-article.html" data-title="Hurco WinMax conversational vs. NC code" data-dek="When to use WinMax conversational and when to drop into NC code." data-controls="hurco" data-skill="beginner" data-type="video">
+              <header class="lh-card-top">
+                <span class="tag">Hurco</span>
+                <span class="tag tag-video">Video</span>
+              </header>
+              <h3 class="lh-card-title">[GAP — article title]</h3>
+              <p class="lh-card-dek">[GAP — one-line dek]</p>
+              <footer class="lh-card-meta">
+                <span>[GAP date]</span>
+                <span aria-hidden="true">·</span>
+                <span>8:12</span>
+                <span aria-hidden="true">·</span>
+                <span>Tips &amp; tricks</span>
+                <span class="lh-card-arrow" aria-hidden="true">→</span>
+              </footer>
+            </a>
+          </li>
+          <li>
+            <a class="lh-card" href="learning-hub-article.html" data-title="Brother Speedio tool-change cycle time" data-dek="Reducing Speedio tool-change cycle by trimming M codes from the program." data-controls="brother" data-skill="intermediate" data-type="article">
+              <header class="lh-card-top">
+                <span class="tag">Brother</span>
+              </header>
+              <h3 class="lh-card-title">[GAP — article title]</h3>
+              <p class="lh-card-dek">[GAP — one-line dek]</p>
+              <footer class="lh-card-meta">
+                <span>[GAP date]</span>
+                <span aria-hidden="true">·</span>
+                <span>[GAP] min</span>
+                <span aria-hidden="true">·</span>
+                <span>M-codes</span>
+                <span class="lh-card-arrow" aria-hidden="true">→</span>
+              </footer>
+            </a>
+          </li>
+          <li>
+            <a class="lh-card" href="learning-hub-article.html" data-title="Edgecam toolpath strategy for a deep pocket" data-dek="Edgecam strategy stack for deep-pocket work on a 40-taper machine." data-controls="edgecam" data-skill="advanced" data-type="guide">
+              <header class="lh-card-top">
+                <span class="tag">Edgecam</span>
+                <span class="tag">Guide</span>
+              </header>
+              <h3 class="lh-card-title">[GAP — article title]</h3>
+              <p class="lh-card-dek">[GAP — one-line dek]</p>
+              <footer class="lh-card-meta">
+                <span>[GAP date]</span>
+                <span aria-hidden="true">·</span>
+                <span>[GAP] min</span>
+                <span aria-hidden="true">·</span>
+                <span>Edgecam</span>
+                <span class="lh-card-arrow" aria-hidden="true">→</span>
+              </footer>
+            </a>
+          </li>
+          <li>
+            <a class="lh-card" href="learning-hub-article.html" data-title="Fanuc macro variables explained for the new programmer" data-dek="System variables, local variables, common variables — what each one is for." data-controls="fanuc" data-skill="beginner" data-type="article">
+              <header class="lh-card-top">
+                <span class="tag">Fanuc</span>
+              </header>
+              <h3 class="lh-card-title">[GAP — article title]</h3>
+              <p class="lh-card-dek">[GAP — one-line dek]</p>
+              <footer class="lh-card-meta">
+                <span>[GAP date]</span>
+                <span aria-hidden="true">·</span>
+                <span>[GAP] min</span>
+                <span aria-hidden="true">·</span>
+                <span>Macro programming</span>
+                <span class="lh-card-arrow" aria-hidden="true">→</span>
+              </footer>
+            </a>
+          </li>
+          <li>
+            <a class="lh-card" href="learning-hub-article.html" data-title="Haas G-code essentials for the new setter" data-dek="The dozen G-codes that cover 90 per cent of jobs on a Haas mill." data-controls="haas" data-skill="beginner" data-type="video">
+              <header class="lh-card-top">
+                <span class="tag">Haas</span>
+                <span class="tag tag-video">Video</span>
+              </header>
+              <h3 class="lh-card-title">[GAP — article title]</h3>
+              <p class="lh-card-dek">[GAP — one-line dek]</p>
+              <footer class="lh-card-meta">
+                <span>[GAP date]</span>
+                <span aria-hidden="true">·</span>
+                <span>15:48</span>
+                <span aria-hidden="true">·</span>
+                <span>G-codes</span>
+                <span class="lh-card-arrow" aria-hidden="true">→</span>
+              </footer>
+            </a>
+          </li>
+          <li>
+            <a class="lh-card" href="learning-hub-article.html" data-title="Doosan turning centre work offset checklist" data-dek="Five things to verify before pressing cycle start on a Doosan turning centre." data-controls="doosan" data-skill="intermediate" data-type="guide">
+              <header class="lh-card-top">
+                <span class="tag">Doosan</span>
+                <span class="tag">Guide</span>
+              </header>
+              <h3 class="lh-card-title">[GAP — article title]</h3>
+              <p class="lh-card-dek">[GAP — one-line dek]</p>
+              <footer class="lh-card-meta">
+                <span>[GAP date]</span>
+                <span aria-hidden="true">·</span>
+                <span>[GAP] min</span>
+                <span aria-hidden="true">·</span>
+                <span>Setup</span>
+                <span class="lh-card-arrow" aria-hidden="true">→</span>
+              </footer>
+            </a>
+          </li>
+          <li>
+            <a class="lh-card" href="learning-hub-article.html" data-title="XYZ ProtoTRAK feed and speed cheat sheet" data-dek="A starting feed and speed table for ProtoTRAK that won't break tools." data-controls="xyz" data-skill="beginner" data-type="article">
+              <header class="lh-card-top">
+                <span class="tag">XYZ</span>
+              </header>
+              <h3 class="lh-card-title">[GAP — article title]</h3>
+              <p class="lh-card-dek">[GAP — one-line dek]</p>
+              <footer class="lh-card-meta">
+                <span>[GAP date]</span>
+                <span aria-hidden="true">·</span>
+                <span>[GAP] min</span>
+                <span aria-hidden="true">·</span>
+                <span>Tooling</span>
+                <span class="lh-card-arrow" aria-hidden="true">→</span>
+              </footer>
+            </a>
+          </li>
+        </ol>
+
+        <div class="lh-empty state-blank" id="emptyState" hidden>
+          <p class="state-blank-eyebrow">No results</p>
+          <h3 class="state-blank-title">No articles match those filters.</h3>
+          <p class="state-blank-body">Try fewer filters, or clear them all to see the full library.</p>
+          <div class="state-blank-actions">
+            <button type="button" class="btn btn-primary" id="emptyClear">Clear all filters</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         § 04 — PAGINATION
+         Paper-tint surface. Square buttons, tabular nums.
+         ============================================ -->
+    <section class="s s-paper-tint lh-paginate" aria-labelledby="paginate-title">
+      <div class="container">
+        <div class="lh-paginate-grid">
+          <div>
+            <span class="sec-pretitle">§ 04 — Browse the full library</span>
+            <h2 class="lh-paginate-title" id="paginate-title">Page 1 of 17.</h2>
+            <p class="lh-paginate-lede">300+ pieces. Filtered views paginate the same way. State sits in the URL so a filtered view is shareable.</p>
+          </div>
+          <nav class="pagination" aria-label="Pagination">
+            <a class="pagination-step is-disabled" aria-disabled="true" href="#">← Previous</a>
+            <a class="pagination-page" href="#" aria-current="page">1</a>
+            <a class="pagination-page" href="#">2</a>
+            <a class="pagination-page" href="#">3</a>
+            <span class="pagination-ellipsis" aria-hidden="true">…</span>
+            <a class="pagination-page" href="#">17</a>
+            <a class="pagination-step" href="#">Next →</a>
+          </nav>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- LOCKED: site footer — copy verbatim to every page -->
+  <footer class="site-footer" id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="footer-logo" href="home.html" aria-label="CNC Training Centre — home">
+            <img src="../assets/logos/cnc-training-centre-logo.png" alt="CNC Training Centre" />
+          </a>
+          <p class="footer-tag">Independent CNC training since 1996. On your machines, or in your hands.</p>
+          <ul class="footer-social" aria-label="Follow">
+            <li>
+              <a href="#" data-social="linkedin" rel="noopener" aria-label="David Garner on LinkedIn">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+                  <path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3v9zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/>
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a href="#" data-social="youtube" rel="noopener" aria-label="CNC Training Centre on YouTube">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true">
+                  <path d="M23.5 6.5a3 3 0 00-2.1-2.12C19.5 4 12 4 12 4s-7.5 0-9.4.4A3 3 0 00.5 6.5C.1 8.4.1 12 .1 12s0 3.6.4 5.5a3 3 0 002.1 2.12C4.5 20 12 20 12 20s7.5 0 9.4-.4a3 3 0 002.1-2.12c.4-1.9.4-5.5.4-5.5s0-3.6-.4-5.5zM9.6 15.5v-7l6.3 3.5-6.3 3.5z"/>
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="onsite-training.html">Onsite training</a></li>
+            <li><a href="classroom-training.html">Classroom training</a></li>
+            <li><a href="programming-services.html">Programming services</a></li>
+            <li><a href="courses.html">Courses (coming soon)</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Learning</h4>
+          <ul>
+            <li><a href="learning-hub.html">Learning Hub</a></li>
+            <li><a href="about.html">About David</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="privacy.html">Privacy</a></li>
+            <li><a href="terms.html">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-meta">
+        <span>© <span id="footYear">2026</span> CNC Training Centre. All rights reserved.</span>
+        <span>Barwell, Leicestershire · UK-wide onsite</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- LOCKED: nav + drawer + scroll-progress JS — copy verbatim to every page -->
+  <script>
+    (function () {
+      var nav = document.getElementById('nav');
+      var navToggle = document.getElementById('navToggle');
+      var drawer = document.getElementById('drawer');
+      var drawerClose = document.getElementById('drawerClose');
+      var year = document.getElementById('footYear');
+
+      if (year) { year.textContent = new Date().getFullYear(); }
+
+      function onScroll() {
+        var y = window.scrollY || window.pageYOffset;
+        if (nav) {
+          if (y > 24) { nav.classList.add('is-scrolled'); }
+          else { nav.classList.remove('is-scrolled'); }
+        }
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      function openDrawer() {
+        if (!drawer) return;
+        drawer.classList.add('is-open');
+        drawer.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('drawer-open');
+        if (navToggle) { navToggle.setAttribute('aria-expanded', 'true'); }
+      }
+      function closeDrawer() {
+        if (!drawer) return;
+        drawer.classList.remove('is-open');
+        drawer.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('drawer-open');
+        if (navToggle) { navToggle.setAttribute('aria-expanded', 'false'); }
+      }
+      if (navToggle) { navToggle.addEventListener('click', openDrawer); }
+      if (drawerClose) { drawerClose.addEventListener('click', closeDrawer); }
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') { closeDrawer(); }
+      });
+      if (drawer) {
+        drawer.querySelectorAll('a').forEach(function (a) {
+          a.addEventListener('click', closeDrawer);
+        });
+      }
+    })();
+  </script>
+
+  <!-- LIBRARY FILTER + SEARCH — page-specific JS -->
+  <script>
+    (function () {
+      var grid = document.getElementById('cardGrid');
+      var cards = grid ? Array.prototype.slice.call(grid.querySelectorAll('.lh-card')) : [];
+      var searchInput = document.getElementById('hubSearch');
+      var pillLists = document.querySelectorAll('.lh-pills');
+      var activeChipsEl = document.getElementById('activeChips');
+      var resultCountEl = document.getElementById('resultCount');
+      var clearAllBtn = document.getElementById('clearAll');
+      var emptyClearBtn = document.getElementById('emptyClear');
+      var emptyState = document.getElementById('emptyState');
+
+      // State: per-group sets of active filter slugs ("all" means group inactive)
+      var state = { controls: new Set(['all']), skill: new Set(['all']), type: new Set(['all']) };
+      var searchTerm = '';
+      var searchDebounce;
+
+      var groupLabels = { controls: 'Control', skill: 'Skill', type: 'Type' };
+
+      function isAll(group) { return state[group].size === 1 && state[group].has('all'); }
+
+      function cardMatches(card) {
+        if (searchTerm) {
+          var hay = ((card.dataset.title || '') + ' ' + (card.dataset.dek || '')).toLowerCase();
+          if (hay.indexOf(searchTerm) === -1) return false;
+        }
+        // Controls: card may declare multiple space-separated control slugs
+        if (!isAll('controls')) {
+          var cardControls = (card.dataset.controls || '').split(/\s+/);
+          var anyControl = false;
+          state.controls.forEach(function (s) {
+            if (cardControls.indexOf(s) !== -1) anyControl = true;
+          });
+          if (!anyControl) return false;
+        }
+        if (!isAll('skill')) {
+          if (!state.skill.has(card.dataset.skill)) return false;
+        }
+        if (!isAll('type')) {
+          if (!state.type.has(card.dataset.type)) return false;
+        }
+        return true;
+      }
+
+      function render() {
+        var visible = 0;
+        cards.forEach(function (card) {
+          var li = card.parentElement;
+          if (cardMatches(card)) { li.hidden = false; visible++; }
+          else { li.hidden = true; }
+        });
+
+        // Result count
+        if (resultCountEl) {
+          var totalSuffix = (visible === cards.length && !hasActiveFilters()) ? ' of 300+' : ' of ' + cards.length;
+          resultCountEl.textContent = 'Showing ' + visible + totalSuffix + (visible === 1 ? ' article' : ' articles');
+        }
+
+        // Empty state
+        if (emptyState) emptyState.hidden = visible !== 0;
+
+        // Chips
+        renderChips();
+
+        // Clear-all visibility
+        if (clearAllBtn) clearAllBtn.hidden = !hasActiveFilters();
+      }
+
+      function hasActiveFilters() {
+        return !isAll('controls') || !isAll('skill') || !isAll('type') || !!searchTerm;
+      }
+
+      function renderChips() {
+        if (!activeChipsEl) return;
+        var chips = [];
+        ['controls', 'skill', 'type'].forEach(function (group) {
+          if (isAll(group)) return;
+          state[group].forEach(function (slug) {
+            chips.push({ group: group, slug: slug });
+          });
+        });
+        activeChipsEl.innerHTML = '';
+        if (searchTerm) {
+          chips.unshift({ group: 'search', slug: searchTerm });
+        }
+        chips.forEach(function (chip) {
+          var btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'lh-chip';
+          var label = chip.group === 'search'
+            ? 'Search: "' + chip.slug + '"'
+            : (groupLabels[chip.group] + ': ' + slugLabel(chip.group, chip.slug));
+          btn.innerHTML = '<span>' + label + '</span><span class="lh-chip-x" aria-hidden="true">×</span>';
+          btn.setAttribute('aria-label', 'Remove filter ' + label);
+          btn.addEventListener('click', function () {
+            if (chip.group === 'search') {
+              searchTerm = '';
+              if (searchInput) searchInput.value = '';
+            } else {
+              state[chip.group].delete(chip.slug);
+              if (state[chip.group].size === 0) state[chip.group].add('all');
+              syncPills(chip.group);
+            }
+            render();
+          });
+          activeChipsEl.appendChild(btn);
+        });
+      }
+
+      function slugLabel(group, slug) {
+        var list = document.querySelector('.lh-pills[data-group="' + group + '"]');
+        if (!list) return slug;
+        var btn = list.querySelector('.lh-pill[data-filter="' + slug + '"]');
+        return btn ? btn.textContent.trim() : slug;
+      }
+
+      function syncPills(group) {
+        var list = document.querySelector('.lh-pills[data-group="' + group + '"]');
+        if (!list) return;
+        list.querySelectorAll('.lh-pill').forEach(function (btn) {
+          if (state[group].has(btn.dataset.filter)) btn.classList.add('is-active');
+          else btn.classList.remove('is-active');
+        });
+      }
+
+      pillLists.forEach(function (list) {
+        var group = list.dataset.group;
+        list.addEventListener('click', function (e) {
+          var btn = e.target.closest('.lh-pill');
+          if (!btn) return;
+          var slug = btn.dataset.filter;
+          if (slug === 'all') {
+            state[group] = new Set(['all']);
+          } else {
+            state[group].delete('all');
+            if (state[group].has(slug)) state[group].delete(slug);
+            else state[group].add(slug);
+            if (state[group].size === 0) state[group].add('all');
+          }
+          syncPills(group);
+          render();
+        });
+      });
+
+      if (searchInput) {
+        searchInput.addEventListener('input', function () {
+          clearTimeout(searchDebounce);
+          searchDebounce = setTimeout(function () {
+            searchTerm = searchInput.value.trim().toLowerCase();
+            render();
+          }, 120);
+        });
+      }
+
+      function clearAll() {
+        state = { controls: new Set(['all']), skill: new Set(['all']), type: new Set(['all']) };
+        searchTerm = '';
+        if (searchInput) searchInput.value = '';
+        ['controls', 'skill', 'type'].forEach(syncPills);
+        render();
+      }
+      if (clearAllBtn) clearAllBtn.addEventListener('click', clearAll);
+      if (emptyClearBtn) emptyClearBtn.addEventListener('click', clearAll);
+
+      render();
+    })();
+  </script>
+
+</body>
+</html>

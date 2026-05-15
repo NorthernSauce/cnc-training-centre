@@ -1,0 +1,653 @@
+/* ============================================
+ * LEARNING HUB ARCHIVE — page-specific styles.
+ * Inherits page-home.css (nav, drawer, hero scaffold,
+ * .hub block, .s scaffold, .sec-pretitle, .ghost-num).
+ * Additive only — does not duplicate locked or shared
+ * classes.
+ * ============================================ */
+
+
+/* ============================================
+ * § 01 — HERO override
+ * Same surface as home hero (paper), same scaffold,
+ * but the right column is a marginalia rail with
+ * library stats instead of a hero-specs spec sheet.
+ * ============================================ */
+
+.lh-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ns-space-2xl);
+}
+
+@media (min-width: 900px) {
+  .lh-hero-grid {
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+    gap: var(--ns-space-4xl);
+    align-items: start;
+  }
+}
+
+.lh-hero-jump {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-small);
+  font-weight: var(--ns-weight-medium);
+  letter-spacing: var(--ns-track-wide);
+  text-transform: uppercase;
+}
+
+.lh-margin {
+  background: var(--ns-color-paper);
+  border: 1px solid var(--ns-color-rule);
+  border-radius: var(--ns-radius-tight);
+  padding: var(--ns-space-lg) var(--ns-space-lg) var(--ns-space-md);
+  position: relative;
+}
+
+.lh-margin::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 24px;
+  border-top: 2px solid var(--ns-color-ink);
+  border-left: 2px solid var(--ns-color-ink);
+}
+.lh-margin::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 24px;
+  height: 24px;
+  border-bottom: 2px solid var(--ns-color-ink);
+  border-right: 2px solid var(--ns-color-ink);
+}
+
+.lh-margin-head {
+  display: grid;
+  grid-template-columns: max-content 1fr max-content;
+  gap: var(--ns-space-md);
+  align-items: center;
+  padding-bottom: var(--ns-space-md);
+  border-bottom: 1px solid var(--ns-color-rule);
+  margin-bottom: var(--ns-space-sm);
+}
+
+.lh-margin-eyebrow {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  font-weight: var(--ns-weight-medium);
+  letter-spacing: var(--ns-track-extrawide);
+  text-transform: uppercase;
+  color: var(--ns-color-ink-muted);
+}
+
+.lh-margin-rule { height: 1px; background: var(--ns-color-rule-strong); }
+
+.lh-margin-num {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  font-weight: var(--ns-weight-medium);
+  letter-spacing: 0.04em;
+  color: var(--ns-color-ink-muted);
+  font-feature-settings: "tnum" 1;
+}
+
+.lh-margin-list {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0;
+}
+
+.lh-margin-row {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: var(--ns-space-md);
+  align-items: baseline;
+  padding: var(--ns-space-sm) 0;
+  border-bottom: 1px solid var(--ns-color-rule-faint);
+  font-size: var(--ns-text-small);
+}
+
+.lh-margin-row:last-child { border-bottom: 0; }
+
+.lh-margin-row dt {
+  font-family: var(--ns-font-body);
+  font-weight: var(--ns-weight-medium);
+  font-size: var(--ns-text-tiny);
+  letter-spacing: var(--ns-track-wide);
+  text-transform: uppercase;
+  color: var(--ns-color-ink);
+}
+
+.lh-margin-row dd {
+  margin: 0;
+  color: var(--ns-color-ink-soft);
+}
+
+
+/* ============================================
+ * § 02 — FEATURED strip override
+ * Reuses .hub / .hub-grid / .hub-featured / .hub-secondary
+ * from page-home.css verbatim. Just shifts the section
+ * margins a touch and hides the home's stats strip
+ * (already absent from markup).
+ * ============================================ */
+
+.lh-featured .hub-head { margin-bottom: clamp(2.5rem, 5vw, 4.5rem); }
+
+
+/* ============================================
+ * § 03 — LIBRARY: filter toolbar + card grid
+ * The workhorse section. Toolbar sticks within the
+ * section, not page-wide. Pills toggle. Search is real.
+ * ============================================ */
+
+.library {
+  padding-block: clamp(4rem, 8vw, 8rem);
+}
+
+.library-head { margin-bottom: clamp(2rem, 4vw, 3rem); }
+
+.library-title {
+  font-family: var(--ns-font-display);
+  font-size: clamp(2rem, 1.4rem + 2.4vw, 3.5rem);
+  line-height: 0.98;
+  letter-spacing: -0.015em;
+  color: var(--ns-color-ink);
+  margin: 0 0 var(--ns-space-md);
+  max-width: 22ch;
+}
+
+.library-lede {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-medium);
+  line-height: var(--ns-leading-base);
+  color: var(--ns-color-ink-soft);
+  margin: 0;
+  max-width: 56ch;
+}
+
+
+/* Toolbar — sticky inside the section only */
+.lh-toolbar {
+  position: sticky;
+  top: 88px; /* clear of the fixed nav */
+  z-index: 2;
+  display: grid;
+  gap: var(--ns-space-md);
+  padding: var(--ns-space-lg);
+  background: color-mix(in oklab, var(--ns-color-paper) 96%, transparent);
+  backdrop-filter: saturate(140%) blur(6px);
+  -webkit-backdrop-filter: saturate(140%) blur(6px);
+  border: 1px solid var(--ns-color-rule);
+  border-radius: var(--ns-radius-tight);
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+.lh-toolbar-search {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ns-space-xs);
+}
+
+@media (min-width: 700px) {
+  .lh-toolbar-search {
+    grid-template-columns: max-content 1fr;
+    align-items: center;
+    gap: var(--ns-space-md);
+  }
+}
+
+.lh-search-label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ns-space-sm);
+}
+
+.lh-search-eyebrow {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  font-weight: var(--ns-weight-medium);
+  letter-spacing: var(--ns-track-extrawide);
+  text-transform: uppercase;
+  color: var(--ns-color-ink-muted);
+  padding-top: var(--ns-space-2xs);
+  border-top: 1px solid var(--ns-color-ink);
+  display: inline-block;
+}
+
+.lh-search-input {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  align-items: center;
+  gap: var(--ns-space-sm);
+  padding: var(--ns-space-sm) var(--ns-space-md);
+  background: var(--ns-color-paper);
+  border: 1px solid var(--ns-color-rule-strong);
+  border-radius: var(--ns-radius-tight);
+  transition: border-color var(--ns-dur-fast) var(--ns-ease-out);
+}
+
+.lh-search-input:focus-within {
+  border-color: var(--ns-color-ink);
+  outline: 2px solid var(--ns-color-focus);
+  outline-offset: 1px;
+}
+
+.lh-search-icon { color: var(--ns-color-ink-muted); }
+
+.lh-search-input input {
+  border: 0;
+  background: transparent;
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-medium);
+  color: var(--ns-color-ink);
+  width: 100%;
+  outline: none;
+  padding: 0;
+}
+
+.lh-search-input input::placeholder {
+  color: var(--ns-color-ink-faint);
+}
+
+
+/* Filter sets (control row, skill row, type row) */
+.lh-filterset {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ns-space-xs);
+}
+
+@media (min-width: 900px) {
+  .lh-filterset {
+    grid-template-columns: max-content 1fr;
+    align-items: center;
+    gap: var(--ns-space-md);
+  }
+}
+
+.lh-filterset-head { display: inline-flex; align-items: center; }
+
+.lh-filterset-eyebrow {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  font-weight: var(--ns-weight-medium);
+  letter-spacing: var(--ns-track-extrawide);
+  text-transform: uppercase;
+  color: var(--ns-color-ink-muted);
+  padding-top: var(--ns-space-2xs);
+  border-top: 1px solid var(--ns-color-ink);
+  display: inline-block;
+}
+
+.lh-filterset-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ns-space-md);
+}
+
+@media (min-width: 900px) {
+  .lh-filterset-row {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: var(--ns-space-2xl);
+    align-items: start;
+  }
+}
+
+
+/* Pills — share visual language with .tag but interactive button */
+.lh-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ns-space-xs);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.lh-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.85rem;
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  font-weight: var(--ns-weight-medium);
+  letter-spacing: var(--ns-track-wide);
+  text-transform: uppercase;
+  line-height: 1.6;
+  border-radius: var(--ns-radius-pill);
+  background: var(--ns-color-paper);
+  color: var(--ns-color-ink);
+  border: 1px solid var(--ns-color-rule);
+  cursor: pointer;
+  transition:
+    background var(--ns-dur-fast) var(--ns-ease-out),
+    color var(--ns-dur-fast) var(--ns-ease-out),
+    border-color var(--ns-dur-fast) var(--ns-ease-out);
+}
+
+.lh-pill:hover {
+  border-color: var(--ns-color-ink);
+}
+
+.lh-pill:focus-visible {
+  outline: 2px solid var(--ns-color-focus);
+  outline-offset: 2px;
+}
+
+.lh-pill.is-active {
+  background: var(--ns-color-ink);
+  color: var(--ns-color-ink-inverse);
+  border-color: var(--ns-color-ink);
+}
+
+
+/* Toolbar foot — active chips + result count */
+.lh-toolbar-foot {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ns-space-sm);
+  padding-top: var(--ns-space-sm);
+  border-top: 1px solid var(--ns-color-rule);
+}
+
+@media (min-width: 700px) {
+  .lh-toolbar-foot {
+    grid-template-columns: 1fr max-content;
+    align-items: center;
+    gap: var(--ns-space-lg);
+  }
+}
+
+.lh-active-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ns-space-xs);
+  min-height: 1.5rem;
+}
+
+.lh-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ns-space-xs);
+  padding: 0.25rem 0.65rem;
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  font-weight: var(--ns-weight-medium);
+  letter-spacing: var(--ns-track-wide);
+  text-transform: uppercase;
+  background: var(--ns-color-primary-soft);
+  color: var(--ns-color-primary-active);
+  border: 1px solid transparent;
+  border-radius: var(--ns-radius-pill);
+  cursor: pointer;
+  transition: background var(--ns-dur-fast) var(--ns-ease-out);
+}
+
+.lh-chip:hover { background: var(--ns-color-primary); color: var(--ns-color-ink-inverse); }
+
+.lh-chip-x {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1rem;
+  height: 1rem;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.lh-toolbar-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ns-space-md);
+  flex-wrap: wrap;
+}
+
+.lh-result-count {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  font-weight: var(--ns-weight-medium);
+  letter-spacing: var(--ns-track-wide);
+  text-transform: uppercase;
+  color: var(--ns-color-ink-muted);
+  font-feature-settings: "tnum" 1;
+}
+
+.lh-clear {
+  background: transparent;
+  border: 0;
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  font-weight: var(--ns-weight-medium);
+  letter-spacing: var(--ns-track-wide);
+  text-transform: uppercase;
+  color: var(--ns-color-primary);
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+  text-decoration-color: var(--ns-color-primary);
+  text-underline-offset: 0.18em;
+}
+
+.lh-clear:hover { color: var(--ns-color-primary-active); }
+
+
+/* Card grid */
+.lh-card-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ns-space-lg);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@media (min-width: 700px) {
+  .lh-card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (min-width: 1100px) {
+  .lh-card-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+.lh-card-grid > li[hidden] { display: none; }
+
+.lh-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ns-space-md);
+  height: 100%;
+  padding: var(--ns-space-lg);
+  background: var(--ns-color-paper);
+  border: 1px solid var(--ns-color-rule);
+  border-radius: var(--ns-radius-tight);
+  text-decoration: none;
+  color: var(--ns-color-ink);
+  transition:
+    border-color var(--ns-dur-fast) var(--ns-ease-out),
+    transform var(--ns-dur-base) var(--ns-ease-out);
+}
+
+.lh-card:hover {
+  border-color: var(--ns-color-ink);
+  transform: translateY(-2px);
+}
+
+.lh-card:hover .lh-card-title {
+  text-decoration: underline;
+  text-decoration-color: var(--ns-color-ink);
+  text-underline-offset: 0.18em;
+}
+
+.lh-card:hover .lh-card-arrow { transform: translateX(4px); }
+
+.lh-card-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--ns-space-xs);
+}
+
+.lh-card-title {
+  font-family: var(--ns-font-display);
+  font-size: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: var(--ns-color-ink);
+  margin: 0;
+}
+
+.lh-card-dek {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-small);
+  line-height: var(--ns-leading-base);
+  color: var(--ns-color-ink-soft);
+  margin: 0;
+  flex: 1;
+}
+
+.lh-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--ns-space-xs);
+  padding-top: var(--ns-space-sm);
+  border-top: 1px solid var(--ns-color-rule);
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  letter-spacing: var(--ns-track-wide);
+  text-transform: uppercase;
+  color: var(--ns-color-ink-muted);
+  font-feature-settings: "tnum" 1;
+}
+
+.lh-card-arrow {
+  margin-left: auto;
+  font-size: var(--ns-text-medium);
+  color: var(--ns-color-ink);
+  transition: transform var(--ns-dur-base) var(--ns-ease-out);
+}
+
+
+/* Empty state */
+.lh-empty {
+  margin-top: clamp(2rem, 4vw, 3rem);
+  padding: var(--ns-space-2xl);
+  background: var(--ns-color-paper-tint);
+  border: 1px dashed var(--ns-color-rule-strong);
+  border-radius: var(--ns-radius-tight);
+}
+
+
+/* ============================================
+ * § 04 — PAGINATION
+ * ============================================ */
+
+.lh-paginate-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ns-space-lg);
+  align-items: end;
+}
+
+@media (min-width: 900px) {
+  .lh-paginate-grid {
+    grid-template-columns: minmax(0, 1.4fr) max-content;
+    gap: var(--ns-space-2xl);
+  }
+}
+
+.lh-paginate-title {
+  font-family: var(--ns-font-display);
+  font-size: clamp(1.75rem, 1.2rem + 2vw, 2.75rem);
+  line-height: 1;
+  letter-spacing: -0.015em;
+  color: var(--ns-color-ink);
+  margin: 0 0 var(--ns-space-sm);
+}
+
+.lh-paginate-lede {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-medium);
+  color: var(--ns-color-ink-soft);
+  margin: 0;
+  max-width: 50ch;
+}
+
+.pagination {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--ns-space-2xs);
+}
+
+.pagination-page,
+.pagination-step {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  height: 40px;
+  padding: 0 var(--ns-space-sm);
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-small);
+  font-weight: var(--ns-weight-medium);
+  letter-spacing: var(--ns-track-wide);
+  color: var(--ns-color-ink);
+  background: var(--ns-color-paper);
+  border: 1px solid var(--ns-color-rule-strong);
+  border-radius: var(--ns-radius-tight);
+  text-decoration: none;
+  font-feature-settings: "tnum" 1;
+  transition:
+    background var(--ns-dur-fast) var(--ns-ease-out),
+    border-color var(--ns-dur-fast) var(--ns-ease-out),
+    color var(--ns-dur-fast) var(--ns-ease-out);
+}
+
+.pagination-page:hover,
+.pagination-step:hover {
+  border-color: var(--ns-color-ink);
+  background: var(--ns-color-paper-deep);
+}
+
+.pagination-page[aria-current="page"] {
+  background: var(--ns-color-ink);
+  border-color: var(--ns-color-ink);
+  color: var(--ns-color-ink-inverse);
+}
+
+.pagination-step.is-disabled {
+  color: var(--ns-color-ink-faint);
+  border-color: var(--ns-color-rule);
+  pointer-events: none;
+}
+
+.pagination-ellipsis {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 40px;
+  color: var(--ns-color-ink-muted);
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-small);
+}
+
+
+/* ============================================
+ * Mobile refinements
+ * ============================================ */
+
+@media (max-width: 699px) {
+  .lh-toolbar {
+    padding: var(--ns-space-md);
+    /* unstick on mobile — sticky toolbar takes too much vertical room with multiple pill rows */
+    position: static;
+  }
+}
