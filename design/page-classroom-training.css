@@ -18,7 +18,6 @@
  * ------------------------------------------------- */
 
 .ct-hero .hero-title {
-  font-size: clamp(2.5rem, 1rem + 5.5vw, 5.5rem);
   max-width: 22ch;
 }
 
