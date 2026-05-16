@@ -11,60 +11,50 @@
 
 
 /* ============================================
- * § 01 — HERO
- * Asymmetric editorial. Headline LH, contact-meta marginalia RH.
- * Pattern mirrors onsite-training .ot-margin / .ot-hero-grid.
- * No hero CTAs — the form below is the action.
+ * § 01 — HERO (compressed)
+ * Functional contact hero — pretitle + short headline +
+ * short lede + slim inline contact meta. Tight padding;
+ * form below is the action, visitor reaches it fast.
  * ============================================ */
 
-.ct-hero .hero-title { max-width: 14ch; }
-
-.ct-hero-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--ns-space-2xl);
+.ct-hero {
+  padding-block: clamp(6rem, 9vw, 8rem) clamp(1.25rem, 2vw, 2rem);
 }
 
-@media (min-width: 900px) {
-  .ct-hero-grid {
-    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-    gap: var(--ns-space-4xl);
-    align-items: start;
-  }
+.ct-hero-title {
+  font-size: clamp(2.25rem, 1.1rem + 4vw, 4rem);
+  margin: 0 0 var(--ns-space-md);
+  max-width: 16ch;
 }
 
-.ct-hero-cue {
-  margin-top: var(--ns-space-lg);
-  font-family: var(--ns-font-body);
-  font-size: var(--ns-text-small);
-  font-weight: var(--ns-weight-medium);
-  letter-spacing: var(--ns-track-wide);
-  text-transform: uppercase;
-  color: var(--ns-color-ink-muted);
+.ct-hero-lede {
+  max-width: 60ch;
+  margin: 0;
 }
 
-/* Contact-meta marginalia — same visual treatment as ot-margin */
-.ct-margin {
-  background: var(--ns-color-paper-tint);
-  border: 1px solid var(--ns-color-rule);
-  padding: var(--ns-space-lg);
-  border-radius: var(--ns-radius-tight);
-  align-self: start;
+.ct-hero-meta-wrap {
+  margin-top: clamp(1.5rem, 3vw, 2.5rem);
 }
 
-.ct-margin-head {
-  display: grid;
-  grid-template-columns: max-content 1fr max-content;
-  gap: var(--ns-space-sm);
-  align-items: center;
-  padding-bottom: var(--ns-space-md);
+.ct-hero-meta {
+  margin: 0;
+  padding: var(--ns-space-sm) 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ns-space-sm) clamp(1.5rem, 4vw, 3rem);
+  align-items: baseline;
+  border-top: 2px solid var(--ns-color-ink);
   border-bottom: 1px solid var(--ns-color-rule);
-  margin-bottom: var(--ns-space-md);
+  font-family: var(--ns-font-body);
 }
 
-.ct-margin-eyebrow,
-.ct-margin-num {
-  font-family: var(--ns-font-body);
+.ct-hero-meta > div {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--ns-space-sm);
+}
+
+.ct-hero-meta dt {
   font-size: var(--ns-text-tiny);
   font-weight: var(--ns-weight-medium);
   letter-spacing: var(--ns-track-extrawide);
@@ -72,56 +62,20 @@
   color: var(--ns-color-ink-muted);
 }
 
-.ct-margin-num { color: var(--ns-color-ink); }
-
-.ct-margin-rule {
-  height: 1px;
-  background: var(--ns-color-rule-strong);
-}
-
-.ct-margin-list {
-  display: flex;
-  flex-direction: column;
-  gap: var(--ns-space-md);
+.ct-hero-meta dd {
   margin: 0;
-}
-
-.ct-margin-row {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: var(--ns-space-2xs);
-  padding-bottom: var(--ns-space-md);
-  border-bottom: 1px dashed var(--ns-color-rule);
-}
-
-.ct-margin-row:last-child {
-  padding-bottom: 0;
-  border-bottom: 0;
-}
-
-@media (min-width: 520px) {
-  .ct-margin-row {
-    grid-template-columns: 10rem 1fr;
-    gap: var(--ns-space-md);
-    align-items: baseline;
-  }
-}
-
-.ct-margin-row dt {
-  font-family: var(--ns-font-body);
-  font-size: var(--ns-text-tiny);
+  font-size: var(--ns-text-regular);
   font-weight: var(--ns-weight-medium);
-  letter-spacing: var(--ns-track-wide);
-  text-transform: uppercase;
   color: var(--ns-color-ink);
 }
 
-.ct-margin-row dd {
-  margin: 0;
-  font-size: var(--ns-text-small);
-  line-height: var(--ns-leading-base);
-  color: var(--ns-color-ink-soft);
+.ct-hero-meta dd a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: color-mix(in oklab, var(--ns-color-ink) 25%, transparent);
+  text-underline-offset: 0.18em;
 }
+.ct-hero-meta dd a:hover { text-decoration-color: var(--ns-color-ink); }
 
 
 /* ============================================

@@ -322,22 +322,10 @@
   max-width: 100%;
 }
 
-/* Inline marginalia within the prose column — reuses .marginalia.
-   On wide screens, float-right so the prose continues alongside;
-   on mobile, stack full-width. */
-.ar-margin {
-  margin: var(--ns-space-xl) 0;
-  background: var(--ns-color-paper-tint);
-}
-@media (min-width: 800px) {
-  .ar-margin {
-    float: right;
-    width: 18rem;
-    max-width: 40%;
-    margin: var(--ns-space-sm) 0 var(--ns-space-lg) var(--ns-space-xl);
-    clear: right;
-  }
-}
+/* Marginalia removed from article body — WordPress post-editor
+   cannot maintain side callouts reliably. Prose flows vertically.
+   TOC remains as template-controlled chrome.
+ */
 
 /* YouTube callout at end of article */
 .ar-video {

@@ -8,75 +8,54 @@
 
 
 /* ============================================
- * § 01 — HERO override
- * Same surface as home hero (paper), same scaffold,
- * but the right column is a marginalia rail with
- * library stats instead of a hero-specs spec sheet.
+ * § 01 — HERO (compressed, browse-page variant)
+ * Functional hero — title + 1-line lede + slim
+ * inline stats strip. Get the user to the filters
+ * fast. Hero occupies < 40% of first viewport.
  * ============================================ */
 
-.lh-hero-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--ns-space-2xl);
+.lh-hero {
+  /* Override the home .hero vertical padding — much tighter */
+  padding-block: clamp(6rem, 9vw, 8rem) clamp(1.25rem, 2vw, 2rem);
 }
 
-@media (min-width: 900px) {
-  .lh-hero-grid {
-    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
-    gap: var(--ns-space-4xl);
-    align-items: start;
-  }
+.lh-hero-title {
+  /* Trim from the full hero scale to a browse-page scale */
+  font-size: clamp(2.25rem, 1.1rem + 4vw, 4rem);
+  margin: 0 0 var(--ns-space-md);
+  max-width: 20ch;
 }
 
-.lh-hero-jump {
-  font-family: var(--ns-font-body);
-  font-size: var(--ns-text-small);
-  font-weight: var(--ns-weight-medium);
-  letter-spacing: var(--ns-track-wide);
-  text-transform: uppercase;
+.lh-hero-lede {
+  max-width: 60ch;
+  margin: 0;
 }
 
-.lh-margin {
-  background: var(--ns-color-paper);
-  border: 1px solid var(--ns-color-rule);
-  border-radius: var(--ns-radius-tight);
-  padding: var(--ns-space-lg) var(--ns-space-lg) var(--ns-space-md);
-  position: relative;
+/* Slim spec strip directly below the hero — single line of
+ * inline stats, hairline rules above + below. Not a card. */
+.lh-hero-stats-wrap {
+  margin-top: clamp(1.5rem, 3vw, 2.5rem);
 }
 
-.lh-margin::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 24px;
-  height: 24px;
+.lh-hero-stats {
+  margin: 0;
+  padding: var(--ns-space-sm) 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ns-space-md) clamp(1.5rem, 4vw, 3rem);
+  align-items: baseline;
   border-top: 2px solid var(--ns-color-ink);
-  border-left: 2px solid var(--ns-color-ink);
-}
-.lh-margin::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 24px;
-  height: 24px;
-  border-bottom: 2px solid var(--ns-color-ink);
-  border-right: 2px solid var(--ns-color-ink);
-}
-
-.lh-margin-head {
-  display: grid;
-  grid-template-columns: max-content 1fr max-content;
-  gap: var(--ns-space-md);
-  align-items: center;
-  padding-bottom: var(--ns-space-md);
   border-bottom: 1px solid var(--ns-color-rule);
-  margin-bottom: var(--ns-space-sm);
+  font-family: var(--ns-font-body);
 }
 
-.lh-margin-eyebrow {
-  font-family: var(--ns-font-body);
+.lh-hero-stats > div {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--ns-space-sm);
+}
+
+.lh-hero-stats dt {
   font-size: var(--ns-text-tiny);
   font-weight: var(--ns-weight-medium);
   letter-spacing: var(--ns-track-extrawide);
@@ -84,48 +63,12 @@
   color: var(--ns-color-ink-muted);
 }
 
-.lh-margin-rule { height: 1px; background: var(--ns-color-rule-strong); }
-
-.lh-margin-num {
-  font-family: var(--ns-font-body);
-  font-size: var(--ns-text-tiny);
-  font-weight: var(--ns-weight-medium);
-  letter-spacing: 0.04em;
-  color: var(--ns-color-ink-muted);
-  font-feature-settings: "tnum" 1;
-}
-
-.lh-margin-list {
+.lh-hero-stats dd {
   margin: 0;
-  padding: 0;
-  display: grid;
-  gap: 0;
-}
-
-.lh-margin-row {
-  display: grid;
-  grid-template-columns: max-content 1fr;
-  gap: var(--ns-space-md);
-  align-items: baseline;
-  padding: var(--ns-space-sm) 0;
-  border-bottom: 1px solid var(--ns-color-rule-faint);
-  font-size: var(--ns-text-small);
-}
-
-.lh-margin-row:last-child { border-bottom: 0; }
-
-.lh-margin-row dt {
-  font-family: var(--ns-font-body);
-  font-weight: var(--ns-weight-medium);
-  font-size: var(--ns-text-tiny);
-  letter-spacing: var(--ns-track-wide);
-  text-transform: uppercase;
+  font-size: var(--ns-text-medium);
+  font-weight: var(--ns-weight-semibold);
   color: var(--ns-color-ink);
-}
-
-.lh-margin-row dd {
-  margin: 0;
-  color: var(--ns-color-ink-soft);
+  font-feature-settings: "tnum" 1;
 }
 
 

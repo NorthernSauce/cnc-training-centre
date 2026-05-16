@@ -72,61 +72,24 @@
   <main id="main">
 
     <!-- ============================================
-         § 01 — HERO
-         Asymmetric editorial. Headline + lede LH,
-         contact-meta marginalia RH. No hero CTAs —
-         the form below is the action.
+         § 01 — HERO (compressed)
+         Functional contact hero — pretitle + short headline
+         + short lede + slim inline contact meta. Form below
+         is the action; visitor reaches it fast.
          ============================================ -->
     <section class="hero ct-hero" aria-labelledby="hero-title">
-      <span class="hero-ghost" aria-hidden="true">01</span>
       <div class="container">
         <p class="hero-eyebrow hero-eyebrow-top">Contact · I read every enquiry myself</p>
-        <h1 class="hero-title" id="hero-title">Tell me what<br/><em>you need.</em></h1>
-
-        <div class="ct-hero-grid">
-          <div class="hero-stack">
-            <p class="hero-lede">Describe the machines, the team, where you're at, and what you want them able to do. One paragraph is plenty. I aim to come back inside a working day with a proper answer, not a templated reply.</p>
-            <p class="ct-hero-cue" aria-hidden="true">↓ Form below — about 90 seconds.</p>
-          </div>
-
-          <aside class="ct-margin" aria-label="Contact at a glance">
-            <header class="ct-margin-head">
-              <span class="ct-margin-eyebrow">Contact · spec</span>
-              <span class="ct-margin-rule" aria-hidden="true"></span>
-              <span class="ct-margin-num">01 / 05</span>
-            </header>
-            <dl class="ct-margin-list">
-              <div class="ct-margin-row">
-                <dt>Phone</dt>
-                <dd><a href="tel:+447834858407">07834 858 407</a></dd>
-              </div>
-              <div class="ct-margin-row">
-                <dt>Email</dt>
-                <dd><a href="mailto:david@cnctrainingcentre.com">david@cnctrainingcentre.com</a></dd>
-              </div>
-              <div class="ct-margin-row">
-                <dt>Reply time</dt>
-                <dd>Inside a working day, usually same day.</dd>
-              </div>
-              <div class="ct-margin-row">
-                <dt>Where</dt>
-                <dd>Barwell, Leicestershire. UK-wide for onsite.</dd>
-              </div>
-              <div class="ct-margin-row">
-                <dt>What you'll get back</dt>
-                <dd>An honest read on whether I can help, a rough scope, and a price — not a templated reply.</dd>
-              </div>
-            </dl>
-          </aside>
-        </div>
-
-        <footer class="hero-base" aria-hidden="true">
-          <span class="hero-base-tick"></span>
-          <span class="hero-base-line"></span>
-          <span class="hero-base-label">Scroll · The form</span>
-          <span class="hero-base-line"></span>
-          <span class="hero-base-tick"></span>
-        </footer>
+        <h1 class="hero-title ct-hero-title" id="hero-title">Tell me what <em>you need.</em></h1>
+        <p class="hero-lede ct-hero-lede">One paragraph on the machines, the team and where you're at. I reply inside a working day, usually same day. Form below.</p>
+      </div>
+      <div class="container ct-hero-meta-wrap">
+        <dl class="ct-hero-meta" aria-label="Contact meta">
+          <div><dt>Phone</dt><dd><a href="tel:+447834858407">07834 858 407</a></dd></div>
+          <div><dt>Email</dt><dd><a href="mailto:david@cnctrainingcentre.com">david@cnctrainingcentre.com</a></dd></div>
+          <div><dt>Reply</dt><dd>Inside a working day</dd></div>
+          <div><dt>Where</dt><dd>Barwell, Leicestershire · UK-wide onsite</dd></div>
+        </dl>
       </div>
     </section>
 
@@ -271,15 +234,53 @@
 
 
     <!-- ============================================
-         § 04 — TRUST STRIP
+         § 04 — FIND (location map)
+         Shared .find block, lifted from classroom-training
+         into page-home.css. Same surface, same iframe,
+         same caption pattern — block reuse.
+         ============================================ -->
+    <section class="find" aria-labelledby="find-title">
+      <div class="container">
+        <span class="sec-pretitle">§ 04 — Where to find me</span>
+        <div class="find-grid">
+          <div class="find-lh">
+            <h2 class="find-title" id="find-title">Barwell, Leicestershire.</h2>
+            <p class="find-body">The classroom's just outside Hinckley — ten minutes from the M69, half an hour from Birmingham, an hour up from Northampton. For onsite I travel UK-wide. If you'd like to come and see the classroom before you commit, ask — the kettle's on.</p>
+            <dl class="find-address">
+              <dt>Address</dt>
+              <dd>Barwell, Leicestershire <span class="ct-opt" style="text-transform:none;letter-spacing:0;">[GAP — exact street + postcode]</span></dd>
+              <dt>Parking</dt>
+              <dd>On-site parking for students. <span class="ct-opt" style="text-transform:none;letter-spacing:0;">[GAP — parking detail]</span></dd>
+            </dl>
+          </div>
+
+          <figure class="find-map">
+            <iframe
+              src="https://www.openstreetmap.org/export/embed.html?bbox=-1.36%2C52.56%2C-1.30%2C52.60&layer=mapnik&marker=52.5839%2C-1.3322"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Map — Barwell, Leicestershire"
+            ></iframe>
+            <figcaption class="find-map-caption">
+              <span>Barwell, Leicestershire <span class="ct-opt" style="text-transform:none;letter-spacing:0;">[GAP — exact workshop coordinates]</span></span>
+              <a class="link-arrow" href="https://www.google.com/maps/search/?api=1&query=Barwell%2C+Leicestershire" target="_blank" rel="noopener">Get directions</a>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================
+         § 05 — TRUST STRIP
          Home page authority table stripped to four rows.
          Same .spec-block treatment, fewer rows.
          ============================================ -->
     <section class="s s-paper-tint ct-trust" aria-labelledby="trust-title">
-      <span class="ghost-num" aria-hidden="true">04</span>
+      <span class="ghost-num" aria-hidden="true">05</span>
       <div class="container">
         <header class="sec-head">
-          <span class="sec-pretitle">§ 04 — Proof</span>
+          <span class="sec-pretitle">§ 05 — Proof</span>
           <h2 class="ct-trust-title" id="trust-title">Thirty years of doing this. Worth two lines before you hit send.</h2>
         </header>
 
