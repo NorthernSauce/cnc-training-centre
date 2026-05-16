@@ -9,7 +9,7 @@
 
 ## Hero
 
-**Eyebrow:** About David Smith · the bloke behind CNC Training Centre
+**Eyebrow:** About David · the bloke behind CNC Training Centre
 
 ### Thirty years on the shop floor. One bloke. Every major control.
 

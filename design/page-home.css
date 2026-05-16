@@ -466,6 +466,16 @@ body.drawer-open { overflow: hidden; }
   max-width: 18ch;
 }
 
+/* Service-page hero scale — long headlines (Onsite,
+ * Classroom, Programming) break ugly at the home-page
+ * 56→144px scale. This modifier drops to 36→80px so
+ * 4-line headlines wrap to 2-3 lines without losing
+ * dominance. Applied via class on each service H1. */
+.hero-title--svc {
+  font-size: clamp(2.25rem, 1.1rem + 4.5vw, 5rem);
+  line-height: 0.95;
+}
+
 .hero-title em {
   font-style: normal;
   color: var(--ns-color-primary);
@@ -1924,7 +1934,7 @@ body.drawer-open { overflow: hidden; }
 
 @media (min-width: 900px) {
   .svc-cta-grid {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
     gap: var(--ns-space-4xl);
   }
 }
@@ -1932,7 +1942,7 @@ body.drawer-open { overflow: hidden; }
 .svc-cta-lh {
   display: flex;
   flex-direction: column;
-  gap: var(--ns-space-lg);
+  gap: var(--ns-space-xl);
 }
 
 .svc-cta-title {
@@ -1951,7 +1961,7 @@ body.drawer-open { overflow: hidden; }
   line-height: var(--ns-leading-base);
   color: var(--ns-color-ink-soft);
   margin: 0;
-  max-width: 52ch;
+  max-width: 46ch;
 }
 
 .svc-cta-lede a {
@@ -1959,20 +1969,23 @@ body.drawer-open { overflow: hidden; }
   font-weight: var(--ns-weight-semibold);
 }
 
+/* Engineering-spec readout: each contact line is its own
+ * row — label left, value right — divided by hairline
+ * rules. Mirrors the marginalia dl pattern. */
 .svc-cta-meta {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--ns-space-lg);
+  display: flex;
+  flex-direction: column;
   margin: 0;
-  padding-top: var(--ns-space-md);
   border-top: 1px solid var(--ns-color-rule);
 }
 
-@media (min-width: 500px) {
-  .svc-cta-meta {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: var(--ns-space-md);
-  }
+.svc-cta-meta > div {
+  display: grid;
+  grid-template-columns: 9rem 1fr;
+  gap: var(--ns-space-md);
+  align-items: baseline;
+  padding-block: var(--ns-space-md);
+  border-bottom: 1px solid var(--ns-color-rule);
 }
 
 .svc-cta-meta dt {
@@ -1982,13 +1995,13 @@ body.drawer-open { overflow: hidden; }
   letter-spacing: var(--ns-track-extrawide);
   text-transform: uppercase;
   color: var(--ns-color-ink-muted);
-  margin-bottom: var(--ns-space-2xs);
+  margin: 0;
 }
 
 .svc-cta-meta dd {
   margin: 0;
   font-family: var(--ns-font-body);
-  font-size: var(--ns-text-small);
+  font-size: var(--ns-text-regular);
   color: var(--ns-color-ink);
   line-height: var(--ns-leading-base);
 }
@@ -2002,6 +2015,17 @@ body.drawer-open { overflow: hidden; }
 .svc-cta .form-stack {
   max-width: none;
   width: 100%;
+}
+
+/* form-head no longer carries a § eyebrow on svc-cta —
+ * collapse the 2-col grid to single column so the title
+ * sits flush left without an empty num column. */
+.svc-cta .form-head {
+  grid-template-columns: 1fr;
+}
+
+.svc-cta .form-head .sub {
+  grid-column: 1;
 }
 
 /* Hidden service field — keeps the value in the form

@@ -72,61 +72,25 @@
   <main id="main">
 
     <!-- ============================================
-         § 01 — HERO
-         Paper surface. Editorial headline + lede on the
-         left, marginalia rail on the right carrying the
-         content stats.
+         § 01 — HERO (compressed)
+         Paper surface. Functional browse-page hero — title,
+         one-line lede, slim inline stats strip below. Get
+         to the filters fast.
          ============================================ -->
     <section class="hero lh-hero" aria-labelledby="hero-title">
-      <span class="hero-ghost" aria-hidden="true">05</span>
       <div class="container">
-        <p class="hero-eyebrow hero-eyebrow-top">Learning Hub · 300+ articles and videos · since 2014</p>
-        <h1 class="hero-title" id="hero-title">Three hundred<br/><em>and counting.</em></h1>
-
-        <div class="lh-hero-grid">
-          <div class="hero-stack">
-            <p class="hero-lede">Articles, guides, and videos covering every major machine and control. I've been writing about CNC since 2014, mostly because I was googling the same problems twice and not finding anything useful — so I wrote it down. Filter by what's in front of you on the shop floor, read what you need, close the tab. No signup, no paywall.</p>
-            <a class="link-arrow lh-hero-jump" href="#library">Jump to the library</a>
-          </div>
-
-          <aside class="lh-margin" aria-label="Hub at a glance">
-            <header class="lh-margin-head">
-              <span class="lh-margin-eyebrow">Hub · at a glance</span>
-              <span class="lh-margin-rule" aria-hidden="true"></span>
-              <span class="lh-margin-num">05 / 05</span>
-            </header>
-            <dl class="lh-margin-list">
-              <div class="lh-margin-row">
-                <dt>Articles</dt>
-                <dd>~200 written pieces. Monthly minimum.</dd>
-              </div>
-              <div class="lh-margin-row">
-                <dt>Videos</dt>
-                <dd><strong>332</strong> on YouTube, embedded throughout the Hub.</dd>
-              </div>
-              <div class="lh-margin-row">
-                <dt>Writing since</dt>
-                <dd>2014. The Hub is where I put what I'd been Googling twice.</dd>
-              </div>
-              <div class="lh-margin-row">
-                <dt>Filter by</dt>
-                <dd>Control · machine brand · skill level · content type · topic.</dd>
-              </div>
-              <div class="lh-margin-row">
-                <dt>Free</dt>
-                <dd>Every piece. No paywall, no signup.</dd>
-              </div>
-            </dl>
-          </aside>
-        </div>
-
-        <footer class="hero-base" aria-hidden="true">
-          <span class="hero-base-tick"></span>
-          <span class="hero-base-line"></span>
-          <span class="hero-base-label">Scroll · Most read this week</span>
-          <span class="hero-base-line"></span>
-          <span class="hero-base-tick"></span>
-        </footer>
+        <p class="hero-eyebrow hero-eyebrow-top">Learning Hub · since 2014</p>
+        <h1 class="hero-title lh-hero-title" id="hero-title">Three hundred <em>and counting.</em></h1>
+        <p class="hero-lede lh-hero-lede">Articles, guides and videos for every major machine and control. Filter, read, close the tab. No signup, no paywall.</p>
+      </div>
+      <div class="container lh-hero-stats-wrap">
+        <dl class="lh-hero-stats" aria-label="Hub stats">
+          <div><dt>Articles</dt><dd>300+</dd></div>
+          <div><dt>Videos</dt><dd>332</dd></div>
+          <div><dt>Subscribers</dt><dd>8,930</dd></div>
+          <div><dt>Writing since</dt><dd>2014</dd></div>
+          <div><dt>Cost</dt><dd>Free</dd></div>
+        </dl>
       </div>
     </section>
 
@@ -511,7 +475,6 @@
           <div>
             <span class="sec-pretitle">§ 04 — Browse the full library</span>
             <h2 class="lh-paginate-title" id="paginate-title">Page 1 of 17.</h2>
-            <p class="lh-paginate-lede">300+ pieces. Filtered views paginate the same way. State sits in the URL so a filtered view is shareable.</p>
           </div>
           <nav class="pagination" aria-label="Pagination">
             <a class="pagination-step is-disabled" aria-disabled="true" href="#">← Previous</a>
