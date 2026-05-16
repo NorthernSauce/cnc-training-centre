@@ -1,0 +1,642 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nomura Sliding Head — Learning Hub — CNC Training Centre</title>
+  <meta name="description" content="A Nomura NN25 YB sliding head CNC with a Mitsubishi 60s control — what to expect, what to avoid, and the one feature that makes it worth keeping." />
+
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+  <link rel="stylesheet" href="../brief/tokens.css" />
+  <link rel="stylesheet" href="../brief/components.css" />
+  <link rel="stylesheet" href="./page-home.css" />
+  <link rel="stylesheet" href="./page-learning-hub-article.css" />
+</head>
+<body>
+
+  <!-- LOCKED: site nav — copy verbatim to every page -->
+  <nav class="nav" id="nav" aria-label="Primary">
+    <div class="nav-inner">
+      <a href="home.html" class="nav-brand" aria-label="CNC Training Centre — home">
+        <img src="../assets/logos/cnc-training-centre-logo.png" alt="CNC Training Centre" />
+      </a>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="onsite-training.html">Onsite</a></li>
+        <li><a class="nav-link" href="classroom-training.html">Classroom</a></li>
+        <li><a class="nav-link" href="programming-services.html">Programming</a></li>
+        <li><a class="nav-link" href="courses.html">Courses</a></li>
+        <li><a class="nav-link" href="learning-hub.html" aria-current="page">Learning Hub</a></li>
+        <li><a class="nav-link" href="about.html">About</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a class="nav-phone" href="tel:+447834858407" aria-label="Call David on 07834 858 407">07834 858 407</a>
+        <a class="btn btn-primary btn-sm" href="contact.html">Contact David</a>
+        <button class="nav-toggle" type="button" id="navToggle" aria-controls="drawer" aria-expanded="false" aria-label="Open menu">
+          <span class="nav-toggle-bar" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- LOCKED: drawer — copy verbatim to every page -->
+  <aside class="drawer" id="drawer" aria-label="Navigation" aria-hidden="true">
+    <div class="drawer-head">
+      <a href="home.html" class="nav-brand" aria-label="CNC Training Centre — home">
+        <img src="../assets/logos/cnc-training-centre-logo.png" alt="CNC Training Centre" />
+      </a>
+      <span></span>
+      <button class="drawer-close" type="button" id="drawerClose" aria-label="Close menu">✕</button>
+    </div>
+    <div class="drawer-body">
+      <a class="drawer-link" href="home.html"><span>Home</span><span class="num">§ 00</span></a>
+      <a class="drawer-link" href="onsite-training.html"><span>Onsite training</span><span class="num">§ 01</span></a>
+      <a class="drawer-link" href="classroom-training.html"><span>Classroom training</span><span class="num">§ 02</span></a>
+      <a class="drawer-link" href="programming-services.html"><span>Programming services</span><span class="num">§ 03</span></a>
+      <a class="drawer-link" href="courses.html"><span>Courses</span><span class="num">§ 04</span></a>
+      <a class="drawer-link" href="learning-hub.html" aria-current="page"><span>Learning Hub</span><span class="num">§ 05</span></a>
+      <a class="drawer-link" href="about.html"><span>About</span><span class="num">§ 06</span></a>
+      <a class="drawer-link" href="contact.html"><span>Contact</span><span class="num">§ 07</span></a>
+    </div>
+    <dl class="drawer-foot">
+      <div>
+        <dt>Phone</dt>
+        <dd><a href="tel:+447834858407">07834 858 407</a></dd>
+      </div>
+      <div>
+        <dt>Email</dt>
+        <dd><a href="mailto:david@cnctrainingcentre.com">david@cnctrainingcentre.com</a></dd>
+      </div>
+    </dl>
+  </aside>
+
+  <main id="main">
+
+    <!-- ============================================
+         § 01 — ARTICLE MASTHEAD
+         Paper surface. Breadcrumb-style pretitle + display H1
+         + lede (verbatim from article opening) + meta strip
+         with date, read-time and tag chips.
+         ============================================ -->
+    <section class="ar-masthead" aria-labelledby="ar-title">
+      <span class="hero-ghost" aria-hidden="true">05</span>
+      <div class="container">
+        <nav class="ar-breadcrumb" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="learning-hub.html">Learning Hub</a></li>
+            <li><span>Sliding head</span></li>
+            <li><span>Nomura</span></li>
+          </ol>
+        </nav>
+
+        <span class="sec-pretitle ar-pretitle">§ — Learning Hub / Sliding head</span>
+
+        <h1 class="ar-title" id="ar-title">Nomura sliding head, <em>Mitsubishi 60s.</em></h1>
+
+        <p class="ar-dek">Today I got to play with a Nomura Sliding Head CNC with a Mitsubishi 60s control. You know that feeling when you&rsquo;re stood in the middle isle at Aldi holding a 40mm drill that&rsquo;s about a meter long and you&rsquo;re trying to convince yourself that you need it cos it&rsquo;s only &pound;4.99? Well that sums up my relationship with this NOMURA CNC sliding head machine.</p>
+
+        <ul class="ar-meta" aria-label="Article meta">
+          <li><span class="ar-meta-key">Published</span><span class="ar-meta-val"><time datetime="2024-11-12">12 November 2024</time></span></li>
+          <li><span class="ar-meta-key">Read time</span><span class="ar-meta-val">12 min</span></li>
+          <li><span class="ar-meta-key">Author</span><span class="ar-meta-val">David</span></li>
+        </ul>
+
+        <ul class="ar-tags" aria-label="Tags">
+          <li><a class="tag" href="learning-hub.html?control=mitsubishi">Mitsubishi 60s</a></li>
+          <li><a class="tag" href="learning-hub.html?control=sliding-head">Sliding head</a></li>
+          <li><span class="tag tag-meta">Article</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============================================
+         § 02 — ARTICLE BODY
+         Paper surface. 2-col at >=1100: sticky-side TOC LH,
+         prose RH capped at 65ch. Marginalia injected inline
+         every 2-3 sections. One pull-quote.
+         ============================================ -->
+    <section class="ar-body" aria-labelledby="ar-body-title">
+      <h2 class="visually-hidden" id="ar-body-title">Article body</h2>
+      <div class="container">
+        <div class="ar-body-grid">
+
+          <aside class="ar-toc" aria-label="On this page">
+            <div class="ar-toc-inner">
+              <header class="ar-toc-head">
+                <span>On this page</span>
+              </header>
+              <ol class="ar-toc-list">
+                <li><a href="#swiss-or-sliding">Swiss or Sliding?</a></li>
+                <li><a href="#nomura-sliding-head-mitsubishi-60s">Nomura sliding head, Mitsubishi 60s</a></li>
+                <li><a href="#whats-a-swiss-machine">What&rsquo;s a Swiss machine?</a></li>
+                <li><a href="#nomura-sliding-head-cnc">Nomura sliding head CNC</a></li>
+                <li><a href="#mitsubishi-60s-cnc-control">Mitsubishi 60s control</a></li>
+                <li><a href="#tool-change-nomura-sliding-head">Tool change</a></li>
+                <li><a href="#hand-wheel-nomura-sliding-head">Hand-wheel</a></li>
+                <li><a href="#start-spindles-nomura-sliding-head">Start spindles</a></li>
+                <li><a href="#mdi-nomura-sliding-head">MDI</a></li>
+                <li><a href="#so-ill-show-you-anyway">So I&rsquo;ll show you anyway</a></li>
+                <li><a href="#this-is-amazing-mitsubishi-60s">This is amazing</a></li>
+                <li><a href="#tool-change-in-program">Tool-change (in program)</a></li>
+                <li><a href="#both-programs">Both programs</a></li>
+                <li><a href="#editing">Editing</a></li>
+                <li><a href="#altering-the-code-insert-alter-delete">Altering the code</a></li>
+                <li><a href="#macro-mitsubishi-60s">Macro</a></li>
+                <li><a href="#how-do-i-rate-mitsubishi-60s-control">How I rate it</a></li>
+              </ol>
+            </div>
+          </aside>
+
+          <article class="ar-prose prose">
+<h2 id="swiss-or-sliding">Swiss or Sliding?</h2>
+<p>Today I got to play with a Nomura Sliding Head CNC with a Mitsubishi 60s control.</p>
+<p>You know that feeling when you’re stood in the middle isle at Aldi holding a 40mm drill that’s about a meter long and you’re trying to convince yourself that you need it cos it’s only £4.99?</p>
+<p>Well that sums up my relationship with this NOMURA CNC sliding head machine. I fuckin want one. My Mrs would never agree to it, she won’t even let me have a soddin’ 60″ TV so I think I have a “dogshit in hells” chance of a Swiss Auto CNC.</p>
+<h2 id="nomura-sliding-head-mitsubishi-60s">Nomura Sliding Head, Mitsubishi 60s</h2>
+<p>It’s always a bit strange working on a CNC sliding head machines after working on standard CNC Lathes.</p>
+<figure class="ar-fig"><img src="../assets/articles/nomura-sliding-head/nowura.png" alt="Nomura Sliding Head" loading="lazy" /></figure>
+<p>This one has the Mitsubishi 60s control, it’s quite old but still capable of producing some amazing parts and pretty dam fast too.</p>
+<p>The control is really good in some ways but a bit shit in others, like no copy n paste. The actual day to day editing is precarious and scary in equal measures until you get used to it.</p>
+<p>My advise as usual is to <a href="https://youtu.be/gV63DLDOSxo" rel="noopener">back up all your programs</a> and copy the one you are working on. Oh, and don’t forget it’s easy to take a picture of the screen.</p>
+<p>For my older viewers, you don’t even have to get your pictures developed any-more.</p>
+<p>On this control it is so fuckin easy to overwrite or delete the code and even to delete the whole block!!</p>
+<figure class="ar-fig"><img src="../assets/articles/nomura-sliding-head/nomura-25-yb.png" alt="Nomura Sliding Head" loading="lazy" /></figure>
+<p>Mitsubish Meldas 60S control. All knocking on a bit but loads of fun and really useful.</p>
+<h2 id="whats-a-swiss-machine">What’s A Swiss Machine?</h2>
+<p>Well it’s a bit like a Swiss Roll except you can’t eat it.</p>
+<p>Now if you know nothing about sliding head CNC machines, Swiss machines, as they are sometimes known here is a brief lesson.</p>
+<p>On a sliding head machine your tools are static with regards to the Z axis. For Z movements your material moves through a guide bush. The collet is behind this and the Z axis pushes the material back and forth through the guide bush.</p>
+<p>This means you can do shit that you can’t do on a normal lathe. Like making watches, A sliding head is worth buying just to knock out a coupe of Rolex watches to sell on Ebay (good idea what)</p>
+<p>This is how <a href="https://kingsburyuk.com/multi-spindle-vs-sliding-head-lathes/#:~:text=Sliding%20head%20lathes%20are%20well,drilling%20or%20even%20milling%20operations." rel="noopener">Kingsbury</a> describe them on their website</p>
+<p><em>Sliding head lathes are well suited to long, thin and complex parts with large production runs. Parts with a length to diameter ratio of 20:1 can be manufactured on these machines. In addition to this, multiple live tools can be set up to allow for drilling or milling operations. Sliding head lathes can engage the material with several tools at once, improving productivity and enhancing the potential to reduce the number of costly set-ups.</em></p>
+<h2 id="nomura-sliding-head-cnc">Nomura Sliding Head CNC</h2>
+<p>Tooling arrangements are not like a normal lathe they are usually in a rack which moves up and down. The length of the tools is tightly controlled so they tend to be mostly of a fixed length.</p>
+<p>You are supplied with a pre-setting fixture so you can set the tools to standard lengths and use offsets accordingly.</p>
+<p>You can mill and drill with both rotary and static tools. This one has a sub spindle so it picks up the part and then machines the back end before ejecting it onto a chute.</p>
+<p>I must admit they can scare the living shit out of most people. It’s well worth taking the time and patience to learn how to program and set these beasts. Complex yes but even I can do it, and so much fun and you get to keep your underpants on.</p>
+<figure class="ar-fig"><img src="../assets/articles/nomura-sliding-head/tools-1.png" alt="Nomura Sliding Head" loading="lazy" /></figure>
+<p>This thing is armed to the fuckin teeth, it’s the Arnold Schwarzenegger of CNC machines. Well equipped, more tools than the middle isle at Aldi.</p>
+<p>Sorry to keep talking about this but I only just discovered it (middle isle at Aldi that is).</p>
+<figure class="ar-fig"><img src="../assets/articles/nomura-sliding-head/tools-2.png" alt="Nomura Sliding Head" loading="lazy" /></figure>
+
+<aside class="ar-margin marginalia" aria-label="Machine at a glance">
+  <header class="marginalia-head">
+    <span>Machine · at a glance</span>
+  </header>
+  <dl>
+    <div><dt>Machine</dt><dd>Nomura NN25 YB</dd></div>
+    <div><dt>Type</dt><dd>Sliding head (Swiss-type) CNC lathe</dd></div>
+    <div><dt>Control</dt><dd>Mitsubishi Meldas 60S</dd></div>
+    <div><dt>Spindles</dt><dd>Main + sub. Two channels, run together.</dd></div>
+    <div><dt>Best for</dt><dd>Long, thin, complex parts. 20:1 L:D and up.</dd></div>
+  </dl>
+</aside>
+<h2 id="mitsubishi-60s-cnc-control">Mitsubishi 60s CNC Control</h2>
+<p>Switching on is easy, you just do it, having absolute encoders means you don’t need to reference it.</p>
+<p><a href="https://youtu.be/omg7ZnZ5s-8" rel="noopener">If you really must</a> then just press SHIFT then F0 that’s F 0 as in fuck off (good way to remember it)</p>
+<figure class="ar-fig"><img src="../assets/articles/nomura-sliding-head/shift-F0.png" alt="Nomura Sliding Head" loading="lazy" /></figure>
+<p>Here is a picture for my readers who don’t like offensive language like bollocks and stuff.</p>
+<p>Then on the next screen just input your axis of choice.</p>
+<figure class="ar-fig"><img src="../assets/articles/nomura-sliding-head/X1-X2-Z2.png" alt="Mitsubishi 60s" loading="lazy" /></figure>
+<p>You will notice you can’t zero all axis from here just the <strong>X2</strong> and the <strong>Z2</strong> at the back. That’s the spindle below.</p>
+<figure class="ar-fig"><img src="../assets/articles/nomura-sliding-head/rear-spindle.jpeg" alt="Nomura Sliding Head" loading="lazy" /></figure>
+<p>And the <strong>X1</strong> which is your tool platen.</p>
+<p>Actually you can zero return any axis if you go into MDI unfortunately this involves more pages than the extended edition of war and peace. A nice little book by Leo Tolstoy, he’s like a sort of Geoffrey Archer if he’d turned up for school.</p>
+<p>Once you start to get into it, it definitely is more simple than it first appears, so is “War and Peace” for that matter.</p>
+<h2 id="tool-change-nomura-sliding-head">Tool Change Nomura Sliding Head</h2>
+<figure class="ar-fig"><img src="../assets/articles/nomura-sliding-head/tool-change.png" alt="Mitsubishi 60s" loading="lazy" /></figure>
+<p>From this same screen remember SHIFT F0 you can input a tool number. Just type it in that box #(  )</p>
+<p>Be careful because as soon as you hit INPUT CALC it moves and when I say it moves it’s fast.</p>
+<figure class="ar-fig"><img src="../assets/articles/nomura-sliding-head/input-calc.png" alt="Mitsubishi 60s" loading="lazy" /></figure>
+<p>Good idea is to retract the bar well back level with the front of the guide bush. That way there’s nowt to hit as we say up north.</p>
+<p><a href="https://youtu.be/omg7ZnZ5s-8" rel="noopener">Here’s a nice video.</a></p>
+<h2 id="hand-wheel-nomura-sliding-head">Hand-Wheel Nomura Sliding Head</h2>
+<p>It has a hand-wheel just like a normal CNC and you can select your axis. First select the spindle 1 or 2 then the axis you want to move. You’ll also need to pick the increment</p>
+<figure class="ar-fig"><img src="../assets/articles/nomura-sliding-head/handwheel1.png" alt="Nomura Sliding Head" loading="lazy" /></figure>
+<p>Oh and you need to keep the black button at the side pressed in at all times. This is so you don’t get up to any mischief like trying to scratch your arse or bollocks whilst moving the machine around.</p>
+<p><a href="https://youtu.be/Ol7zeLLAIYc" rel="noopener">This video shows you how.</a></p>
+<p>(Sorry for any confusion it shows how to do the latter not the former.)</p>
+<p>Jogging around is quite simple, just use these blighters.</p>
+<figure class="ar-fig"><img src="../assets/articles/nomura-sliding-head/jog-buttons.png" alt="Nomura Sliding Head" loading="lazy" /></figure>
+<p>This potentiometer will control the speed of the movement. Start with it wound well down.</p>
+<figure class="ar-fig"><img src="../assets/articles/nomura-sliding-head/potentiometer.png" alt="Nomura Sliding Head" loading="lazy" /></figure>
+<p>This machine has a strange quirk which is when you over travel the rear Y axis you have to shut down the machine and throw a switch before it will let you wind it back in.</p>
+<p>Very annoying so it’s best to use jog instead of hand wheel. That way you can easily see the correct direction. Even better use zero return if you just want the little buggers out of your way.</p>
+<p>It has axis direction plates stuck up everywhere so use em.</p>
+<h2 id="start-spindles-nomura-sliding-head">Start Spindles, Nomura Sliding Head</h2>
+<p>On this machine you have loads of spindles. To set a speed you need this screen, press MONITOR then soft key POSI</p>
+<figure class="ar-fig"><img src="../assets/articles/nomura-sliding-head/speed.png" alt="Mitsubishi 60s" loading="lazy" /></figure>
+<p>Each time you press the S key it will move down the different spindles so you can input a speed.</p>
+<p><a href="https://youtu.be/8VzqRNm-gOU" rel="noopener">YouTube video</a></p>
+<h2 id="mdi-nomura-sliding-head">MDI, Nomura Sliding Head</h2>
+<p>MDI is weird on this machine and so awkward to use it renders it fuckin useless that is unless like me you train people for a living. Obviously then it’s worth showing them so they think “Fuck, what a clever bastard. Fancy knowing that piece of useless information”</p>
+
+<aside class="ar-margin marginalia" aria-label="Try this on">
+  <header class="marginalia-head">
+    <span>Try this on</span>
+  </header>
+  <dl>
+    <div><dt>Control</dt><dd>Mitsubishi 60s, but on-the-fly edit is also possible on Mazak ISO-mode programs.</dd></div>
+    <div><dt>Worth it for</dt><dd>Setters fixing a feedrate without resetting the cycle.</dd></div>
+    <div><dt>Risk</dt><dd>One block-delete key away from a shit-storm. Copy the program first.</dd></div>
+  </dl>
+</aside>
+<h2 id="so-ill-show-you-anyway">So I’ll Show You Anyway</h2>
+<p>First of all press monitor</p>
+<figure class="ar-fig"><img src="../assets/articles/nomura-sliding-head/press-monitor.png" alt="Nomura Sliding Head" loading="lazy" /></figure>
+<p>Then press the soft key PLC-SW you will also need to press the page key if you are not on page 2.</p>
+<figure class="ar-fig"><img src="../assets/articles/nomura-sliding-head/PLC-SW-MDI.png" alt="Mitsubishi 60s" loading="lazy" /></figure>
+<p>You will notice that 32 MDI MODE EFCT is not shaded in blue, this means it is off. Type in 32 and this will toggle the switch thus turning it on <strong>#(32)</strong></p>
+<p>Screen will now look like this, notice switch is thrown and a blue line appears. Up is off, down is on mmm strange.</p>
+<figure class="ar-fig"><img src="../assets/articles/nomura-sliding-head/mdi-32-thrown.png" alt="Mitsubishi 60s" loading="lazy" /></figure>
+<p>Unfortunately all you can now do is run MDI commands, if you want to run or edit a program you will need to reverse this by re typing 32 into the box again.</p>
+<p>Press your EDIT MDI button to get to the MDI page.</p>
+<figure class="ar-fig"><img src="../assets/articles/nomura-sliding-head/EDIT-MDI.png" alt="Nomura Sliding Head" loading="lazy" /></figure>
+<p>As you type in commands you can press cycle start to run them.</p>
+<p>Phew…….</p>
+<h2 id="this-is-amazing-mitsubishi-60s">This is Amazing, Mitsubishi 60s</h2>
+<p>Right so, MDI is fuckin daft to put it mildly and it has a self district button but and a massive but. It can do something truly amazing. What is it you ask?</p>
+<p>Let me say now if you already have this control prepare to be amazed and utterly ashamed of yourself for not knowing in equal measures.</p>
+<p>Now I know your saying “this silly old twat is really dragging this out”. Actually I’m not so you can piss off.</p>
+<p>You know when you are running a program and you think “shit I forgot to alter that bloody feedrate”.</p>
+<p>Help is at hand, no need to reset and start again no no no.</p>
+<p>All you do is switch to Edit and the next few lines are all highlighted and you are allowed to alter the program. When you switch back to Memory mode it just carries on.</p>
+<p>How cool is that editing on the fly.</p>
+<figure class="ar-fig"><img src="../assets/articles/nomura-sliding-head/Fly-scaled.jpg" alt="A fly. Yes, an actual fly." loading="lazy" /></figure>
+<p>Don’t you just love flies.</p>
+
+<blockquote class="pull-quote ar-pull">
+  <p>My advise if you have the work and the bollocks for it then get one, just call me in and we&rsquo;ll have some fun together getting it up and running.</p>
+</blockquote>
+<h2 id="tool-change-in-program">Tool-Change (In Program)</h2>
+<p>When you call out a tool in a program everything is taken care of.</p>
+<p>Say for example you wanted tool 6 in this case it’s my parting off tool.</p>
+<p><strong>Y#506 T0606</strong></p>
+<p>This calls the offset for tool 6 and the Y looks into <strong>#506</strong> and moves down to the correct position.</p>
+<p>The rack of tools moving up and down is your Y axis so in <strong>#506</strong> it stores that Y position. Oh yea and it conveniently moves X back out of the way too. This is because it is also reading the X offset.</p>
+<p>The sliding head principle is that your bar which is usually ground is held at the back in a collet it then slides into a guide bush which is where the action takes place. It means that you can machine very long parts without the need for a centre to support it.</p>
+<p>The accuracy of the bar size to the guide bush is obviously quite important. THe guide bush is adjustable but it won’t know if your bar size varies.</p>
+<p>This one has a main spindle and it has a sub spindle. Meaning there are two programs running together. <a href="https://youtu.be/zlP4aHe2T38" rel="noopener">To switch channels</a> just press EDIT then SHIFT then either 1 or 2 for which channel you want.</p>
+<figure class="ar-fig"><img src="../assets/articles/nomura-sliding-head/EDITSHIFT1or2-ezgif.com-video-to-gif-converter.gif" alt="Nomura Sliding Head" loading="lazy" /></figure>
+<h2 id="both-programs">Both Programs</h2>
+<figure class="ar-fig"><img src="../assets/articles/nomura-sliding-head/view-of-both-screens.png" alt="Mitsubishi 60s" loading="lazy" /></figure>
+<p>Press soft key COORDI then right hand page key until you see both programs, this is useful to know what is going on with both programs.</p>
+<h2 id="editing">Editing</h2>
+<p>It has an easy program copy function press MONITOR</p>
+<figure class="ar-fig"><img src="../assets/articles/nomura-sliding-head/monitor.png" alt="Mitsubishi 60s" loading="lazy" /></figure>
+<p>Then the soft key MENU then you will find a soft key COPY.</p>
+<figure class="ar-fig"><img src="../assets/articles/nomura-sliding-head/new-copy-screen.png" alt="Mitsubishi 60s" loading="lazy" /></figure>
+<p>Enter a 1 in <strong>#(1)</strong> followed by the program you want to copy and the new program number.</p>
+<p>The number 1 tells it you want to copy a program.</p>
+<p><a href="https://youtu.be/SmUsGpC3kM4" rel="noopener">Useful video link</a></p>
+<p>See below to copy program <strong>123</strong> to program <strong>234</strong></p>
+<figure class="ar-fig"><img src="../assets/articles/nomura-sliding-head/progr-to-copy.png" alt="Mitsubishi 60s" loading="lazy" /></figure>
+<p>If you type 4 in the first box you can use it to change a program number. Below would change program number 123 to program 234</p>
+<figure class="ar-fig"><img src="../assets/articles/nomura-sliding-head/123-to-234.png" alt="Mitsubishi 60s" loading="lazy" /></figure>
+<p>As you can see above changing the program number is easy too. If you are used to <a href="https://www.cnctrainingcentre.com/fanuc-editing-copy-and-paste/" rel="noopener">Fanuc programming</a> then you will know that some of this stuff is not always easy. This control will come as a bit of a shock to the sytem as it works in a very different way.</p>
+<h2 id="altering-the-code-insert-alter-delete">Altering The Code, Insert Alter Delete</h2>
+<p>Unlike Fanuc the Mitsubishi 60s control automatically overwrites the code that’s already in. I found this very stressful to a point that I always copy my program before changing anything.</p>
+<p>To insert code first press DELETE INS key</p>
+<figure class="ar-fig"><img src="../assets/articles/nomura-sliding-head/press-delete-insert.png" alt="Mitsubishi 60s" loading="lazy" /></figure>
+<p>From now on everything you type will be inserted.</p>
+<p><strong>Avoid this key</strong></p>
+<figure class="ar-fig"><img src="../assets/articles/nomura-sliding-head/avoid-me.png" alt="Mitsubishi 60s" loading="lazy" /></figure>
+<p>If you press this key it will delete the whole line.</p>
+<p>Now if you do this please don’t instantly evacuate your bowels into your underwear. No no no, David is here to help you.</p>
+<p>Just press the left hand page key and all will return and the shit storm you just evoked will be forever calmed. Yes you guessed it, it goes back to normal. Lovely.</p>
+<p>This means any edit you make will not be permanent until you pres INPUT CALC yes this baby.</p>
+<p>So hold off until your happy and keep that camera at the ready.</p>
+<figure class="ar-fig"><img src="../assets/articles/nomura-sliding-head/input-calc.png" alt="Nomura sliding head" loading="lazy" /></figure>
+<p>So my advise is to leave this little chappie alone until you are ready for a permanent commitment.</p>
+<p>There is actually no way to copy and paste text which is a shame. (Let me know if you know better)</p>
+<p>Adding a description (comment) to your program in the directory page is also easy,</p>
+<p>Press EDIT and then soft key FILE</p>
+<p>You will now be able to type in the program number then the comment (description) you want to appear on the screen in the directory.</p>
+<figure class="ar-fig"><img src="../assets/articles/nomura-sliding-head/prog-comment.png" alt="Mitsubishi 60s" loading="lazy" /></figure>
+<p>I recommend this on all the programs to avoid getting lost. Only dashes allowed, no spaces.</p>
+<p><a href="https://youtu.be/w0UbrqL63eY" rel="noopener">Nice video on this</a> (how thoughtful)</p>
+<p><strong>Delete Program Mitsubishi 60s</strong></p>
+<p>Again be super careful with this one it’s a one way street to a shit storm. No undo buttons here sorry delete it and it’s gone.</p>
+<p>Press DIAG IN OUT then press MENU soft key until you see ERASE.</p>
+<p>Key in 1 to delete a main program followed by the number of the program you want to erase. Now when you press INPUT it’s gone forever, gone to deleted program heaven. I did warn you.</p>
+<h2 id="macro-mitsubishi-60s">Macro Mitsubishi 60s</h2>
+<p>I am not going to say too much about programming in this article as it is rather complex.</p>
+<p>The programs are constructed around a macro program <strong>O8200</strong> this starts with the line</p>
+<p>/G65 P9801 A150. B12. C100. D600 E3. F6. H0. I1 J2591 K0</p>
+<p>A=SURFACE-SPEED)</p>
+<p>B=BAR-DIA)</p>
+<p>C=PART-OVERALL-LENGTH)</p>
+<p>E=PART-OFF-WIDTH)</p>
+<p>J=PROGRAM NUMBER FOR MACHINING</p>
+<p>From all this information it can perform a part off and load new bars etc.</p>
+<p>It uses block skip which when off will let it read all the information it needs and do it’s calculation. It will then load a new bar. Then afterwards it will automatically switch the block skip on. It can then run around the loop.</p>
+<p>The idea is that you give it all this information then write your program. It then calls this from here as a sub program denoted by the letter J.</p>
+<p>This is not my machine but if it were I think I would do away with the macro idea and create a standard program.</p>
+<p>I think it is an attempt to simplify what is inherently a complex machine. Anyway my verdict is that it actually makes it more complex.</p>
+
+<aside class="ar-margin marginalia" aria-label="Read next">
+  <header class="marginalia-head">
+    <span>Read next</span>
+  </header>
+  <dl>
+    <div><dt>Related</dt><dd><a href="learning-hub-article.html" rel="noopener">[GAP &mdash; related article: Fanuc editing copy and paste]</a></dd></div>
+    <div><dt>Related</dt><dd><a href="learning-hub-article.html" rel="noopener">[GAP &mdash; related article: Heidenhain program restart iTNC 530]</a></dd></div>
+    <div><dt>Service</dt><dd><a href="onsite-training.html">Onsite training on sliding head machines</a></dd></div>
+  </dl>
+</aside>
+<h2 id="how-do-i-rate-mitsubishi-60s-control">How do I Rate Mitsubishi 60s Control?</h2>
+<p>Well actually I like it although there are one or two built in torture keys like this one</p>
+<figure class="ar-fig"><img src="../assets/articles/nomura-sliding-head/CB-CAN.png" alt="Mitsubishi 60s" loading="lazy" /></figure>
+<p>which deletes a whole block of code. Think of it as the cock and balls torture key and you’ll remember not to press it. Ladies I’m afraid you’ll need to create your own acronym.</p>
+<p><strong>Best Bit</strong></p>
+<p>But honestly editing on the fly is amazing and useful too. The times I’ve had to reset a program half way through because I forgot to alter a simple mistake. So the ability to edit a program whilst it is running is brilliant.</p>
+<p>By the way you can do this on Mazak machines when you are running them in ISO G code type programs.</p>
+<p>Copying programs is really easy and by the way it’s not easy on all machines.</p>
+<p>Adding descriptions to programs is really easy so that’s another plus.</p>
+<p><strong>Big Big Plus</strong></p>
+<p>Having used lots of machines that run two sometimes three simultaneous programs. What I like on the Mitsubishi 60s control is that when you create a new program it automatically creates the same program number on channel 2.</p>
+<p>Therefore there is never any confusion. On Fanuc machines you can be running a totally different program number on each channel.</p>
+<p>On this control it’s not possible because whatever program you call on channel 1 you automatically get on channel 2.</p>
+<p>You have to keep in mind that this is an old machine so you can’t expect too much. It also reflects in the price. You have a machine with a six figure price tag when new that you bought for less than 15k.</p>
+<p>Once it’s running it’s a fuckin dream to watch and it’s still really fast even by today’s standards.</p>
+<p>My advise if you have the work and the bollocks for it then get one, just call me in and we’ll have some fun together getting it up and running.</p>
+
+<aside class="ar-video" aria-label="Watch on YouTube">
+  <header class="ar-video-head">
+    <span class="ar-video-eyebrow">Video</span>
+    <span class="tag tag-video">YouTube</span>
+  </header>
+  <h3 class="ar-video-title">Nomura NN25 YB CNC running a simple job</h3>
+  <p class="ar-video-dek">The machine in motion. 8,930 subscribers on the channel — every major control covered.</p>
+  <a class="link-arrow" href="https://www.youtube.com/watch?v=71O0SLwNoQ4" rel="noopener">Watch on YouTube</a>
+</aside>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         § 03 — AUTHOR FOOTER
+         Paper-tint. Single block — David, the only person
+         in the business. First-person singular.
+         ============================================ -->
+    <section class="s s-paper-tint ar-author" aria-labelledby="ar-author-title">
+      <span class="ghost-num" aria-hidden="true">03</span>
+      <div class="container">
+        <header class="sec-head">
+          <span class="sec-pretitle">§ — About the writer</span>
+        </header>
+        <div class="ar-author-grid">
+          <div>
+            <h2 class="ar-author-name" id="ar-author-title">Written by David.</h2>
+            <p class="ar-author-bio">Thirty years on CNC machines, every major control, every major machine. I started writing about it in 2014, mostly because I was Googling the same problems twice and not finding anything useful &mdash; so I wrote it down. Three hundred-and-something articles later, the Hub is still where I put what I&rsquo;d been Googling twice. <a href="about.html">More about me</a>.</p>
+            <ul class="ar-author-social" aria-label="Follow">
+              <li>
+                <a href="#" aria-label="David Garner on LinkedIn">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+                    <path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3v9zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/>
+                  </svg>
+                  <span>LinkedIn</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" aria-label="CNC Training Centre on YouTube">
+                  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true">
+                    <path d="M23.5 6.5a3 3 0 00-2.1-2.12C19.5 4 12 4 12 4s-7.5 0-9.4.4A3 3 0 00.5 6.5C.1 8.4.1 12 .1 12s0 3.6.4 5.5a3 3 0 002.1 2.12C4.5 20 12 20 12 20s7.5 0 9.4-.4a3 3 0 002.1-2.12c.4-1.9.4-5.5.4-5.5s0-3.6-.4-5.5zM9.6 15.5v-7l6.3 3.5-6.3 3.5z"/>
+                  </svg>
+                  <span>YouTube &mdash; 332 videos</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <dl class="ar-author-meta">
+            <div><dt>Trains on</dt><dd>Fanuc, Heidenhain, Siemens, Mazak, Hurco, Brother, Haas, sliding head.</dd></div>
+            <div><dt>Format</dt><dd>Onsite UK-wide &middot; classroom in Leicestershire &middot; programming services.</dd></div>
+            <div><dt>Writing since</dt><dd>2014. Monthly minimum.</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         § 04 — RELATED ARTICLES
+         REUSES the canonical .hub block from page-home.css
+         verbatim (featured + 2 secondaries). Surface
+         paper-deep (matches Home § 07 and learning-hub § 02).
+         ============================================ -->
+    <section class="s hub ar-related" aria-labelledby="related-title">
+      <span class="ghost-num" aria-hidden="true">04</span>
+      <div class="container">
+        <header class="sec-head hub-head">
+          <div>
+            <span class="sec-pretitle">§ — Read next</span>
+            <h2 class="hub-title" id="related-title">More on sliding head and Mitsubishi.</h2>
+            <p class="hub-lede">Three articles in the same patch of the Hub. If you liked this one, these are where I&rsquo;d send you next.</p>
+          </div>
+          <a class="btn btn-primary hub-cta" href="learning-hub.html">Browse the Hub</a>
+        </header>
+
+        <div class="hub-grid">
+          <a class="hub-featured" href="learning-hub-article.html" aria-disabled="true">
+            <header class="hub-featured-top">
+              <span class="hub-featured-eyebrow">Read next</span>
+              <span class="tag">[GAP &mdash; control tag]</span>
+            </header>
+            <h3 class="hub-featured-title">[GAP &mdash; related article 1 title, e.g. Fanuc editing copy and paste]</h3>
+            <p class="hub-featured-dek">[GAP &mdash; one-line dek pulled from the article opening once content migration confirms which related pieces sit here.]</p>
+            <footer class="hub-featured-meta">
+              <span>Article</span>
+              <span aria-hidden="true">&middot;</span>
+              <span>[GAP] min read</span>
+              <span class="hub-featured-arrow" aria-hidden="true">&rarr;</span>
+            </footer>
+          </a>
+
+          <div class="hub-secondaries">
+            <a class="hub-secondary" href="learning-hub-article.html" aria-disabled="true">
+              <header class="hub-secondary-top">
+                <span class="tag">[GAP &mdash; control]</span>
+                <span class="hub-secondary-num">02</span>
+              </header>
+              <h3 class="hub-secondary-title">[GAP &mdash; related article 2 title, e.g. Heidenhain program restart iTNC 530]</h3>
+              <footer class="hub-secondary-meta">
+                <span>[GAP] min &middot; Heidenhain</span>
+                <span class="hub-secondary-arrow" aria-hidden="true">&rarr;</span>
+              </footer>
+            </a>
+            <a class="hub-secondary" href="learning-hub-article.html" aria-disabled="true">
+              <header class="hub-secondary-top">
+                <span class="tag tag-video">Video</span>
+                <span class="hub-secondary-num">03</span>
+              </header>
+              <h3 class="hub-secondary-title">[GAP &mdash; related video 3 title, e.g. Nomura NN25 YB running a simple job]</h3>
+              <footer class="hub-secondary-meta">
+                <span>Sliding head</span>
+                <span class="hub-secondary-arrow" aria-hidden="true">&rarr;</span>
+              </footer>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         § 05 — CTA STRIP
+         Paper-deep. Small in-person training cross-link.
+         No full enquiry form on article pages — keep the
+         page focused on the next article click.
+         ============================================ -->
+    <section class="ar-cta" aria-labelledby="ar-cta-title">
+      <div class="container">
+        <div class="ar-cta-inner">
+          <div>
+            <span class="sec-pretitle">§ &mdash; Need this taught in person?</span>
+            <h2 class="ar-cta-title" id="ar-cta-title">Get me in. I&rsquo;ll teach this on your machine.</h2>
+            <p class="ar-cta-lede">Sliding head, Mitsubishi 60s, on a Tuesday. If you&rsquo;ve got the machine and a couple of operators who can&rsquo;t quite get it doing what it should, I&rsquo;ll come and put that right. Onsite, your kit, your parts.</p>
+          </div>
+          <div class="ar-cta-actions">
+            <a class="btn btn-primary btn-lg" href="contact.html">Contact David</a>
+            <a class="btn btn-outline btn-lg" href="tel:+447834858407">07834 858 407</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- LOCKED: site footer — copy verbatim to every page -->
+  <footer class="site-footer" id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="footer-logo" href="home.html" aria-label="CNC Training Centre — home">
+            <img src="../assets/logos/cnc-training-centre-logo.png" alt="CNC Training Centre" />
+          </a>
+          <p class="footer-tag">Independent CNC training since 1996. On your machines, or in your hands.</p>
+          <ul class="footer-social" aria-label="Follow">
+            <li>
+              <a href="#" data-social="linkedin" rel="noopener" aria-label="David Garner on LinkedIn">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+                  <path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3v9zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/>
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a href="#" data-social="youtube" rel="noopener" aria-label="CNC Training Centre on YouTube">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true">
+                  <path d="M23.5 6.5a3 3 0 00-2.1-2.12C19.5 4 12 4 12 4s-7.5 0-9.4.4A3 3 0 00.5 6.5C.1 8.4.1 12 .1 12s0 3.6.4 5.5a3 3 0 002.1 2.12C4.5 20 12 20 12 20s7.5 0 9.4-.4a3 3 0 002.1-2.12c.4-1.9.4-5.5.4-5.5s0-3.6-.4-5.5zM9.6 15.5v-7l6.3 3.5-6.3 3.5z"/>
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="onsite-training.html">Onsite training</a></li>
+            <li><a href="classroom-training.html">Classroom training</a></li>
+            <li><a href="programming-services.html">Programming services</a></li>
+            <li><a href="courses.html">Courses (coming soon)</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Learning</h4>
+          <ul>
+            <li><a href="learning-hub.html">Learning Hub</a></li>
+            <li><a href="about.html">About David</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="privacy.html">Privacy</a></li>
+            <li><a href="terms.html">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-meta">
+        <span>© <span id="footYear">2026</span> CNC Training Centre. All rights reserved.</span>
+        <span>Barwell, Leicestershire · UK-wide onsite</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- LOCKED: nav + drawer + scroll-progress JS — copy verbatim to every page -->
+  <script>
+    (function () {
+      var nav = document.getElementById('nav');
+      var navToggle = document.getElementById('navToggle');
+      var drawer = document.getElementById('drawer');
+      var drawerClose = document.getElementById('drawerClose');
+      var year = document.getElementById('footYear');
+
+      if (year) { year.textContent = new Date().getFullYear(); }
+
+      function onScroll() {
+        var y = window.scrollY || window.pageYOffset;
+        if (nav) {
+          if (y > 24) { nav.classList.add('is-scrolled'); }
+          else { nav.classList.remove('is-scrolled'); }
+        }
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      function openDrawer() {
+        if (!drawer) return;
+        drawer.classList.add('is-open');
+        drawer.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('drawer-open');
+        if (navToggle) { navToggle.setAttribute('aria-expanded', 'true'); }
+      }
+      function closeDrawer() {
+        if (!drawer) return;
+        drawer.classList.remove('is-open');
+        drawer.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('drawer-open');
+        if (navToggle) { navToggle.setAttribute('aria-expanded', 'false'); }
+      }
+      if (navToggle) { navToggle.addEventListener('click', openDrawer); }
+      if (drawerClose) { drawerClose.addEventListener('click', closeDrawer); }
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') { closeDrawer(); }
+      });
+      if (drawer) {
+        drawer.querySelectorAll('a').forEach(function (a) {
+          a.addEventListener('click', closeDrawer);
+        });
+      }
+    })();
+  </script>
+
+  <!-- TOC active-state observer + smooth jump -->
+  <script>
+    (function () {
+      var toc = document.querySelector('.ar-toc');
+      if (!toc) return;
+      var links = Array.prototype.slice.call(toc.querySelectorAll('a[href^="#"]'));
+      var sections = links.map(function (l) {
+        var id = l.getAttribute('href').slice(1);
+        return { id: id, el: document.getElementById(id), link: l };
+      }).filter(function (s) { return !!s.el; });
+
+      function onScroll() {
+        var y = window.scrollY + 140;
+        var current = null;
+        for (var i = 0; i < sections.length; i++) {
+          if (sections[i].el.offsetTop <= y) current = sections[i];
+        }
+        sections.forEach(function (s) {
+          if (s === current) s.link.classList.add('is-active');
+          else s.link.classList.remove('is-active');
+        });
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    })();
+  </script>
+
+</body>
+</html>
