@@ -456,7 +456,10 @@ body.drawer-open { overflow: hidden; }
   line-height: 0.9;
   letter-spacing: -0.02em;
   color: var(--ns-color-ink);
-  margin: 0 0 clamp(2.5rem, 5vw, 5rem);
+  /* Hero gap (Dave fix v3-fix2): tightened from clamp(2.5rem, 5vw, 5rem)
+   * → clamp(1rem, 2vw, 1.75rem). Subhead now reads as a continuation
+   * of the H1 rather than a separate block. */
+  margin: 0 0 clamp(1rem, 2vw, 1.75rem);
   max-width: 18ch;
 }
 
@@ -496,7 +499,10 @@ body.drawer-open { overflow: hidden; }
 }
 
 .hero-stack {
-  padding-top: var(--ns-space-md);
+  /* v3-fix2: eased from var(--ns-space-md) to --ns-space-sm. Keeps
+   * eyebrow→H1 breathing while the tightened hero-title bottom-margin
+   * now owns the (shorter) H1→subhead gap. */
+  padding-top: var(--ns-space-sm);
   max-width: 36rem;
 }
 
@@ -561,6 +567,15 @@ body.drawer-open { overflow: hidden; }
   color: var(--ns-color-primary);
 }
 
+/* Agitation body — v3-fix2.
+ * Mobile/tablet: single-column stack, lede with drop-cap first, then
+ * the remaining paras, then the pull-quote (kept inline below the body).
+ * ≥1024px: asymmetric two-column drafting-sheet layout. The lede spans
+ * the full width and anchors the section under the H2. Below it, the
+ * remaining paragraphs sit in a wider left column (~60%) and the
+ * pull-quote occupies a narrower right column (~35%) with a hairline
+ * gutter rule between. Uses the previously empty right side without
+ * inventing new copy. */
 .agitation-body {
   position: relative;
   z-index: 1;
@@ -580,8 +595,7 @@ body.drawer-open { overflow: hidden; }
 
 /* Scannability move (Agitation): engineering-credible drop-cap on
  * the lead paragraph. No flourish — Tanker display weight, ink
- * colour, tight kerning. Plus hairline rules between the
- * non-pull paragraphs to give the eye landings as it scans. */
+ * colour, tight kerning. */
 .agitation-body-lead::first-letter {
   font-family: var(--ns-font-display);
   font-size: 4.2em;
@@ -592,15 +606,11 @@ body.drawer-open { overflow: hidden; }
   letter-spacing: -0.02em;
 }
 
-.agitation-body > p + p {
-  padding-top: var(--ns-space-xl);
-  border-top: 1px solid var(--ns-color-rule);
-}
-
 .agitation-pull {
   margin: clamp(1rem, 3vw, 2.5rem) 0;
   padding: var(--ns-space-xl) 0 var(--ns-space-xl) var(--ns-space-xl);
   border-left: 3px solid var(--ns-color-primary);
+  position: relative;
 }
 
 .agitation-pull p {
@@ -610,6 +620,45 @@ body.drawer-open { overflow: hidden; }
   letter-spacing: -0.01em;
   color: var(--ns-color-ink);
   margin: 0;
+}
+
+/* Agitation ≥1024px: asymmetric 2-col against flat DOM.
+ * Row 1: lede spans both columns (the drop-cap anchors it).
+ * Row 2: p-a sits in the wider left column (~60%); the pull-quote
+ *        sits in the narrower right column (~40%) and uses the
+ *        previously empty right mass.
+ * Row 3: closing p-b spans both columns, letting the section land
+ *        on a single full-width line so the conclusion reads as a
+ *        verdict rather than a stray para. */
+@media (min-width: 1024px) {
+  .agitation-body {
+    display: grid;
+    grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+    column-gap: clamp(2.5rem, 4.5vw, 4.5rem);
+    row-gap: clamp(2rem, 3.5vw, 3rem);
+    max-width: none;
+  }
+  .agitation-body-lead {
+    grid-column: 1 / -1;
+    max-width: 62ch;
+  }
+  .agitation-p-a {
+    grid-column: 1;
+    max-width: 56ch;
+    align-self: start;
+    margin: 0;
+  }
+  .agitation-pull {
+    grid-column: 2;
+    align-self: start;
+    margin: 0;
+    padding: var(--ns-space-lg) 0 var(--ns-space-lg) var(--ns-space-lg);
+  }
+  .agitation-p-b {
+    grid-column: 1 / -1;
+    max-width: 62ch;
+    margin: 0;
+  }
 }
 
 
@@ -724,60 +773,10 @@ body.drawer-open { overflow: hidden; }
   color: var(--ns-color-ink) !important;
 }
 
-/* Inline keyword emphasis — restrained ink underline,
- * load-bearing line gets a quiet visual anchor. */
-.mechanism-keyword {
-  color: var(--ns-color-ink);
-  font-weight: var(--ns-weight-medium);
-  border-bottom: 1px solid var(--ns-color-ink);
-  padding-bottom: 0.05em;
-}
-
-/* Scannability move (Mechanism): drafting margin sidenote.
- * Hidden on mobile (visually-hidden via aria-hidden), promotes
- * to a left-margin annotation at >=1024px when the body has
- * enough room. Mirrors a draftsman's pencil note in the
- * page margin. */
-.mechanism-sidenote { display: none; }
-
-@media (min-width: 1024px) {
-  .mechanism-body {
-    display: grid;
-    grid-template-columns: 16rem minmax(0, 62ch);
-    column-gap: clamp(2rem, 4vw, 3.5rem);
-    row-gap: var(--ns-space-lg);
-    max-width: none;
-  }
-  .mechanism-body > p { grid-column: 2; }
-  .mechanism-sidenote {
-    display: block;
-    grid-column: 1;
-    grid-row: 2;
-    align-self: start;
-    border-top: 1px solid var(--ns-color-ink);
-    padding: var(--ns-space-sm) 0 0;
-    margin: 0;
-    text-align: right;
-  }
-  .mechanism-sidenote-mark {
-    display: block;
-    font-family: var(--ns-font-body);
-    font-size: var(--ns-text-tiny);
-    font-weight: var(--ns-weight-medium);
-    letter-spacing: var(--ns-track-extrawide);
-    text-transform: uppercase;
-    color: var(--ns-color-ink-muted);
-    margin-bottom: var(--ns-space-xs);
-  }
-  .mechanism-sidenote p {
-    font-family: var(--ns-font-display);
-    font-size: clamp(1.1rem, 0.9rem + 0.5vw, 1.35rem);
-    line-height: 1.15;
-    letter-spacing: -0.01em;
-    color: var(--ns-color-ink);
-    margin: 0;
-  }
-}
+/* Mechanism sidenote killed v3-fix2 (Dave: "makes absolutely no sense").
+ * Body recenters at standard readable width across all breakpoints.
+ * .mechanism-keyword rule also removed — its target span was killed
+ * upstream in copy/home.md and the design HTML. */
 
 
 /* ============================================
