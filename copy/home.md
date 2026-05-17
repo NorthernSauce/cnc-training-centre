@@ -1,4 +1,4 @@
-<!-- Home copy — 2026-05-17d
+<!-- Home copy — 2026-05-17e
      Page-level framework: PAS (Problem, Agitation, Solution). Customer-as-hero throughout.
      Section order:
        1. Hero
@@ -10,6 +10,8 @@
        7. Testimonials (Proof of who)
        8. Learning Hub
        9. Decisiveness band
+     Revision 2026-05-17e:
+       - Killed "The training is the production." sentence inside the Mechanism paragraph. Para now flows straight from "real jobs." to "Your operator learns…". Designer to also strip the matching sec-pretitle "The way it actually happened" and the left-margin sidenote "The training is the production." from design/home.html — neither reads to the buyer.
      Revision 2026-05-17d:
        - Stripped literal "→" arrows from 4 page-level CTA labels (hero secondary, testimonials link, Hub CTA, Decisiveness primary). Site CSS owns the arrow via ::after pseudo on .btn / .link-arrow. Arrows on service card link labels kept — they render through .svc-card-cta which has no CSS pseudo.
        - Trimmed Decisiveness band: cut the "cost of doing nothing" stakes paragraph entirely; cut sentences 3 and 4 of the offer paragraph ("I aim to come back…" and "If we're a fit… I'll tell you that too."). Final shape: H2 + 1-paragraph offer + dual CTA + meta dl.
@@ -86,7 +88,7 @@ The OEMs send referrals because they know I cover what their syllabus won't. The
 
 Most training pulls your team off the floor, sits them in a room with a PowerPoint, hands them a folder, and sends them back two days later to do the job they couldn't do before. The kit didn't run all week. The customer's still waiting. Half of what they learned won't transfer because they never touched the machine.
 
-I do it the other way round. I come to your shop. We work on your machines, with your parts, against your real jobs. The training is the production. Your operator learns the cycle they're going to run on Monday, not a textbook example. The setter watches the offsets get dialled in on the part that's due Thursday. By the time I leave, the job is in spec and the person who couldn't do it can.
+I do it the other way round. I come to your shop. We work on your machines, with your parts, against your real jobs. Your operator learns the cycle they're going to run on Monday, not a textbook example. The setter watches the offsets get dialled in on the part that's due Thursday. By the time I leave, the job is in spec and the person who couldn't do it can.
 
 I assess as I go. If your operators pick something up fast, we move on. If they're struggling, I stay until it clicks. No fixed agenda, because every shop floor is a different fixed agenda already. Yours.
 
