@@ -544,22 +544,24 @@ body.drawer-open { overflow: hidden; }
  * floats centred on the load-bearing line.
  * ============================================ */
 
-.agitation { padding-block: clamp(5rem, 10vw, 10rem); }
-
-.agitation-head {
-  margin-bottom: clamp(3rem, 6vw, 5rem);
-  position: relative;
-  z-index: 1;
+/* Agitation — restraint pass.
+ * Matches .positioning pattern verbatim: H2 single-line, normal scale,
+ * then body paragraphs in 2 cols at ≥900px. No drop-cap, no pull-quote,
+ * no marginalia, no asymmetric grid. */
+.agitation {
+  padding-block: clamp(3.5rem, 6vw, 5.5rem);
+  border-top: 1px solid var(--ns-color-rule);
+  border-bottom: 1px solid var(--ns-color-rule);
 }
 
 .agitation-title {
   font-family: var(--ns-font-display);
-  font-size: clamp(2.5rem, 1.3rem + 5vw, 6rem);
-  line-height: 0.95;
-  letter-spacing: -0.02em;
+  font-size: clamp(1.75rem, 1.1rem + 2.4vw, 3.25rem);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
   color: var(--ns-color-ink);
-  margin: 0;
-  max-width: 22ch;
+  margin: 0 0 var(--ns-space-xl);
+  max-width: 32ch;
 }
 
 .agitation-title em {
@@ -567,22 +569,18 @@ body.drawer-open { overflow: hidden; }
   color: var(--ns-color-primary);
 }
 
-/* Agitation body — v3-fix2.
- * Mobile/tablet: single-column stack, lede with drop-cap first, then
- * the remaining paras, then the pull-quote (kept inline below the body).
- * ≥1024px: asymmetric two-column drafting-sheet layout. The lede spans
- * the full width and anchors the section under the H2. Below it, the
- * remaining paragraphs sit in a wider left column (~60%) and the
- * pull-quote occupies a narrower right column (~35%) with a hairline
- * gutter rule between. Uses the previously empty right side without
- * inventing new copy. */
 .agitation-body {
-  position: relative;
-  z-index: 1;
-  max-width: 62ch;
-  display: flex;
-  flex-direction: column;
-  gap: var(--ns-space-xl);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ns-space-lg);
+  max-width: 110ch;
+}
+
+@media (min-width: 900px) {
+  .agitation-body {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--ns-space-3xl);
+  }
 }
 
 .agitation-body p {
@@ -591,116 +589,6 @@ body.drawer-open { overflow: hidden; }
   line-height: var(--ns-leading-relaxed);
   color: var(--ns-color-ink-soft);
   margin: 0;
-}
-
-/* Scannability move (Agitation): engineering-credible drop-cap on
- * the lead paragraph. No flourish — Tanker display weight, ink
- * colour, tight kerning. */
-.agitation-body-lead::first-letter {
-  font-family: var(--ns-font-display);
-  font-size: 4.2em;
-  line-height: 0.82;
-  float: left;
-  margin: 0.08em 0.16em 0 0;
-  color: var(--ns-color-ink);
-  letter-spacing: -0.02em;
-}
-
-.agitation-pull {
-  margin: clamp(1rem, 3vw, 2.5rem) 0;
-  padding: var(--ns-space-xl) 0 var(--ns-space-xl) var(--ns-space-xl);
-  border-left: 3px solid var(--ns-color-primary);
-  position: relative;
-}
-
-.agitation-pull p {
-  font-family: var(--ns-font-display);
-  font-size: clamp(1.5rem, 1.1rem + 1.8vw, 2.25rem);
-  line-height: 1.15;
-  letter-spacing: -0.01em;
-  color: var(--ns-color-ink);
-  margin: 0;
-}
-
-/* Marginalia note — appears only at ≥1024 alongside p-b. */
-.agitation-note { display: none; }
-
-/* Agitation ≥1024px — v6 pass.
- * 12-col grid. The pull-quote bleeds across the body column gutter
- * so it reads as the page's centre-of-gravity statement instead of
- * an orphan in a narrow right column.
- *
- *   Row 1 (lede):     cols 1-12 (drop-cap anchors).
- *   Row 2 (p-a):      cols 1-7.
- *   Row 2 (pull):     cols 6-12, SCALED UP, overlaps p-a's right edge.
- *   Row 3 (p-b):      cols 1-7.
- *   Row 3 (note):     cols 9-12, hairline-rule marginalia, "READ:" mark. */
-@media (min-width: 1024px) {
-  .agitation-body {
-    display: grid;
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-    column-gap: clamp(1.5rem, 2.5vw, 2.5rem);
-    row-gap: clamp(2.5rem, 4vw, 3.5rem);
-    max-width: none;
-  }
-  .agitation-body-lead {
-    grid-column: 1 / -1;
-    max-width: 62ch;
-  }
-  .agitation-p-a {
-    grid-column: 1 / span 7;
-    max-width: 56ch;
-    align-self: start;
-    margin: 0;
-  }
-  .agitation-pull {
-    grid-column: 6 / span 7;
-    grid-row: auto;
-    align-self: center;
-    margin: 0;
-    padding: clamp(1rem, 1.5vw, 1.5rem) 0 clamp(1rem, 1.5vw, 1.5rem) clamp(1.25rem, 2vw, 2rem);
-    /* lift the quote into its own visual register so the bleed reads */
-    background: var(--ns-color-paper-tint);
-    box-shadow: -1px 0 0 0 var(--ns-color-primary);
-    border-left-width: 4px;
-    z-index: 2;
-  }
-  .agitation-pull p {
-    font-size: clamp(2rem, 1.2rem + 2.2vw, 3.25rem);
-    line-height: 1.05;
-    letter-spacing: -0.015em;
-  }
-  .agitation-p-b {
-    grid-column: 1 / span 7;
-    max-width: 56ch;
-    margin: 0;
-  }
-  .agitation-note {
-    display: flex;
-    grid-column: 9 / span 4;
-    align-self: start;
-    flex-direction: column;
-    gap: var(--ns-space-sm);
-    padding-top: var(--ns-space-sm);
-    border-top: 1px solid var(--ns-color-rule-strong);
-    margin: 0;
-  }
-  .agitation-note-mark {
-    font-family: var(--ns-font-body);
-    font-size: var(--ns-text-tiny);
-    font-weight: var(--ns-weight-semibold);
-    letter-spacing: var(--ns-track-extrawide);
-    text-transform: uppercase;
-    color: var(--ns-color-ink-muted);
-  }
-  .agitation-note-body {
-    font-family: var(--ns-font-display);
-    font-size: clamp(1.25rem, 0.9rem + 0.8vw, 1.625rem);
-    line-height: 1.1;
-    letter-spacing: -0.01em;
-    color: var(--ns-color-ink);
-    margin: 0;
-  }
 }
 
 
@@ -755,11 +643,9 @@ body.drawer-open { overflow: hidden; }
 
 
 /* ============================================
- * MECHANISM — § 04 (the marquee — In-Action Training™)
- * Page's load-bearing display mark.
- * Paper-deep surface. Big Tanker treatment of the name.
- * One isometric ghost (manifold-iso) earns its place
- * because it visually says "tooling in motion".
+ * MECHANISM — § 04
+ * Paper-deep surface. 2-col at ≥1024px: body LH,
+ * structured spec-sheet list RH with hairline rules.
  * ============================================ */
 
 .mechanism {
@@ -841,68 +727,48 @@ body.drawer-open { overflow: hidden; }
   }
 }
 
-.mechanism-fig {
-  position: relative;
+/* Mechanism list — right column at ≥1024px.
+ * Spec-sheet pattern: small-caps eyebrow + single amplification line.
+ * Hairline rule between items. No icons, no badges, no hover effects. */
+.mechanism-list {
   margin: 0;
-  padding: clamp(1.25rem, 2vw, 2rem) clamp(1.25rem, 2vw, 2rem) clamp(1rem, 1.5vw, 1.5rem);
+  padding: 0;
   display: flex;
   flex-direction: column;
-  align-items: stretch;
-  gap: var(--ns-space-md);
-  border-top: 1px solid var(--ns-color-rule-strong);
-  border-left: 1px solid var(--ns-color-rule);
 }
 
-.mechanism-fig-tick {
-  position: absolute;
-  top: 0; right: 0;
-  width: 18px; height: 18px;
-  pointer-events: none;
-}
-.mechanism-fig-tick::before,
-.mechanism-fig-tick::after {
-  content: "";
-  position: absolute;
-  background: var(--ns-color-ink);
-}
-.mechanism-fig-tick::before { top: 0; right: 0; width: 18px; height: 1px; }
-.mechanism-fig-tick::after  { top: 0; right: 0; width: 1px; height: 18px; }
-
-.mechanism-fig img {
-  display: block;
-  width: 100%;
-  height: auto;
-  max-height: clamp(280px, 38vw, 480px);
-  object-fit: contain;
-  object-position: center;
-  opacity: 0.92;
-  mix-blend-mode: multiply;
-}
-
-.mechanism-fig figcaption {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  column-gap: var(--ns-space-md);
-  align-items: baseline;
-  padding-top: var(--ns-space-sm);
+.mechanism-list-item {
+  padding: var(--ns-space-md) 0;
   border-top: 1px solid var(--ns-color-rule);
 }
 
-.mechanism-fig-mark {
+.mechanism-list-item:last-child {
+  border-bottom: 1px solid var(--ns-color-rule);
+}
+
+.mechanism-list-item dt {
   font-family: var(--ns-font-body);
   font-size: var(--ns-text-tiny);
   font-weight: var(--ns-weight-semibold);
   letter-spacing: var(--ns-track-extrawide);
   text-transform: uppercase;
   color: var(--ns-color-ink);
-  font-feature-settings: "tnum" 1;
+  margin: 0 0 var(--ns-space-2xs);
 }
 
-.mechanism-fig-text {
+.mechanism-list-item dd {
+  margin: 0;
   font-family: var(--ns-font-body);
-  font-size: var(--ns-text-small);
+  font-size: var(--ns-text-regular);
   line-height: var(--ns-leading-base);
-  color: var(--ns-color-ink-muted);
+  color: var(--ns-color-ink-soft);
+}
+
+@media (min-width: 1024px) {
+  .mechanism-list {
+    padding-left: clamp(2rem, 3vw, 3rem);
+    border-left: 1px solid var(--ns-color-rule);
+  }
 }
 
 
@@ -2144,90 +2010,7 @@ body.drawer-open { overflow: hidden; }
  * ============================================ */
 
 .decisiveness {
-  padding-block: clamp(3.5rem, 6vw, 6rem);
-}
-
-.decisiveness-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--ns-space-2xl);
-  margin-top: var(--ns-space-md);
-  align-items: center;
-}
-
-@media (min-width: 900px) {
-  .decisiveness-grid {
-    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-    gap: clamp(2.5rem, 5vw, 5rem);
-    align-items: center;
-  }
-}
-
-/* Decisiveness figure — v6. Full-strength manifold-iso plate, RH.
- * Invert filter so the dark-on-paper drawing reads on the anchor
- * surface. Drafting corner-tick + FIG. 02 caption. */
-.decisiveness-fig {
-  position: relative;
-  margin: 0;
-  padding: clamp(1rem, 2vw, 1.75rem);
-  display: flex;
-  flex-direction: column;
-  gap: var(--ns-space-sm);
-  border-top: 1px solid color-mix(in oklab, var(--ns-color-ink-inverse) 35%, transparent);
-  border-left: 1px solid color-mix(in oklab, var(--ns-color-ink-inverse) 18%, transparent);
-}
-
-.decisiveness-fig-tick {
-  position: absolute;
-  top: 0; right: 0;
-  width: 18px; height: 18px;
-  pointer-events: none;
-}
-.decisiveness-fig-tick::before,
-.decisiveness-fig-tick::after {
-  content: "";
-  position: absolute;
-  background: var(--ns-color-ink-inverse);
-}
-.decisiveness-fig-tick::before { top: 0; right: 0; width: 18px; height: 1px; }
-.decisiveness-fig-tick::after  { top: 0; right: 0; width: 1px; height: 18px; }
-
-.decisiveness-fig img {
-  display: block;
-  width: 100%;
-  height: auto;
-  max-height: clamp(260px, 36vw, 460px);
-  object-fit: contain;
-  object-position: center;
-  /* invert so dark-ink drawing reads on the anchor surface */
-  filter: invert(1) brightness(1.05);
-  opacity: 0.82;
-}
-
-.decisiveness-fig figcaption {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  column-gap: var(--ns-space-md);
-  align-items: baseline;
-  padding-top: var(--ns-space-sm);
-  border-top: 1px solid color-mix(in oklab, var(--ns-color-ink-inverse) 20%, transparent);
-}
-
-.decisiveness-fig-mark {
-  font-family: var(--ns-font-body);
-  font-size: var(--ns-text-tiny);
-  font-weight: var(--ns-weight-semibold);
-  letter-spacing: var(--ns-track-extrawide);
-  text-transform: uppercase;
-  color: color-mix(in oklab, var(--ns-color-ink-inverse) 90%, transparent);
-  font-feature-settings: "tnum" 1;
-}
-
-.decisiveness-fig-text {
-  font-family: var(--ns-font-body);
-  font-size: var(--ns-text-small);
-  line-height: var(--ns-leading-base);
-  color: color-mix(in oklab, var(--ns-color-ink-inverse) 65%, transparent);
+  padding-block: clamp(3rem, 5vw, 4.5rem);
 }
 
 /* Horizontal contact strip below the 2-col grid. Phone / Email / Where
@@ -2284,14 +2067,15 @@ body.drawer-open { overflow: hidden; }
   display: flex;
   flex-direction: column;
   gap: var(--ns-space-md);
+  margin-top: var(--ns-space-md);
 }
 
 .decisiveness-title {
-  font-size: clamp(2.5rem, 1.5rem + 3.5vw, 4.5rem);
+  font-size: clamp(2rem, 1.3rem + 2.6vw, 3.75rem);
   line-height: 0.98;
   letter-spacing: -0.02em;
   margin: 0 0 var(--ns-space-sm);
-  max-width: 16ch;
+  max-width: 20ch;
 }
 
 .decisiveness-stakes,
