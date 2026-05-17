@@ -724,6 +724,7 @@ body.drawer-open { overflow: hidden; }
   height: auto;
   margin: var(--ns-space-xs) 0;
   color: var(--ns-color-ink-soft);
+  mix-blend-mode: multiply;
 }
 .pin-card-foot {
   display: flex;
