@@ -2058,7 +2058,7 @@ body.drawer-open { overflow: hidden; }
  * ============================================ */
 
 .decisiveness {
-  padding-block: clamp(6rem, 11vw, 11rem);
+  padding-block: clamp(4rem, 7vw, 7rem);
 }
 
 .decisiveness-grid {
@@ -2079,21 +2079,21 @@ body.drawer-open { overflow: hidden; }
 .decisiveness-lh {
   display: flex;
   flex-direction: column;
-  gap: var(--ns-space-lg);
+  gap: var(--ns-space-md);
 }
 
 .decisiveness-title {
-  font-size: clamp(2.75rem, 1.5rem + 5vw, 6rem);
-  line-height: 0.95;
+  font-size: clamp(2.5rem, 1.5rem + 3.5vw, 4.5rem);
+  line-height: 0.98;
   letter-spacing: -0.02em;
-  margin: 0 0 var(--ns-space-md);
+  margin: 0 0 var(--ns-space-sm);
   max-width: 16ch;
 }
 
 .decisiveness-stakes,
 .decisiveness-offer {
   font-family: var(--ns-font-body);
-  font-size: var(--ns-text-large);
+  font-size: var(--ns-text-medium);
   line-height: var(--ns-leading-base);
   color: color-mix(in oklab, var(--ns-color-ink-inverse) 85%, transparent);
   margin: 0;
@@ -2164,8 +2164,8 @@ body.drawer-open { overflow: hidden; }
 .contact-meta {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--ns-space-lg);
-  padding-top: var(--ns-space-md);
+  gap: var(--ns-space-md);
+  padding-top: var(--ns-space-sm);
   border-top: 1px solid color-mix(in oklab, var(--ns-color-ink-inverse) 30%, transparent);
 }
 
@@ -2182,7 +2182,7 @@ body.drawer-open { overflow: hidden; }
 .contact-meta dd {
   margin: 0;
   font-family: var(--ns-font-body);
-  font-size: var(--ns-text-medium);
+  font-size: var(--ns-text-regular);
   color: var(--ns-color-ink-inverse);
 }
 
