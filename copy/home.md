@@ -1,4 +1,4 @@
-<!-- Home copy — 2026-05-17c
+<!-- Home copy — 2026-05-17d
      Page-level framework: PAS (Problem, Agitation, Solution). Customer-as-hero throughout.
      Section order:
        1. Hero
@@ -10,6 +10,9 @@
        7. Testimonials (Proof of who)
        8. Learning Hub
        9. Decisiveness band
+     Revision 2026-05-17d:
+       - Stripped literal "→" arrows from 4 page-level CTA labels (hero secondary, testimonials link, Hub CTA, Decisiveness primary). Site CSS owns the arrow via ::after pseudo on .btn / .link-arrow. Arrows on service card link labels kept — they render through .svc-card-cta which has no CSS pseudo.
+       - Trimmed Decisiveness band: cut the "cost of doing nothing" stakes paragraph entirely; cut sentences 3 and 4 of the offer paragraph ("I aim to come back…" and "If we're a fit… I'll tell you that too."). Final shape: H2 + 1-paragraph offer + dual CTA + meta dl.
      Revision 2026-05-17c:
        - Stripped Copyselling framework labels from every eyebrow. Section pretitles now read in plain user-facing English or are killed entirely.
        - Killed "In-Action Training™" throughout. The section that named it now describes how David trains in plain prose. No coined name, no ™.
@@ -47,7 +50,7 @@ Every week those machines run slow or sit idle is money you're quietly losing. N
 - **Where:** Barwell, Leicestershire (or I come to you).
 
 **Primary CTA:** Call David: 07834 858 407
-**Secondary CTA:** Browse 300+ articles in the Learning Hub →
+**Secondary CTA:** Browse 300+ articles in the Learning Hub
 
 ---
 
@@ -142,7 +145,7 @@ You'll have read a few of my articles before you reach the form. That's how it t
 > "[Placeholder quote 3: short, personality-led, lands the warmth.]"
 > — **[Name]**, [Role / context]
 
-**Link:** Read all thirty five-star reviews on Google →
+**Link:** Read all thirty five-star reviews on Google
 
 ---
 
@@ -157,7 +160,7 @@ Filter by control, by machine, by job. Read what you need. No signup, no paywall
 - **[Article title]** · Video · 12 min · Heidenhain
 - **[Article title]** · Guide · Sliding head
 
-**CTA:** Browse the Learning Hub →
+**CTA:** Browse the Learning Hub
 
 ---
 
@@ -165,11 +168,9 @@ Filter by control, by machine, by job. Read what you need. No signup, no paywall
 
 ### Walk me round your shop.
 
-The cost of doing nothing is the cost you've been paying for years. A machine running at half its rated cycle time. A job quoted to the customer down the road because your team can't programme it in-house. A new starter who'll either learn the wrong way again or quit before they're useful. None of that fixes itself.
+Ring me. Tell me what machines you've got, what level your team's at, what you need them to be able to do by the end of the month.
 
-Ring me. Tell me what machines you've got, what level your team's at, what you need them to be able to do by the end of the month. I aim to come back inside a working day with a proper answer, not a templated reply. If we're a fit, we book the dates. If we're not, I'll tell you that too.
-
-**Primary CTA:** Send enquiry →
+**Primary CTA:** Send enquiry
 **Phone:** 07834 858 407
 **Email:** david@cnctrainingcentre.com
 **Where:** Barwell, Leicestershire (or I come to you).
