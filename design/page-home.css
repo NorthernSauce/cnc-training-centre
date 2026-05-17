@@ -622,20 +622,25 @@ body.drawer-open { overflow: hidden; }
   margin: 0;
 }
 
-/* Agitation ≥1024px: asymmetric 2-col against flat DOM.
- * Row 1: lede spans both columns (the drop-cap anchors it).
- * Row 2: p-a sits in the wider left column (~60%); the pull-quote
- *        sits in the narrower right column (~40%) and uses the
- *        previously empty right mass.
- * Row 3: closing p-b spans both columns, letting the section land
- *        on a single full-width line so the conclusion reads as a
- *        verdict rather than a stray para. */
+/* Marginalia note — appears only at ≥1024 alongside p-b. */
+.agitation-note { display: none; }
+
+/* Agitation ≥1024px — v6 pass.
+ * 12-col grid. The pull-quote bleeds across the body column gutter
+ * so it reads as the page's centre-of-gravity statement instead of
+ * an orphan in a narrow right column.
+ *
+ *   Row 1 (lede):     cols 1-12 (drop-cap anchors).
+ *   Row 2 (p-a):      cols 1-7.
+ *   Row 2 (pull):     cols 6-12, SCALED UP, overlaps p-a's right edge.
+ *   Row 3 (p-b):      cols 1-7.
+ *   Row 3 (note):     cols 9-12, hairline-rule marginalia, "READ:" mark. */
 @media (min-width: 1024px) {
   .agitation-body {
     display: grid;
-    grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
-    column-gap: clamp(2.5rem, 4.5vw, 4.5rem);
-    row-gap: clamp(2rem, 3.5vw, 3rem);
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: clamp(1.5rem, 2.5vw, 2.5rem);
+    row-gap: clamp(2.5rem, 4vw, 3.5rem);
     max-width: none;
   }
   .agitation-body-lead {
@@ -643,20 +648,57 @@ body.drawer-open { overflow: hidden; }
     max-width: 62ch;
   }
   .agitation-p-a {
-    grid-column: 1;
+    grid-column: 1 / span 7;
     max-width: 56ch;
     align-self: start;
     margin: 0;
   }
   .agitation-pull {
-    grid-column: 2;
-    align-self: start;
+    grid-column: 6 / span 7;
+    grid-row: auto;
+    align-self: center;
     margin: 0;
-    padding: var(--ns-space-lg) 0 var(--ns-space-lg) var(--ns-space-lg);
+    padding: clamp(1rem, 1.5vw, 1.5rem) 0 clamp(1rem, 1.5vw, 1.5rem) clamp(1.25rem, 2vw, 2rem);
+    /* lift the quote into its own visual register so the bleed reads */
+    background: var(--ns-color-paper-tint);
+    box-shadow: -1px 0 0 0 var(--ns-color-primary);
+    border-left-width: 4px;
+    z-index: 2;
+  }
+  .agitation-pull p {
+    font-size: clamp(2rem, 1.2rem + 2.2vw, 3.25rem);
+    line-height: 1.05;
+    letter-spacing: -0.015em;
   }
   .agitation-p-b {
-    grid-column: 1 / -1;
-    max-width: 62ch;
+    grid-column: 1 / span 7;
+    max-width: 56ch;
+    margin: 0;
+  }
+  .agitation-note {
+    display: flex;
+    grid-column: 9 / span 4;
+    align-self: start;
+    flex-direction: column;
+    gap: var(--ns-space-sm);
+    padding-top: var(--ns-space-sm);
+    border-top: 1px solid var(--ns-color-rule-strong);
+    margin: 0;
+  }
+  .agitation-note-mark {
+    font-family: var(--ns-font-body);
+    font-size: var(--ns-text-tiny);
+    font-weight: var(--ns-weight-semibold);
+    letter-spacing: var(--ns-track-extrawide);
+    text-transform: uppercase;
+    color: var(--ns-color-ink-muted);
+  }
+  .agitation-note-body {
+    font-family: var(--ns-font-display);
+    font-size: clamp(1.25rem, 0.9rem + 0.8vw, 1.625rem);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: var(--ns-color-ink);
     margin: 0;
   }
 }
@@ -773,10 +815,95 @@ body.drawer-open { overflow: hidden; }
   color: var(--ns-color-ink) !important;
 }
 
-/* Mechanism sidenote killed v3-fix2 (Dave: "makes absolutely no sense").
- * Body recenters at standard readable width across all breakpoints.
- * .mechanism-keyword rule also removed — its target span was killed
- * upstream in copy/home.md and the design HTML. */
+/* Mechanism layout — v6 pass.
+ * Mobile: body stacks, figure drops below at modest scale.
+ * ≥1024px: editorial 2-col. Body 1.1fr (~52%) LH, figure 0.9fr RH.
+ * The figure carries the empty right half that v5 left blank, with
+ * a drafting corner-tick + FIG. 01 caption so it reads as an
+ * earnt engineering plate, not a 5% wallpaper ghost. */
+.mechanism-layout {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ns-space-2xl);
+  align-items: start;
+}
+
+@media (min-width: 1024px) {
+  .mechanism-layout {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    column-gap: clamp(3rem, 5vw, 5rem);
+    row-gap: 0;
+  }
+  .mechanism-layout .mechanism-body {
+    max-width: 56ch;
+  }
+}
+
+.mechanism-fig {
+  position: relative;
+  margin: 0;
+  padding: clamp(1.25rem, 2vw, 2rem) clamp(1.25rem, 2vw, 2rem) clamp(1rem, 1.5vw, 1.5rem);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--ns-space-md);
+  border-top: 1px solid var(--ns-color-rule-strong);
+  border-left: 1px solid var(--ns-color-rule);
+}
+
+.mechanism-fig-tick {
+  position: absolute;
+  top: 0; right: 0;
+  width: 18px; height: 18px;
+  pointer-events: none;
+}
+.mechanism-fig-tick::before,
+.mechanism-fig-tick::after {
+  content: "";
+  position: absolute;
+  background: var(--ns-color-ink);
+}
+.mechanism-fig-tick::before { top: 0; right: 0; width: 18px; height: 1px; }
+.mechanism-fig-tick::after  { top: 0; right: 0; width: 1px; height: 18px; }
+
+.mechanism-fig img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: clamp(280px, 38vw, 480px);
+  object-fit: contain;
+  object-position: center;
+  opacity: 0.92;
+  mix-blend-mode: multiply;
+}
+
+.mechanism-fig figcaption {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: var(--ns-space-md);
+  align-items: baseline;
+  padding-top: var(--ns-space-sm);
+  border-top: 1px solid var(--ns-color-rule);
+}
+
+.mechanism-fig-mark {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  font-weight: var(--ns-weight-semibold);
+  letter-spacing: var(--ns-track-extrawide);
+  text-transform: uppercase;
+  color: var(--ns-color-ink);
+  font-feature-settings: "tnum" 1;
+}
+
+.mechanism-fig-text {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-small);
+  line-height: var(--ns-leading-base);
+  color: var(--ns-color-ink-muted);
+}
 
 
 /* ============================================
@@ -2057,7 +2184,7 @@ body.drawer-open { overflow: hidden; }
  * ============================================ */
 
 .decisiveness {
-  padding-block: clamp(4rem, 7vw, 7rem);
+  padding-block: clamp(3.5rem, 6vw, 6rem);
 }
 
 .decisiveness-grid {
@@ -2065,15 +2192,133 @@ body.drawer-open { overflow: hidden; }
   grid-template-columns: 1fr;
   gap: var(--ns-space-2xl);
   margin-top: var(--ns-space-md);
+  align-items: center;
 }
 
 @media (min-width: 900px) {
   .decisiveness-grid {
-    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
-    gap: var(--ns-space-4xl);
-    align-items: start;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    gap: clamp(2.5rem, 5vw, 5rem);
+    align-items: center;
   }
 }
+
+/* Decisiveness figure — v6. Full-strength manifold-iso plate, RH.
+ * Invert filter so the dark-on-paper drawing reads on the anchor
+ * surface. Drafting corner-tick + FIG. 02 caption. */
+.decisiveness-fig {
+  position: relative;
+  margin: 0;
+  padding: clamp(1rem, 2vw, 1.75rem);
+  display: flex;
+  flex-direction: column;
+  gap: var(--ns-space-sm);
+  border-top: 1px solid color-mix(in oklab, var(--ns-color-ink-inverse) 35%, transparent);
+  border-left: 1px solid color-mix(in oklab, var(--ns-color-ink-inverse) 18%, transparent);
+}
+
+.decisiveness-fig-tick {
+  position: absolute;
+  top: 0; right: 0;
+  width: 18px; height: 18px;
+  pointer-events: none;
+}
+.decisiveness-fig-tick::before,
+.decisiveness-fig-tick::after {
+  content: "";
+  position: absolute;
+  background: var(--ns-color-ink-inverse);
+}
+.decisiveness-fig-tick::before { top: 0; right: 0; width: 18px; height: 1px; }
+.decisiveness-fig-tick::after  { top: 0; right: 0; width: 1px; height: 18px; }
+
+.decisiveness-fig img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: clamp(260px, 36vw, 460px);
+  object-fit: contain;
+  object-position: center;
+  /* invert so dark-ink drawing reads on the anchor surface */
+  filter: invert(1) brightness(1.05);
+  opacity: 0.82;
+}
+
+.decisiveness-fig figcaption {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: var(--ns-space-md);
+  align-items: baseline;
+  padding-top: var(--ns-space-sm);
+  border-top: 1px solid color-mix(in oklab, var(--ns-color-ink-inverse) 20%, transparent);
+}
+
+.decisiveness-fig-mark {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  font-weight: var(--ns-weight-semibold);
+  letter-spacing: var(--ns-track-extrawide);
+  text-transform: uppercase;
+  color: color-mix(in oklab, var(--ns-color-ink-inverse) 90%, transparent);
+  font-feature-settings: "tnum" 1;
+}
+
+.decisiveness-fig-text {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-small);
+  line-height: var(--ns-leading-base);
+  color: color-mix(in oklab, var(--ns-color-ink-inverse) 65%, transparent);
+}
+
+/* Horizontal contact strip below the 2-col grid. Phone / Email / Where
+ * across one row with hairline rules between. Anchors the section close. */
+.decisiveness-strip {
+  margin: clamp(2.5rem, 4vw, 3.5rem) 0 0;
+  padding-top: var(--ns-space-lg);
+  border-top: 1px solid color-mix(in oklab, var(--ns-color-ink-inverse) 28%, transparent);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ns-space-md);
+}
+
+@media (min-width: 768px) {
+  .decisiveness-strip {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 0;
+  }
+  .decisiveness-strip > div {
+    padding: 0 clamp(1rem, 2vw, 2rem);
+    border-left: 1px solid color-mix(in oklab, var(--ns-color-ink-inverse) 20%, transparent);
+  }
+  .decisiveness-strip > div:first-child {
+    padding-left: 0;
+    border-left: 0;
+  }
+}
+
+.decisiveness-strip dt {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  font-weight: var(--ns-weight-medium);
+  letter-spacing: var(--ns-track-extrawide);
+  text-transform: uppercase;
+  color: color-mix(in oklab, var(--ns-color-ink-inverse) 60%, transparent);
+  margin-bottom: var(--ns-space-2xs);
+}
+
+.decisiveness-strip dd {
+  margin: 0;
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-regular);
+  color: var(--ns-color-ink-inverse);
+}
+
+.decisiveness-strip dd a {
+  color: var(--ns-color-ink-inverse);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in oklab, var(--ns-color-ink-inverse) 35%, transparent);
+}
+.decisiveness-strip dd a:hover { text-decoration-color: var(--ns-color-ink-inverse); }
 
 .decisiveness-lh {
   display: flex;
