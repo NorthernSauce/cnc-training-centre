@@ -515,8 +515,273 @@ body.drawer-open { overflow: hidden; }
   gap: var(--ns-space-md);
 }
 
+/* Hero H1 scale — bigger ceiling than service pages, sized
+ * for the new ~14-word problem-hook headline. Keeps short
+ * mobile lines from over-wrapping while letting desktop
+ * carry the punch. Constrains line-length to ~16ch. */
+.hero .hero-title {
+  font-size: clamp(2.5rem, 1.1rem + 6vw, 6.5rem);
+  max-width: 20ch;
+}
+
+/* Marginalia — engineering spec card. Sits below the hero
+ * stack on mobile; promotes to a right-side panel at the
+ * larger viewport via container layout.
+ * Visual: dense dl, hairline-divided rows, paper-tint
+ * surface, single solid top rule like a spec-sheet header. */
+.hero-marginalia {
+  margin: clamp(2rem, 4vw, 3rem) 0 0;
+  padding: var(--ns-space-lg);
+  background: var(--ns-color-paper-tint);
+  border-top: 2px solid var(--ns-color-ink);
+  border-bottom: 1px solid var(--ns-color-rule);
+  max-width: 36rem;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-marginalia > div {
+  display: grid;
+  grid-template-columns: 7rem 1fr;
+  gap: var(--ns-space-md);
+  align-items: baseline;
+  padding-block: var(--ns-space-sm);
+  border-bottom: 1px dashed var(--ns-color-rule);
+}
+
+.hero-marginalia > div:last-child { border-bottom: 0; }
+
+.hero-marginalia dt {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  font-weight: var(--ns-weight-medium);
+  letter-spacing: var(--ns-track-extrawide);
+  text-transform: uppercase;
+  color: var(--ns-color-ink-muted);
+  margin: 0;
+}
+
+.hero-marginalia dd {
+  margin: 0;
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-small);
+  line-height: var(--ns-leading-base);
+  color: var(--ns-color-ink);
+}
+
+@media (min-width: 1100px) {
+  .hero .container { position: relative; }
+  .hero-marginalia {
+    position: absolute;
+    top: 14rem;
+    right: var(--ns-pad-inline);
+    margin: 0;
+    width: 28rem;
+    max-width: 32vw;
+  }
+}
+
+
 /* ============================================
- * PROBLEM — § 02
+ * AGITATION — § 02 (new section)
+ * The page's psychological centre. H2 carries the punch —
+ * close to hero H1 in scale. Generous white space, single
+ * column body capped at ~62ch for readability. Pull-quote
+ * floats centred on the load-bearing line.
+ * ============================================ */
+
+.agitation { padding-block: clamp(5rem, 10vw, 10rem); }
+
+.agitation-head {
+  margin-bottom: clamp(3rem, 6vw, 5rem);
+  position: relative;
+  z-index: 1;
+}
+
+.agitation-title {
+  font-family: var(--ns-font-display);
+  font-size: clamp(2.5rem, 1.3rem + 5vw, 6rem);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  color: var(--ns-color-ink);
+  margin: 0;
+  max-width: 22ch;
+}
+
+.agitation-title em {
+  font-style: normal;
+  color: var(--ns-color-primary);
+}
+
+.agitation-body {
+  position: relative;
+  z-index: 1;
+  max-width: 62ch;
+  display: flex;
+  flex-direction: column;
+  gap: var(--ns-space-xl);
+}
+
+.agitation-body p {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-medium);
+  line-height: var(--ns-leading-relaxed);
+  color: var(--ns-color-ink-soft);
+  margin: 0;
+}
+
+.agitation-pull {
+  margin: clamp(1rem, 3vw, 2.5rem) 0;
+  padding: var(--ns-space-xl) 0 var(--ns-space-xl) var(--ns-space-xl);
+  border-left: 3px solid var(--ns-color-primary);
+}
+
+.agitation-pull p {
+  font-family: var(--ns-font-display);
+  font-size: clamp(1.5rem, 1.1rem + 1.8vw, 2.25rem);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--ns-color-ink);
+  margin: 0;
+}
+
+
+/* ============================================
+ * POSITIONING — § 03 (new section)
+ * Compressed divider band. Reads as a turn in the page.
+ * Tighter padding than the surrounding sections.
+ * ============================================ */
+
+.positioning {
+  padding-block: clamp(3.5rem, 6vw, 5.5rem);
+  border-top: 1px solid var(--ns-color-rule);
+  border-bottom: 1px solid var(--ns-color-rule);
+}
+
+.positioning-title {
+  font-family: var(--ns-font-display);
+  font-size: clamp(1.75rem, 1.1rem + 2.4vw, 3.25rem);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  color: var(--ns-color-ink);
+  margin: var(--ns-space-md) 0 var(--ns-space-xl);
+  max-width: 32ch;
+}
+
+.positioning-title em {
+  font-style: normal;
+  color: var(--ns-color-primary);
+}
+
+.positioning-body {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ns-space-lg);
+  max-width: 110ch;
+}
+
+@media (min-width: 900px) {
+  .positioning-body {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--ns-space-3xl);
+  }
+}
+
+.positioning-body p {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-medium);
+  line-height: var(--ns-leading-relaxed);
+  color: var(--ns-color-ink-soft);
+  margin: 0;
+}
+
+
+/* ============================================
+ * MECHANISM — § 04 (the marquee — In-Action Training™)
+ * Page's load-bearing display mark.
+ * Paper-deep surface. Big Tanker treatment of the name.
+ * One isometric ghost (manifold-iso) earns its place
+ * because it visually says "tooling in motion".
+ * ============================================ */
+
+.mechanism {
+  background: var(--ns-color-paper-deep);
+  padding-block: clamp(6rem, 11vw, 11rem);
+}
+
+.mechanism-head { position: relative; z-index: 1; margin-bottom: clamp(2.5rem, 5vw, 4rem); }
+
+.mechanism-title {
+  font-family: var(--ns-font-display);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.5rem, 1.5vw, 1rem);
+  margin: var(--ns-space-md) 0 0;
+  color: var(--ns-color-ink);
+}
+
+.mechanism-mark {
+  font-size: clamp(3rem, 1.2rem + 8vw, 8rem);
+  line-height: 0.88;
+  letter-spacing: -0.025em;
+  color: var(--ns-color-primary);
+  display: inline-block;
+  max-width: 14ch;
+  position: relative;
+}
+
+.mechanism-tm {
+  font-size: 0.32em;
+  vertical-align: 0.95em;
+  margin-left: 0.08em;
+  font-family: var(--ns-font-body);
+  font-weight: var(--ns-weight-medium);
+  color: var(--ns-color-ink-muted);
+  letter-spacing: 0;
+}
+
+.mechanism-sub {
+  font-size: clamp(1.5rem, 1rem + 2.4vw, 3rem);
+  line-height: 1;
+  letter-spacing: -0.015em;
+  color: var(--ns-color-ink);
+  max-width: 18ch;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.mechanism-body {
+  position: relative;
+  z-index: 1;
+  max-width: 62ch;
+  display: flex;
+  flex-direction: column;
+  gap: var(--ns-space-lg);
+}
+
+.mechanism-body p {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-medium);
+  line-height: var(--ns-leading-relaxed);
+  color: var(--ns-color-ink-soft);
+  margin: 0;
+}
+
+.mechanism-lede {
+  font-size: var(--ns-text-large) !important;
+  color: var(--ns-color-ink) !important;
+}
+
+
+/* ============================================
+ * PROBLEM — § 02 (legacy — kept for any references)
  * Editorial newspaper. Pretitle + big headline,
  * 2-col body underneath, full-width pull-quote at the foot.
  * ============================================ */
@@ -1017,7 +1282,115 @@ body.drawer-open { overflow: hidden; }
 
 
 /* ============================================
- * TESTIMONIALS — § 06
+ * PROOF OF HOW — § 06 (new — replaces .authority)
+ * Spec-sheet table. Stat | Detail. Quiet, factual,
+ * tabular numerals. Reads as a public-record receipt.
+ * ============================================ */
+
+.proof-how-head {
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+  position: relative;
+  z-index: 1;
+}
+
+.proof-how-title {
+  font-family: var(--ns-font-display);
+  font-size: clamp(2rem, 1.3rem + 2.6vw, 3.75rem);
+  line-height: 1;
+  letter-spacing: -0.015em;
+  color: var(--ns-color-ink);
+  margin: var(--ns-space-md) 0 0;
+  max-width: 22ch;
+}
+
+.proof-how-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0;
+  border-top: 2px solid var(--ns-color-ink);
+  border-bottom: 2px solid var(--ns-color-ink);
+  position: relative;
+  z-index: 1;
+}
+
+.proof-how-table thead { display: none; }
+
+.proof-how-table tr {
+  border-bottom: 1px solid var(--ns-color-rule);
+}
+
+.proof-how-table tr:last-child { border-bottom: 0; }
+
+.proof-how-table th[scope="row"] {
+  text-align: left;
+  vertical-align: baseline;
+  padding: var(--ns-space-lg) var(--ns-space-md) var(--ns-space-lg) 0;
+  width: 38%;
+  font-weight: var(--ns-weight-regular);
+  border-right: 1px dashed var(--ns-color-rule-strong);
+}
+
+@media (min-width: 700px) {
+  .proof-how-table th[scope="row"] {
+    width: 30%;
+    padding: var(--ns-space-xl) var(--ns-space-lg) var(--ns-space-xl) 0;
+  }
+}
+
+.proof-how-table td {
+  padding: var(--ns-space-lg) 0 var(--ns-space-lg) var(--ns-space-md);
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-medium);
+  line-height: var(--ns-leading-base);
+  color: var(--ns-color-ink-soft);
+  vertical-align: baseline;
+}
+
+@media (min-width: 700px) {
+  .proof-how-table td {
+    padding: var(--ns-space-xl) 0 var(--ns-space-xl) var(--ns-space-lg);
+  }
+}
+
+.proof-fig {
+  font-family: var(--ns-font-display);
+  font-size: clamp(2.25rem, 1.4rem + 3vw, 4rem);
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  color: var(--ns-color-ink);
+  font-feature-settings: "tnum" 1;
+  display: inline-block;
+}
+
+.proof-fig small {
+  font-family: var(--ns-font-body);
+  font-size: 0.32em;
+  font-weight: var(--ns-weight-medium);
+  letter-spacing: var(--ns-track-extrawide);
+  text-transform: uppercase;
+  color: var(--ns-color-ink-muted);
+  margin-left: 0.2em;
+  vertical-align: 0.55em;
+}
+
+.proof-fig-word {
+  font-size: clamp(1.5rem, 1rem + 1.6vw, 2.25rem);
+  letter-spacing: -0.01em;
+  color: var(--ns-color-primary);
+}
+
+.proof-how-foot {
+  margin: clamp(1.5rem, 3vw, 2.5rem) 0 0;
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-small);
+  letter-spacing: var(--ns-track-wide);
+  color: var(--ns-color-ink-muted);
+  max-width: 78ch;
+}
+
+
+/* ============================================
+ * TESTIMONIALS — § 07
  * Horizontal 3-up at desktop. Big Tanker pull-quote
  * treatment with numbered mark. Stacked on mobile.
  * ============================================ */
@@ -1110,6 +1483,51 @@ body.drawer-open { overflow: hidden; }
   margin-top: clamp(2rem, 4vw, 3rem);
   position: relative;
   z-index: 1;
+}
+
+/* GAP placeholder treatment — visible signal that the
+ * card is awaiting content (Google review pulled by Dave).
+ * Dimmed type, dashed border, ghost mark. Reads as "to be
+ * filled" without fabricating a quote. */
+.t-card-gap {
+  border-style: dashed;
+  background: color-mix(in oklab, var(--ns-color-paper) 96%, transparent);
+}
+
+.t-card-gap .t-card-mark {
+  color: var(--ns-color-ink-faint);
+}
+
+.t-card-gap .t-card-quote {
+  color: var(--ns-color-ink-muted);
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-small);
+  line-height: var(--ns-leading-base);
+  letter-spacing: 0;
+  font-style: italic;
+}
+
+.t-card-gap .t-card-attr strong,
+.t-card-gap .t-card-attr span {
+  color: var(--ns-color-ink-faint);
+  font-style: italic;
+}
+
+/* Hub GAP card variant — same signal as testimonials */
+.hub-featured-gap,
+.hub-secondary-gap {
+  border-style: dashed;
+}
+
+.hub-featured-gap .hub-featured-title,
+.hub-secondary-gap .hub-secondary-title {
+  color: var(--ns-color-ink-muted);
+  font-style: italic;
+}
+
+.hub-featured-gap .hub-featured-dek {
+  color: var(--ns-color-ink-faint);
+  font-style: italic;
 }
 
 
@@ -1422,6 +1840,65 @@ body.drawer-open { overflow: hidden; }
     gap: var(--ns-space-4xl);
     align-items: start;
   }
+}
+
+/* ============================================
+ * DECISIVENESS — § 09 (the band that closes the page)
+ * Inherits the .contact anchor surface so the established
+ * theme rules (btn overrides, fx-toolpath, footer-bleed)
+ * carry. Bigger title, stakes paragraph + offer paragraph
+ * stacked. Same right-column dl meta as the old contact.
+ * ============================================ */
+
+.decisiveness {
+  padding-block: clamp(6rem, 11vw, 11rem);
+}
+
+.decisiveness-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ns-space-2xl);
+  margin-top: var(--ns-space-md);
+}
+
+@media (min-width: 900px) {
+  .decisiveness-grid {
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+    gap: var(--ns-space-4xl);
+    align-items: start;
+  }
+}
+
+.decisiveness-lh {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ns-space-lg);
+}
+
+.decisiveness-title {
+  font-size: clamp(2.75rem, 1.5rem + 5vw, 6rem);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  margin: 0 0 var(--ns-space-md);
+  max-width: 16ch;
+}
+
+.decisiveness-stakes,
+.decisiveness-offer {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-large);
+  line-height: var(--ns-leading-base);
+  color: color-mix(in oklab, var(--ns-color-ink-inverse) 85%, transparent);
+  margin: 0;
+  max-width: 56ch;
+}
+
+.decisiveness-offer {
+  color: var(--ns-color-ink-inverse);
+}
+
+.decisiveness .contact-actions {
+  margin-top: var(--ns-space-md);
 }
 
 .contact-title {

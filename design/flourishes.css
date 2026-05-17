@@ -436,6 +436,27 @@
   .fx-machine-services { opacity: 0.17; }
 }
 
+/* Mechanism — manifold isometric, ghosted top-right of the
+ * marquee section. Reads as "tooling in motion" — supports
+ * the "training while production runs" frame without
+ * competing with the In-Action Training™ display mark. */
+.fx-machine-mechanism {
+  display: none;
+}
+@media (min-width: 900px) {
+  .fx-machine-mechanism {
+    display: block;
+    right: -8vw;
+    top: 8%;
+    width: clamp(360px, 42vw, 620px);
+    height: auto;
+    opacity: 0.12;
+  }
+}
+@media (min-width: 1200px) {
+  .fx-machine-mechanism { opacity: 0.15; }
+}
+
 
 /* ============================================
  * § 9 — REDUCED MOTION
