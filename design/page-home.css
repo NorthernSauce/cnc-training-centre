@@ -1151,21 +1151,10 @@ body.drawer-open { overflow: hidden; }
   text-decoration: none;
   position: relative;
   min-height: 16rem;
-  transition: border-color var(--ns-dur-fast) var(--ns-ease-out), transform var(--ns-dur-base) var(--ns-ease-out);
+  transition: border-color var(--ns-dur-fast) var(--ns-ease-out);
 }
 
-.svc-card::before {
-  content: "";
-  position: absolute;
-  left: 0; top: 0;
-  width: 3px; height: 100%;
-  background: var(--ns-color-primary);
-  opacity: 0;
-  transition: opacity var(--ns-dur-fast) var(--ns-ease-out);
-}
-
-.svc-card:hover { border-color: var(--ns-color-ink); transform: translateY(-2px); }
-.svc-card:hover::before { opacity: 1; }
+.svc-card:hover { border-color: var(--ns-color-rule-strong); }
 
 .svc-card-name {
   font-family: var(--ns-font-display);
@@ -1238,8 +1227,9 @@ body.drawer-open { overflow: hidden; }
   color: var(--ns-color-ink);
 }
 
-.svc-card-cta span { transition: transform var(--ns-dur-base) var(--ns-ease-out); display: inline-block; margin-left: 0.4em; }
-.svc-card:hover .svc-card-cta span { transform: translateX(4px); }
+.svc-card-cta span { display: inline-block; margin-left: 0.4em; }
+.svc-card-cta { color: var(--ns-color-ink-muted); transition: color var(--ns-dur-fast) var(--ns-ease-out); }
+.svc-card:hover .svc-card-cta { color: var(--ns-color-ink); }
 
 .svc-card-soon { opacity: 0.92; }
 .svc-card-soon:hover { opacity: 1; }
@@ -1293,19 +1283,7 @@ body.drawer-open { overflow: hidden; }
   border-top: 1px dashed var(--ns-color-rule-strong);
 }
 
-.svc-row::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 3px;
-  height: 100%;
-  background: var(--ns-color-primary);
-  opacity: 0;
-  transition: opacity var(--ns-dur-fast) var(--ns-ease-out), transform var(--ns-dur-base) var(--ns-ease-out);
-}
-
-.svc-row:hover::before { opacity: 1; transform: translateX(-8px); }
+/* No reveal-bar on hover — quiet underline on the row name is the only state change. */
 
 @media (min-width: 900px) {
   .svc-row {
@@ -1411,7 +1389,7 @@ body.drawer-open { overflow: hidden; }
   font-family: var(--ns-font-body);
   font-size: var(--ns-text-large);
   color: var(--ns-color-ink-muted);
-  transition: transform var(--ns-dur-base) var(--ns-ease-out), color var(--ns-dur-fast) var(--ns-ease-out);
+  transition: color var(--ns-dur-fast) var(--ns-ease-out);
   justify-self: end;
   display: none;
 }
@@ -1420,10 +1398,7 @@ body.drawer-open { overflow: hidden; }
   .svc-row-arrow { display: inline-block; }
 }
 
-.svc-row:hover .svc-row-arrow {
-  transform: translateX(6px);
-  color: var(--ns-color-ink);
-}
+.svc-row:hover .svc-row-arrow { color: var(--ns-color-ink); }
 
 .svc-row-soon { opacity: 0.85; }
 .svc-row-soon:hover { opacity: 1; }
@@ -1675,12 +1650,6 @@ body.drawer-open { overflow: hidden; }
   border: 1px solid var(--ns-color-rule);
   border-radius: var(--ns-radius-tight);
   position: relative;
-  transition: transform var(--ns-dur-base) var(--ns-ease-out), border-color var(--ns-dur-fast) var(--ns-ease-out);
-}
-
-.t-card:hover {
-  border-color: var(--ns-color-ink);
-  transform: translateY(-2px);
 }
 
 .t-card-mark {
@@ -1843,10 +1812,10 @@ body.drawer-open { overflow: hidden; }
   color: var(--ns-color-ink);
   position: relative;
   min-height: 11rem;
-  transition: border-color var(--ns-dur-fast) var(--ns-ease-out), transform var(--ns-dur-base) var(--ns-ease-out);
+  transition: border-color var(--ns-dur-fast) var(--ns-ease-out);
 }
 
-.hub-card:hover { border-color: var(--ns-color-ink); transform: translateY(-2px); }
+.hub-card:hover { border-color: var(--ns-color-rule-strong); }
 
 .hub-card-top {
   display: flex;
@@ -1879,10 +1848,7 @@ body.drawer-open { overflow: hidden; }
   font-family: var(--ns-font-body);
   font-size: var(--ns-text-large);
   color: var(--ns-color-ink);
-  transition: transform var(--ns-dur-base) var(--ns-ease-out);
 }
-
-.hub-card:hover .hub-card-arrow { transform: translateX(4px); }
 
 .hub-card-gap { border-style: dashed; }
 .hub-card-gap .hub-card-title {
@@ -2017,12 +1983,12 @@ body.drawer-open { overflow: hidden; }
   border-radius: var(--ns-radius-tight);
   color: var(--ns-color-ink);
   text-decoration: none;
-  transition: border-color var(--ns-dur-fast) var(--ns-ease-out), transform var(--ns-dur-base) var(--ns-ease-out);
+  transition: border-color var(--ns-dur-fast) var(--ns-ease-out);
   position: relative;
   min-height: 22rem;
 }
 
-.hub-featured:hover { border-color: var(--ns-color-ink); transform: translateY(-2px); }
+.hub-featured:hover { border-color: var(--ns-color-rule-strong); }
 
 .hub-featured-top {
   display: flex;
@@ -2076,10 +2042,7 @@ body.drawer-open { overflow: hidden; }
   margin-left: auto;
   font-size: var(--ns-text-large);
   color: var(--ns-color-ink);
-  transition: transform var(--ns-dur-base) var(--ns-ease-out);
 }
-
-.hub-featured:hover .hub-featured-arrow { transform: translateX(4px); }
 
 .hub-secondaries {
   display: grid;
@@ -2097,10 +2060,10 @@ body.drawer-open { overflow: hidden; }
   border-radius: var(--ns-radius-tight);
   text-decoration: none;
   color: var(--ns-color-ink);
-  transition: border-color var(--ns-dur-fast) var(--ns-ease-out), transform var(--ns-dur-base) var(--ns-ease-out);
+  transition: border-color var(--ns-dur-fast) var(--ns-ease-out);
 }
 
-.hub-secondary:hover { border-color: var(--ns-color-ink); transform: translateY(-2px); }
+.hub-secondary:hover { border-color: var(--ns-color-rule-strong); }
 
 .hub-secondary-top {
   display: flex;
@@ -2142,10 +2105,7 @@ body.drawer-open { overflow: hidden; }
 .hub-secondary-arrow {
   font-size: var(--ns-text-medium);
   color: var(--ns-color-ink);
-  transition: transform var(--ns-dur-base) var(--ns-ease-out);
 }
-
-.hub-secondary:hover .hub-secondary-arrow { transform: translateX(4px); }
 
 
 /* ============================================
@@ -2647,7 +2607,7 @@ body.drawer-open { overflow: hidden; }
 .faq-item > summary::-webkit-details-marker { display: none; }
 .faq-item > summary::marker { content: ""; }
 .faq-item > summary:hover {
-  color: var(--ns-color-primary);
+  color: var(--ns-color-ink-soft);
 }
 .faq-item > summary:focus-visible {
   outline: 2px solid var(--ns-color-focus);
