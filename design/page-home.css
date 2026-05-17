@@ -532,111 +532,228 @@ body.drawer-open { overflow: hidden; }
   gap: var(--ns-space-md);
 }
 
-/* Hero specs panel — engineering-spec sheet treatment */
-.hero-specs {
-  background: var(--ns-color-paper);
-  border: 1px solid var(--ns-color-rule);
-  border-radius: var(--ns-radius-tight);
-  padding: var(--ns-space-lg) var(--ns-space-lg) var(--ns-space-md);
+/* Hero pinboard — 4 floating cards on the RH side of the hero.
+ * Drafting-pinboard feel: each card carries one fact, varied sizes,
+ * loose rotation, slight overlap, drafting corner ticks. Mobile
+ * stacks flat with no rotation.
+ *
+ * Replaces the previous .hero-specs panel — Dave's request,
+ * v3 pass 2026-05-17.
+ */
+
+.hero-pin {
   position: relative;
-}
-
-.hero-specs::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 24px;
-  height: 24px;
-  border-top: 2px solid var(--ns-color-ink);
-  border-left: 2px solid var(--ns-color-ink);
-}
-.hero-specs::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 24px;
-  height: 24px;
-  border-bottom: 2px solid var(--ns-color-ink);
-  border-right: 2px solid var(--ns-color-ink);
-}
-
-.hero-specs-head {
   display: grid;
-  grid-template-columns: max-content 1fr max-content;
+  grid-template-columns: 1fr;
   gap: var(--ns-space-md);
-  align-items: center;
-  padding-bottom: var(--ns-space-md);
-  border-bottom: 1px solid var(--ns-color-rule);
-  margin-bottom: var(--ns-space-sm);
+  padding-top: var(--ns-space-md);
 }
 
-.hero-specs-eyebrow {
+@media (min-width: 900px) {
+  .hero-pin {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: auto auto;
+    gap: var(--ns-space-md);
+    padding-top: var(--ns-space-xl);
+    min-height: 22rem;
+  }
+}
+
+.pin-card {
+  position: relative;
+  background: var(--ns-color-paper);
+  border: 1px solid var(--ns-color-rule-strong);
+  border-radius: var(--ns-radius-tight);
+  padding: var(--ns-space-md) var(--ns-space-md) var(--ns-space-sm);
   font-family: var(--ns-font-body);
+  color: var(--ns-color-ink);
+  isolation: isolate;
+  transition: transform var(--ns-dur-base) var(--ns-ease-out),
+              border-color var(--ns-dur-fast) var(--ns-ease-out),
+              box-shadow var(--ns-dur-base) var(--ns-ease-out);
+}
+
+@media (min-width: 900px) {
+  .pin-card {
+    transform: rotate(var(--pin-rot, 0deg));
+    box-shadow:
+      0 1px 0 color-mix(in oklab, var(--ns-color-ink) 8%, transparent),
+      0 14px 28px -22px color-mix(in oklab, var(--ns-color-ink) 28%, transparent);
+  }
+  .pin-card:hover {
+    transform: rotate(0deg) translateY(-2px);
+    border-color: var(--ns-color-ink);
+  }
+}
+
+/* Drafting corner ticks on every card — top-right L + bottom-left L */
+.pin-card::before,
+.pin-card::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
+  color: var(--ns-color-ink-muted);
+}
+.pin-card::before {
+  top: 6px;
+  right: 6px;
+  border-top: 1px solid currentColor;
+  border-right: 1px solid currentColor;
+}
+.pin-card::after {
+  bottom: 6px;
+  left: 6px;
+  border-bottom: 1px solid currentColor;
+  border-left: 1px solid currentColor;
+}
+
+/* Pinhead — small dot at the top-centre of each card, sells the
+ * "pinned to a board" reading without being literal */
+.pin-card-mark {
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 7px;
+  height: 7px;
+  background: var(--ns-color-primary);
+  border: 1px solid var(--ns-color-paper);
+  border-radius: 50%;
+  box-shadow: 0 1px 2px color-mix(in oklab, var(--ns-color-ink) 35%, transparent);
+  z-index: 2;
+}
+
+.pin-card-head {
+  display: grid;
+  grid-template-columns: 1fr max-content;
+  align-items: center;
+  gap: var(--ns-space-sm);
+  padding-bottom: var(--ns-space-xs);
+  margin-bottom: var(--ns-space-sm);
+  border-bottom: 1px solid var(--ns-color-rule-faint);
+}
+
+.pin-card-eyebrow {
   font-size: var(--ns-text-tiny);
-  font-weight: var(--ns-weight-medium);
+  font-weight: var(--ns-weight-semibold);
   letter-spacing: var(--ns-track-extrawide);
   text-transform: uppercase;
   color: var(--ns-color-ink-muted);
 }
 
-.hero-specs-rule { height: 1px; background: var(--ns-color-rule-strong); }
-
-.hero-specs-num {
-  font-family: var(--ns-font-body);
-  font-size: var(--ns-text-tiny);
-  font-weight: var(--ns-weight-medium);
-  letter-spacing: 0.04em;
+.pin-card-num {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 0.66rem;
+  letter-spacing: 0.06em;
   color: var(--ns-color-ink-muted);
   font-feature-settings: "tnum" 1;
 }
 
-.hero-specs-list {
+.pin-card-figure {
+  font-family: var(--ns-font-display);
+  font-size: clamp(2.75rem, 1.5rem + 4vw, 4.5rem);
+  line-height: 0.85;
+  letter-spacing: -0.025em;
+  color: var(--ns-color-ink);
+  margin: 0 0 var(--ns-space-xs);
+  font-feature-settings: "tnum" 1;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.05em;
+}
+.pin-card-figure span {
+  font-size: 0.55em;
+  color: var(--ns-color-ink-muted);
+  margin-right: 0.05em;
+}
+.pin-card-figure small {
+  font-family: var(--ns-font-body);
+  font-size: 0.26em;
+  font-weight: var(--ns-weight-medium);
+  letter-spacing: var(--ns-track-extrawide);
+  text-transform: uppercase;
+  color: var(--ns-color-ink-muted);
+  margin-left: 0.3em;
+  align-self: center;
+}
+.pin-card-figure-sm { font-size: clamp(2.25rem, 1.2rem + 3vw, 3.5rem); }
+
+.pin-card-note {
+  font-size: var(--ns-text-tiny);
+  line-height: 1.45;
+  color: var(--ns-color-ink-soft);
+  margin: 0;
+}
+
+.pin-card-list {
   list-style: none;
   margin: 0;
   padding: 0;
-}
-
-.hspec {
   display: grid;
-  grid-template-columns: 1.8rem max-content 1fr;
-  gap: var(--ns-space-md);
+  grid-template-columns: 1fr 1fr;
+  gap: 0.18rem var(--ns-space-md);
+  font-size: var(--ns-text-tiny);
+  color: var(--ns-color-ink);
+  font-variant-numeric: tabular-nums;
+}
+.pin-card-list li {
+  display: flex;
   align-items: baseline;
-  padding: var(--ns-space-sm) 0;
-  border-bottom: 1px solid var(--ns-color-rule-faint);
-  font-size: var(--ns-text-small);
+  gap: 0.4em;
+}
+.pin-card-list li::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 1px;
+  background: var(--ns-color-ink-muted);
+  margin-right: 0.1em;
+  transform: translateY(-0.25em);
 }
 
-.hspec:last-child { border-bottom: 0; }
-
-.hspec-key {
-  font-family: var(--ns-font-body);
-  font-size: var(--ns-text-tiny);
-  font-weight: var(--ns-weight-medium);
-  letter-spacing: 0.04em;
-  color: var(--ns-color-ink-muted);
-  font-feature-settings: "tnum" 1;
+/* Part-drawing card — engineering-drawing slip with SVG bracket */
+.pin-card-part {
+  padding-bottom: var(--ns-space-md);
 }
-
-.hspec-name {
-  font-family: var(--ns-font-body);
-  font-size: var(--ns-text-tiny);
-  font-weight: var(--ns-weight-semibold);
+.pin-card-part .pin-card-mark { background: var(--ns-color-ink); }
+.pin-card-art {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: var(--ns-space-xs) 0;
+  color: var(--ns-color-ink-soft);
+}
+.pin-card-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-top: var(--ns-space-xs);
+  border-top: 1px solid var(--ns-color-rule-faint);
+  font-size: 0.66rem;
   letter-spacing: var(--ns-track-wide);
   text-transform: uppercase;
+  color: var(--ns-color-ink-muted);
+}
+.pin-card-scale {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
   color: var(--ns-color-ink);
 }
 
-.hspec-val {
-  color: var(--ns-color-ink-soft);
-  line-height: 1.4;
+/* Grid placement — desktop only. Cards overlap slightly to read as
+ * a loose pinboard rather than a strict 2×2. */
+@media (min-width: 900px) {
+  .pin-card-rate     { grid-column: 1; grid-row: 1; z-index: 3; margin-right: -0.75rem; }
+  .pin-card-controls { grid-column: 2; grid-row: 1; z-index: 2; margin-top: 1.2rem; }
+  .pin-card-part     { grid-column: 1; grid-row: 2; z-index: 2; margin-top: -0.5rem; }
+  .pin-card-track    { grid-column: 2; grid-row: 2; z-index: 1; margin-top: 0.4rem; margin-left: -0.5rem; }
 }
 
-.hspec-val strong {
-  color: var(--ns-color-ink);
-  font-weight: var(--ns-weight-semibold);
-  font-feature-settings: "tnum" 1;
+/* Tiny viewport — flatten everything, no rotation, no overlap */
+@media (max-width: 699px) {
+  .pin-card { transform: none !important; }
+  .pin-card-list { grid-template-columns: 1fr 1fr; font-size: 0.74rem; }
 }
 
 /* Hero base rule with scroll-cue */
@@ -881,9 +998,17 @@ body.drawer-open { overflow: hidden; }
   list-style: none;
   margin: 0;
   padding: 0;
+  /* Heavy top + bottom rule frames the catalogue against the grid.
+   * Under-row hairlines were killed because they fought the
+   * .fx-grid drafting paper behind. */
   border-top: 2px solid var(--ns-color-ink);
+  border-bottom: 2px solid var(--ns-color-ink);
+  background: var(--ns-color-paper);
   position: relative;
   z-index: 1;
+  /* paper-tint surface stays on the section, .svc-sheet itself sits
+   * on solid paper so the grid never paints through the row content. */
+  box-shadow: 0 1px 0 var(--ns-color-rule-faint);
 }
 
 .svc-row {
@@ -894,27 +1019,34 @@ body.drawer-open { overflow: hidden; }
     "idx  name rate"
     "idx  lede arrow";
   gap: var(--ns-space-xs) var(--ns-space-lg);
-  padding: var(--ns-space-xl) 0;
-  border-bottom: 1px solid var(--ns-color-rule);
+  padding: var(--ns-space-xl) var(--ns-space-md);
   text-decoration: none;
   color: var(--ns-color-ink);
   position: relative;
   transition: background var(--ns-dur-base) var(--ns-ease-out);
 }
 
+/* Row separator: drafting-style dashed rule, lighter than the
+ * sheet's solid top/bottom anchors. Reads as a column-break on a
+ * parts-list page, not as another hairline competing with the
+ * orthographic grid behind. */
+.svc-sheet li + li .svc-row {
+  border-top: 1px dashed var(--ns-color-rule-strong);
+}
+
 .svc-row::before {
   content: "";
   position: absolute;
-  left: -16px;
+  left: 0;
   top: 0;
   width: 3px;
   height: 100%;
   background: var(--ns-color-primary);
   opacity: 0;
-  transition: opacity var(--ns-dur-fast) var(--ns-ease-out), left var(--ns-dur-base) var(--ns-ease-out);
+  transition: opacity var(--ns-dur-fast) var(--ns-ease-out), transform var(--ns-dur-base) var(--ns-ease-out);
 }
 
-.svc-row:hover::before { opacity: 1; left: -24px; }
+.svc-row:hover::before { opacity: 1; transform: translateX(-8px); }
 
 @media (min-width: 900px) {
   .svc-row {

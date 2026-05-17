@@ -76,9 +76,34 @@
          Engineering-drawing motif. Massive headline,
          dimension-annotated spec readout RH.
          ============================================ -->
-    <section class="hero fx-frame" aria-labelledby="hero-title">
+    <section class="hero fx-frame fx-frame-open" aria-labelledby="hero-title">
       <span class="hero-ghost" aria-hidden="true">01</span>
       <span class="fx-tick" aria-hidden="true"><span></span></span>
+      <!-- Hero lineart: 5-axis VMC ghost, bleeds off the right edge -->
+      <svg class="fx-machine fx-machine-hero" viewBox="0 0 520 380" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <!-- machine bed -->
+        <path d="M40 320 L480 320 L460 340 L60 340 Z"/>
+        <path d="M60 340 L60 360 L460 360 L460 340"/>
+        <!-- column -->
+        <path d="M150 320 L150 90 L370 90 L370 320"/>
+        <path d="M150 90 L130 70 L350 70 L370 90"/>
+        <path d="M130 70 L130 300 L150 320"/>
+        <!-- spindle head -->
+        <path d="M210 110 L310 110 L310 200 L210 200 Z"/>
+        <path d="M260 200 L260 250"/>
+        <circle cx="260" cy="265" r="14"/>
+        <circle cx="260" cy="265" r="6"/>
+        <!-- table -->
+        <path d="M120 280 L400 280 L380 300 L100 300 Z"/>
+        <path d="M100 300 L100 310 L380 310 L380 300"/>
+        <!-- workpiece on table -->
+        <path d="M220 260 L290 260 L290 280 L220 280 Z"/>
+        <!-- axis cross -->
+        <path d="M260 240 L260 270 M245 255 L275 255" stroke-dasharray="1 4"/>
+        <!-- dimension callout -->
+        <path d="M40 50 L80 50 M70 46 L80 50 L70 54"/>
+        <text x="44" y="44" font-family="ui-monospace,monospace" font-size="9" fill="currentColor" stroke="none" letter-spacing="0.06em">5-AXIS</text>
+      </svg>
       <div class="container">
         <p class="hero-eyebrow hero-eyebrow-top">Independent CNC training · since 1996</p>
         <h1 class="hero-title" id="hero-title">Close the&nbsp;CNC<br/><em>skills gap.</em></h1>
@@ -91,39 +116,72 @@
               <a class="btn btn-outline btn-lg" href="learning-hub.html">Browse the Learning Hub</a>
             </div>
           </div>
-          <aside class="hero-specs" aria-label="At a glance">
-            <header class="hero-specs-head">
-              <span class="hero-specs-eyebrow">At a glance</span>
-              <span class="hero-specs-rule" aria-hidden="true"></span>
-              <span class="hero-specs-num">01 / 05</span>
-            </header>
-            <ol class="hero-specs-list">
-              <li class="hspec">
-                <span class="hspec-key">01</span>
-                <span class="hspec-name">Controls</span>
-                <span class="hspec-val">Fanuc · Heidenhain · Siemens · Mazak · Hurco · Brother · Haas · sliding head</span>
-              </li>
-              <li class="hspec">
-                <span class="hspec-key">02</span>
-                <span class="hspec-name">Format</span>
-                <span class="hspec-val">Onsite · Classroom · Programming services</span>
-              </li>
-              <li class="hspec">
-                <span class="hspec-key">03</span>
-                <span class="hspec-name">Onsite rate</span>
-                <span class="hspec-val"><strong>£700</strong> / day — whole team, not per head</span>
-              </li>
-              <li class="hspec">
-                <span class="hspec-key">04</span>
-                <span class="hspec-name">Classroom</span>
-                <span class="hspec-val"><strong>£300</strong> / student / day — Leicestershire</span>
-              </li>
-              <li class="hspec">
-                <span class="hspec-key">05</span>
-                <span class="hspec-name">Where</span>
-                <span class="hspec-val">Barwell, Leicestershire — or I come to you</span>
-              </li>
-            </ol>
+          <aside class="hero-pin" aria-label="At a glance">
+
+            <!-- Card 1 — day rate (primary proof point) -->
+            <article class="pin-card pin-card-rate" style="--pin-rot: -1.4deg;">
+              <header class="pin-card-head">
+                <span class="pin-card-mark" aria-hidden="true"></span>
+                <span class="pin-card-eyebrow">Onsite rate</span>
+                <span class="pin-card-num">01</span>
+              </header>
+              <p class="pin-card-figure"><span>£</span>700<small>/ day</small></p>
+              <p class="pin-card-note">Whole team. Not per head. UK-wide.</p>
+            </article>
+
+            <!-- Card 2 — controls list (technical breadth) -->
+            <article class="pin-card pin-card-controls" style="--pin-rot: 1.1deg;">
+              <header class="pin-card-head">
+                <span class="pin-card-mark" aria-hidden="true"></span>
+                <span class="pin-card-eyebrow">Controls covered</span>
+                <span class="pin-card-num">02</span>
+              </header>
+              <ul class="pin-card-list">
+                <li>Fanuc</li>
+                <li>Heidenhain</li>
+                <li>Siemens</li>
+                <li>Mazak</li>
+                <li>Hurco</li>
+                <li>Brother</li>
+                <li>Haas</li>
+                <li>Sliding head</li>
+              </ul>
+            </article>
+
+            <!-- Card 3 — part drawing slip with lineart bracket -->
+            <article class="pin-card pin-card-part" style="--pin-rot: -0.8deg;" aria-hidden="true">
+              <header class="pin-card-head">
+                <span class="pin-card-eyebrow">Ref · BRK-04</span>
+                <span class="pin-card-num">03</span>
+              </header>
+              <svg class="pin-card-art" viewBox="0 0 240 160" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <!-- isometric bracket: 3 visible faces, mounting holes, hidden lines -->
+                <path d="M40 96 L120 56 L200 96 L120 136 Z"/>
+                <path d="M40 96 L40 70 L120 30 L120 56"/>
+                <path d="M120 30 L200 70 L200 96"/>
+                <path d="M120 56 L120 136" stroke-dasharray="2 4"/>
+                <ellipse cx="80" cy="86" rx="9" ry="5"/>
+                <ellipse cx="160" cy="86" rx="9" ry="5"/>
+                <ellipse cx="120" cy="46" rx="9" ry="5"/>
+                <!-- centre cross -->
+                <path d="M115 86 L125 86 M120 81 L120 91" stroke-dasharray="1 3"/>
+              </svg>
+              <footer class="pin-card-foot">
+                <span>Mounting bracket</span>
+                <span class="pin-card-scale">1:2</span>
+              </footer>
+            </article>
+
+            <!-- Card 4 — track record (compact figure slip) -->
+            <article class="pin-card pin-card-track" style="--pin-rot: 1.6deg;">
+              <header class="pin-card-head">
+                <span class="pin-card-eyebrow">Since 1996</span>
+                <span class="pin-card-num">04</span>
+              </header>
+              <p class="pin-card-figure pin-card-figure-sm">30<small>yrs</small></p>
+              <p class="pin-card-note">Independent. Every major control. Barwell, Leicestershire.</p>
+            </article>
+
           </aside>
         </div>
 
@@ -223,6 +281,30 @@
     <section class="s s-paper-tint services fx-grid" aria-labelledby="services-title">
       <span class="ghost-num" aria-hidden="true">04</span>
       <span class="fx-tick" aria-hidden="true"><span></span></span>
+      <!-- Services lineart: CNC lathe silhouette, bleeds off lower-left -->
+      <svg class="fx-machine fx-machine-services" viewBox="0 0 560 280" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <!-- bed -->
+        <path d="M20 200 L540 200 L520 220 L40 220 Z"/>
+        <path d="M40 220 L40 240 L520 240 L520 220"/>
+        <!-- headstock -->
+        <path d="M40 90 L170 90 L170 200 L40 200 Z"/>
+        <!-- spindle / chuck -->
+        <circle cx="170" cy="145" r="32"/>
+        <circle cx="170" cy="145" r="18"/>
+        <path d="M170 113 L170 177 M138 145 L202 145" stroke-dasharray="1 4"/>
+        <!-- chuck jaws -->
+        <path d="M152 127 L162 137 M188 127 L178 137 M152 163 L162 153 M188 163 L178 153"/>
+        <!-- workpiece -->
+        <path d="M202 138 L380 138 L380 152 L202 152"/>
+        <path d="M202 145 L380 145" stroke-dasharray="1 4"/>
+        <!-- tool turret -->
+        <path d="M300 60 L340 60 L340 90 L300 90 Z"/>
+        <path d="M320 90 L320 130"/>
+        <path d="M310 130 L330 130 L320 138 Z"/>
+        <!-- tailstock -->
+        <path d="M420 110 L520 110 L520 200 L420 200 Z"/>
+        <path d="M420 145 L380 145"/>
+      </svg>
       <div class="container">
         <header class="sec-head services-head">
           <div>

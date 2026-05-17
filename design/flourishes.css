@@ -234,7 +234,9 @@
   position: relative;
 }
 
-@media (min-width: 900px) {
+/* Only renders ≥ 1200px — below that the contact band stacks and
+ * the toolpath collides with the .contact-meta dl on the right. */
+@media (min-width: 1200px) {
   .fx-toolpath::after {
     content: "";
     position: absolute;
@@ -243,9 +245,13 @@
     z-index: 0;
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 400' fill='none' stroke='%23ffffff' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'><rect x='40' y='40' width='520' height='320' rx='18' ry='18'/><rect x='90' y='90' width='420' height='220' rx='12' ry='12' stroke-dasharray='3 4'/><line x1='40' y1='200' x2='560' y2='200' stroke-dasharray='1 6'/><line x1='300' y1='40' x2='300' y2='360' stroke-dasharray='1 6'/><circle cx='300' cy='200' r='4'/><circle cx='300' cy='200' r='14' stroke-dasharray='1 3'/><path d='M 40 60 L 60 60 L 60 40'/><path d='M 540 40 L 560 40 L 560 60'/><path d='M 560 340 L 560 360 L 540 360'/><path d='M 60 360 L 40 360 L 40 340'/></svg>");
     background-repeat: no-repeat;
-    background-position: right -8% center;
-    background-size: clamp(420px, 48vw, 720px) auto;
-    opacity: 0.08;
+    /* push further off-canvas so it never sits behind the meta dl */
+    background-position: right -22% center;
+    background-size: clamp(420px, 42vw, 680px) auto;
+    opacity: 0.07;
+    /* mask hard on the left so it can never bleed under the LH copy */
+    -webkit-mask-image: linear-gradient(to right, transparent 0, transparent 55%, #000 80%);
+            mask-image: linear-gradient(to right, transparent 0, transparent 55%, #000 80%);
   }
 }
 
@@ -265,18 +271,44 @@
 .fx-frame::before {
   content: "";
   position: absolute;
-  top: clamp(1rem, 2vw, 1.5rem);
+  /* clear of the fixed nav (logo at 56–64px + padding ≈ 88–104px) */
+  top: clamp(5.5rem, 8vw, 7rem);
   left: clamp(1rem, 2vw, 1.5rem);
   right: clamp(1rem, 2vw, 1.5rem);
   bottom: clamp(1rem, 2vw, 1.5rem);
-  border: 1px solid var(--ns-color-rule);
+  border: 1px solid var(--ns-color-rule-strong);
   pointer-events: none;
   z-index: 0;
-  opacity: 0.6;
+  opacity: 0.55;
+}
+
+/* "Open" variant — three-sided frame, like a drawing sheet pulled
+ * from above. Removes the top edge so it never collides with the
+ * fixed nav, and reads as a deliberate engineering-sheet crop. */
+.fx-frame-open::before {
+  border-top: 0;
+}
+
+/* End-caps on the open top edge — small drafting ticks at L/R that
+ * complete the rectangle visually without drawing the line itself. */
+.fx-frame-open::after {
+  content: "";
+  position: absolute;
+  top: clamp(5.5rem, 8vw, 7rem);
+  left: clamp(1rem, 2vw, 1.5rem);
+  right: clamp(1rem, 2vw, 1.5rem);
+  height: 14px;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    linear-gradient(to bottom, var(--ns-color-rule-strong) 0 14px, transparent 14px) left top / 1px 14px no-repeat,
+    linear-gradient(to bottom, var(--ns-color-rule-strong) 0 14px, transparent 14px) right top / 1px 14px no-repeat;
+  opacity: 0.55;
 }
 
 @media (max-width: 699px) {
-  .fx-frame::before { display: none; }
+  .fx-frame::before,
+  .fx-frame-open::after { display: none; }
 }
 
 
@@ -327,7 +359,80 @@
 
 
 /* ============================================
- * § 8 — REDUCED MOTION
+ * § 8 — MACHINE LINEART
+ * SVG ghost layers of CNC machinery — a 5-axis VMC behind
+ * the hero (RH bleed) and a CNC lathe behind the services
+ * section (LH-bottom bleed). Used as implicit "this is what
+ * we train you on" cue, not decorative wallpaper.
+ *
+ * Cropped intentionally off-canvas. Very low opacity. Hidden
+ * below 900px where the page stacks and the lineart would
+ * sit behind copy.
+ *
+ * The drawings themselves carry NO measurements / no invented
+ * tolerances — silhouettes only. Engineering vocabulary
+ * (orthographic projection, dashed centre-lines, chuck jaws)
+ * but never a number.
+ * ============================================ */
+
+.fx-machine {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  color: var(--ns-color-ink);
+  opacity: 0;
+}
+
+@media (min-width: 900px) {
+  .fx-machine {
+    opacity: 0.07;
+    mix-blend-mode: multiply;
+  }
+}
+
+@media (min-width: 1200px) {
+  .fx-machine { opacity: 0.085; }
+}
+
+/* Hero — 5-axis VMC bleeding off the RH edge. Sits behind the
+ * floating pinboard cards and the headline. */
+.fx-machine-hero {
+  display: none;
+}
+@media (min-width: 900px) {
+  .fx-machine-hero {
+    display: block;
+    right: -8vw;
+    top: 18%;
+    width: clamp(420px, 50vw, 760px);
+    height: auto;
+  }
+}
+
+/* Services — CNC lathe bleeding off the lower-left, behind the
+ * spec-sheet of service rows. Reads as "the kit we put hands on
+ * to teach" without competing with the row content. */
+.fx-machine-services {
+  display: none;
+}
+@media (min-width: 900px) {
+  .fx-machine-services {
+    display: block;
+    left: -10vw;
+    bottom: -6vw;
+    width: clamp(480px, 58vw, 820px);
+    height: auto;
+    opacity: 0.05;
+  }
+}
+@media (min-width: 1200px) {
+  .fx-machine-services { opacity: 0.065; }
+}
+
+
+/* ============================================
+ * § 9 — REDUCED MOTION
  * Flourishes are static — nothing to disable here.
  * Left as a hook for future scroll-driven flourishes.
  * ============================================ */
