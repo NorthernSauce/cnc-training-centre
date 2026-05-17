@@ -1,0 +1,333 @@
+/* CNC Training Centre — Flourishes
+ *
+ * Texture + line-work layer. Engineering-drawing vocabulary:
+ * orthographic grids, section-line hatching, drafting corner
+ * ticks, leader lines, tool-path ghost. All inline SVG via
+ * background-image, all opacities token-driven. Mobile-safe:
+ * patterns scale or drop out under 700px where indicated.
+ *
+ * Loaded AFTER page CSS so .has-grid etc. take precedence.
+ * Wired into home.html only for this pass — file is named
+ * "flourishes" so other pages can opt in later without rewrite.
+ *
+ * Naming: .fx-* (flourish prefix). Never collides with page-* classes.
+ * Never paints over text — every layer sits at z-index 0 and lives
+ * under .container content (which is z-index 1 already in page CSS).
+ */
+
+
+/* ============================================
+ * § 1 — ORTHOGRAPHIC GRID
+ * Drafting-paper grid. Two-tier: hairline 8px,
+ * heavier line every 80px (10×). Sits behind
+ * paper-tint bands at very low contrast.
+ *
+ * Reference: orthographic projection paper.
+ * Used on: .problem, .services (both paper-tint).
+ * ============================================ */
+
+.fx-grid {
+  position: relative;
+}
+
+.fx-grid::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    /* major grid — every 80px */
+    linear-gradient(to right,  var(--ns-color-rule-strong) 0, var(--ns-color-rule-strong) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--ns-color-rule-strong) 0, var(--ns-color-rule-strong) 1px, transparent 1px),
+    /* minor grid — every 8px */
+    linear-gradient(to right,  var(--ns-color-rule) 0, var(--ns-color-rule) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--ns-color-rule) 0, var(--ns-color-rule) 1px, transparent 1px);
+  background-size:
+    80px 80px,
+    80px 80px,
+    8px 8px,
+    8px 8px;
+  background-position: 0 0;
+  opacity: 0.32;
+  /* fade out at top + bottom so the grid never butts the
+     adjacent section — feels like paper, not wallpaper */
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 12%, #000 88%, transparent 100%);
+          mask-image: linear-gradient(to bottom, transparent 0, #000 12%, #000 88%, transparent 100%);
+}
+
+@media (max-width: 699px) {
+  .fx-grid::before {
+    background-size:
+      40px 40px,
+      40px 40px,
+      8px 8px,
+      8px 8px;
+    opacity: 0.24;
+  }
+}
+
+
+/* ============================================
+ * § 2 — 45° SECTION-LINE HATCH
+ * Engineering-drawing section hatch. 45° lines,
+ * 6px pitch. Used inside the authority spec-block
+ * BEHIND figures only — never under labels.
+ *
+ * Applied as a pseudo-element on .spec so it sits
+ * under the figure but above the cell background.
+ * ============================================ */
+
+.fx-hatch-cell {
+  position: relative;
+  isolation: isolate;
+}
+
+.fx-hatch-cell::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: repeating-linear-gradient(
+    45deg,
+    var(--ns-color-rule-strong) 0,
+    var(--ns-color-rule-strong) 0.5px,
+    transparent 0.5px,
+    transparent 6px
+  );
+  opacity: 0.55;
+  /* mask so the hatch only paints the top-right quadrant —
+     reads like a section-cut callout, not a full fill */
+  -webkit-mask-image: linear-gradient(135deg, transparent 50%, #000 100%);
+          mask-image: linear-gradient(135deg, transparent 50%, #000 100%);
+}
+
+.fx-hatch-cell > * { position: relative; z-index: 1; }
+
+
+/* ============================================
+ * § 3 — DRAFTING CORNER TICKS
+ * Title-block corner mark. Crosshair-style L bracket
+ * at top-right of a section — reads as the "this is
+ * sheet n of n" mark on an engineering drawing.
+ *
+ * Applied via .fx-tick utility. Sits inside the section
+ * absolute, top-right, well clear of text.
+ * ============================================ */
+
+.fx-tick {
+  position: absolute;
+  top: clamp(1.5rem, 3vw, 2.5rem);
+  right: clamp(1.5rem, 4vw, 3rem);
+  width: clamp(28px, 3vw, 44px);
+  height: clamp(28px, 3vw, 44px);
+  pointer-events: none;
+  z-index: 1;
+  color: var(--ns-color-ink-muted);
+  opacity: 0.6;
+}
+
+.fx-tick::before,
+.fx-tick::after {
+  content: "";
+  position: absolute;
+  background: currentColor;
+}
+
+/* top-right L */
+.fx-tick::before {
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 1px;
+}
+.fx-tick::after {
+  top: 0;
+  right: 0;
+  width: 1px;
+  height: 100%;
+}
+
+/* crosshair dot in the corner */
+.fx-tick > span {
+  position: absolute;
+  top: -2.5px;
+  right: -2.5px;
+  width: 5px;
+  height: 5px;
+  background: currentColor;
+  border-radius: 50%;
+}
+
+/* darker version for .s-anchor surfaces */
+.s-anchor .fx-tick {
+  color: var(--ns-color-ink-inverse);
+  opacity: 0.35;
+}
+
+
+/* ============================================
+ * § 4 — DIMENSION RULE
+ * Leader line with arrow-tick caps + a label.
+ * Anchored to the hero spec panel — annotates it
+ * like a drawing call-out without inventing facts.
+ *
+ * Pure CSS — no SVG needed. Hidden < 900px (the
+ * spec panel stacks below the headline there).
+ * ============================================ */
+
+.fx-dim {
+  display: none;
+}
+
+@media (min-width: 900px) {
+  .fx-dim {
+    display: flex;
+    position: absolute;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--ns-font-body);
+    font-size: 0.68rem;
+    font-weight: var(--ns-weight-medium);
+    letter-spacing: var(--ns-track-extrawide);
+    text-transform: uppercase;
+    color: var(--ns-color-ink-muted);
+    pointer-events: none;
+    user-select: none;
+    font-feature-settings: "tnum" 1;
+  }
+  .fx-dim-line {
+    flex: 1;
+    height: 1px;
+    background: var(--ns-color-rule-strong);
+    position: relative;
+  }
+  .fx-dim-line::before,
+  .fx-dim-line::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 1px;
+    height: 8px;
+    background: var(--ns-color-rule-strong);
+    transform: translateY(-50%);
+  }
+  .fx-dim-line::before { left: 0; }
+  .fx-dim-line::after { right: 0; }
+}
+
+
+/* ============================================
+ * § 5 — TOOL-PATH GHOST
+ * Outline of a CNC tool path / part profile. Sits
+ * behind the dark contact band at very low opacity.
+ * Inline SVG via background-image. Drawn as a
+ * stylised pocket-milled rectangular profile with
+ * fillet corners and a centre-line — the visual
+ * vocabulary an Edgecam programmer recognises.
+ *
+ * Only renders ≥ 900px (mobile contact is busy enough).
+ * ============================================ */
+
+.fx-toolpath {
+  position: relative;
+}
+
+@media (min-width: 900px) {
+  .fx-toolpath::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 400' fill='none' stroke='%23ffffff' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'><rect x='40' y='40' width='520' height='320' rx='18' ry='18'/><rect x='90' y='90' width='420' height='220' rx='12' ry='12' stroke-dasharray='3 4'/><line x1='40' y1='200' x2='560' y2='200' stroke-dasharray='1 6'/><line x1='300' y1='40' x2='300' y2='360' stroke-dasharray='1 6'/><circle cx='300' cy='200' r='4'/><circle cx='300' cy='200' r='14' stroke-dasharray='1 3'/><path d='M 40 60 L 60 60 L 60 40'/><path d='M 540 40 L 560 40 L 560 60'/><path d='M 560 340 L 560 360 L 540 360'/><path d='M 60 360 L 40 360 L 40 340'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right -8% center;
+    background-size: clamp(420px, 48vw, 720px) auto;
+    opacity: 0.08;
+  }
+}
+
+
+/* ============================================
+ * § 6 — HAIRLINE FRAME
+ * Inner double-line frame inside the hero — reads
+ * as a drawing border. One offset hairline that
+ * sits 1rem inside the viewport edge on the hero
+ * only. Decorative, never carries information.
+ * ============================================ */
+
+.fx-frame {
+  position: relative;
+}
+
+.fx-frame::before {
+  content: "";
+  position: absolute;
+  top: clamp(1rem, 2vw, 1.5rem);
+  left: clamp(1rem, 2vw, 1.5rem);
+  right: clamp(1rem, 2vw, 1.5rem);
+  bottom: clamp(1rem, 2vw, 1.5rem);
+  border: 1px solid var(--ns-color-rule);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.6;
+}
+
+@media (max-width: 699px) {
+  .fx-frame::before { display: none; }
+}
+
+
+/* ============================================
+ * § 7 — SCALE BAR
+ * Drafting scale-bar block. Used as a decorative
+ * end-cap inside the plan section between the head
+ * and the three-up grid. Pure CSS, tabular numerals.
+ * ============================================ */
+
+.fx-scale {
+  display: none;
+}
+
+@media (min-width: 900px) {
+  .fx-scale {
+    display: inline-flex;
+    align-items: center;
+    gap: 0;
+    margin-top: clamp(1.5rem, 2.5vw, 2rem);
+    font-family: var(--ns-font-body);
+    font-size: 0.68rem;
+    font-weight: var(--ns-weight-medium);
+    letter-spacing: var(--ns-track-extrawide);
+    text-transform: uppercase;
+    color: var(--ns-color-ink-muted);
+    font-feature-settings: "tnum" 1;
+  }
+  .fx-scale-label {
+    margin-right: 0.75rem;
+  }
+  .fx-scale-bar {
+    display: inline-flex;
+    height: 10px;
+    border: 1px solid var(--ns-color-ink);
+  }
+  .fx-scale-seg {
+    width: 28px;
+    height: 100%;
+    border-right: 1px solid var(--ns-color-ink);
+  }
+  .fx-scale-seg:last-child { border-right: 0; }
+  .fx-scale-seg.is-fill { background: var(--ns-color-ink); }
+  .fx-scale-end {
+    margin-left: 0.6rem;
+  }
+}
+
+
+/* ============================================
+ * § 8 — REDUCED MOTION
+ * Flourishes are static — nothing to disable here.
+ * Left as a hook for future scroll-driven flourishes.
+ * ============================================ */

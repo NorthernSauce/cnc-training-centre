@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="../brief/tokens.css" />
   <link rel="stylesheet" href="../brief/components.css" />
   <link rel="stylesheet" href="./page-home.css" />
+  <link rel="stylesheet" href="./flourishes.css" />
 </head>
 <body>
 
@@ -75,8 +76,9 @@
          Engineering-drawing motif. Massive headline,
          dimension-annotated spec readout RH.
          ============================================ -->
-    <section class="hero" aria-labelledby="hero-title">
+    <section class="hero fx-frame" aria-labelledby="hero-title">
       <span class="hero-ghost" aria-hidden="true">01</span>
+      <span class="fx-tick" aria-hidden="true"><span></span></span>
       <div class="container">
         <p class="hero-eyebrow hero-eyebrow-top">Independent CNC training · since 1996</p>
         <h1 class="hero-title" id="hero-title">Close the&nbsp;CNC<br/><em>skills gap.</em></h1>
@@ -140,8 +142,9 @@
          Editorial newspaper layout. Pretitle + big headline,
          2-column body, full-width pull-quote spans them.
          ============================================ -->
-    <section class="s s-paper-tint problem" aria-labelledby="problem-title">
+    <section class="s s-paper-tint problem fx-grid" aria-labelledby="problem-title">
       <span class="ghost-num" aria-hidden="true">02</span>
+      <span class="fx-tick" aria-hidden="true"><span></span></span>
       <div class="container">
         <header class="sec-head">
           <span class="sec-pretitle">§ 02 — The gap</span>
@@ -169,11 +172,21 @@
          ============================================ -->
     <section class="s s-paper plan" aria-labelledby="plan-title">
       <span class="ghost-num" aria-hidden="true">03</span>
+      <span class="fx-tick" aria-hidden="true"><span></span></span>
       <div class="container">
         <header class="sec-head plan-head">
           <div>
             <span class="sec-pretitle">§ 03 — Plan</span>
             <h2 class="plan-title" id="plan-title">Three steps. No fixed agenda. Your team back on the floor ready to use what they learned.</h2>
+            <span class="fx-scale" aria-hidden="true">
+              <span class="fx-scale-label">Steps 01 → 03</span>
+              <span class="fx-scale-bar">
+                <span class="fx-scale-seg is-fill"></span>
+                <span class="fx-scale-seg"></span>
+                <span class="fx-scale-seg"></span>
+              </span>
+              <span class="fx-scale-end">03 / 03</span>
+            </span>
           </div>
           <a class="btn btn-primary plan-cta" href="contact.html">Tell David what you need</a>
         </header>
@@ -207,8 +220,9 @@
          wide row with index / huge name / rate / CTA arrow.
          Hover state lifts the row, primary index goes blue.
          ============================================ -->
-    <section class="s s-paper-tint services" aria-labelledby="services-title">
+    <section class="s s-paper-tint services fx-grid" aria-labelledby="services-title">
       <span class="ghost-num" aria-hidden="true">04</span>
+      <span class="fx-tick" aria-hidden="true"><span></span></span>
       <div class="container">
         <header class="sec-head services-head">
           <div>
@@ -271,6 +285,7 @@
          ============================================ -->
     <section class="s s-paper authority" aria-labelledby="authority-title">
       <span class="ghost-num" aria-hidden="true">05</span>
+      <span class="fx-tick" aria-hidden="true"><span></span></span>
       <div class="container">
         <div class="authority-grid">
           <header class="authority-head">
@@ -279,19 +294,19 @@
             <p class="authority-lede">You'll have read a few of my articles before you reach the form. That's how it tends to work. The content does the qualifying, the call does the rest.</p>
           </header>
           <div class="spec-block" role="list" aria-label="Authority figures">
-            <div class="spec" role="listitem">
+            <div class="spec fx-hatch-cell" role="listitem">
               <span class="spec-figure">30 <small>yrs</small></span>
               <p class="spec-label">Training on CNC machines, on every major control.</p>
             </div>
-            <div class="spec" role="listitem">
+            <div class="spec fx-hatch-cell" role="listitem">
               <span class="spec-figure">332</span>
               <p class="spec-label">YouTube videos, 8,930 subscribers.</p>
             </div>
-            <div class="spec" role="listitem">
+            <div class="spec fx-hatch-cell" role="listitem">
               <span class="spec-figure">27k</span>
               <p class="spec-label">LinkedIn followers, reading my weekly content.</p>
             </div>
-            <div class="spec" role="listitem">
+            <div class="spec fx-hatch-cell" role="listitem">
               <span class="spec-figure">30</span>
               <p class="spec-label">Five-star reviews on Google.</p>
             </div>
@@ -311,6 +326,7 @@
          ============================================ -->
     <section class="s s-paper-tint testimonials" aria-labelledby="testimonials-title">
       <span class="ghost-num" aria-hidden="true">06</span>
+      <span class="fx-tick" aria-hidden="true"><span></span></span>
       <div class="container">
         <header class="sec-head t-head">
           <span class="sec-pretitle">§ 06 — Testimonials</span>
@@ -453,7 +469,7 @@
     <!-- ============================================
          § 08 — CONTACT BAND
          ============================================ -->
-    <section class="contact" aria-labelledby="contact-title">
+    <section class="contact fx-toolpath" aria-labelledby="contact-title">
       <div class="container">
         <span class="sec-pretitle sec-pretitle-light">§ 08 — Contact</span>
         <div class="contact-grid">
@@ -495,7 +511,7 @@
           <p class="footer-tag">Independent CNC training since 1996. On your machines, or in your hands.</p>
           <ul class="footer-social" aria-label="Follow">
             <li>
-              <a href="#" data-social="linkedin" rel="noopener" aria-label="David Garner on LinkedIn">
+              <a href="#" data-social="linkedin" rel="noopener" aria-label="David on LinkedIn">
                 <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
                   <path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3v9zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/>
                 </svg>
