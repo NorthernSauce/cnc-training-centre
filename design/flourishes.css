@@ -395,19 +395,25 @@
   .fx-machine { opacity: 0.22; }
 }
 
-/* Hero — 5-axis VMC bleeding off the RH edge. Sits behind the
- * floating pinboard cards and the headline. */
+/* Hero — 5-axis VMC bleeding off the RH edge. With the pinboard
+ * gone (v3 fix pass), the drawing carries the right half of the
+ * hero on its own — pulled in a touch, lifted slightly, opacity
+ * nudged so it reads as composition rather than wallpaper. */
 .fx-machine-hero {
   display: none;
 }
 @media (min-width: 900px) {
   .fx-machine-hero {
     display: block;
-    right: -8vw;
-    top: 18%;
-    width: clamp(420px, 50vw, 760px);
+    right: -6vw;
+    top: 14%;
+    width: clamp(460px, 54vw, 820px);
     height: auto;
+    opacity: 0.22;
   }
+}
+@media (min-width: 1200px) {
+  .fx-machine-hero { opacity: 0.26; }
 }
 
 /* Services — CNC lathe bleeding off the lower-left, behind the
