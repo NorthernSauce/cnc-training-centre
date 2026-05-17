@@ -524,62 +524,10 @@ body.drawer-open { overflow: hidden; }
   max-width: 20ch;
 }
 
-/* Marginalia — engineering spec card. Sits below the hero
- * stack on mobile; promotes to a right-side panel at the
- * larger viewport via container layout.
- * Visual: dense dl, hairline-divided rows, paper-tint
- * surface, single solid top rule like a spec-sheet header. */
-.hero-marginalia {
-  margin: clamp(2rem, 4vw, 3rem) 0 0;
-  padding: var(--ns-space-lg);
-  background: var(--ns-color-paper-tint);
-  border-top: 2px solid var(--ns-color-ink);
-  border-bottom: 1px solid var(--ns-color-rule);
-  max-width: 36rem;
-  position: relative;
-  z-index: 1;
-}
-
-.hero-marginalia > div {
-  display: grid;
-  grid-template-columns: 7rem 1fr;
-  gap: var(--ns-space-md);
-  align-items: baseline;
-  padding-block: var(--ns-space-sm);
-  border-bottom: 1px dashed var(--ns-color-rule);
-}
-
-.hero-marginalia > div:last-child { border-bottom: 0; }
-
-.hero-marginalia dt {
-  font-family: var(--ns-font-body);
-  font-size: var(--ns-text-tiny);
-  font-weight: var(--ns-weight-medium);
-  letter-spacing: var(--ns-track-extrawide);
-  text-transform: uppercase;
-  color: var(--ns-color-ink-muted);
-  margin: 0;
-}
-
-.hero-marginalia dd {
-  margin: 0;
-  font-family: var(--ns-font-body);
-  font-size: var(--ns-text-small);
-  line-height: var(--ns-leading-base);
-  color: var(--ns-color-ink);
-}
-
-@media (min-width: 1100px) {
-  .hero .container { position: relative; }
-  .hero-marginalia {
-    position: absolute;
-    top: 14rem;
-    right: var(--ns-pad-inline);
-    margin: 0;
-    width: 28rem;
-    max-width: 32vw;
-  }
-}
+/* Marginalia removed v4.1 — hero is now a single-stack left
+ * over the ghosted mill. The hero stack widens to take the
+ * extra room. */
+.hero-stack { max-width: 44rem; }
 
 
 /* ============================================
@@ -628,6 +576,25 @@ body.drawer-open { overflow: hidden; }
   line-height: var(--ns-leading-relaxed);
   color: var(--ns-color-ink-soft);
   margin: 0;
+}
+
+/* Scannability move (Agitation): engineering-credible drop-cap on
+ * the lead paragraph. No flourish — Tanker display weight, ink
+ * colour, tight kerning. Plus hairline rules between the
+ * non-pull paragraphs to give the eye landings as it scans. */
+.agitation-body-lead::first-letter {
+  font-family: var(--ns-font-display);
+  font-size: 4.2em;
+  line-height: 0.82;
+  float: left;
+  margin: 0.08em 0.16em 0 0;
+  color: var(--ns-color-ink);
+  letter-spacing: -0.02em;
+}
+
+.agitation-body > p + p {
+  padding-top: var(--ns-space-xl);
+  border-top: 1px solid var(--ns-color-rule);
 }
 
 .agitation-pull {
@@ -713,39 +680,17 @@ body.drawer-open { overflow: hidden; }
 
 .mechanism-title {
   font-family: var(--ns-font-display);
-  display: flex;
-  flex-direction: column;
-  gap: clamp(0.5rem, 1.5vw, 1rem);
-  margin: var(--ns-space-md) 0 0;
-  color: var(--ns-color-ink);
-}
-
-.mechanism-mark {
-  font-size: clamp(3rem, 1.2rem + 8vw, 8rem);
-  line-height: 0.88;
-  letter-spacing: -0.025em;
-  color: var(--ns-color-primary);
-  display: inline-block;
-  max-width: 14ch;
-  position: relative;
-}
-
-.mechanism-tm {
-  font-size: 0.32em;
-  vertical-align: 0.95em;
-  margin-left: 0.08em;
-  font-family: var(--ns-font-body);
-  font-weight: var(--ns-weight-medium);
-  color: var(--ns-color-ink-muted);
-  letter-spacing: 0;
-}
-
-.mechanism-sub {
-  font-size: clamp(1.5rem, 1rem + 2.4vw, 3rem);
+  font-size: clamp(2rem, 1.3rem + 2.6vw, 3.75rem);
   line-height: 1;
   letter-spacing: -0.015em;
   color: var(--ns-color-ink);
-  max-width: 18ch;
+  margin: var(--ns-space-md) 0 0;
+  max-width: 22ch;
+}
+
+.mechanism-title em {
+  font-style: normal;
+  color: var(--ns-color-primary);
 }
 
 .sr-only {
@@ -777,6 +722,61 @@ body.drawer-open { overflow: hidden; }
 .mechanism-lede {
   font-size: var(--ns-text-large) !important;
   color: var(--ns-color-ink) !important;
+}
+
+/* Inline keyword emphasis — restrained ink underline,
+ * load-bearing line gets a quiet visual anchor. */
+.mechanism-keyword {
+  color: var(--ns-color-ink);
+  font-weight: var(--ns-weight-medium);
+  border-bottom: 1px solid var(--ns-color-ink);
+  padding-bottom: 0.05em;
+}
+
+/* Scannability move (Mechanism): drafting margin sidenote.
+ * Hidden on mobile (visually-hidden via aria-hidden), promotes
+ * to a left-margin annotation at >=1024px when the body has
+ * enough room. Mirrors a draftsman's pencil note in the
+ * page margin. */
+.mechanism-sidenote { display: none; }
+
+@media (min-width: 1024px) {
+  .mechanism-body {
+    display: grid;
+    grid-template-columns: 16rem minmax(0, 62ch);
+    column-gap: clamp(2rem, 4vw, 3.5rem);
+    row-gap: var(--ns-space-lg);
+    max-width: none;
+  }
+  .mechanism-body > p { grid-column: 2; }
+  .mechanism-sidenote {
+    display: block;
+    grid-column: 1;
+    grid-row: 2;
+    align-self: start;
+    border-top: 1px solid var(--ns-color-ink);
+    padding: var(--ns-space-sm) 0 0;
+    margin: 0;
+    text-align: right;
+  }
+  .mechanism-sidenote-mark {
+    display: block;
+    font-family: var(--ns-font-body);
+    font-size: var(--ns-text-tiny);
+    font-weight: var(--ns-weight-medium);
+    letter-spacing: var(--ns-track-extrawide);
+    text-transform: uppercase;
+    color: var(--ns-color-ink-muted);
+    margin-bottom: var(--ns-space-xs);
+  }
+  .mechanism-sidenote p {
+    font-family: var(--ns-font-display);
+    font-size: clamp(1.1rem, 0.9rem + 0.5vw, 1.35rem);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    color: var(--ns-color-ink);
+    margin: 0;
+  }
 }
 
 
@@ -979,28 +979,146 @@ body.drawer-open { overflow: hidden; }
     transparent 82%);
 }
 
+.services-head { margin-bottom: clamp(2.5rem, 5vw, 4rem); position: relative; z-index: 1; }
+
 .services-title {
   font-family: var(--ns-font-display);
   font-size: clamp(2rem, 1.3rem + 2.6vw, 3.75rem);
   line-height: 1;
   letter-spacing: -0.015em;
   color: var(--ns-color-ink);
-  margin: 0;
+  margin: var(--ns-space-md) 0 0;
   max-width: 26ch;
 }
 
-.services-meta {
+/* ── Services 2x2 card grid (v4.1) ────────────────
+ * Replaces the previous .svc-sheet row catalogue.
+ * Four services, 2 columns × 2 rows at >=900px.
+ * Mobile: single column stack. */
+.svc-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ns-space-lg);
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 900px) {
+  .svc-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--ns-space-xl);
+  }
+}
+
+.svc-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ns-space-md);
+  padding: clamp(1.5rem, 2.5vw, 2.25rem);
+  background: var(--ns-color-paper);
+  border: 1px solid var(--ns-color-rule);
+  border-top: 2px solid var(--ns-color-ink);
+  color: var(--ns-color-ink);
+  text-decoration: none;
+  position: relative;
+  min-height: 16rem;
+  transition: border-color var(--ns-dur-fast) var(--ns-ease-out), transform var(--ns-dur-base) var(--ns-ease-out);
+}
+
+.svc-card::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0;
+  width: 3px; height: 100%;
+  background: var(--ns-color-primary);
+  opacity: 0;
+  transition: opacity var(--ns-dur-fast) var(--ns-ease-out);
+}
+
+.svc-card:hover { border-color: var(--ns-color-ink); transform: translateY(-2px); }
+.svc-card:hover::before { opacity: 1; }
+
+.svc-card-name {
+  font-family: var(--ns-font-display);
+  font-size: clamp(1.5rem, 1.1rem + 1.4vw, 2.25rem);
+  line-height: 1;
+  letter-spacing: -0.015em;
+  margin: 0;
+  color: var(--ns-color-ink);
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--ns-space-sm);
+  flex-wrap: wrap;
+}
+
+.svc-card-pill {
   display: inline-flex;
   align-items: center;
-  gap: var(--ns-space-xs);
+  padding: 0.15rem 0.55rem;
+  font-family: var(--ns-font-body);
+  font-size: 0.7rem;
+  font-weight: var(--ns-weight-semibold);
+  letter-spacing: var(--ns-track-wide);
+  text-transform: uppercase;
+  color: var(--ns-color-ink-soft);
+  background: var(--ns-color-paper-tint);
+  border: 1px solid var(--ns-color-rule);
+  border-radius: var(--ns-radius-pill);
+}
+
+.svc-card-rate {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-small);
+  font-weight: var(--ns-weight-medium);
+  letter-spacing: var(--ns-track-wide);
+  text-transform: uppercase;
+  color: var(--ns-color-ink-muted);
+  font-feature-settings: "tnum" 1;
+  margin: 0;
+}
+
+.svc-card-rate strong {
+  display: inline-block;
+  margin-right: 0.2em;
+  color: var(--ns-color-ink);
+  font-family: var(--ns-font-display);
+  font-size: 1.5em;
+  font-weight: var(--ns-weight-regular);
+  letter-spacing: -0.01em;
+  vertical-align: -0.05em;
+}
+
+.svc-card-lede {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-small);
+  line-height: var(--ns-leading-base);
+  color: var(--ns-color-ink-soft);
+  margin: 0;
+  flex: 1;
+}
+
+.svc-card-cta {
+  margin-top: var(--ns-space-sm);
+  padding-top: var(--ns-space-md);
+  border-top: 1px solid var(--ns-color-rule);
   font-family: var(--ns-font-body);
   font-size: var(--ns-text-tiny);
   font-weight: var(--ns-weight-medium);
   letter-spacing: var(--ns-track-wide);
   text-transform: uppercase;
-  color: var(--ns-color-ink-muted);
+  color: var(--ns-color-ink);
 }
 
+.svc-card-cta span { transition: transform var(--ns-dur-base) var(--ns-ease-out); display: inline-block; margin-left: 0.4em; }
+.svc-card:hover .svc-card-cta span { transform: translateX(4px); }
+
+.svc-card-soon { opacity: 0.92; }
+.svc-card-soon:hover { opacity: 1; }
+
+/* ── Legacy svc-sheet (kept for service inner pages) ────── */
 .svc-sheet {
   list-style: none;
   /* Floats above the .fx-grid paper. Margin-block creates breathing
@@ -1539,17 +1657,28 @@ body.drawer-open { overflow: hidden; }
 
 .hub {
   background: var(--ns-color-paper-deep);
-  padding-block: clamp(5rem, 9vw, 9rem);
+  padding-block: clamp(3.5rem, 6vw, 6rem);
+}
+
+.hub-head {
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+  position: relative;
+  z-index: 1;
 }
 
 .hub-title {
   font-family: var(--ns-font-display);
-  font-size: clamp(2.5rem, 1.5rem + 3.6vw, 5rem);
-  line-height: 0.95;
-  letter-spacing: -0.02em;
+  font-size: clamp(2rem, 1.3rem + 2.6vw, 3.75rem);
+  line-height: 1;
+  letter-spacing: -0.015em;
   color: var(--ns-color-ink);
-  margin: 0 0 var(--ns-space-md);
-  max-width: 18ch;
+  margin: var(--ns-space-md) 0 var(--ns-space-md);
+  max-width: 22ch;
+}
+
+.hub-title em {
+  font-style: normal;
+  color: var(--ns-color-primary);
 }
 
 .hub-lede {
@@ -1558,10 +1687,88 @@ body.drawer-open { overflow: hidden; }
   line-height: var(--ns-leading-base);
   color: var(--ns-color-ink-soft);
   margin: 0;
-  max-width: 52ch;
+  max-width: 56ch;
 }
 
-.hub-cta { align-self: end; white-space: nowrap; }
+.hub-row {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ns-space-md);
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 900px) {
+  .hub-row { grid-template-columns: repeat(3, 1fr); gap: var(--ns-space-lg); }
+}
+
+.hub-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ns-space-md);
+  padding: var(--ns-space-lg);
+  background: var(--ns-color-paper);
+  border: 1px solid var(--ns-color-rule);
+  border-radius: var(--ns-radius-tight);
+  text-decoration: none;
+  color: var(--ns-color-ink);
+  position: relative;
+  min-height: 11rem;
+  transition: border-color var(--ns-dur-fast) var(--ns-ease-out), transform var(--ns-dur-base) var(--ns-ease-out);
+}
+
+.hub-card:hover { border-color: var(--ns-color-ink); transform: translateY(-2px); }
+
+.hub-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--ns-space-sm);
+}
+
+.hub-card-meta {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  font-weight: var(--ns-weight-medium);
+  letter-spacing: var(--ns-track-wide);
+  text-transform: uppercase;
+  color: var(--ns-color-ink-muted);
+}
+
+.hub-card-title {
+  font-family: var(--ns-font-display);
+  font-size: clamp(1.25rem, 1.05rem + 0.9vw, 1.6rem);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--ns-color-ink);
+  margin: 0;
+  flex: 1;
+}
+
+.hub-card-arrow {
+  align-self: flex-end;
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-large);
+  color: var(--ns-color-ink);
+  transition: transform var(--ns-dur-base) var(--ns-ease-out);
+}
+
+.hub-card:hover .hub-card-arrow { transform: translateX(4px); }
+
+.hub-card-gap { border-style: dashed; }
+.hub-card-gap .hub-card-title {
+  color: var(--ns-color-ink-muted);
+  font-style: italic;
+}
+
+.hub-foot {
+  margin-top: clamp(1.5rem, 3vw, 2.5rem);
+  display: flex;
+  justify-content: flex-start;
+}
 
 /* Stat strip */
 .hub-stats {
