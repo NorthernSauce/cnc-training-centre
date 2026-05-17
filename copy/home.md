@@ -2,7 +2,7 @@
      Page-level framework: PAS (Problem, Agitation, Solution). Hook = problem hook (Beat 1).
      Section order (new):
        1. Hero (Beat 1 + 2 — problem hook, lived tension, route to action)
-       2. Agitation (Beats 5-7 — blame the old way + failed solutions + problem mechanism named: "Whoever-Was-Free Training")
+       2. Agitation (Beats 5-7 — blame the old way + failed solutions + problem mechanism, named in plain language)
        3. Positioning (Beats 10-11 — category for industry, why I'm the only one)
        4. Solution mechanism (Beats 19-20 — In-Action Training, named, ™'d)
        5. Services (Beat 21-22 — benefits / value pillars expressed as four ways in)
@@ -10,12 +10,17 @@
        7. Proof of who (Beat 26 — testimonials)
        8. Use cases / pre-qualification (Beat 30 — Learning Hub preview as the assignment-selling layer)
        9. Decisiveness + offer (Beats 33-36 — kill the status quo, name the stakes of inaction, direct CTA band)
+     Revision 2026-05-17b:
+       - Killed "Whoever-Was-Free Training™" at Dave's request — too cryptic, asked the reader to interpret.
+       - Replaced with plain language naming the mechanism: ad-hoc training by whoever had a spare ten minutes.
+       - Light sweep cut across Agitation, Solution Mechanism, Services. Target body ~1,445 words.
+       - "In-Action Training™" stays — that one is David's own coined phrase and reads clean.
      Notes for designer:
-       - The Hero block stays two-column (copy + marginalia), as before. Marginalia content unchanged in shape; the copy beside it is what changed.
-       - "Whoever-Was-Free Training™" appears as a named pull-out in the Agitation section — designer should give it the same treatment as a section crosshead, mid-paragraph, not a banner.
-       - "In-Action Training™" is the page's marquee mechanism — give it a dedicated section between Positioning and Services. Image candidate: workshop fragment.
-       - Authority is now "Proof of how" — table stays, but the lead-in line is the proof claim, not meta-narration.
-       - Decisiveness band replaces the generic "Tell David what you need" close. New H2 + body; same visual treatment.
+       - Hero block stays two-column (copy + marginalia). Marginalia unchanged.
+       - Agitation no longer has a trademark pull-out. The mechanism is described in plain prose; the section H2 carries the punch.
+       - "In-Action Training™" is the page's marquee mechanism — dedicated section between Positioning and Services.
+       - Authority is "Proof of how" — table stays.
+       - Decisiveness band replaces the generic CTA close.
        - Em-dash count target: <=3 across the page.
 -->
 
@@ -52,13 +57,13 @@ Every week those machines run slow or sit idle is money you're quietly losing. N
 ## Agitation
 ### Beats 5-7 (blame the world, failed solutions, name the problem mechanism)
 
-### Whoever-Was-Free Training is costing you more than any course ever would.
+### Your operators were never trained. They were shown.
 
-Look at how your shop floor learned to run those machines. One operator got handed a manual nobody had opened since 2014. Another picked up Fanuc from a bloke who left three years ago. The new starter watched YouTube videos that contradict each other every third clip. Nobody planned it that way. It's just what happens when the days are full and training is the thing that slides off the bottom of the list.
+Think about how your shop floor actually learned to run those machines. One bloke got handed a manual nobody had opened since 2014. Another picked up Fanuc from a colleague who left three years ago. A new starter watched ten minutes of a YouTube clip between jobs. Nobody planned it that way. It's just what happens when the days are full and proper training is the thing that slides off the bottom of the list.
 
-Then you priced the proper routes. The OEMs quoted you double what you'd expect, locked to their brand only, on a syllabus built for somebody else's parts. Free online content is bottomless and unsorted, and there's nobody to ask when the video doesn't match the post-processor in front of you. So another quarter goes by. The same machine keeps running slow.
+You priced the alternatives. The OEMs quoted double what you'd expect, locked to their kit only, on a syllabus built around somebody else's parts. Free online content is bottomless and unsorted, and there's nobody to ask when the video doesn't match the post-processor in front of you. So another quarter goes by. The same machine keeps running slow.
 
-Here's the thing nobody flags out loud: it isn't your operators failing. It's the way they got trained in the first place. I've watched the same mechanism play out in hundreds of workshops. Whoever-Was-Free Training™ is the reason your machines underperform. It's the reason new starters take six months to become useful. It's the reason programming gets bottlenecked through one person who learned the job fifteen years ago and can't quite explain how. Fix the mechanism, the rest follows.
+It isn't your operators failing. It's that they were trained ad-hoc, by whoever happened to have ten spare minutes that morning, who was himself trained the same way fifteen years ago. Nothing got taught properly. The gaps compound. The machine never gets used near what it's capable of. Fix that, the rest follows.
 
 ---
 
@@ -78,11 +83,11 @@ The OEMs send referrals because they know I cover what their syllabus won't. The
 
 ### In-Action Training™. Training while production runs.
 
-Here's what most training gets wrong. It pulls your team off the floor, sits them in a room with a PowerPoint, hands them a folder, and sends them back two days later to do the job they couldn't do before. The kit didn't run all week, the customer's still waiting, and half what they learned won't transfer because they never touched the actual machine.
+Most training pulls your team off the floor, sits them in a room with a PowerPoint, hands them a folder, and sends them back two days later to do the job they couldn't do before. The kit didn't run all week. The customer's still waiting. Half what they learned won't transfer because they never touched the machine.
 
-In-Action Training is the opposite. I come to your shop. We work on your machines, with your parts, against your real jobs. The training is the production. Your operator learns the cycle they're actually going to run on Monday morning, not a textbook example. The setter watches the offsets get dialled in on the part that's due Thursday. By the time I leave, the job is in spec and the person who couldn't do it can. That's the difference. It's why thirty years of clients keep calling back.
+In-Action Training is the opposite. I come to your shop. We work on your machines, with your parts, against your real jobs. The training is the production. Your operator learns the cycle they're going to run on Monday, not a textbook example. The setter watches the offsets get dialled in on the part that's due Thursday. By the time I leave, the job is in spec and the person who couldn't do it can.
 
-I assess as I go. If your operators pick something up fast, we move on to the next thing they need. If they're struggling, I stay until it clicks. There's no fixed agenda, because every shop floor is a different fixed agenda already. Yours.
+I assess as I go. If your operators pick something up fast, we move on. If they're struggling, I stay until it clicks. No fixed agenda, because every shop floor is a different fixed agenda already. Yours.
 
 ---
 
@@ -92,19 +97,19 @@ I assess as I go. If your operators pick something up fast, we move on to the ne
 ### Four ways in. Pick the one that fits how you actually work.
 
 **Onsite training**
-I come to you. In-Action Training on your machines, your parts, your pace. Every major control. £700/day for the whole team, not per head. The fastest route to a shop floor running properly.
+I come to you. In-Action Training on your machines, your parts, your pace. Every major control. £700/day for the whole team, not per head.
 **Link:** Onsite training →
 
 **Classroom training**
-Small groups at my Leicestershire facility. One to six students on six CNC simulators. Beginners through advanced. Milling, turning, macro programming, Edgecam. £300/student/day. Certificate on completion, and a real reference for the CV.
+Small groups at my Leicestershire facility. One to six students on six CNC simulators. Beginners through advanced. Milling, turning, macro programming, Edgecam. £300/student/day. Certificate and a real reference on completion.
 **Link:** Classroom training →
 
 **Programming services**
-You've got the work, you haven't got the time, or the part is complex enough that hand-coding it would tie up your one programmer for two days. Send me the drawing. I'll programme it in Edgecam on a professional licence and deliver tested G-code. £60-£100/hr depending on complexity.
+You've got the work, you haven't got the time, or the part's complex enough to tie up your one programmer for two days. Send me the drawing. I'll programme it in Edgecam on a professional licence and deliver tested G-code. £60-£100/hr.
 **Link:** Programming services →
 
 **Online courses (notify-me)**
-Self-paced learning, built on the same approach as the classroom. No filler. No theory you'll never look at again. Sign up to know when it opens.
+Self-paced, built on the same approach as the classroom. No filler. Sign up to know when it opens.
 **Link:** Notify me →
 
 ---
@@ -185,11 +190,11 @@ Ring me. Tell me what machines you've got, what level your team's at, what you n
 - **[GAP — testimonials]** Proof of Who section currently uses placeholder structure. Need three real Google review quotes with reviewer attribution. Awaiting Dave.
 - **[GAP — featured Hub articles]** Three article slots in the Hub preview need real titles and metadata pulled at wireframe / design stage.
 - **[GAP — AI recommendation claim]** The "Recommended by major AI platforms" line in the Proof of How table is from strategy ("AI platforms actively recommend CNC Training Centre"). Strategy treats this as confirmed. Worth Dave naming which platforms specifically if asked — currently kept generic.
-- **[GAP — Whoever-Was-Free Training™ trademark]** I've named David's problem mechanism for him in the Agitation section. This is a Copyselling move (Beat 7 — name the problem mechanism). Worth Dave's eye before it ships — does he want to own this phrase? If yes, drop the ™. If he'd rather I drop the trademark mark and just use the phrase as a one-off, easy fix.
-- **[GAP — In-Action Training™ trademark]** Same question. The phrase is David's own from the questionnaire. Trademark mark is mine. Strip if not wanted.
-- **[For designer]** Hero copy is now ~80 words including the closing line ("Pick up the phone and we close the gap."). Marginalia content unchanged. Two-column layout same as v1.
-- **[For designer]** "Whoever-Was-Free Training" is the named problem mechanism — give it pull-quote / display treatment in the Agitation section, not buried.
+- **[GAP — In-Action Training™ trademark]** The phrase is David's own from the questionnaire. Trademark mark is mine. Strip if not wanted.
+- **[For designer]** Hero copy is ~80 words including the closing line. Marginalia content unchanged. Two-column layout same as v1.
+- **[For designer]** Agitation section no longer carries a named-mechanism pull-quote. The H2 ("Your operators were never trained. They were shown.") carries the punch — give it weight.
 - **[For designer]** "In-Action Training" gets its own section between Positioning and Services. Treat the H2 as a marquee element.
 - **[For designer]** The Decisiveness band replaces what was previously the generic anchor CTA block. Same visual surface (anchor / dark), new copy.
 - **2026-05-15 lock — founding year:** 1996. Unchanged.
 - **2026-05-15 lock — YouTube subs:** 8,930. Unchanged.
+- **2026-05-17b — mechanism rename:** "Whoever-Was-Free Training™" killed. Replaced with plain-language description ("trained ad-hoc, by whoever happened to have ten spare minutes that morning"). Dave's call.
