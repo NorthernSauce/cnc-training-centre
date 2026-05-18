@@ -1,0 +1,544 @@
+/* CNC Training Centre — Courses page styles
+ * Direction A — The Engineering Manual.
+ *
+ * Courses is a "coming soon" capture page. Quieter rhythm than the
+ * full service pages: notify-me form replaces the standard
+ * decisiveness/contact band, Hub block routes off-page.
+ *
+ * Loads AFTER tokens.css + components.css + page-home.css.
+ * Locked nav/drawer/footer + .s surfaces + .sec-pretitle + .hero base
+ * + .hub-* canonical block live in page-home.css. This file holds
+ * page-local section classes only — nothing here overrides token values.
+ */
+
+
+/* ============================================
+ * SHARED — page-level utilities
+ * ============================================ */
+
+.cs-gap {
+  color: var(--ns-color-ink-muted);
+  font-style: italic;
+  font-weight: var(--ns-weight-medium);
+}
+
+/* Centered sec-head variant — used on the quiet "what I know" section.
+ * Keeps the pretitle + h2 anchored without disturbing other layouts. */
+.sec-head-centered {
+  text-align: center;
+  max-width: 56rem;
+  margin-inline: auto;
+}
+.sec-head-centered .sec-pretitle::before,
+.sec-head-centered .sec-pretitle::after {
+  display: none;
+}
+
+
+/* ============================================
+ * HERO — copy left, spec card right
+ * Same outer grammar as .ot-hero / .ot-hero-grid, renamed local.
+ * ============================================ */
+
+.cs-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ns-space-2xl);
+  margin-top: var(--ns-space-2xl);
+}
+
+@media (min-width: 900px) {
+  .cs-hero-grid {
+    grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+    gap: var(--ns-space-3xl);
+    align-items: start;
+  }
+}
+
+
+/* ---------- Spec card (inline content card — NOT a marginalia rail) ---------- */
+
+.cs-card {
+  position: relative;
+  background: var(--ns-color-paper);
+  border: 1px solid var(--ns-color-rule);
+  padding: var(--ns-space-xl) var(--ns-space-lg);
+}
+
+/* Engineering-manual corner ticks — hairline only. */
+.cs-card::before,
+.cs-card::after {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border: 1px solid var(--ns-color-rule-strong);
+  pointer-events: none;
+}
+.cs-card::before {
+  top: -1px;
+  left: -1px;
+  border-right: 0;
+  border-bottom: 0;
+}
+.cs-card::after {
+  bottom: -1px;
+  right: -1px;
+  border-left: 0;
+  border-top: 0;
+}
+
+.cs-card-head {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--ns-space-sm);
+  padding-bottom: var(--ns-space-lg);
+  margin-bottom: var(--ns-space-lg);
+  border-bottom: 1px solid var(--ns-color-rule);
+}
+
+.cs-card-eyebrow {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  font-weight: var(--ns-weight-semibold);
+  letter-spacing: var(--ns-track-extrawide);
+  text-transform: uppercase;
+  color: var(--ns-color-ink-soft);
+}
+
+.cs-card-rule {
+  display: block;
+  height: 1px;
+  background: var(--ns-color-rule-strong);
+}
+
+.cs-card-status {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  font-weight: var(--ns-weight-medium);
+  letter-spacing: var(--ns-track-wide);
+  text-transform: uppercase;
+  color: var(--ns-color-primary);
+  white-space: nowrap;
+}
+
+.cs-card-list {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+.cs-card-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ns-space-2xs);
+  padding-block: var(--ns-space-md);
+  border-bottom: 1px solid var(--ns-color-rule-faint);
+}
+
+@media (min-width: 540px) {
+  .cs-card-row {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.4fr);
+    gap: var(--ns-space-lg);
+    align-items: baseline;
+  }
+}
+
+.cs-card-row:last-child { border-bottom: 0; padding-bottom: 0; }
+.cs-card-row:first-child { padding-top: 0; }
+
+.cs-card-row dt {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-small);
+  font-weight: var(--ns-weight-semibold);
+  letter-spacing: var(--ns-track-wide);
+  text-transform: uppercase;
+  color: var(--ns-color-ink-soft);
+}
+
+.cs-card-row dd {
+  margin: 0;
+  font-size: var(--ns-text-medium);
+  line-height: var(--ns-leading-base);
+  color: var(--ns-color-ink);
+}
+
+
+/* ============================================
+ * BROKEN — single-column editorial agitation
+ * ============================================ */
+
+.cs-broken-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ns-space-lg);
+  max-width: 56rem;
+  font-size: var(--ns-text-medium);
+  line-height: var(--ns-leading-relaxed);
+  color: var(--ns-color-ink);
+}
+
+.cs-broken-body p { margin: 0; }
+
+
+/* ============================================
+ * FIRST COURSE — GAP callout + locked-points list
+ * ============================================ */
+
+.cs-first-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ns-space-2xl);
+}
+
+@media (min-width: 980px) {
+  .cs-first-layout {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+    gap: var(--ns-space-3xl);
+    align-items: start;
+  }
+}
+
+.cs-first-gap {
+  margin: 0;
+  padding: var(--ns-space-xl) var(--ns-space-lg);
+  border-left: 2px solid var(--ns-color-mark-ink);
+  background: var(--ns-color-mark);
+  color: var(--ns-color-mark-ink);
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-medium);
+  line-height: var(--ns-leading-base);
+}
+
+.cs-first-gap p { margin: 0; }
+.cs-first-gap strong { font-weight: var(--ns-weight-semibold); color: var(--ns-color-ink); }
+
+.cs-first-lede {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  font-weight: var(--ns-weight-semibold);
+  letter-spacing: var(--ns-track-extrawide);
+  text-transform: uppercase;
+  color: var(--ns-color-ink-soft);
+  margin: 0 0 var(--ns-space-lg);
+}
+
+.cs-first-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--ns-color-rule);
+}
+
+.cs-first-item {
+  position: relative;
+  padding: var(--ns-space-lg) 0 var(--ns-space-lg) var(--ns-space-xl);
+  border-bottom: 1px solid var(--ns-color-rule);
+}
+
+.cs-first-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: calc(var(--ns-space-lg) + 0.7em);
+  width: 10px;
+  height: 1px;
+  background: var(--ns-color-ink);
+}
+
+.cs-first-item-name {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-medium);
+  font-weight: var(--ns-weight-semibold);
+  line-height: var(--ns-leading-snug);
+  letter-spacing: 0;
+  color: var(--ns-color-ink);
+  margin: 0 0 var(--ns-space-xs);
+}
+
+.cs-first-item-body {
+  margin: 0;
+  font-size: var(--ns-text-regular);
+  line-height: var(--ns-leading-base);
+  color: var(--ns-color-ink-soft);
+}
+
+.cs-first-item-gap .cs-first-item-name {
+  color: var(--ns-color-ink-muted);
+  font-style: italic;
+}
+
+
+/* ============================================
+ * WHO — two-column editorial
+ * ============================================ */
+
+.cs-who-cols {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ns-space-xl);
+  margin-top: var(--ns-space-xl);
+}
+
+@media (min-width: 900px) {
+  .cs-who-cols {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: var(--ns-space-3xl);
+  }
+}
+
+.cs-who-body {
+  margin: 0;
+  font-size: var(--ns-text-medium);
+  line-height: var(--ns-leading-relaxed);
+  color: var(--ns-color-ink);
+}
+
+.cs-who-body-lead {
+  font-size: var(--ns-text-large);
+  color: var(--ns-color-ink);
+}
+
+
+/* ============================================
+ * ANTI-POSITIONING — A/B/C numbered cards
+ * Hairline border. No SaaS hover.
+ * ============================================ */
+
+.cs-anti-list {
+  list-style: none;
+  padding: 0;
+  margin: var(--ns-space-2xl) 0 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  border-top: 1px solid var(--ns-color-rule);
+  border-bottom: 1px solid var(--ns-color-rule);
+}
+
+@media (min-width: 900px) {
+  .cs-anti-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border-bottom: 0;
+  }
+}
+
+.cs-anti-item {
+  position: relative;
+  padding: var(--ns-space-xl) var(--ns-space-lg) var(--ns-space-xl) calc(var(--ns-space-lg) + 2.5rem);
+  border-bottom: 1px solid var(--ns-color-rule);
+}
+
+@media (min-width: 900px) {
+  .cs-anti-item {
+    border-bottom: 1px solid var(--ns-color-rule);
+    border-right: 1px solid var(--ns-color-rule);
+  }
+  .cs-anti-item:last-child { border-right: 0; }
+}
+
+.cs-anti-num {
+  position: absolute;
+  top: var(--ns-space-xl);
+  left: var(--ns-space-lg);
+  font-family: var(--ns-font-display);
+  font-size: var(--ns-heading-h4);
+  line-height: 1;
+  color: var(--ns-color-primary);
+  letter-spacing: var(--ns-track-tight);
+}
+
+.cs-anti-name {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-large);
+  font-weight: var(--ns-weight-semibold);
+  line-height: var(--ns-leading-snug);
+  letter-spacing: 0;
+  color: var(--ns-color-ink);
+  margin: 0 0 var(--ns-space-sm);
+}
+
+.cs-anti-body {
+  margin: 0;
+  font-size: var(--ns-text-regular);
+  line-height: var(--ns-leading-base);
+  color: var(--ns-color-ink-soft);
+}
+
+
+/* ============================================
+ * KNOWN — honest transparency, narrow centered prose
+ * ============================================ */
+
+.cs-known-body {
+  max-width: 48rem;
+  margin: var(--ns-space-2xl) auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--ns-space-lg);
+  font-size: var(--ns-text-medium);
+  line-height: var(--ns-leading-relaxed);
+  color: var(--ns-color-ink);
+  text-align: left;
+}
+
+.cs-known-body p { margin: 0; }
+
+@media (min-width: 760px) {
+  .cs-known-body { text-align: center; }
+}
+
+
+/* ============================================
+ * NOTIFY — the conversion section.
+ * Anchor surface (deep ink), 2-col grid:
+ *   LH = pitch + meta dl, RH = single-field form.
+ * Replaces the standard decisiveness/contact band on this page.
+ * ============================================ */
+
+.cs-notify {
+  position: relative;
+  background: var(--ns-color-anchor);
+  color: var(--ns-color-ink-inverse);
+  padding-block: var(--ns-pad-block);
+  overflow: hidden;
+}
+
+.cs-notify .container { position: relative; z-index: 1; }
+
+.cs-notify .sec-pretitle-light {
+  display: block;
+  margin-bottom: var(--ns-space-lg);
+}
+
+.cs-notify-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ns-space-2xl);
+  align-items: start;
+}
+
+@media (min-width: 900px) {
+  .cs-notify-grid {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+    gap: var(--ns-space-3xl);
+  }
+}
+
+.cs-notify-lh { color: var(--ns-color-ink-inverse); }
+
+.cs-notify-title {
+  color: var(--ns-color-ink-inverse);
+  font-size: var(--ns-heading-h2);
+  line-height: var(--ns-leading-tight);
+  letter-spacing: var(--ns-track-tight);
+  margin: 0 0 var(--ns-space-lg);
+  max-width: 22ch;
+}
+
+.cs-notify-title em {
+  font-style: italic;
+  color: color-mix(in oklab, var(--ns-color-ink-inverse) 78%, var(--ns-color-primary));
+}
+
+.cs-notify-lede {
+  color: color-mix(in oklab, var(--ns-color-ink-inverse) 78%, var(--ns-color-anchor));
+  font-size: var(--ns-text-medium);
+  line-height: var(--ns-leading-relaxed);
+  margin: 0 0 var(--ns-space-xl);
+  max-width: 44ch;
+}
+
+.cs-notify-meta {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ns-space-md);
+  margin: 0;
+  padding-top: var(--ns-space-lg);
+  border-top: 1px solid color-mix(in oklab, var(--ns-color-ink-inverse) 18%, transparent);
+}
+
+@media (min-width: 540px) {
+  .cs-notify-meta { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--ns-space-lg); }
+}
+
+.cs-notify-meta dt {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  font-weight: var(--ns-weight-semibold);
+  letter-spacing: var(--ns-track-extrawide);
+  text-transform: uppercase;
+  color: color-mix(in oklab, var(--ns-color-ink-inverse) 55%, transparent);
+  margin: 0 0 var(--ns-space-2xs);
+}
+
+.cs-notify-meta dd {
+  margin: 0;
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-regular);
+  color: var(--ns-color-ink-inverse);
+  line-height: var(--ns-leading-base);
+}
+
+.cs-notify-meta dd a {
+  color: var(--ns-color-ink-inverse);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  text-decoration-color: color-mix(in oklab, var(--ns-color-ink-inverse) 28%, transparent);
+  transition: text-decoration-color var(--ns-dur-fast) var(--ns-ease-out);
+}
+.cs-notify-meta dd a:hover { text-decoration-color: var(--ns-color-ink-inverse); }
+
+.cs-notify-hidden { display: none; }
+
+/* Form on the dark surface — paper card holding the field */
+.cs-notify-form {
+  background: var(--ns-color-paper);
+  color: var(--ns-color-ink);
+  padding: var(--ns-space-xl) var(--ns-space-lg);
+  border: 1px solid var(--ns-color-rule);
+  border-radius: var(--ns-radius-soft);
+}
+
+.cs-notify-form .form-head {
+  border-bottom: 1px solid var(--ns-color-rule);
+  padding-bottom: var(--ns-space-lg);
+  margin-bottom: var(--ns-space-lg);
+}
+
+.cs-notify-form .form-head .title {
+  font-family: var(--ns-font-display);
+  font-size: var(--ns-heading-h4);
+  line-height: var(--ns-leading-snug);
+  font-weight: var(--ns-weight-regular);
+  letter-spacing: var(--ns-track-tight);
+  color: var(--ns-color-ink);
+  margin: 0 0 var(--ns-space-xs);
+}
+
+.cs-notify-form .form-head .sub {
+  margin: 0;
+  font-size: var(--ns-text-regular);
+  line-height: var(--ns-leading-base);
+  color: var(--ns-color-ink-soft);
+}
+
+@media (min-width: 760px) {
+  .cs-notify-form { padding: var(--ns-space-2xl); }
+}
+
+
+/* ============================================
+ * HUB SECTION — small page-local tweaks.
+ * Canonical hub block markup + CSS lives in page-home.css.
+ * Only thing this page customises: the lede max-width and a small
+ * adjustment to the hub-head copy column at narrow breakpoints.
+ * ============================================ */
+
+.cs-hub .hub-lede {
+  max-width: 56ch;
+}

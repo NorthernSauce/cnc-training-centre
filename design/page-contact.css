@@ -1,20 +1,26 @@
 /* CNC Training Centre — Contact page styles
  * Direction A — The Engineering Manual.
  *
- * Loads AFTER tokens.css + components.css + page-home.css.
- * Page-local section classes only — reuses shared .container, .s, .s-paper,
- * .s-paper-tint, .sec-head, .sec-pretitle, .ghost-num, .hero, .hero-ghost,
- * .hero-eyebrow, .hero-title, .hero-stack, .hero-lede, .hero-base, .spec-block,
- * .spec, .form-stack, .form-head, .form-field, .form-input, .form-textarea,
- * .form-select, .form-label, .form-hint, .form-actions, .form-submit, .link-arrow.
+ * Loads AFTER tokens.css + components.css + page-home.css + flourishes.css.
+ * Page-local section classes only. Reuses shared .container, .s, .s-paper,
+ * .s-paper-tint, .sec-head, .hero, .hero-eyebrow, .hero-title, .hero-lede,
+ * .spec-block, .spec, .form-stack, .form-head, .form-field, .form-input,
+ * .form-textarea, .form-select, .form-label, .form-hint, .form-actions,
+ * .form-submit, .link-arrow, .btn, .btn-primary, .btn-lg, .eyebrow.
+ *
+ * Cross-page constraints applied:
+ *  - No page section-numbers (no .ghost-num, no §-prefixed labels in body).
+ *  - No marginalia rail.
+ *  - No SaaS-template card hover/motion. Hairline rule + ink colour shifts
+ *    + underline reveals only.
+ *  - First-person singular voice; "David" first-name only.
  */
 
 
 /* ============================================
- * § 01 — HERO (compressed)
- * Functional contact hero — pretitle + short headline +
- * short lede + slim inline contact meta. Tight padding;
- * form below is the action, visitor reaches it fast.
+ * HERO
+ * Functional contact hero. Eyebrow + short headline + short lede +
+ * inline contact meta strip. Tight padding so the form below is reached fast.
  * ============================================ */
 
 .ct-hero {
@@ -24,7 +30,7 @@
 .ct-hero-title {
   font-size: clamp(2.25rem, 1.1rem + 4vw, 4rem);
   margin: 0 0 var(--ns-space-md);
-  max-width: 16ch;
+  max-width: 24ch;
 }
 
 .ct-hero-lede {
@@ -38,10 +44,10 @@
 
 .ct-hero-meta {
   margin: 0;
-  padding: var(--ns-space-sm) 0;
+  padding: var(--ns-space-md) 0;
   display: flex;
   flex-wrap: wrap;
-  gap: var(--ns-space-sm) clamp(1.5rem, 4vw, 3rem);
+  gap: var(--ns-space-md) clamp(1.5rem, 4vw, 3rem);
   align-items: baseline;
   border-top: 2px solid var(--ns-color-ink);
   border-bottom: 1px solid var(--ns-color-rule);
@@ -74,16 +80,17 @@
   text-decoration: underline;
   text-decoration-color: color-mix(in oklab, var(--ns-color-ink) 25%, transparent);
   text-underline-offset: 0.18em;
+  transition: text-decoration-color var(--ns-dur-fast) var(--ns-ease-out);
 }
 .ct-hero-meta dd a:hover { text-decoration-color: var(--ns-color-ink); }
 
 
 /* ============================================
- * § 02 — FORM SECTION
+ * FORM SECTION
  * Form LH (canonical .form-stack), supporting column RH
- * with "What happens" + "What I won't do".
- * Form is the hero — given visual prominence by paper-deep surface,
- * 2 px ink top rule (from .form-stack in components.css).
+ * with "The honest version" + "Take the friction out".
+ * Form is the visual centrepiece — paper-deep surface + 2px ink top rule
+ * come from .form-stack in components.css.
  * ============================================ */
 
 .ct-form-section { position: relative; }
@@ -102,15 +109,13 @@
   }
 }
 
-/* The form lives inside .form-stack from components.css.
- * Page-local: allow it to fill the column (override max-width).
- */
+/* The form lives inside .form-stack. Let it fill the column. */
 .ct-form {
   max-width: none;
   width: 100%;
 }
 
-/* Two-column field rows at 700+ — short fields share a row */
+/* Two-column field rows at 700+ — short fields share a row. */
 .ct-form-row-2 {
   display: grid;
   grid-template-columns: 1fr;
@@ -121,7 +126,7 @@
   .ct-form-row-2 { grid-template-columns: 1fr 1fr; gap: var(--ns-space-lg); }
 }
 
-/* Required / optional indicators inside labels */
+/* Required / optional indicators inside labels. */
 .ct-req {
   color: var(--ns-color-primary);
   font-weight: var(--ns-weight-semibold);
@@ -138,25 +143,27 @@
   color: var(--ns-color-ink-muted);
 }
 
-/* The submit + promise line sit side-by-side in the form-actions row */
+/* Submit + promise line sit side-by-side in the form-actions row. */
 .ct-form-promise {
   font-size: var(--ns-text-tiny);
   color: var(--ns-color-ink-muted);
-  max-width: 38ch;
+  max-width: 40ch;
+  margin: 0;
 }
 
-/* Make the submit button large enough to read as a primary affordance */
+/* Submit reads as the primary affordance on the page. */
 .ct-form .form-submit {
-  min-height: 52px !important;
-  padding: 0.9rem 1.4rem !important;
-  font-size: var(--ns-text-regular) !important;
+  min-height: 52px;
+  padding: 0.9rem 1.4rem;
+  font-size: var(--ns-text-regular);
 }
 
 
 /* ============================================
- * Supporting aside — "What happens" + "What I won't do"
- * Sits to the right of the form at desktop, below at mobile.
- * Restrained typographic treatment, no card chrome.
+ * SUPPORTING ASIDE
+ * "The honest version" + "Take the friction out" sit to the right
+ * of the form at desktop, below at mobile. Restrained typography,
+ * no card chrome.
  * ============================================ */
 
 .ct-form-aside {
@@ -208,8 +215,8 @@
   color: var(--ns-color-ink-muted);
 }
 
-/* Plus-marker list — the engineering-manual highlight list pattern.
- * Local to this page (not in components.css). Strong leading "+" mark.
+/* Plus-marker list — engineering-manual highlight list pattern.
+ * Local to this page. Strong leading "+" mark.
  */
 .ct-list-plus {
   list-style: none;
@@ -248,9 +255,8 @@
 
 
 /* ============================================
- * § 03 — OTHER WAYS TO GET IN TOUCH
+ * OTHER WAYS TO GET IN TOUCH
  * Three-column band. Same visual weight per cell.
- * Numbered grid pattern (engineering-manual list).
  * ============================================ */
 
 .ct-other-title {
@@ -265,7 +271,7 @@
 
 .ct-other-grid {
   list-style: none;
-  margin: 0;
+  margin: var(--ns-space-2xl) 0 0;
   padding: 0;
   display: grid;
   grid-template-columns: 1fr;
@@ -298,16 +304,6 @@
   .ct-other-cell:last-child { padding-right: 0; border-right: 0; }
 }
 
-.ct-other-num {
-  font-family: var(--ns-font-body);
-  font-size: var(--ns-text-tiny);
-  font-weight: var(--ns-weight-medium);
-  letter-spacing: var(--ns-track-extrawide);
-  text-transform: uppercase;
-  color: var(--ns-color-ink-muted);
-  font-variant-numeric: tabular-nums;
-}
-
 .ct-other-cell-title {
   font-family: var(--ns-font-display);
   font-size: var(--ns-heading-h4);
@@ -331,6 +327,7 @@
   text-decoration: underline;
   text-decoration-color: color-mix(in oklab, var(--ns-color-ink) 25%, transparent);
   text-underline-offset: 0.18em;
+  transition: text-decoration-color var(--ns-dur-fast) var(--ns-ease-out);
 }
 
 .ct-other-cell-figure a:hover {
@@ -362,6 +359,7 @@
   line-height: var(--ns-leading-base);
   color: var(--ns-color-ink-soft);
   max-width: 78ch;
+  border-top: 1px solid var(--ns-color-rule-faint);
 }
 
 .ct-other-location-lbl {
@@ -371,14 +369,13 @@
   letter-spacing: var(--ns-track-extrawide);
   text-transform: uppercase;
   color: var(--ns-color-ink);
-  margin-right: var(--ns-space-xs);
+  margin-right: var(--ns-space-sm);
 }
 
 
 /* ============================================
- * § 04 — TRUST STRIP
- * Reuses .spec-block from page-home.css — same visual treatment,
- * fewer rows. Local override: 4-up grid at desktop.
+ * TRUST STRIP
+ * Reuses .spec-block from page-home.css. 4-up at desktop, 2-up at mobile.
  * ============================================ */
 
 .ct-trust-title {
@@ -387,7 +384,7 @@
   line-height: var(--ns-leading-tight);
   letter-spacing: var(--ns-track-tight);
   color: var(--ns-color-ink);
-  margin: 0;
+  margin: 0 0 var(--ns-space-xl);
   max-width: 28ch;
 }
 

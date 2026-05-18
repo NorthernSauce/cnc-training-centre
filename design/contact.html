@@ -3,13 +3,14 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Contact David — CNC Training Centre</title>
+  <title>Contact David. CNC Training Centre</title>
   <meta name="description" content="Tell David what you need. One paragraph is plenty. Reply inside a working day, usually same day. No marketing list, no automated follow-up." />
 
   <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
   <link rel="stylesheet" href="../brief/tokens.css" />
   <link rel="stylesheet" href="../brief/components.css" />
   <link rel="stylesheet" href="./page-home.css" />
+  <link rel="stylesheet" href="./flourishes.css" />
   <link rel="stylesheet" href="./page-contact.css" />
 </head>
 <body>
@@ -30,7 +31,7 @@
       </ul>
       <div class="nav-actions">
         <a class="nav-phone" href="tel:+447834858407" aria-label="Call David on 07834 858 407">07834 858 407</a>
-        <a class="btn btn-primary btn-sm" href="contact.html" aria-current="page">Contact David</a>
+        <a class="btn btn-primary btn-sm" href="contact.html">Contact David</a>
         <button class="nav-toggle" type="button" id="navToggle" aria-controls="drawer" aria-expanded="false" aria-label="Open menu">
           <span class="nav-toggle-bar" aria-hidden="true"></span>
         </button>
@@ -72,81 +73,82 @@
   <main id="main">
 
     <!-- ============================================
-         § 01 — HERO (compressed)
-         Functional contact hero — pretitle + short headline
-         + short lede + slim inline contact meta. Form below
-         is the action; visitor reaches it fast.
+         HERO — functional contact hero.
+         Eyebrow + short headline + short lede + inline meta strip
+         (phone / email / reply / where). No marginalia rail.
          ============================================ -->
     <section class="hero ct-hero" aria-labelledby="hero-title">
       <div class="container">
-        <p class="hero-eyebrow hero-eyebrow-top">Contact · I read every enquiry myself</p>
-        <h1 class="hero-title ct-hero-title" id="hero-title">Tell me what <em>you need.</em></h1>
-        <p class="hero-lede ct-hero-lede">One paragraph on the machines, the team and where you're at. I reply inside a working day, usually same day. Form below.</p>
+        <p class="hero-eyebrow hero-eyebrow-top">Contact. I read every enquiry myself.</p>
+        <h1 class="hero-title ct-hero-title" id="hero-title">Tell me what you need.</h1>
+        <p class="hero-lede ct-hero-lede">Describe the machines, the team, what you want them able to do. One paragraph is plenty. I aim to come back inside a working day.</p>
       </div>
       <div class="container ct-hero-meta-wrap">
-        <dl class="ct-hero-meta" aria-label="Contact meta">
+        <dl class="ct-hero-meta" aria-label="Contact at a glance">
           <div><dt>Phone</dt><dd><a href="tel:+447834858407">07834 858 407</a></dd></div>
           <div><dt>Email</dt><dd><a href="mailto:david@cnctrainingcentre.com">david@cnctrainingcentre.com</a></dd></div>
-          <div><dt>Reply</dt><dd>Inside a working day</dd></div>
-          <div><dt>Where</dt><dd>Barwell, Leicestershire · UK-wide onsite</dd></div>
+          <div><dt>Reply</dt><dd>Inside a working day, usually same day</dd></div>
+          <div><dt>Where</dt><dd>Barwell, Leicestershire. UK-wide for onsite.</dd></div>
         </dl>
       </div>
     </section>
 
 
     <!-- ============================================
-         § 02 — THE FORM
-         The centrepiece. Form left, "What happens / What I won't do"
-         supporting column right at desktop. Uses canonical .form-stack
-         pattern from components.css verbatim.
+         FORM SECTION
+         The centrepiece. Form left, "The honest version" +
+         "Take the friction out" supporting column right at desktop.
+         Uses canonical .form-stack pattern from components.css.
+         Service "What do you need?" dropdown is pre-fillable from
+         the referring page (developer wires Fluent Forms).
          ============================================ -->
     <section class="s s-paper-tint ct-form-section" aria-labelledby="form-title">
-      <span class="ghost-num" aria-hidden="true">02</span>
       <div class="container">
 
         <div class="ct-form-grid">
 
-          <form class="form-stack ct-form" action="#" method="post" novalidate aria-labelledby="form-title">
+          <form class="form-stack ct-form" action="#" method="post" novalidate aria-labelledby="form-title" data-form="enquiry">
             <header class="form-head">
-              <span class="num">§ 02 — Enquire</span>
+              <span class="eyebrow">Enquire</span>
               <h2 class="title" id="form-title">One form. The thing you need at the top.</h2>
-              <p class="sub">Required fields are marked. Everything else is optional — fill in what's useful.</p>
+              <p class="sub">Required fields are marked. Everything else is optional. Fill in what's useful.</p>
             </header>
 
             <div class="ct-form-row ct-form-row-2">
               <div class="form-field">
                 <label class="form-label" for="ct-name">Your name <span class="ct-req" aria-hidden="true">*</span></label>
-                <input class="form-input" id="ct-name" name="name" type="text" required placeholder="David Garner" autocomplete="name" />
+                <input class="form-input" id="ct-name" name="name" type="text" required placeholder="Jane Doe" autocomplete="name" />
               </div>
               <div class="form-field">
                 <label class="form-label" for="ct-company">Company <span class="ct-opt">optional</span></label>
                 <input class="form-input" id="ct-company" name="company" type="text" placeholder="Acme Engineering Ltd" autocomplete="organization" />
-                <span class="form-hint">Worth filling in if you're an engineering company; skip it if you're enquiring as an individual about a course.</span>
+                <span class="form-hint">Worth filling in if you're an engineering company. Skip it if you're enquiring as an individual about a course.</span>
               </div>
             </div>
 
             <div class="ct-form-row ct-form-row-2">
               <div class="form-field">
                 <label class="form-label" for="ct-email">Email <span class="ct-req" aria-hidden="true">*</span></label>
-                <input class="form-input" id="ct-email" name="email" type="email" required placeholder="david@cnctrainingcentre.com" autocomplete="email" />
+                <input class="form-input" id="ct-email" name="email" type="email" required placeholder="you@yourcompany.co.uk" autocomplete="email" />
               </div>
               <div class="form-field">
                 <label class="form-label" for="ct-phone">Phone <span class="ct-opt">optional</span></label>
-                <input class="form-input" id="ct-phone" name="phone" type="tel" placeholder="07834 858 407" autocomplete="tel" />
-                <span class="form-hint">Useful if you'd rather have the conversation by phone — leave it blank if you'd rather not.</span>
+                <input class="form-input" id="ct-phone" name="phone" type="tel" placeholder="07000 000 000" autocomplete="tel" />
+                <span class="form-hint">Useful if you'd rather have the conversation by phone. Leave it blank if you'd rather not.</span>
               </div>
             </div>
 
             <div class="form-field">
               <label class="form-label" for="ct-need">What do you need? <span class="ct-req" aria-hidden="true">*</span></label>
-              <select class="form-select" id="ct-need" name="need" required>
+              <select class="form-select" id="ct-need" name="need" required data-prefill="need">
                 <option value="" disabled selected>Pick one</option>
                 <option value="onsite">Onsite training</option>
                 <option value="classroom">Classroom training</option>
                 <option value="programming">Programming services</option>
                 <option value="courses">Courses (notify me when they open)</option>
-                <option value="unsure">I'm not sure yet — I just want a chat</option>
+                <option value="unsure">I'm not sure yet. I just want a chat.</option>
               </select>
+              <span class="form-hint">Pre-selected if you arrived from a service page.</span>
             </div>
 
             <div class="form-field">
@@ -155,32 +157,32 @@
             </div>
 
             <div class="form-actions">
-              <button class="form-submit" type="submit">Submit enquiry →</button>
+              <button class="form-submit btn btn-primary btn-lg" type="submit">Submit enquiry <span aria-hidden="true">→</span></button>
               <p class="form-hint ct-form-promise">I read every enquiry myself. No marketing list, no automated follow-up, no sales pipeline.</p>
             </div>
           </form>
 
-          <aside class="ct-form-aside" aria-label="What happens, what I won't do">
+          <aside class="ct-form-aside" aria-label="What happens when you submit, and what I won't do">
 
             <article class="ct-aside-block">
-              <p class="ct-aside-eyebrow">§ 02.01 — What happens when you submit</p>
+              <p class="ct-aside-eyebrow">What happens when you submit</p>
               <h3 class="ct-aside-title">The honest version.</h3>
               <p class="ct-aside-body">You'll get an email back from me, usually the same day, never longer than a working day. Inside that reply: a straight read on whether onsite, classroom, or programming services is the right call for your situation, a rough scope, and a price. Not a brochure, not a "let's hop on a discovery call." A proper answer.</p>
-              <p class="ct-aside-body">If we're a fit, I'll propose dates. If we're not, I'll tell you why and point you somewhere that is — including a competitor if that's the honest answer.</p>
+              <p class="ct-aside-body">If we're a fit, I'll propose dates. If we're not, I'll tell you why and point you somewhere that is, including a competitor if that's the honest answer.</p>
               <p class="ct-aside-body">If you'd rather have the conversation by phone first, the number's at the bottom. Call me direct. There's no gatekeeper.</p>
             </article>
 
             <article class="ct-aside-block">
-              <p class="ct-aside-eyebrow">§ 02.02 — What I won't do</p>
-              <h3 class="ct-aside-title">No sales theatre.</h3>
+              <p class="ct-aside-eyebrow">Take the friction out</p>
+              <h3 class="ct-aside-title">Honest about what doesn't happen.</h3>
               <p class="ct-aside-body">You're filling in a form on a website. It's a fair question what gets done with it. Here's the short list:</p>
               <ul class="ct-list-plus">
                 <li><strong>I won't put you on a marketing list.</strong> Your email goes into my inbox and that's it. No newsletter, no automated drip, no "we noticed you didn't reply" follow-up sequence.</li>
                 <li><strong>I won't chase you if you go quiet.</strong> If you fill the form, then decide we're not a fit, just don't reply. I'm not going to hassle you. If the timing changes in six months, come back when it does.</li>
                 <li><strong>I won't push a service that isn't right for you.</strong> If you're enquiring about onsite and the honest answer is classroom, I'll say so. If your situation is outside what I do well, I'll say so.</li>
-                <li><strong>I won't pretend to a price I don't know.</strong> Onsite is £700 a day for the whole team. Classroom is £300 per student per day. Programming is £60–£100 an hour depending on the work. If your situation is more complicated than that, I'll scope it honestly on the call.</li>
+                <li><strong>I won't pretend to a price I don't know.</strong> Onsite is £700 a day for the whole team. Classroom is £300 per student per day. Programming is £60 to £100 an hour depending on the work. If your situation is more complicated than that, I'll scope it honestly on the call.</li>
               </ul>
-              <p class="ct-aside-body ct-aside-coda">That's the whole pitch.</p>
+              <p class="ct-aside-body ct-aside-coda">That's the whole pitch. No sales theatre.</p>
             </article>
 
           </aside>
@@ -191,42 +193,37 @@
 
 
     <!-- ============================================
-         § 03 — OTHER WAYS TO GET IN TOUCH
-         Three-column band: phone, email, location/Hub fallback.
-         Same visual weight across the three.
+         OTHER WAYS TO GET IN TOUCH
+         Three-column band: phone, email, read-first.
+         Same visual weight across the three. Location line below.
          ============================================ -->
     <section class="s s-paper ct-other" aria-labelledby="other-title">
-      <span class="ghost-num" aria-hidden="true">03</span>
       <div class="container">
         <header class="sec-head">
-          <span class="sec-pretitle">§ 03 — Other ways to get in touch</span>
           <h2 class="ct-other-title" id="other-title">Some buyers want a call. Some want to lurk and read first.</h2>
         </header>
 
         <ol class="ct-other-grid">
           <li class="ct-other-cell">
-            <span class="ct-other-num" aria-hidden="true">03.01</span>
             <h3 class="ct-other-cell-title">Phone</h3>
             <p class="ct-other-cell-figure"><a href="tel:+447834858407">07834 858 407</a></p>
-            <p class="ct-other-cell-body">Direct number. There's no receptionist. If I'm in a classroom or on a shop floor, leave a voicemail and I'll come back the same day.</p>
+            <p class="ct-other-cell-body">Direct number. No receptionist. If I'm in a classroom or on a shop floor, leave a voicemail and I'll come back the same day.</p>
           </li>
           <li class="ct-other-cell">
-            <span class="ct-other-num" aria-hidden="true">03.02</span>
             <h3 class="ct-other-cell-title">Email</h3>
             <p class="ct-other-cell-figure"><a href="mailto:david@cnctrainingcentre.com">david@cnctrainingcentre.com</a></p>
             <p class="ct-other-cell-body">If a paragraph in your own email beats a form, go that route. Same response time.</p>
           </li>
           <li class="ct-other-cell">
-            <span class="ct-other-num" aria-hidden="true">03.03</span>
             <h3 class="ct-other-cell-title">Or read first, enquire later</h3>
             <p class="ct-other-cell-figure ct-other-cell-figure-plain">300+ articles &amp; videos</p>
-            <p class="ct-other-cell-body">If you're not ready to make contact, the Learning Hub has 300+ articles and videos covering every major machine and control. Most of the people who eventually book have read three or four of them on the way in.</p>
-            <a class="link-arrow ct-other-cell-link" href="learning-hub.html">Browse the Hub</a>
+            <p class="ct-other-cell-body">If you're not ready to make contact, the Learning Hub covers every major machine and control. Most of the people who eventually book have read three or four on the way in.</p>
+            <a class="link-arrow ct-other-cell-link" href="learning-hub.html">Browse the Hub <span aria-hidden="true">→</span></a>
           </li>
         </ol>
 
         <p class="ct-other-location">
-          <span class="ct-other-location-lbl">Location ·</span>
+          <span class="ct-other-location-lbl">Location</span>
           Barwell, Leicestershire. The classroom's in Barwell, just outside Hinckley. If you want to come and see it before you commit, ask. The kettle's on.
         </p>
       </div>
@@ -234,53 +231,13 @@
 
 
     <!-- ============================================
-         § 04 — FIND (location map)
-         Shared .find block, lifted from classroom-training
-         into page-home.css. Same surface, same iframe,
-         same caption pattern — block reuse.
-         ============================================ -->
-    <section class="find" aria-labelledby="find-title">
-      <div class="container">
-        <span class="sec-pretitle">§ 04 — Where to find me</span>
-        <div class="find-grid">
-          <div class="find-lh">
-            <h2 class="find-title" id="find-title">Barwell, Leicestershire.</h2>
-            <p class="find-body">The classroom's just outside Hinckley — ten minutes from the M69, half an hour from Birmingham, an hour up from Northampton. For onsite I travel UK-wide. If you'd like to come and see the classroom before you commit, ask — the kettle's on.</p>
-            <dl class="find-address">
-              <dt>Address</dt>
-              <dd>Barwell, Leicestershire <span class="ct-opt" style="text-transform:none;letter-spacing:0;">[GAP — exact street + postcode]</span></dd>
-              <dt>Parking</dt>
-              <dd>On-site parking for students. <span class="ct-opt" style="text-transform:none;letter-spacing:0;">[GAP — parking detail]</span></dd>
-            </dl>
-          </div>
-
-          <figure class="find-map">
-            <iframe
-              src="https://www.openstreetmap.org/export/embed.html?bbox=-1.36%2C52.56%2C-1.30%2C52.60&layer=mapnik&marker=52.5839%2C-1.3322"
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              title="Map — Barwell, Leicestershire"
-            ></iframe>
-            <figcaption class="find-map-caption">
-              <span>Barwell, Leicestershire <span class="ct-opt" style="text-transform:none;letter-spacing:0;">[GAP — exact workshop coordinates]</span></span>
-              <a class="link-arrow" href="https://www.google.com/maps/search/?api=1&query=Barwell%2C+Leicestershire" target="_blank" rel="noopener">Get directions</a>
-            </figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- ============================================
-         § 05 — TRUST STRIP
-         Home page authority table stripped to four rows.
-         Same .spec-block treatment, fewer rows.
+         TRUST STRIP
+         Four-row authority figures from copy.md stats table.
+         Reuses .spec-block from page-home.css.
          ============================================ -->
     <section class="s s-paper-tint ct-trust" aria-labelledby="trust-title">
-      <span class="ghost-num" aria-hidden="true">05</span>
       <div class="container">
         <header class="sec-head">
-          <span class="sec-pretitle">§ 05 — Proof</span>
           <h2 class="ct-trust-title" id="trust-title">Thirty years of doing this. Worth two lines before you hit send.</h2>
         </header>
 
@@ -295,7 +252,7 @@
           </div>
           <div class="spec" role="listitem">
             <span class="spec-figure">332</span>
-            <p class="spec-label">YouTube videos, 8,930 subscribers.</p>
+            <p class="spec-label">YouTube videos. 8,930 subscribers.</p>
           </div>
           <div class="spec" role="listitem">
             <span class="spec-figure">27k</span>
@@ -319,7 +276,7 @@
           <p class="footer-tag">Independent CNC training since 1996. On your machines, or in your hands.</p>
           <ul class="footer-social" aria-label="Follow">
             <li>
-              <a href="#" data-social="linkedin" rel="noopener" aria-label="David Garner on LinkedIn">
+              <a href="#" data-social="linkedin" rel="noopener" aria-label="David on LinkedIn">
                 <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
                   <path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3v9zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/>
                 </svg>
@@ -375,10 +332,8 @@
       var drawerClose = document.getElementById('drawerClose');
       var year = document.getElementById('footYear');
 
-      // Set footer year
       if (year) { year.textContent = new Date().getFullYear(); }
 
-      // Nav scroll state
       function onScroll() {
         var y = window.scrollY || window.pageYOffset;
         if (nav) {
@@ -389,7 +344,6 @@
       window.addEventListener('scroll', onScroll, { passive: true });
       onScroll();
 
-      // Drawer
       function openDrawer() {
         if (!drawer) return;
         drawer.classList.add('is-open');

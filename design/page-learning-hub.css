@@ -411,14 +411,14 @@
   border-radius: var(--ns-radius-tight);
   text-decoration: none;
   color: var(--ns-color-ink);
-  transition:
-    border-color var(--ns-dur-fast) var(--ns-ease-out),
-    transform var(--ns-dur-base) var(--ns-ease-out);
+  transition: border-color var(--ns-dur-fast) var(--ns-ease-out);
 }
 
+/* Hover: hairline border-colour shift + title underline reveal only.
+ * No translateY lift, no arrow translateX nudge — both banned per
+ * learnings.md 2026-05-17 (paper/draftsman/engineering restraint). */
 .lh-card:hover {
   border-color: var(--ns-color-ink);
-  transform: translateY(-2px);
 }
 
 .lh-card:hover .lh-card-title {
@@ -426,8 +426,6 @@
   text-decoration-color: var(--ns-color-ink);
   text-underline-offset: 0.18em;
 }
-
-.lh-card:hover .lh-card-arrow { transform: translateX(4px); }
 
 .lh-card-top {
   display: flex;
@@ -473,7 +471,6 @@
   margin-left: auto;
   font-size: var(--ns-text-medium);
   color: var(--ns-color-ink);
-  transition: transform var(--ns-dur-base) var(--ns-ease-out);
 }
 
 

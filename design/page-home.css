@@ -2009,92 +2009,9 @@ body.drawer-open { overflow: hidden; }
  * stacked. Same right-column dl meta as the old contact.
  * ============================================ */
 
-.decisiveness {
-  padding-block: clamp(3rem, 5vw, 4.5rem);
-}
-
-/* Horizontal contact strip below the 2-col grid. Phone / Email / Where
- * across one row with hairline rules between. Anchors the section close. */
-.decisiveness-strip {
-  margin: clamp(2.5rem, 4vw, 3.5rem) 0 0;
-  padding-top: var(--ns-space-lg);
-  border-top: 1px solid color-mix(in oklab, var(--ns-color-ink-inverse) 28%, transparent);
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--ns-space-md);
-}
-
-@media (min-width: 768px) {
-  .decisiveness-strip {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    column-gap: 0;
-  }
-  .decisiveness-strip > div {
-    padding: 0 clamp(1rem, 2vw, 2rem);
-    border-left: 1px solid color-mix(in oklab, var(--ns-color-ink-inverse) 20%, transparent);
-  }
-  .decisiveness-strip > div:first-child {
-    padding-left: 0;
-    border-left: 0;
-  }
-}
-
-.decisiveness-strip dt {
-  font-family: var(--ns-font-body);
-  font-size: var(--ns-text-tiny);
-  font-weight: var(--ns-weight-medium);
-  letter-spacing: var(--ns-track-extrawide);
-  text-transform: uppercase;
-  color: color-mix(in oklab, var(--ns-color-ink-inverse) 60%, transparent);
-  margin-bottom: var(--ns-space-2xs);
-}
-
-.decisiveness-strip dd {
-  margin: 0;
-  font-family: var(--ns-font-body);
-  font-size: var(--ns-text-regular);
-  color: var(--ns-color-ink-inverse);
-}
-
-.decisiveness-strip dd a {
-  color: var(--ns-color-ink-inverse);
-  text-decoration: underline;
-  text-decoration-color: color-mix(in oklab, var(--ns-color-ink-inverse) 35%, transparent);
-}
-.decisiveness-strip dd a:hover { text-decoration-color: var(--ns-color-ink-inverse); }
-
-.decisiveness-lh {
-  display: flex;
-  flex-direction: column;
-  gap: var(--ns-space-md);
-  margin-top: var(--ns-space-md);
-}
-
-.decisiveness-title {
-  font-size: clamp(2rem, 1.3rem + 2.6vw, 3.75rem);
-  line-height: 0.98;
-  letter-spacing: -0.02em;
-  margin: 0 0 var(--ns-space-sm);
-  max-width: 20ch;
-}
-
-.decisiveness-stakes,
-.decisiveness-offer {
-  font-family: var(--ns-font-body);
-  font-size: var(--ns-text-medium);
-  line-height: var(--ns-leading-base);
-  color: color-mix(in oklab, var(--ns-color-ink-inverse) 85%, transparent);
-  margin: 0;
-  max-width: 56ch;
-}
-
-.decisiveness-offer {
-  color: var(--ns-color-ink-inverse);
-}
-
-.decisiveness .contact-actions {
-  margin-top: var(--ns-space-md);
-}
+/* .decisiveness is a hook on the close-band section. Layout inherits .contact +
+ * .contact-grid + .contact-meta from the canonical contact pattern (matches
+ * about.html § 09). No bespoke layout styles. */
 
 .contact-title {
   font-family: var(--ns-font-display);

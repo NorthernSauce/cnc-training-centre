@@ -5,42 +5,12 @@
 
 
 /* ============================================
- * HERO — § 01
- * Type-led: hero-title + lede LH, marginalia spec panel RH.
- * Reuses .hero / .hero-* patterns from page-home.css.
+ * HERO
+ * Inherits .hero / .hero-* patterns from page-home.css.
+ * Marginalia rail removed per cross-page constraint (2026-05-18).
  * ============================================ */
 
 .prog-hero .hero-title { max-width: 22ch; }
-
-.prog-hero-marg {
-  position: relative;
-  background: var(--ns-color-paper-tint);
-}
-
-.prog-hero-marg .marginalia-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: var(--ns-space-md);
-}
-
-.prog-hero-marg-num {
-  font-family: var(--ns-font-body);
-  font-size: var(--ns-text-tiny);
-  font-weight: var(--ns-weight-medium);
-  letter-spacing: var(--ns-track-extrawide);
-  text-transform: uppercase;
-  color: var(--ns-color-ink-muted);
-}
-
-.prog-hero-marg dd strong {
-  font-family: var(--ns-font-display);
-  font-size: 1.25em;
-  font-weight: var(--ns-weight-regular);
-  color: var(--ns-color-ink);
-  letter-spacing: -0.01em;
-  font-feature-settings: "tnum" 1;
-}
 
 
 /* ============================================
@@ -468,3 +438,243 @@
   z-index: 1;
 }
 
+
+
+/* ============================================
+ * § BUNDLE — Six things in the hourly rate
+ * Two-column list grid. Em-dash list aesthetic without identical 3-card cliche.
+ * ============================================ */
+
+.prog-bundle-head { margin-bottom: clamp(2rem, 4vw, 3rem); }
+
+.prog-bundle-title {
+  font-family: var(--ns-font-display);
+  font-size: clamp(2rem, 1.3rem + 2.6vw, 3.75rem);
+  line-height: 1;
+  letter-spacing: -0.015em;
+  color: var(--ns-color-ink);
+  margin: 0;
+  max-width: 22ch;
+}
+.prog-bundle-title em { font-style: normal; color: var(--ns-color-primary); }
+
+.prog-bundle-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  border-top: 2px solid var(--ns-color-ink);
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 700px) {
+  .prog-bundle-list {
+    grid-template-columns: 1fr 1fr;
+    column-gap: clamp(2rem, 5vw, 4rem);
+  }
+}
+
+.prog-bundle-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ns-space-2xs);
+  padding: var(--ns-space-xl) 0;
+  border-bottom: 1px solid var(--ns-color-rule);
+  position: relative;
+}
+
+/* Vertical hairline between two columns on tablet+ */
+@media (min-width: 700px) {
+  .prog-bundle-item:nth-child(odd) {
+    padding-right: clamp(1rem, 2.5vw, 2rem);
+  }
+  .prog-bundle-item:nth-child(even) {
+    padding-left: clamp(1rem, 2.5vw, 2rem);
+    border-left: 1px solid var(--ns-color-rule);
+  }
+}
+
+.prog-bundle-item::before {
+  content: "+";
+  position: absolute;
+  top: var(--ns-space-xl);
+  left: 0;
+  font-family: var(--ns-font-display);
+  font-size: 1.25em;
+  color: var(--ns-color-primary);
+  line-height: 1;
+}
+@media (min-width: 700px) {
+  .prog-bundle-item:nth-child(even)::before { left: clamp(1rem, 2.5vw, 2rem); }
+}
+
+.prog-bundle-item .prog-bundle-name,
+.prog-bundle-item .prog-bundle-body {
+  padding-left: 1.5rem;
+}
+
+.prog-bundle-name {
+  font-family: var(--ns-font-display);
+  font-size: clamp(1.125rem, 1rem + 0.6vw, 1.5rem);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin: 0;
+  color: var(--ns-color-ink);
+}
+
+.prog-bundle-body {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-regular);
+  line-height: var(--ns-leading-base);
+  color: var(--ns-color-ink-soft);
+  margin: 0;
+  max-width: 48ch;
+}
+
+.prog-bundle-foot {
+  margin: clamp(2rem, 4vw, 3rem) 0 0;
+  padding-top: var(--ns-space-lg);
+  border-top: 1px solid var(--ns-color-rule);
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-small);
+  line-height: var(--ns-leading-base);
+  color: var(--ns-color-ink-muted);
+  max-width: 72ch;
+  position: relative;
+  z-index: 1;
+}
+
+
+/* ============================================
+ * § USE CASES — Three worked examples
+ * Asymmetric numbered list. Distinct rhythm from plan-grid.
+ * ============================================ */
+
+.prog-cases-title {
+  font-family: var(--ns-font-display);
+  font-size: clamp(2.25rem, 1.3rem + 3.2vw, 4rem);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  color: var(--ns-color-ink);
+  margin: 0 0 clamp(2rem, 4vw, 3rem);
+  max-width: 22ch;
+}
+.prog-cases-title em { font-style: normal; color: var(--ns-color-primary); }
+
+.prog-cases-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0;
+  position: relative;
+  z-index: 1;
+  border-top: 2px solid var(--ns-color-ink);
+}
+
+.prog-cases-item {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: var(--ns-space-md) var(--ns-space-lg);
+  padding: var(--ns-space-xl) 0;
+  border-bottom: 1px solid var(--ns-color-rule);
+  align-items: start;
+}
+
+@media (min-width: 900px) {
+  .prog-cases-item {
+    grid-template-columns: 6rem minmax(0, 1fr);
+    gap: var(--ns-space-2xl);
+    padding: var(--ns-space-2xl) 0;
+  }
+}
+
+.prog-cases-num {
+  font-family: var(--ns-font-display);
+  font-size: clamp(2.5rem, 1.8rem + 3vw, 4rem);
+  line-height: 0.85;
+  letter-spacing: -0.025em;
+  color: var(--ns-color-ink);
+  font-feature-settings: "tnum" 1;
+}
+
+.prog-cases-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ns-space-sm);
+}
+
+.prog-cases-name {
+  font-family: var(--ns-font-display);
+  font-size: clamp(1.5rem, 1.1rem + 2vw, 2.25rem);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  margin: 0;
+  color: var(--ns-color-ink);
+}
+
+.prog-cases-meta {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  font-weight: var(--ns-weight-medium);
+  letter-spacing: var(--ns-track-wide);
+  text-transform: uppercase;
+  color: var(--ns-color-ink-muted);
+  margin: 0;
+}
+
+.prog-cases-text {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-medium);
+  line-height: var(--ns-leading-base);
+  color: var(--ns-color-ink-soft);
+  margin: 0;
+  max-width: 62ch;
+}
+
+
+/* ============================================
+ * § GOAL — What the week looks like
+ * Editorial single-column band. Restraint.
+ * ============================================ */
+
+.prog-goal-title {
+  font-family: var(--ns-font-display);
+  font-size: clamp(2.25rem, 1.3rem + 3.5vw, 4.5rem);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  color: var(--ns-color-ink);
+  margin: var(--ns-space-md) 0 clamp(2rem, 4vw, 3rem);
+  max-width: 22ch;
+}
+.prog-goal-title em { font-style: normal; color: var(--ns-color-primary); }
+
+.prog-goal-body {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ns-space-lg);
+  position: relative;
+  z-index: 1;
+  max-width: 68ch;
+}
+
+.prog-goal-body p {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-medium);
+  line-height: var(--ns-leading-relaxed);
+  color: var(--ns-color-ink-soft);
+  margin: 0;
+}
+
+.prog-goal-body p:first-child::first-letter {
+  font-family: var(--ns-font-display);
+  font-size: 4em;
+  line-height: 0.82;
+  float: left;
+  margin: 0.08em 0.18em 0 0;
+  color: var(--ns-color-ink);
+  letter-spacing: -0.02em;
+}

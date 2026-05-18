@@ -31,12 +31,6 @@
   overflow: hidden;
 }
 
-.ar-masthead .hero-ghost {
-  /* re-use position from page-home.css .hero-ghost */
-  top: clamp(5rem, 8vw, 8rem);
-  right: clamp(-2rem, -1vw, 0rem);
-}
-
 .ar-masthead .container { position: relative; z-index: 1; }
 
 /* Breadcrumb */

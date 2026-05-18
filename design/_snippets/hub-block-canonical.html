@@ -1,0 +1,134 @@
+<!-- ============================================
+     CANONICAL LEARNING HUB PREVIEW BLOCK
+     Source of truth lifted verbatim from design/programming-services.html
+     (the original "§ 08 — RELATED FROM THE HUB" section, with the §-number
+     pretitle stripped per the cross-page constraint).
+
+     Usage rules:
+     - Every page that needs a "Related from the Hub" / "From the Hub" /
+       Hub-preview section uses THIS block. Markup + classes are byte-identical
+       across pages. Content swaps (title, lede, featured-card content) only.
+     - CSS already lives in design/page-home.css (.hub, .hub-head, .hub-title,
+       .hub-lede, .hub-stats, .hub-stat, .hub-filters, .hub-grid, .hub-featured,
+       .hub-featured-*, .hub-secondary, .hub-secondary-*, .hub-cta).
+       No CSS duplication required — every page-*.css already pulls page-home.css
+       implicitly via the shared design.css/flourishes.css chain, OR the host page
+       can @import / link page-home.css. If a page does NOT currently inherit
+       these rules, the page subagent must link to page-home.css alongside its
+       own page-*.css.
+     - The sec-pretitle / ghost-num has been REMOVED per the project-wide
+       "no section numbers" constraint. Heading carries the section identity.
+     - [GAP — …] placeholders are real gaps to be resolved by Dave / client.
+       DO NOT INVENT content to fill them. Preserve verbatim.
+     - .hub-stats figures are real: 300+ articles, 332 videos, 8,930 subs,
+       writing since 2014. Confirmed in copy/learning-hub.md. Safe to ship.
+     - .hub-filters tags map to /learning-hub.html?control=<slug>. Order is
+       canonical — do not re-sort.
+     - .hub-cta and the .hub-secondary footers all point to learning-hub.html
+       or article slugs that exist in copy/. Page subagents may swap the
+       featured-card href + tag + eyebrow to a context-relevant article once
+       Dave confirms which article each page should foreground.
+     - On pages where the visual context calls for a slightly different
+       framing (e.g. Home, where this block sits below a service-rows section
+       and above the final CTA, or Learning Hub index, where the block
+       behaves as the "intro-strip" rather than a "related" rail), the
+       sub-headline and lede swap — markup stays.
+
+     One-line per-page customisation surface:
+       - <h2 class="hub-title" id="hub-title">…</h2>   (rewrites per page)
+       - <p class="hub-lede">…</p>                     (rewrites per page)
+       - <a class="btn btn-primary hub-cta" …>…</a>    (label stays "Browse the Hub")
+       - Featured card: eyebrow, tag, title, dek, min-read           (per page)
+       - Secondary card slots × 2: tag, num, title, meta              (per page)
+
+     Everything else (.hub-stats, .hub-filters, structural classes) stays.
+     ============================================ -->
+<section class="s hub" aria-labelledby="hub-title">
+  <div class="container">
+    <header class="sec-head hub-head">
+      <div>
+        <h2 class="hub-title" id="hub-title">[PAGE-SPECIFIC HUB HEADLINE — see copy/{page}.md verbatim]</h2>
+        <p class="hub-lede">[PAGE-SPECIFIC HUB LEDE — see copy/{page}.md verbatim]</p>
+      </div>
+      <a class="btn btn-primary hub-cta" href="learning-hub.html">Browse the Hub</a>
+    </header>
+
+    <div class="hub-stats" role="list" aria-label="Hub at a glance">
+      <div class="hub-stat" role="listitem">
+        <span class="hub-stat-fig">300+</span>
+        <span class="hub-stat-lbl">articles</span>
+      </div>
+      <div class="hub-stat" role="listitem">
+        <span class="hub-stat-fig">332</span>
+        <span class="hub-stat-lbl">videos</span>
+      </div>
+      <div class="hub-stat" role="listitem">
+        <span class="hub-stat-fig">8,930</span>
+        <span class="hub-stat-lbl">YouTube subscribers</span>
+      </div>
+      <div class="hub-stat" role="listitem">
+        <span class="hub-stat-fig">2014</span>
+        <span class="hub-stat-lbl">writing since</span>
+      </div>
+    </div>
+
+    <div class="hub-filters" aria-label="Browse by control or machine">
+      <span class="hub-filters-tag">Filter by</span>
+      <ul>
+        <li><a class="tag" href="learning-hub.html?control=fanuc">Fanuc</a></li>
+        <li><a class="tag" href="learning-hub.html?control=heidenhain">Heidenhain</a></li>
+        <li><a class="tag" href="learning-hub.html?control=siemens">Siemens</a></li>
+        <li><a class="tag" href="learning-hub.html?control=mazak">Mazak</a></li>
+        <li><a class="tag" href="learning-hub.html?control=hurco">Hurco</a></li>
+        <li><a class="tag" href="learning-hub.html?control=brother">Brother</a></li>
+        <li><a class="tag" href="learning-hub.html?control=haas">Haas</a></li>
+        <li><a class="tag" href="learning-hub.html?control=sliding-head">Sliding head</a></li>
+        <li><a class="tag" href="learning-hub.html?control=edgecam">Edgecam</a></li>
+        <li><a class="tag" href="learning-hub.html?control=doosan">Doosan</a></li>
+        <li><a class="tag" href="learning-hub.html?control=xyz">XYZ</a></li>
+      </ul>
+    </div>
+
+    <div class="hub-grid">
+      <a class="hub-featured" href="#" aria-disabled="true">
+        <header class="hub-featured-top">
+          <span class="hub-featured-eyebrow">[GAP — featured eyebrow, e.g. "Recommended · Edgecam"]</span>
+          <span class="tag">[GAP — control/topic tag]</span>
+        </header>
+        <h3 class="hub-featured-title">[GAP — featured article title, page-relevant; Dave to choose from the 300+ archive]</h3>
+        <p class="hub-featured-dek">[GAP — short dek pulled from article intro, pending content import]</p>
+        <footer class="hub-featured-meta">
+          <span>Article</span>
+          <span aria-hidden="true">·</span>
+          <span>[GAP] min read</span>
+          <span class="hub-featured-arrow" aria-hidden="true">→</span>
+        </footer>
+      </a>
+
+      <div class="hub-secondaries">
+        <a class="hub-secondary" href="#" aria-disabled="true">
+          <header class="hub-secondary-top">
+            <span class="tag">[GAP — tag]</span>
+            <span class="hub-secondary-num">02</span>
+          </header>
+          <h3 class="hub-secondary-title">[GAP — secondary article 1, page-relevant]</h3>
+          <footer class="hub-secondary-meta">
+            <span>[GAP] min · [GAP — tag]</span>
+            <span class="hub-secondary-arrow" aria-hidden="true">→</span>
+          </footer>
+        </a>
+        <a class="hub-secondary" href="#" aria-disabled="true">
+          <header class="hub-secondary-top">
+            <span class="tag">[GAP — tag]</span>
+            <span class="hub-secondary-num">03</span>
+          </header>
+          <h3 class="hub-secondary-title">[GAP — secondary article 2, page-relevant]</h3>
+          <footer class="hub-secondary-meta">
+            <span>[GAP — tag]</span>
+            <span class="hub-secondary-arrow" aria-hidden="true">→</span>
+          </footer>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

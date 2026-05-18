@@ -2,19 +2,21 @@
  * page-about.css
  * Additive-only. Styles unique to the About page.
  * Inherits everything else from
- * tokens.css → components.css → page-home.css.
+ * tokens.css -> components.css -> page-home.css.
  * Shared section classes (.hero, .problem, .authority,
  * .plan, .faq, .contact, .spec-block, .pull-quote,
- * .marginalia, .faq-list, .faq-item) are NOT
- * re-declared — re-use only.
+ * .ns-table, .faq-list, .faq-item) are NOT
+ * re-declared. Re-use only.
  * ================================================= */
 
 
 /* -------------------------------------------------
- * § 01 — HERO TWEAKS
- * Inherits .hero / .hero-grid from page-home.css.
- * Swaps RH column from .hero-specs to .marginalia
- * (same move classroom + programming pages make).
+ * HERO TWEAKS.
+ * Inherits .hero / .hero-stack from page-home.css.
+ * Single-stack layout matching home (no marginalia
+ * rail per project-wide cross-page constraint). The
+ * "At a glance" facts are folded inline beneath the
+ * CTAs as a compact dl strip.
  * ------------------------------------------------- */
 
 .about-hero .hero-title {
@@ -22,44 +24,42 @@
   font-size: clamp(2.6rem, 1.8rem + 4.8vw, 6rem);
 }
 
-.about-hero-side {
-  position: relative;
-  align-self: start;
-  padding: var(--ns-space-lg);
+.about-glance {
+  margin-top: var(--ns-space-2xl);
+  padding-top: var(--ns-space-lg);
+  border-top: 1px solid var(--ns-color-rule);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ns-space-md);
+  max-width: 64rem;
 }
-.about-hero-side::before,
-.about-hero-side::after {
-  content: "";
-  position: absolute;
-  left: -6px;
-  width: 12px;
-  height: 1px;
-  background: var(--ns-color-ink);
+.about-glance-row {
+  display: grid;
+  grid-template-columns: minmax(10rem, 14rem) 1fr;
+  gap: var(--ns-space-lg);
+  padding-bottom: var(--ns-space-md);
+  border-bottom: 1px solid var(--ns-color-rule-faint);
 }
-.about-hero-side::before { top: -1px; }
-.about-hero-side::after  { bottom: -1px; }
-.about-hero-side .marginalia-head {
-  justify-content: space-between;
-}
-.about-hero-side-num {
+.about-glance-row:last-child { border-bottom: 0; padding-bottom: 0; }
+.about-glance dt {
   font-family: var(--ns-font-body);
   font-size: var(--ns-text-tiny);
-  font-weight: var(--ns-weight-medium);
+  font-weight: var(--ns-weight-semibold);
   letter-spacing: var(--ns-track-wide);
-  font-variant-numeric: tabular-nums;
+  text-transform: uppercase;
   color: var(--ns-color-ink-muted);
-  text-transform: none;
+  padding-top: 0.25rem;
 }
-.about-hero-side dl dt {
-  padding-top: 0.2rem;
-}
-.about-hero-side dl dd strong {
+.about-glance dd {
+  margin: 0;
+  font-size: var(--ns-text-medium);
+  line-height: var(--ns-leading-base);
   color: var(--ns-color-ink);
 }
 
 
 /* -------------------------------------------------
- * § 02 — ABOUT THE TRAINER coda + pull-quote spacing
+ * HOW I GOT HERE — coda + pull-quote spacing.
  * Inherits .problem / .problem-cols / .problem-pull
  * from page-home.css. Adds a third paragraph coda
  * beneath the two-col body and a foot line under
@@ -89,7 +89,7 @@
 
 
 /* -------------------------------------------------
- * § 04 — WHY INDEPENDENT coda + closing pull-quote
+ * WHY INDEPENDENT — coda + closing pull-quote.
  * ------------------------------------------------- */
 
 .indep-coda {
@@ -106,11 +106,7 @@
 
 
 /* -------------------------------------------------
- * § 05 — HOW I TEACH lede
- * Inherits .plan / .plan-grid / .plan-step from
- * page-home.css. Adds a long-form lede paragraph
- * above the three steps that the home version
- * doesn't carry.
+ * HOW I TEACH — lede above the plan steps.
  * ------------------------------------------------- */
 
 .how-lede {
@@ -124,11 +120,29 @@
 
 
 /* -------------------------------------------------
- * § 06 — AUTHORITY pull-quote + foot
- * Inherits .authority / .authority-grid / .spec-block
- * from page-home.css. Adds a centred review pull-quote
- * (with [GAP] marker) and a "read all reviews" link.
+ * AUTHORITY TABLE — stat table + review pull-quote.
+ * Uses canonical .ns-table from components.css.
  * ------------------------------------------------- */
+
+.about-auth-table {
+  margin-top: var(--ns-space-2xl);
+  width: 100%;
+}
+.about-auth-table th[scope="row"] {
+  width: 12rem;
+  font-family: var(--ns-font-display);
+  font-weight: 400;
+  font-size: var(--ns-heading-h4);
+  letter-spacing: var(--ns-track-tight);
+  color: var(--ns-color-ink);
+  text-align: left;
+  font-variant-numeric: tabular-nums;
+}
+.about-auth-table td {
+  font-size: var(--ns-text-medium);
+  line-height: var(--ns-leading-base);
+  color: var(--ns-color-ink-soft);
+}
 
 .about-auth-pull {
   margin-top: var(--ns-space-2xl);
@@ -141,7 +155,7 @@
 
 
 /* -------------------------------------------------
- * § 07 — WHERE I WORK FROM coda
+ * WHERE I WORK FROM — coda.
  * ------------------------------------------------- */
 
 .where-coda {
@@ -155,11 +169,10 @@
 
 
 /* -------------------------------------------------
- * [GAP] inline marker — used inside FAQ body where
- * a line of copy is awaiting Dave confirmation.
- * Matches the visual treatment of .course-flag on the
- * Classroom page, locally scoped to the About page so
- * we don't reach across page CSS boundaries.
+ * [GAP] inline marker used inside FAQ body where a
+ * line of copy is awaiting Dave confirmation.
+ * Matches .course-flag visual treatment, locally
+ * scoped to About so we don't reach across pages.
  * ------------------------------------------------- */
 
 .about-faq .course-flag {
@@ -178,23 +191,18 @@
 
 
 /* -------------------------------------------------
- * Mobile fine-tune — make sure the hero marginalia
- * stacks correctly under the lede stack at < 900px.
- * The .hero-grid in page-home.css already collapses
- * to single column at the responsive breakpoint;
- * this just trims the side panel padding so the
- * stacked panel doesn't waste vertical space on
- * small screens.
+ * Responsive fine-tune.
  * ------------------------------------------------- */
 
-@media (max-width: 900px) {
-  .about-hero-side {
-    padding: var(--ns-space-md);
+@media (max-width: 700px) {
+  .about-glance-row {
+    grid-template-columns: 1fr;
+    gap: var(--ns-space-2xs);
   }
-  .about-trainer-coda {
-    font-size: var(--ns-text-regular);
+  .about-auth-table th[scope="row"] {
+    width: auto;
+    font-size: var(--ns-heading-h5);
   }
-  .how-lede {
-    margin-bottom: var(--ns-space-xl);
-  }
+  .about-trainer-coda { font-size: var(--ns-text-regular); }
+  .how-lede { margin-bottom: var(--ns-space-xl); }
 }

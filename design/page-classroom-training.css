@@ -334,10 +334,69 @@
 /* =================================================
  * § FIND — LOCATION MAP BLOCK
  * Classroom-specific. Sits between FAQ and the
- * canonical .svc-cta enquiry block. Paper-tint surface
- * to alternate cleanly with the paper-deep enquiry
- * block that follows.
+ * canonical Hub block. .find styles live in page-home.css
+ * (shared with contact). Do not redeclare here.
  * ================================================= */
 
-/* .ct-find map block lifted to page-home.css as shared .find block.
- * Reused by classroom-training and contact. Do not redeclare here. */
+
+/* -------------------------------------------------
+ * § STACKED OFFER
+ * Single-column ns-list-plus list. Generous spacing
+ * per row, no card chrome. Inherits .ns-list rules from
+ * components.css.
+ * ------------------------------------------------- */
+
+.offer-title {
+  font-family: var(--ns-font-display);
+  font-size: var(--ns-heading-h2);
+  line-height: var(--ns-leading-tight);
+  letter-spacing: var(--ns-track-tight);
+  color: var(--ns-color-ink);
+  margin: 0;
+}
+.offer-list {
+  margin-top: var(--ns-space-2xl);
+  max-width: 72ch;
+  display: grid;
+  gap: var(--ns-space-md);
+}
+.offer-list li {
+  font-size: var(--ns-text-medium);
+  line-height: var(--ns-leading-base);
+  color: var(--ns-color-ink-soft);
+}
+
+
+/* -------------------------------------------------
+ * § OUTCOME — editorial two-paragraph band
+ * ------------------------------------------------- */
+
+.outcome-title {
+  font-family: var(--ns-font-display);
+  font-size: var(--ns-heading-h2);
+  line-height: var(--ns-leading-tight);
+  letter-spacing: var(--ns-track-tight);
+  color: var(--ns-color-ink);
+  margin: 0;
+}
+.outcome-body {
+  margin-top: var(--ns-space-xl);
+  max-width: 60ch;
+  display: grid;
+  gap: var(--ns-space-md);
+}
+.outcome-body p {
+  margin: 0;
+  font-size: var(--ns-text-medium);
+  line-height: var(--ns-leading-base);
+  color: var(--ns-color-ink-soft);
+}
+
+
+/* -------------------------------------------------
+ * § FAQ — ensure paper-tint surface variant
+ * sits cleanly when faq block is on tint (page rhythm
+ * alternates paper/tint and we put FAQ on tint here).
+ * Inherits .faq styles from page-home.css; nothing else
+ * to override.
+ * ------------------------------------------------- */

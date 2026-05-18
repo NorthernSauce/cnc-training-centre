@@ -310,51 +310,98 @@
 
     <!-- ============================================
          § LEARNING HUB — Beat 30
-         Cut hard. H2 + one-line lede + 3 article slots + CTA.
+         Canonical Hub-preview block (markup byte-matches
+         design/_snippets/hub-block-canonical.html — identical
+         to service pages). H2 carries section identity per the
+         project-wide no-section-numbers / no-sec-pretitle rule
+         for this block. Content per copy/home.md §Learning Hub.
          ============================================ -->
     <section class="s hub" aria-labelledby="hub-title">
       <div class="container">
-        <header class="hub-head">
-          <span class="sec-pretitle">Learning Hub</span>
-          <h2 class="hub-title" id="hub-title">If you've got a question, <em>I've probably written about it.</em></h2>
-          <p class="hub-lede">Filter by control, by machine, by job. Read what you need. No signup, no paywall.</p>
+        <header class="sec-head hub-head">
+          <div>
+            <h2 class="hub-title" id="hub-title">If you've got a question, <em>I've probably written about it.</em></h2>
+            <p class="hub-lede">Filter by control, by machine, by job. Read what you need. No signup, no paywall.</p>
+          </div>
+          <a class="btn btn-primary hub-cta" href="learning-hub.html">Browse the Hub</a>
         </header>
 
-        <ul class="hub-row" role="list">
-          <li>
-            <a class="hub-card hub-card-gap" href="#" aria-disabled="true">
-              <header class="hub-card-top">
-                <span class="tag">Article</span>
-                <span class="hub-card-meta">8 min · Fanuc</span>
-              </header>
-              <h3 class="hub-card-title">[GAP - featured article 1]</h3>
-              <span class="hub-card-arrow" aria-hidden="true">→</span>
-            </a>
-          </li>
-          <li>
-            <a class="hub-card hub-card-gap" href="#" aria-disabled="true">
-              <header class="hub-card-top">
-                <span class="tag tag-video">Video</span>
-                <span class="hub-card-meta">12 min · Heidenhain</span>
-              </header>
-              <h3 class="hub-card-title">[GAP - featured article 2]</h3>
-              <span class="hub-card-arrow" aria-hidden="true">→</span>
-            </a>
-          </li>
-          <li>
-            <a class="hub-card hub-card-gap" href="#" aria-disabled="true">
-              <header class="hub-card-top">
-                <span class="tag">Guide</span>
-                <span class="hub-card-meta">Sliding head</span>
-              </header>
-              <h3 class="hub-card-title">[GAP - featured article 3]</h3>
-              <span class="hub-card-arrow" aria-hidden="true">→</span>
-            </a>
-          </li>
-        </ul>
+        <div class="hub-stats" role="list" aria-label="Hub at a glance">
+          <div class="hub-stat" role="listitem">
+            <span class="hub-stat-fig">300+</span>
+            <span class="hub-stat-lbl">articles</span>
+          </div>
+          <div class="hub-stat" role="listitem">
+            <span class="hub-stat-fig">332</span>
+            <span class="hub-stat-lbl">videos</span>
+          </div>
+          <div class="hub-stat" role="listitem">
+            <span class="hub-stat-fig">8,930</span>
+            <span class="hub-stat-lbl">YouTube subscribers</span>
+          </div>
+          <div class="hub-stat" role="listitem">
+            <span class="hub-stat-fig">2014</span>
+            <span class="hub-stat-lbl">writing since</span>
+          </div>
+        </div>
 
-        <div class="hub-foot">
-          <a class="btn btn-primary" href="learning-hub.html">Browse the Hub</a>
+        <div class="hub-filters" aria-label="Browse by control or machine">
+          <span class="hub-filters-tag">Filter by</span>
+          <ul>
+            <li><a class="tag" href="learning-hub.html?control=fanuc">Fanuc</a></li>
+            <li><a class="tag" href="learning-hub.html?control=heidenhain">Heidenhain</a></li>
+            <li><a class="tag" href="learning-hub.html?control=siemens">Siemens</a></li>
+            <li><a class="tag" href="learning-hub.html?control=mazak">Mazak</a></li>
+            <li><a class="tag" href="learning-hub.html?control=hurco">Hurco</a></li>
+            <li><a class="tag" href="learning-hub.html?control=brother">Brother</a></li>
+            <li><a class="tag" href="learning-hub.html?control=haas">Haas</a></li>
+            <li><a class="tag" href="learning-hub.html?control=sliding-head">Sliding head</a></li>
+            <li><a class="tag" href="learning-hub.html?control=edgecam">Edgecam</a></li>
+            <li><a class="tag" href="learning-hub.html?control=doosan">Doosan</a></li>
+            <li><a class="tag" href="learning-hub.html?control=xyz">XYZ</a></li>
+          </ul>
+        </div>
+
+        <div class="hub-grid">
+          <a class="hub-featured" href="#" aria-disabled="true">
+            <header class="hub-featured-top">
+              <span class="hub-featured-eyebrow">[GAP — featured eyebrow, e.g. "Recommended · Fanuc"]</span>
+              <span class="tag">[GAP — control/topic tag]</span>
+            </header>
+            <h3 class="hub-featured-title">[GAP — featured article title, page-relevant; Dave to choose from the 300+ archive]</h3>
+            <p class="hub-featured-dek">[GAP — short dek pulled from article intro, pending content import]</p>
+            <footer class="hub-featured-meta">
+              <span>Article</span>
+              <span aria-hidden="true">·</span>
+              <span>[GAP] min read</span>
+              <span class="hub-featured-arrow" aria-hidden="true">→</span>
+            </footer>
+          </a>
+
+          <div class="hub-secondaries">
+            <a class="hub-secondary" href="#" aria-disabled="true">
+              <header class="hub-secondary-top">
+                <span class="tag">[GAP — tag]</span>
+                <span class="hub-secondary-num">02</span>
+              </header>
+              <h3 class="hub-secondary-title">[GAP — secondary article 1, page-relevant]</h3>
+              <footer class="hub-secondary-meta">
+                <span>[GAP] min · [GAP — tag]</span>
+                <span class="hub-secondary-arrow" aria-hidden="true">→</span>
+              </footer>
+            </a>
+            <a class="hub-secondary" href="#" aria-disabled="true">
+              <header class="hub-secondary-top">
+                <span class="tag">[GAP — tag]</span>
+                <span class="hub-secondary-num">03</span>
+              </header>
+              <h3 class="hub-secondary-title">[GAP — secondary article 2, page-relevant]</h3>
+              <footer class="hub-secondary-meta">
+                <span>[GAP — tag]</span>
+                <span class="hub-secondary-arrow" aria-hidden="true">→</span>
+              </footer>
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -362,33 +409,36 @@
     <!-- ============================================
          § DECISIVENESS BAND — Beats 33-36
          Kill-the-status-quo close. The page's biggest CTA.
+         Uses canonical .contact-grid + .contact-meta pattern
+         (matches about.html § 09 CONTACT BAND verbatim).
          ============================================ -->
     <section class="contact decisiveness" aria-labelledby="decisiveness-title">
       <div class="container">
         <span class="sec-pretitle sec-pretitle-light">The offer</span>
-        <div class="decisiveness-lh">
-          <h2 class="contact-title decisiveness-title" id="decisiveness-title">Tell me the machines. <em>I'll come back with a price.</em></h2>
-          <p class="decisiveness-offer">Ring me. Tell me what machines you've got, what level your team's at, what you need them able to do.</p>
-          <div class="contact-actions">
-            <a class="btn btn-primary btn-lg" href="contact.html">Send enquiry</a>
-            <a class="btn btn-outline btn-lg" href="tel:+447834858407">07834 858 407</a>
+        <div class="contact-grid">
+          <div>
+            <h2 class="contact-title" id="decisiveness-title">Tell me the machines. <em>I'll come back with a price.</em></h2>
+            <p class="contact-lede">Ring me. Tell me what machines you've got, what level your team's at, what you need them able to do.</p>
+            <div class="contact-actions">
+              <a class="btn btn-primary btn-lg" href="contact.html">Send enquiry</a>
+              <a class="btn btn-outline btn-lg" href="tel:+447834858407">07834 858 407</a>
+            </div>
           </div>
+          <dl class="contact-meta">
+            <div>
+              <dt>Phone</dt>
+              <dd><a href="tel:+447834858407">07834 858 407</a></dd>
+            </div>
+            <div>
+              <dt>Email</dt>
+              <dd><a href="mailto:david@cnctrainingcentre.com">david@cnctrainingcentre.com</a></dd>
+            </div>
+            <div>
+              <dt>Where</dt>
+              <dd>Barwell, Leicestershire (or I come to you).</dd>
+            </div>
+          </dl>
         </div>
-
-        <dl class="decisiveness-strip" aria-label="Contact details">
-          <div>
-            <dt>Phone</dt>
-            <dd><a href="tel:+447834858407">07834 858 407</a></dd>
-          </div>
-          <div>
-            <dt>Email</dt>
-            <dd><a href="mailto:david@cnctrainingcentre.com">david@cnctrainingcentre.com</a></dd>
-          </div>
-          <div>
-            <dt>Where</dt>
-            <dd>Barwell, Leicestershire (or I come to you).</dd>
-          </div>
-        </dl>
       </div>
     </section>
   </main>

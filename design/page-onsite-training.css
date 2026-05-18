@@ -677,3 +677,242 @@
   color: var(--ns-color-ink);
 }
 
+
+/* ============================================
+ * HOW I TRAIN — editorial three-para column.
+ * Restrained type-led layout. Heading LH, body RH on wide.
+ * ============================================ */
+
+.ot-how-train-title {
+  font-family: var(--ns-font-display);
+  font-size: clamp(2.25rem, 1.4rem + 3vw, 4.5rem);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  color: var(--ns-color-ink);
+  margin: 0;
+  max-width: 22ch;
+}
+
+.ot-how-train-title em {
+  font-style: normal;
+  color: var(--ns-color-primary);
+}
+
+.ot-how-train-body {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ns-space-md);
+  max-width: 70ch;
+  position: relative;
+  z-index: 1;
+}
+
+.ot-how-train-body p {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-medium);
+  line-height: var(--ns-leading-relaxed);
+  color: var(--ns-color-ink-soft);
+  margin: 0;
+}
+
+.ot-how-train-body p:first-child {
+  color: var(--ns-color-ink);
+  font-size: var(--ns-text-large);
+}
+
+
+/* ============================================
+ * WHAT'S INCLUDED — em-dash bullet list (v3 grammar)
+ * Replaces the v2 numbered spec-grid. Each item is heading + body.
+ * ============================================ */
+
+.ot-included-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  border-top: 2px solid var(--ns-color-ink);
+  border-bottom: 2px solid var(--ns-color-ink);
+  position: relative;
+  z-index: 1;
+}
+
+.ot-included-list > li {
+  display: grid;
+  grid-template-columns: 1.5rem 1fr;
+  gap: var(--ns-space-md) var(--ns-space-lg);
+  padding: var(--ns-space-lg) 0;
+  border-bottom: 1px solid var(--ns-color-rule);
+  align-items: baseline;
+}
+
+.ot-included-list > li:last-child { border-bottom: 0; }
+
+.ot-included-list > li::before {
+  content: "—";
+  font-family: var(--ns-font-display);
+  font-size: 1.4em;
+  line-height: 1;
+  color: var(--ns-color-primary);
+}
+
+@media (min-width: 700px) {
+  .ot-included-list > li {
+    grid-template-columns: 1.5rem minmax(0, 22ch) minmax(0, 1fr);
+    gap: var(--ns-space-md) var(--ns-space-2xl);
+    align-items: baseline;
+  }
+}
+
+.ot-included-name {
+  font-family: var(--ns-font-display);
+  font-size: clamp(1.125rem, 1rem + 0.6vw, 1.5rem);
+  line-height: 1.15;
+  letter-spacing: -0.005em;
+  color: var(--ns-color-ink);
+  margin: 0;
+  max-width: 24ch;
+}
+
+.ot-included-body {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-medium);
+  line-height: var(--ns-leading-base);
+  color: var(--ns-color-ink-soft);
+  margin: 0;
+  max-width: 56ch;
+  grid-column: 2 / -1;
+}
+
+@media (min-width: 700px) {
+  .ot-included-body {
+    grid-column: 3 / -1;
+  }
+}
+
+
+/* ============================================
+ * THREE SHOP FLOORS — worked examples (GAP placeholders)
+ * Three-up grid at desktop, stacked mobile. Light, restrained.
+ * ============================================ */
+
+.ot-cases-title {
+  font-family: var(--ns-font-display);
+  font-size: clamp(2rem, 1.3rem + 2.6vw, 3.75rem);
+  line-height: 1;
+  letter-spacing: -0.015em;
+  color: var(--ns-color-ink);
+  margin: 0;
+  max-width: 22ch;
+}
+
+.ot-cases-title em {
+  font-style: normal;
+  color: var(--ns-color-primary);
+}
+
+.ot-cases-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ns-space-lg);
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 900px) {
+  .ot-cases-list {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--ns-space-xl);
+  }
+}
+
+.ot-case {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ns-space-md);
+  padding: var(--ns-space-xl) var(--ns-space-lg);
+  border: 1px solid var(--ns-color-rule);
+  border-radius: var(--ns-radius-tight);
+  background: var(--ns-color-paper);
+}
+
+.ot-case-num {
+  font-family: var(--ns-font-display);
+  font-size: clamp(2rem, 1.6rem + 1vw, 2.5rem);
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  color: var(--ns-color-primary);
+  font-feature-settings: "tnum" 1;
+}
+
+.ot-case-body {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-small);
+  line-height: var(--ns-leading-base);
+  color: var(--ns-color-ink-soft);
+  margin: 0;
+  flex: 1;
+}
+
+.ot-case-foot {
+  padding-top: var(--ns-space-md);
+  border-top: 1px solid var(--ns-color-rule);
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  letter-spacing: var(--ns-track-wide);
+  text-transform: uppercase;
+  color: var(--ns-color-ink-muted);
+}
+
+
+/* ============================================
+ * SIX MONTHS AFTER — outcome paragraph
+ * Single display-scale paragraph. Holds confidence on the page.
+ * ============================================ */
+
+.ot-outcome-head { max-width: 60ch; }
+
+.ot-outcome-title {
+  font-family: var(--ns-font-display);
+  font-size: clamp(2.25rem, 1.4rem + 3vw, 4.5rem);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  color: var(--ns-color-ink);
+  margin: 0 0 var(--ns-space-xl);
+  max-width: 22ch;
+}
+
+.ot-outcome-title em {
+  font-style: normal;
+  color: var(--ns-color-primary);
+}
+
+.ot-outcome-body {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-large);
+  line-height: var(--ns-leading-relaxed);
+  color: var(--ns-color-ink);
+  margin: 0;
+  max-width: 62ch;
+  position: relative;
+  z-index: 1;
+}
+
+
+/* ============================================
+ * PRICING (v3) — narrative-only, no RH panel.
+ * ============================================ */
+
+.ot-pricing .ot-pricing-narrative { max-width: 70ch; }
+
+.ot-pricing-title strong {
+  font-family: var(--ns-font-display);
+  font-weight: var(--ns-weight-regular);
+  color: var(--ns-color-primary);
+  font-feature-settings: "tnum" 1;
+}
+
