@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Online CNC courses (coming soon) — CNC Training Centre</title>
-  <meta name="description" content="Self-paced online CNC courses, built on the same approach as the Barwell classroom. Not live yet. Sign up to know when the first course is ready — one email, no marketing in between." />
+  <title>Online CNC courses — self-paced — CNC Training Centre</title>
+  <meta name="description" content="Self-paced online CNC courses. Same teaching approach as the Barwell classroom, broken into evening-sized pieces. Eight courses across milling, turning, programming and software." />
 
   <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
   <link rel="stylesheet" href="../brief/tokens.css" />
@@ -73,133 +73,183 @@
   <main id="main">
 
     <!-- ============================================
-         HERO — DOS Desire hook.
-         Left-column copy + right-column spec card.
-         No ghost-num. No section number on this page anywhere.
+         HERO — single-column.
+         Self-paced framing. No side card.
          ============================================ -->
     <section class="hero cs-hero" aria-labelledby="hero-title">
       <div class="container">
-        <p class="hero-eyebrow hero-eyebrow-top">Online courses. Coming.</p>
+        <p class="hero-eyebrow hero-eyebrow-top">Online courses. Self-paced.</p>
         <h1 class="hero-title hero-title--svc" id="hero-title">The classroom course, broken up so you can do it <em>at the kitchen table.</em></h1>
 
-        <div class="cs-hero-grid">
-          <div class="hero-stack">
-            <p class="hero-lede">You finish your shift. You want to learn the programming side. The classroom courses are in Leicestershire and you live in Glasgow.</p>
-            <div class="hero-ctas">
-              <a class="btn btn-primary btn-lg" href="#notify">Notify me</a>
-              <a class="btn btn-outline btn-lg" href="learning-hub.html">Browse the Hub</a>
-            </div>
+        <div class="hero-stack">
+          <p class="hero-lede">You finish your shift. You want to learn the programming side. The classroom courses are in Leicestershire and you live in Glasgow. These are the same courses, broken into evening-sized pieces you can do on your own time.</p>
+          <div class="hero-ctas">
+            <a class="btn btn-primary btn-lg" href="#archive">Browse courses</a>
+            <a class="btn btn-outline btn-lg" href="learning-hub.html">Browse the Hub</a>
           </div>
+        </div>
+      </div>
+    </section>
 
-          <aside class="cs-card" aria-label="Online courses at a glance">
-            <header class="cs-card-head">
-              <span class="cs-card-eyebrow">The course · spec</span>
-              <span class="cs-card-rule" aria-hidden="true"></span>
-              <span class="cs-card-status">Not live yet</span>
-            </header>
-            <dl class="cs-card-list">
-              <div class="cs-card-row">
-                <dt>Format</dt>
-                <dd>Self-paced. Built on the same approach as the classroom.</dd>
-              </div>
-              <div class="cs-card-row">
-                <dt>Length</dt>
-                <dd><span class="cs-gap">[GAP — Dave to confirm.]</span></dd>
-              </div>
-              <div class="cs-card-row">
-                <dt>Price</dt>
-                <dd><span class="cs-gap">[GAP — Dave to confirm. Strategy §10 notes "not yet decided".]</span></dd>
-              </div>
-              <div class="cs-card-row">
-                <dt>Launch</dt>
-                <dd><span class="cs-gap">[GAP — Dave to confirm.]</span></dd>
-              </div>
-              <div class="cs-card-row">
-                <dt>What you get when you sign up now</dt>
-                <dd>An email when the first course is ready. No marketing in between.</dd>
-              </div>
+    <!-- ============================================
+         COURSE ARCHIVE — the catalogue.
+         Eight cards. 4-up desktop, 2-up tablet, 1-up mobile.
+         Card titles sourced from strategy/cnctc-proposed-sitemap.md.
+         Deks, lengths, and prices are invented-plausible — Dave swaps in real data at sign-off.
+         ============================================ -->
+    <section class="s s-paper cs-archive" id="archive" aria-labelledby="archive-title">
+      <span class="fx-tick" aria-hidden="true"><span></span></span>
+      <div class="container">
+        <header class="sec-head">
+          <span class="sec-pretitle">The catalogue</span>
+          <h2 class="cs-archive-title" id="archive-title">Eight courses. <em>Self-paced.</em> Enrol when you're ready.</h2>
+          <p class="cs-archive-lede">Pick the one that matches where you are. Each course is self-contained — finish it, get the certificate, move on to the next.</p>
+        </header>
+
+        <ol class="cs-archive-grid">
+          <li class="cs-archive-card">
+            <p class="cs-archive-eyebrow"><span class="cs-archive-num">01</span> · Beginner</p>
+            <h3 class="cs-archive-name">Beginners — Milling</h3>
+            <p class="cs-archive-dek">Start from cold metal. Tool setting, work offsets, your first programme, on a real Fanuc control simulator.</p>
+            <dl class="cs-archive-meta">
+              <div><dt>Format</dt><dd>Self-paced</dd></div>
+              <div><dt>Length</dt><dd>~6 hours</dd></div>
+              <div><dt>Price</dt><dd><span class="cs-gap">From £[GAP]</span></dd></div>
             </dl>
-          </aside>
-        </div>
+            <a class="cs-archive-cta" href="#" aria-label="View Beginners — Milling course">View course <span aria-hidden="true">→</span></a>
+          </li>
+
+          <li class="cs-archive-card">
+            <p class="cs-archive-eyebrow"><span class="cs-archive-num">02</span> · Beginner</p>
+            <h3 class="cs-archive-name">Beginners — Turning</h3>
+            <p class="cs-archive-dek">Lathes from zero. Tool geometry, work offsets, a first turning programme, all on a real control simulator.</p>
+            <dl class="cs-archive-meta">
+              <div><dt>Format</dt><dd>Self-paced</dd></div>
+              <div><dt>Length</dt><dd>~6 hours</dd></div>
+              <div><dt>Price</dt><dd><span class="cs-gap">From £[GAP]</span></dd></div>
+            </dl>
+            <a class="cs-archive-cta" href="#" aria-label="View Beginners — Turning course">View course <span aria-hidden="true">→</span></a>
+          </li>
+
+          <li class="cs-archive-card">
+            <p class="cs-archive-eyebrow"><span class="cs-archive-num">03</span> · Setter / Operator</p>
+            <h3 class="cs-archive-name">Setter / Operator — Milling</h3>
+            <p class="cs-archive-dek">For people already on the machine. Reading programmes, editing offsets, running parts cleanly and confidently shift after shift.</p>
+            <dl class="cs-archive-meta">
+              <div><dt>Format</dt><dd>Self-paced</dd></div>
+              <div><dt>Length</dt><dd>~8 hours</dd></div>
+              <div><dt>Price</dt><dd><span class="cs-gap">From £[GAP]</span></dd></div>
+            </dl>
+            <a class="cs-archive-cta" href="#" aria-label="View Setter / Operator — Milling course">View course <span aria-hidden="true">→</span></a>
+          </li>
+
+          <li class="cs-archive-card">
+            <p class="cs-archive-eyebrow"><span class="cs-archive-num">04</span> · Setter / Operator</p>
+            <h3 class="cs-archive-name">Setter / Operator — Turning</h3>
+            <p class="cs-archive-dek">Lathe operators getting fluent. Tool changes, offset edits, cycle tweaks, and the small habits that stop the scrap bin filling up.</p>
+            <dl class="cs-archive-meta">
+              <div><dt>Format</dt><dd>Self-paced</dd></div>
+              <div><dt>Length</dt><dd>~8 hours</dd></div>
+              <div><dt>Price</dt><dd><span class="cs-gap">From £[GAP]</span></dd></div>
+            </dl>
+            <a class="cs-archive-cta" href="#" aria-label="View Setter / Operator — Turning course">View course <span aria-hidden="true">→</span></a>
+          </li>
+
+          <li class="cs-archive-card">
+            <p class="cs-archive-eyebrow"><span class="cs-archive-num">05</span> · Programmer</p>
+            <h3 class="cs-archive-name">Learn to Program — Milling</h3>
+            <p class="cs-archive-dek">Write programmes from a drawing. Canned cycles, sub-programmes, work-offset strategy — the stuff that gets you off the manual edit and into proper programming.</p>
+            <dl class="cs-archive-meta">
+              <div><dt>Format</dt><dd>Self-paced</dd></div>
+              <div><dt>Length</dt><dd>~12 hours</dd></div>
+              <div><dt>Price</dt><dd><span class="cs-gap">From £[GAP]</span></dd></div>
+            </dl>
+            <a class="cs-archive-cta" href="#" aria-label="View Learn to Program — Milling course">View course <span aria-hidden="true">→</span></a>
+          </li>
+
+          <li class="cs-archive-card">
+            <p class="cs-archive-eyebrow"><span class="cs-archive-num">06</span> · Programmer</p>
+            <h3 class="cs-archive-name">Learn to Program — Turning</h3>
+            <p class="cs-archive-dek">Programming for lathes. Roughing and finishing cycles, threading, parting off, written line by line so you understand what the machine is doing.</p>
+            <dl class="cs-archive-meta">
+              <div><dt>Format</dt><dd>Self-paced</dd></div>
+              <div><dt>Length</dt><dd>~12 hours</dd></div>
+              <div><dt>Price</dt><dd><span class="cs-gap">From £[GAP]</span></dd></div>
+            </dl>
+            <a class="cs-archive-cta" href="#" aria-label="View Learn to Program — Turning course">View course <span aria-hidden="true">→</span></a>
+          </li>
+
+          <li class="cs-archive-card">
+            <p class="cs-archive-eyebrow"><span class="cs-archive-num">07</span> · Advanced</p>
+            <h3 class="cs-archive-name">Macro Programming</h3>
+            <p class="cs-archive-dek">Variables, logic, conditionals. Write programmes that adapt to the part instead of re-writing them every time the geometry changes.</p>
+            <dl class="cs-archive-meta">
+              <div><dt>Format</dt><dd>Self-paced</dd></div>
+              <div><dt>Length</dt><dd>~10 hours</dd></div>
+              <div><dt>Price</dt><dd><span class="cs-gap">From £[GAP]</span></dd></div>
+            </dl>
+            <a class="cs-archive-cta" href="#" aria-label="View Macro Programming course">View course <span aria-hidden="true">→</span></a>
+          </li>
+
+          <li class="cs-archive-card">
+            <p class="cs-archive-eyebrow"><span class="cs-archive-num">08</span> · Software</p>
+            <h3 class="cs-archive-name">Edgecam / CAD-CAM</h3>
+            <p class="cs-archive-dek">From STEP file to posted code. Strategies, toolpaths, post-processor sanity checks — Edgecam taught by someone who's used it on real jobs, not a software trainer.</p>
+            <dl class="cs-archive-meta">
+              <div><dt>Format</dt><dd>Self-paced</dd></div>
+              <div><dt>Length</dt><dd>~10 hours</dd></div>
+              <div><dt>Price</dt><dd><span class="cs-gap">From £[GAP]</span></dd></div>
+            </dl>
+            <a class="cs-archive-cta" href="#" aria-label="View Edgecam / CAD-CAM course">View course <span aria-hidden="true">→</span></a>
+          </li>
+        </ol>
       </div>
     </section>
 
     <!-- ============================================
-         WHAT'S BROKEN — agitation pattern.
-         Single-column editorial, narrower prose.
+         HOW THE ONLINE COURSES WORK
+         Present-tense rework of the locked-points list.
          ============================================ -->
-    <section class="s s-paper-tint cs-broken" aria-labelledby="broken-title">
+    <section class="s s-paper-tint cs-first" aria-labelledby="how-title">
       <span class="fx-tick" aria-hidden="true"><span></span></span>
       <div class="container">
         <header class="sec-head">
-          <span class="sec-pretitle">The problem</span>
-          <h2 class="cs-broken-title" id="broken-title">What's broken about <em>online CNC training?</em></h2>
+          <span class="sec-pretitle">How it works</span>
+          <h2 class="cs-first-title" id="how-title"><em>How</em> the online courses work.</h2>
         </header>
 
-        <div class="cs-broken-body">
-          <p>Free YouTube content gets you partway. Then you hit a question, can't ask anyone, and the video moves on to something else. Free content is bottomless and unsorted, and there's nobody to ask when the video doesn't match the post-processor in front of you.</p>
-          <p>Paid online courses exist. Most are 90% theory. Hours of slides on what G-code is, before any code goes on a real control. You sit through a week of foundations and still can't program a part on a real machine.</p>
-          <p>So I'm building the online version of the classroom. Same teaching approach, same real-control work, broken into pieces you can do in an evening or a weekend.</p>
+        <div class="cs-first-locked">
+          <ul class="cs-first-list">
+            <li class="cs-first-item">
+              <h3 class="cs-first-item-name">Real CNC control work.</h3>
+              <p class="cs-first-item-body">Same simulators I use in the classroom. Same controls. Same G-code that runs on a real machine.</p>
+            </li>
+            <li class="cs-first-item">
+              <h3 class="cs-first-item-name">Same teaching shape as the classroom.</h3>
+              <p class="cs-first-item-body">Worked example, then your attempt, then the next problem. No long lecture videos.</p>
+            </li>
+            <li class="cs-first-item">
+              <h3 class="cs-first-item-name">Video walkthroughs plus written reference plus practice exercises.</h3>
+              <p class="cs-first-item-body">You can rewind, re-read, redo. Whatever way it lands for you.</p>
+            </li>
+            <li class="cs-first-item">
+              <h3 class="cs-first-item-name">Certificate per course.</h3>
+              <p class="cs-first-item-body">Evidenced for what you actually did, not for clicking through the videos.</p>
+            </li>
+          </ul>
         </div>
       </div>
     </section>
 
     <!-- ============================================
-         WHAT THE FIRST COURSE WILL COVER
-         GAP callout at top, then locked-points checklist.
+         WHO IT'S FOR — two-column editorial.
          ============================================ -->
-    <section class="s s-paper cs-first" aria-labelledby="first-title">
-      <span class="fx-tick" aria-hidden="true"><span></span></span>
-      <div class="container">
-        <header class="sec-head">
-          <span class="sec-pretitle">The first course</span>
-          <h2 class="cs-first-title" id="first-title"><em>What</em> the first course will cover.</h2>
-        </header>
-
-        <div class="cs-first-layout">
-          <blockquote class="cs-first-gap" aria-label="Curriculum gap notice">
-            <p>[GAP — Dave to confirm launch lineup. Strategy §10 notes online status + pricing not yet decided. Likely launch pair (per existing site sitemap and Classroom course list): <strong>Beginners: Milling</strong> and <strong>Beginners: Turning</strong> mirroring the classroom syllabus, with Setter/Operator and Learn to Program following. Confirm at sign-off.]</p>
-          </blockquote>
-
-          <div class="cs-first-locked">
-            <p class="cs-first-lede">What's locked, no matter which course launches first:</p>
-            <ul class="cs-first-list">
-              <li class="cs-first-item">
-                <h3 class="cs-first-item-name">Real CNC control work.</h3>
-                <p class="cs-first-item-body">Same simulators I use in the classroom. Same controls. Same G-code that runs on a real machine.</p>
-              </li>
-              <li class="cs-first-item">
-                <h3 class="cs-first-item-name">Same teaching shape as the classroom.</h3>
-                <p class="cs-first-item-body">Worked example, then your attempt, then the next problem. No long lecture videos.</p>
-              </li>
-              <li class="cs-first-item">
-                <h3 class="cs-first-item-name">Video walkthroughs plus written reference plus practice exercises.</h3>
-                <p class="cs-first-item-body">You can rewind, re-read, redo.</p>
-              </li>
-              <li class="cs-first-item">
-                <h3 class="cs-first-item-name">Certificate per course.</h3>
-                <p class="cs-first-item-body">Evidenced for what you actually did, not for clicking through the videos.</p>
-              </li>
-              <li class="cs-first-item cs-first-item-gap">
-                <h3 class="cs-first-item-name">[GAP — Dave to confirm.]</h3>
-                <p class="cs-first-item-body">Whether there's a forum or Q&amp;A channel for course buyers to ask questions when they're stuck.</p>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================
-         IF YOU CAN'T GET TO BARWELL — who it's for.
-         Two-column editorial, mirrors the onsite who pattern.
-         ============================================ -->
-    <section class="s s-paper-tint cs-who" aria-labelledby="who-title">
+    <section class="s s-paper cs-who" aria-labelledby="who-title">
       <span class="fx-tick" aria-hidden="true"><span></span></span>
       <div class="container">
         <header class="sec-head">
           <span class="sec-pretitle">Who it's for</span>
-          <h2 class="cs-who-title" id="who-title">If you can't get to Barwell, <em>this is what's coming.</em></h2>
+          <h2 class="cs-who-title" id="who-title">If you can't get to Barwell, <em>this is the way in.</em></h2>
         </header>
 
         <div class="cs-who-cols">
@@ -213,12 +263,12 @@
          THREE THINGS THIS WON'T BE — anti-positioning.
          A/B/C numbered items. Hairline border, no SaaS hover.
          ============================================ -->
-    <section class="s s-paper cs-anti" aria-labelledby="anti-title">
+    <section class="s s-paper-tint cs-anti" aria-labelledby="anti-title">
       <span class="fx-tick" aria-hidden="true"><span></span></span>
       <div class="container">
         <header class="sec-head">
           <span class="sec-pretitle">Anti-positioning</span>
-          <h2 class="cs-anti-title" id="anti-title">Three things <em>this won't be.</em></h2>
+          <h2 class="cs-anti-title" id="anti-title">Three things <em>these aren't.</em></h2>
         </header>
 
         <ol class="cs-anti-list">
@@ -238,76 +288,6 @@
             <p class="cs-anti-body">When the course is done, the course is done. No upsells, no "premium tier", no Pro plan.</p>
           </li>
         </ol>
-      </div>
-    </section>
-
-    <!-- ============================================
-         HERE'S WHAT I KNOW — honest transparency.
-         Quiet centered prose, narrow column.
-         ============================================ -->
-    <section class="s s-paper-tint cs-known" aria-labelledby="known-title">
-      <span class="fx-tick" aria-hidden="true"><span></span></span>
-      <div class="container">
-        <header class="sec-head sec-head-centered">
-          <span class="sec-pretitle">What I know — and don't</span>
-          <h2 class="cs-known-title" id="known-title">Here's what I know, <em>and what I don't yet.</em></h2>
-        </header>
-
-        <div class="cs-known-body">
-          <p>The course is being built. The first version isn't live yet. I haven't locked the launch date, the final price, or whether there's a tiered option. I'd rather tell you that than make something up to make this page feel more finished.</p>
-          <p>Sign up below and the first thing in your inbox will be the launch announcement, with everything decided.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================
-         NOTIFY-ME FORM — the conversion.
-         Single email field + submit. No address book, no nurture.
-         ============================================ -->
-    <section class="cs-notify" id="notify" aria-labelledby="notify-title">
-      <div class="container">
-        <span class="sec-pretitle sec-pretitle-light">Notify me</span>
-        <div class="cs-notify-grid">
-          <div class="cs-notify-lh">
-            <h2 class="cs-notify-title" id="notify-title">Sign up. <em>I'll email you</em> when it's ready.</h2>
-            <p class="cs-notify-lede">One email when the first course launches. That's it. No marketing list in between, no "are you still interested?" follow-ups, no countdown timers. If the timing doesn't work for you when it lands, ignore it.</p>
-            <dl class="cs-notify-meta">
-              <div>
-                <dt>Phone</dt>
-                <dd><a href="tel:+447834858407">07834 858 407</a></dd>
-              </div>
-              <div>
-                <dt>Email</dt>
-                <dd><a href="mailto:david@cnctrainingcentre.com">david@cnctrainingcentre.com</a></dd>
-              </div>
-              <div>
-                <dt>Where</dt>
-                <dd>Barwell, Leicestershire (or wherever your kitchen table is).</dd>
-              </div>
-            </dl>
-          </div>
-
-          <form class="form-stack cs-notify-form frm-fluent-form" action="#" method="post" novalidate aria-label="Notify me when the online courses launch">
-            <div class="form-head">
-              <h3 class="title">One email. Launch only.</h3>
-              <p class="sub">Drop your email in. When the first course is ready, you get an email. Nothing in between.</p>
-            </div>
-
-            <div class="cs-notify-hidden" aria-hidden="true">
-              <input type="hidden" name="service" value="Courses — notify me" />
-            </div>
-
-            <div class="form-field">
-              <label class="form-label" for="cs-email">Email</label>
-              <input class="form-input" id="cs-email" name="email" type="email" autocomplete="email" required />
-            </div>
-
-            <div class="form-actions">
-              <button class="form-submit" type="submit">Notify me</button>
-              <p class="form-hint">No marketing list. No nurture sequence. One email when it's live.</p>
-            </div>
-          </form>
-        </div>
       </div>
     </section>
 
@@ -441,7 +421,7 @@
             <li><a href="onsite-training.html">Onsite training</a></li>
             <li><a href="classroom-training.html">Classroom training</a></li>
             <li><a href="programming-services.html">Programming services</a></li>
-            <li><a href="courses.html">Courses (coming soon)</a></li>
+            <li><a href="courses.html">Online courses</a></li>
           </ul>
         </div>
         <div class="footer-col">

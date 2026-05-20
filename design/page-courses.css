@@ -1,9 +1,9 @@
 /* CNC Training Centre — Courses page styles
  * Direction A — The Engineering Manual.
  *
- * Courses is a "coming soon" capture page. Quieter rhythm than the
- * full service pages: notify-me form replaces the standard
- * decisiveness/contact band, Hub block routes off-page.
+ * Courses is the self-paced online catalogue page. Hero, 8-card
+ * archive grid (cs-archive), how-it-works, who-it's-for, anti-positioning,
+ * and the canonical Hub preview block.
  *
  * Loads AFTER tokens.css + components.css + page-home.css.
  * Locked nav/drawer/footer + .s surfaces + .sec-pretitle + .hero base
@@ -36,69 +36,78 @@
 
 
 /* ============================================
- * HERO — copy left, spec card right
- * Same outer grammar as .ot-hero / .ot-hero-grid, renamed local.
+ * HERO — single-column.
+ * No side card. Hero-stack inherits .hero-stack from page-home.css.
  * ============================================ */
 
-.cs-hero-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--ns-space-2xl);
+.cs-hero .hero-stack {
   margin-top: var(--ns-space-2xl);
+  max-width: 64ch;
 }
 
-@media (min-width: 900px) {
-  .cs-hero-grid {
-    grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
-    gap: var(--ns-space-3xl);
-    align-items: start;
+
+/* ============================================
+ * COURSE ARCHIVE — the catalogue.
+ * 4-up desktop, 2-up tablet, 1-up mobile.
+ * Card pattern mirrors prog-offer-sheet from programming-services.
+ * ============================================ */
+
+.cs-archive-lede {
+  margin: var(--ns-space-md) 0 0;
+  font-size: var(--ns-text-medium);
+  line-height: var(--ns-leading-relaxed);
+  color: var(--ns-color-ink-soft);
+  max-width: 56ch;
+}
+
+.cs-archive-grid {
+  list-style: none;
+  padding: 0;
+  margin: var(--ns-space-2xl) 0 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  border-top: 1px solid var(--ns-color-rule);
+}
+
+@media (min-width: 640px) {
+  .cs-archive-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
+@media (min-width: 1080px) {
+  .cs-archive-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
 
-/* ---------- Spec card (inline content card — NOT a marginalia rail) ---------- */
-
-.cs-card {
+.cs-archive-card {
   position: relative;
-  background: var(--ns-color-paper);
-  border: 1px solid var(--ns-color-rule);
-  padding: var(--ns-space-xl) var(--ns-space-lg);
-}
-
-/* Engineering-manual corner ticks — hairline only. */
-.cs-card::before,
-.cs-card::after {
-  content: "";
-  position: absolute;
-  width: 12px;
-  height: 12px;
-  border: 1px solid var(--ns-color-rule-strong);
-  pointer-events: none;
-}
-.cs-card::before {
-  top: -1px;
-  left: -1px;
-  border-right: 0;
-  border-bottom: 0;
-}
-.cs-card::after {
-  bottom: -1px;
-  right: -1px;
-  border-left: 0;
-  border-top: 0;
-}
-
-.cs-card-head {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-  gap: var(--ns-space-sm);
-  padding-bottom: var(--ns-space-lg);
-  margin-bottom: var(--ns-space-lg);
+  display: flex;
+  flex-direction: column;
+  padding: var(--ns-space-xl) var(--ns-space-lg) var(--ns-space-lg);
   border-bottom: 1px solid var(--ns-color-rule);
+  background: var(--ns-color-paper);
 }
 
-.cs-card-eyebrow {
+@media (min-width: 640px) {
+  .cs-archive-card {
+    border-right: 1px solid var(--ns-color-rule);
+  }
+  .cs-archive-card:nth-child(2n) { border-right: 0; }
+}
+
+@media (min-width: 1080px) {
+  .cs-archive-card {
+    border-right: 1px solid var(--ns-color-rule);
+  }
+  .cs-archive-card:nth-child(2n) { border-right: 1px solid var(--ns-color-rule); }
+  .cs-archive-card:nth-child(4n) { border-right: 0; }
+}
+
+.cs-archive-eyebrow {
+  margin: 0 0 var(--ns-space-md);
   font-family: var(--ns-font-body);
   font-size: var(--ns-text-tiny);
   font-weight: var(--ns-weight-semibold);
@@ -107,122 +116,88 @@
   color: var(--ns-color-ink-soft);
 }
 
-.cs-card-rule {
-  display: block;
-  height: 1px;
-  background: var(--ns-color-rule-strong);
-}
-
-.cs-card-status {
-  font-family: var(--ns-font-body);
-  font-size: var(--ns-text-tiny);
-  font-weight: var(--ns-weight-medium);
-  letter-spacing: var(--ns-track-wide);
-  text-transform: uppercase;
+.cs-archive-num {
   color: var(--ns-color-primary);
-  white-space: nowrap;
+  margin-right: var(--ns-space-2xs);
 }
 
-.cs-card-list {
+.cs-archive-name {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-large);
+  font-weight: var(--ns-weight-semibold);
+  line-height: var(--ns-leading-snug);
+  letter-spacing: 0;
+  color: var(--ns-color-ink);
+  margin: 0 0 var(--ns-space-sm);
+}
+
+.cs-archive-dek {
+  margin: 0 0 var(--ns-space-lg);
+  font-size: var(--ns-text-regular);
+  line-height: var(--ns-leading-base);
+  color: var(--ns-color-ink-soft);
+  flex-grow: 1;
+}
+
+.cs-archive-meta {
   display: flex;
   flex-direction: column;
+  gap: var(--ns-space-xs);
+  margin: 0 0 var(--ns-space-lg);
+  padding-top: var(--ns-space-md);
+  border-top: 1px solid var(--ns-color-rule-faint);
+}
+
+.cs-archive-meta > div {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.4fr);
+  gap: var(--ns-space-sm);
+  align-items: baseline;
+}
+
+.cs-archive-meta dt {
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-tiny);
+  font-weight: var(--ns-weight-semibold);
+  letter-spacing: var(--ns-track-wide);
+  text-transform: uppercase;
+  color: var(--ns-color-ink-soft);
   margin: 0;
 }
 
-.cs-card-row {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--ns-space-2xs);
-  padding-block: var(--ns-space-md);
-  border-bottom: 1px solid var(--ns-color-rule-faint);
+.cs-archive-meta dd {
+  margin: 0;
+  font-family: var(--ns-font-body);
+  font-size: var(--ns-text-small);
+  font-weight: var(--ns-weight-medium);
+  color: var(--ns-color-ink);
 }
 
-@media (min-width: 540px) {
-  .cs-card-row {
-    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.4fr);
-    gap: var(--ns-space-lg);
-    align-items: baseline;
-  }
-}
-
-.cs-card-row:last-child { border-bottom: 0; padding-bottom: 0; }
-.cs-card-row:first-child { padding-top: 0; }
-
-.cs-card-row dt {
+.cs-archive-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ns-space-xs);
   font-family: var(--ns-font-body);
   font-size: var(--ns-text-small);
   font-weight: var(--ns-weight-semibold);
   letter-spacing: var(--ns-track-wide);
   text-transform: uppercase;
-  color: var(--ns-color-ink-soft);
+  color: var(--ns-color-primary);
+  text-decoration: none;
+  margin-top: auto;
+  transition: gap var(--ns-dur-fast) var(--ns-ease-out), color var(--ns-dur-fast) var(--ns-ease-out);
 }
 
-.cs-card-row dd {
-  margin: 0;
-  font-size: var(--ns-text-medium);
-  line-height: var(--ns-leading-base);
+.cs-archive-cta:hover {
+  gap: var(--ns-space-sm);
   color: var(--ns-color-ink);
 }
 
 
 /* ============================================
- * BROKEN — single-column editorial agitation
+ * HOW IT WORKS — locked-points list
+ * (Re-uses cs-first-* namespace from previous version)
  * ============================================ */
-
-.cs-broken-body {
-  display: flex;
-  flex-direction: column;
-  gap: var(--ns-space-lg);
-  max-width: 56rem;
-  font-size: var(--ns-text-medium);
-  line-height: var(--ns-leading-relaxed);
-  color: var(--ns-color-ink);
-}
-
-.cs-broken-body p { margin: 0; }
-
-
-/* ============================================
- * FIRST COURSE — GAP callout + locked-points list
- * ============================================ */
-
-.cs-first-layout {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--ns-space-2xl);
-}
-
-@media (min-width: 980px) {
-  .cs-first-layout {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
-    gap: var(--ns-space-3xl);
-    align-items: start;
-  }
-}
-
-.cs-first-gap {
-  margin: 0;
-  padding: var(--ns-space-xl) var(--ns-space-lg);
-  border-left: 2px solid var(--ns-color-mark-ink);
-  background: var(--ns-color-mark);
-  color: var(--ns-color-mark-ink);
-  font-family: var(--ns-font-body);
-  font-size: var(--ns-text-medium);
-  line-height: var(--ns-leading-base);
-}
-
-.cs-first-gap p { margin: 0; }
-.cs-first-gap strong { font-weight: var(--ns-weight-semibold); color: var(--ns-color-ink); }
-
-.cs-first-lede {
-  font-family: var(--ns-font-body);
-  font-size: var(--ns-text-tiny);
-  font-weight: var(--ns-weight-semibold);
-  letter-spacing: var(--ns-track-extrawide);
-  text-transform: uppercase;
-  color: var(--ns-color-ink-soft);
-  margin: 0 0 var(--ns-space-lg);
-}
 
 .cs-first-list {
   list-style: none;
@@ -366,169 +341,6 @@
   font-size: var(--ns-text-regular);
   line-height: var(--ns-leading-base);
   color: var(--ns-color-ink-soft);
-}
-
-
-/* ============================================
- * KNOWN — honest transparency, narrow centered prose
- * ============================================ */
-
-.cs-known-body {
-  max-width: 48rem;
-  margin: var(--ns-space-2xl) auto 0;
-  display: flex;
-  flex-direction: column;
-  gap: var(--ns-space-lg);
-  font-size: var(--ns-text-medium);
-  line-height: var(--ns-leading-relaxed);
-  color: var(--ns-color-ink);
-  text-align: left;
-}
-
-.cs-known-body p { margin: 0; }
-
-@media (min-width: 760px) {
-  .cs-known-body { text-align: center; }
-}
-
-
-/* ============================================
- * NOTIFY — the conversion section.
- * Anchor surface (deep ink), 2-col grid:
- *   LH = pitch + meta dl, RH = single-field form.
- * Replaces the standard decisiveness/contact band on this page.
- * ============================================ */
-
-.cs-notify {
-  position: relative;
-  background: var(--ns-color-anchor);
-  color: var(--ns-color-ink-inverse);
-  padding-block: var(--ns-pad-block);
-  overflow: hidden;
-}
-
-.cs-notify .container { position: relative; z-index: 1; }
-
-.cs-notify .sec-pretitle-light {
-  display: block;
-  margin-bottom: var(--ns-space-lg);
-}
-
-.cs-notify-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--ns-space-2xl);
-  align-items: start;
-}
-
-@media (min-width: 900px) {
-  .cs-notify-grid {
-    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
-    gap: var(--ns-space-3xl);
-  }
-}
-
-.cs-notify-lh { color: var(--ns-color-ink-inverse); }
-
-.cs-notify-title {
-  color: var(--ns-color-ink-inverse);
-  font-size: var(--ns-heading-h2);
-  line-height: var(--ns-leading-tight);
-  letter-spacing: var(--ns-track-tight);
-  margin: 0 0 var(--ns-space-lg);
-  max-width: 22ch;
-}
-
-.cs-notify-title em {
-  font-style: italic;
-  color: color-mix(in oklab, var(--ns-color-ink-inverse) 78%, var(--ns-color-primary));
-}
-
-.cs-notify-lede {
-  color: color-mix(in oklab, var(--ns-color-ink-inverse) 78%, var(--ns-color-anchor));
-  font-size: var(--ns-text-medium);
-  line-height: var(--ns-leading-relaxed);
-  margin: 0 0 var(--ns-space-xl);
-  max-width: 44ch;
-}
-
-.cs-notify-meta {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--ns-space-md);
-  margin: 0;
-  padding-top: var(--ns-space-lg);
-  border-top: 1px solid color-mix(in oklab, var(--ns-color-ink-inverse) 18%, transparent);
-}
-
-@media (min-width: 540px) {
-  .cs-notify-meta { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--ns-space-lg); }
-}
-
-.cs-notify-meta dt {
-  font-family: var(--ns-font-body);
-  font-size: var(--ns-text-tiny);
-  font-weight: var(--ns-weight-semibold);
-  letter-spacing: var(--ns-track-extrawide);
-  text-transform: uppercase;
-  color: color-mix(in oklab, var(--ns-color-ink-inverse) 55%, transparent);
-  margin: 0 0 var(--ns-space-2xs);
-}
-
-.cs-notify-meta dd {
-  margin: 0;
-  font-family: var(--ns-font-body);
-  font-size: var(--ns-text-regular);
-  color: var(--ns-color-ink-inverse);
-  line-height: var(--ns-leading-base);
-}
-
-.cs-notify-meta dd a {
-  color: var(--ns-color-ink-inverse);
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 3px;
-  text-decoration-color: color-mix(in oklab, var(--ns-color-ink-inverse) 28%, transparent);
-  transition: text-decoration-color var(--ns-dur-fast) var(--ns-ease-out);
-}
-.cs-notify-meta dd a:hover { text-decoration-color: var(--ns-color-ink-inverse); }
-
-.cs-notify-hidden { display: none; }
-
-/* Form on the dark surface — paper card holding the field */
-.cs-notify-form {
-  background: var(--ns-color-paper);
-  color: var(--ns-color-ink);
-  padding: var(--ns-space-xl) var(--ns-space-lg);
-  border: 1px solid var(--ns-color-rule);
-  border-radius: var(--ns-radius-soft);
-}
-
-.cs-notify-form .form-head {
-  border-bottom: 1px solid var(--ns-color-rule);
-  padding-bottom: var(--ns-space-lg);
-  margin-bottom: var(--ns-space-lg);
-}
-
-.cs-notify-form .form-head .title {
-  font-family: var(--ns-font-display);
-  font-size: var(--ns-heading-h4);
-  line-height: var(--ns-leading-snug);
-  font-weight: var(--ns-weight-regular);
-  letter-spacing: var(--ns-track-tight);
-  color: var(--ns-color-ink);
-  margin: 0 0 var(--ns-space-xs);
-}
-
-.cs-notify-form .form-head .sub {
-  margin: 0;
-  font-size: var(--ns-text-regular);
-  line-height: var(--ns-leading-base);
-  color: var(--ns-color-ink-soft);
-}
-
-@media (min-width: 760px) {
-  .cs-notify-form { padding: var(--ns-space-2xl); }
 }
 
 

@@ -329,3 +329,62 @@ All titles are **invented plausible** — drawn from David's known content terri
 **From:** ns-website-designer
 **Phase:** 4. Design (revision pass 3)
 **Status:** Needs Review · awaiting-dave
+
+
+---
+
+### 2026-05-20 — Designer → PM (revision pass 4: courses page overhaul — live archive)
+
+Overhauled `design/courses.html` and `design/page-courses.css` to flip the page from "coming soon notify-me capture" to a live self-paced course catalogue.
+
+**Sections — kept:**
+- Hero (now single-column, no side card)
+- Who it's for (light present-tense tweak — "this is the way in" instead of "what's coming")
+- Three things these aren't (anti-positioning, A/B/C)
+- Hub preview (canonical block, unchanged)
+
+**Sections — killed:**
+- Hero right-side spec card (`<aside class="cs-card">`) — per Dave's site-wide note that this pattern reads as marginalia and should be removed from every page hero. Surrounding `cs-hero-grid` wrapper also removed.
+- "What's broken about online CNC training?" agitation section (future-framing — "I'm building")
+- "What the first course will cover" — replaced with present-tense "How the online courses work"
+- "Here's what I know, and what I don't yet" — removed entirely (live framing makes it irrelevant)
+- "Notify me" email-capture section + the form
+
+**Sections — added / reworked:**
+- New `§ Course archive` (`cs-archive`) — 8-card responsive grid (4-up desktop / 2-up tablet / 1-up mobile). Border-led visual rhythm matches the existing `cs-anti-list` and the `prog-offer-sheet` 4-up grid. Each card: numeric eyebrow + category, course name, 1-sentence dek, meta dl (format / length / price), `View course →` CTA.
+- `§ How the online courses work` — repurposes the four locked-points list (`cs-first-*` markup) with present-tense framing. Removed the orphan GAP item ("forum or Q&A channel") and the GAP curriculum callout. Section heading is now "How it works".
+
+**Hero copy changes:**
+- Eyebrow: `Online courses. Coming.` → `Online courses. Self-paced.`
+- H1: kept (evergreen)
+- Lede: added one sentence — "These are the same courses, broken into evening-sized pieces you can do on your own time."
+- Primary CTA: `Notify me` (→ `#notify`) → `Browse courses` (→ `#archive`)
+- Secondary CTA: `Browse the Hub` retained
+
+**CSS:**
+- Pruned `.cs-hero-grid`, all `.cs-card-*` rules (~80 lines), `.cs-broken-body`, `.cs-first-layout`, `.cs-first-gap`, `.cs-first-lede`, `.cs-known-body`, full `.cs-notify*` block (~120 lines).
+- Added `.cs-archive`, `.cs-archive-grid` (1/2/4 col responsive), `.cs-archive-card`, `.cs-archive-eyebrow`, `.cs-archive-num`, `.cs-archive-name`, `.cs-archive-dek`, `.cs-archive-meta`, `.cs-archive-cta` (hover-grows-gap pattern, same as Hub featured-arrow).
+- Footer link `Courses (coming soon)` → `Online courses`.
+
+**Course catalogue (8 cards):**
+1. Beginners — Milling · ~6h
+2. Beginners — Turning · ~6h
+3. Setter / Operator — Milling · ~8h
+4. Setter / Operator — Turning · ~8h
+5. Learn to Program — Milling · ~12h
+6. Learn to Program — Turning · ~12h
+7. Macro Programming · ~10h
+8. Edgecam / CAD-CAM · ~10h
+
+Course titles are taken verbatim from `strategy/cnctcc-proposed-sitemap.md` and match the live classroom-training course list.
+
+**Flags for Dave at sign-off (standing):**
+1. **Course deks are invented-plausible.** Drawn from David's known content territory (Fanuc, real-control simulators, tool offsets, work offsets, canned cycles, Edgecam STEP-to-posted-code) — not verified against any source document. Approve at sign-off or swap.
+2. **Course lengths are invented-plausible.** ~6h (beginner) → ~12h (Learn to Program) range is realistic for self-paced delivery but not measured. Approve or swap.
+3. **Prices are `From £[GAP]` placeholders.** Strategy §10 notes online pricing not yet decided. Awaiting Dave.
+4. **Course detail URLs are `#` anchors.** No per-course detail pages exist yet — for visual completeness only. Dave wires real URLs when course pages exist.
+5. **Numeric eyebrows (01–08) and category labels** (Beginner / Setter-Operator / Programmer / Advanced / Software) are designer-chosen visual structure — confirm or swap at sign-off.
+
+**From:** ns-website-designer
+**Phase:** 4. Design (revision pass 4)
+**Status:** Needs Review · awaiting-dave
