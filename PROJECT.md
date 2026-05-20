@@ -117,6 +117,82 @@ Phase 4 (Design) — full revision pass against copyseller v3 copy: **all 9 issu
 
 (Newest first.)
 
+### 2026-05-20 — Designer → PM (revision pass cont.: service-page layout standardisation, item 5)
+
+**From:** ns-website-designer
+**To:** PM → Dave
+**Phase:** 4. Design (revision pass — layout-only, copy locked)
+**Status:** Needs Review
+
+Continuation of the 2026-05-20 revision pass. Items 1–4 (hero marginalia removal, "Scroll" labels, divider lines, reviews widget) landed in the prior commit. This pass closes item 5: kill the over-vertical feel on the three service pages — convert single-column prose and stacked card lists into 2-up / 3-up / 4-up grids that mirror the home.html rhythm. Copy untouched throughout.
+
+**What changed per page:**
+
+- **programming-services.html** — Three layout conversions in CSS only (HTML markup unchanged):
+  - `prog-offer-sheet` ("Four ways to get programming off your plate"): 4-up grid breakpoint lowered from 1100px → 900px so the 4-card layout activates on common laptop widths (was collapsing to 2-up at 1024–1099px). Mobile / 640px+ 2-up unchanged.
+  - `prog-bundle-list` ("Six things bundled into the hourly rate"): 3-up grid breakpoint lowered from 1100px → 900px. Matching `nth-child(3n+1)` and `::before` rules retuned to the new breakpoint. 700–899px stays 2-up.
+  - `prog-warn-list` ("Who shouldn't book this", 3 caveats): converted from full-width stacked spec rows to a 3-up grid at 900px+ with vertical hairline dividers between cards (mirrors the home column-rule pattern). Mobile keeps the original num + name + body stacked row.
+  - `prog-cases-list` ("Three jobs that came in tight", 3 worked examples — GAP placeholders): converted from full-width stacked spec rows to a 3-up grid at 900px+, same hairline divider treatment. Mobile unchanged.
+  - `prog-goal-body` ("What's the week look like…") **left as single 68ch editorial band with drop-cap.** Intentional editorial moment — drop-cap + 2 short paragraphs is doing the work; a 2-col split would kill it. (Same call as the prior pass — flagging again for Dave's sanity check.)
+
+- **onsite-training.html** — One conversion (CSS only):
+  - `ot-included-list` ("Whole team, every control", 7 bundled items): converted from single full-width column to a 2-up grid at 900px+ with column-gap. Inner row layout changed from 3-col (bullet + name + body) to vertical-within-column at 900px+ — keeps the em-dash bullet, name on its own line, body below. 700–899px keeps the original 3-col inner row. Mobile unchanged.
+  - `ot-how-train-body`, `ot-dq-list`, `ot-cases-list`, `ot-who-cols` — already 2-up / 2x2 / 3-up at 900px+. No change needed.
+
+- **classroom-training.html** — Two conversions (CSS only):
+  - `offer-list` ("Real simulators, real instructor, real certificate", 8 ns-list-plus items): converted from single 72ch column to a 2-up grid at 900px+ with column-gap; max-width per item reduced to 56ch so each item reads tight in its column. Mobile unchanged.
+  - `disq-list` ("If any of these are you, save your £300", 4 disqualifiers): converted from full-width stacked spec rows to a 2-up grid at 900px+. Inner row at 900px+ switches from 3-col (idx + name + body) back to 2-col (idx, content stack) so body sits below name within each column with a 48ch max-width. 700–899px keeps the original 3-col. Mobile unchanged.
+  - `course-sheet` ("Eight courses, pick the one…") **left as single-column svc-row catalogue.** This is the canonical clickable spec-sheet pattern shared with home.html — intentional row layout (idx · name · rate · arrow), not a stacked card list. Converting it would break the home/services consistency.
+  - `outcome-body`, `problem-cols`, `pricing-grid` — already 2-col / 2-col / 2-col at 900px+. No change.
+
+**Cross-cutting:**
+- No HTML changes. No copy changes. All work was breakpoint + grid retuning in `page-programming-services.css`, `page-onsite-training.css`, `page-classroom-training.css`.
+- Breakpoint convention used throughout: 900px primary (matches home.html `problem-cols` and other 2-col bands). Tablet 700px retained for intermediate. Mobile sub-900px keeps single-column.
+- Reuses existing grid vocabulary (column-gap clamps, hairline `border-left` dividers, `nth-child` resets on the first item). No new naming conventions introduced.
+
+**Judgement calls Dave should sanity-check:**
+1. **`prog-warn-list` 3-up at 900px+** — Dave noted this was a judgement call (caveats sometimes read better vertical). Built it as 3-up to match the cases/bundle rhythm and kill the over-vertical drag. If at sign-off the 3-up reads too card-like for what is essentially editorial pushback, reverting is a one-rule CSS change.
+2. **`prog-cases-list` 3-up at 900px+** — same rhythm as prog-warn-list and prog-offer-sheet. Cards are short and all-GAP placeholders right now, so the visual judgement should be made once Dave has the real worked-example content in.
+3. **`offer-list` 2-up at 900px+** — 8 items as a 2-up grid runs four rows. If the visual rhythm feels too dense at the tail end, going to 3-up (3+3+2) is a one-rule change.
+4. **`disq-list` 2-up at 900px+** — 4 disqualifiers as a 2×2 grid mirrors the onsite `ot-dq-list` (also 2×2). Consistency point across the two training pages.
+
+**Out of scope (untouched):** copy in `copy/*.md`, strategy, brief, Tailwind/WP theme, new pages, HTML markup, home.html, all non-service pages.
+
+---
+
+### 2026-05-20 — Designer → PM (revision pass: hero cleanup, reviews widget, service page layout standardisation)
+
+**From:** ns-website-designer
+**To:** PM → Dave
+**Phase:** 4. Design (revision pass — layout-only, copy locked)
+**Status:** Needs Review
+
+Layout-only revision against the 2026-05-20 brief. Copy untouched. Every change pulls existing copy verbatim — no new strings invented.
+
+**What changed per page:**
+
+- **home.html** — Added canonical reviews widget under hero CTAs (★★★★★ · 5.0 · 30 reviews on Google). Replaced the `t-foot` "See all 30 reviews" text link with the same widget. No marginalia present; no hero-base label present.
+- **about.html** — Added widget under hero CTAs. Replaced `about-auth-foot` text link with widget. `about-glance` dl strip retained (inline single-stack fact list, not a marginalia rail).
+- **classroom-training.html** — Removed the `ct-hero-side` marginalia (course-card aside) from hero. Hero is now single-stack matching home. Added widget under hero CTAs. Replaced `auth-foot` text link with widget. Course-card facts retained in the Pricing section below — no copy loss.
+- **onsite-training.html** — Removed `ot-margin` marginalia aside from hero. Removed `hero-base` ornament block (incl. "Scroll · Who this is for" label). Hero is now single-stack. Added widget under hero CTAs. Replaced authority `ot-authority-link` text link with widget. Onsite spec facts (day rate, controls, format) retained in the What's Included + Pricing sections — no copy loss. Split `ot-how-train-body` into a 2-col layout at ≥900px: lede paragraph spans both, paras 2 and 3 sit side-by-side.
+- **programming-services.html** — Hero already single-stack (no marginalia). Added widget under hero CTAs. Replaced `prog-auth-foot` text link with widget. Converted `prog-offer-sheet` ("Four ways to get programming off your plate", 4 items) from vertical full-width spec-sheet rows to a responsive 4-col card grid (4 → 2 → 1 across 1100 / 640 / mobile). Bumped `prog-bundle-list` ("Six things bundled into the hourly rate") from 2-col to 3-col at ≥1100px with hairline dividers between cards. `prog-goal-body` left as single column intentionally — the drop-cap pattern is doing the editorial work and a 2-col split would clash. **Flag for Dave to sanity-check.**
+- **courses.html, contact.html, learning-hub.html, learning-hub-article.html** — No Google-reviews "See all" links present. No hero marginalia. No hero-base labels. No changes.
+
+**Cross-cutting:**
+- Reviews widget added as a canonical component to `flourishes.css` § 10 — single CSS implementation, single markup snippet (commented `<!-- google-reviews-widget -->`) lifted byte-identically across all uses. Inverse variant included for use on `.contact` / `.decisiveness` / `.s-anchor` dark surfaces. Phase 5 lifts this verbatim into an SCF block.
+- Hero cleanup CSS orphans removed: `.ct-hero-side`, `.ot-margin*`, `.ot-hero-grid`, `.hero-base*` rules deleted from per-page CSS. `.ot-authority-link` shrunk to layout-only modifier on the widget.
+- Section dividers audit: no `<hr>` or divider-line classes in use across any page. `fx-tick` is a corner crosshair flourish, not a section break — left in place (creative flourish, not a divider line).
+
+**Judgement calls Dave should sanity-check:**
+1. **Classroom hero — course-card spec panel removed.** Day rate / format / where / certificate now live only in the Pricing section. If you want any of those facts visible at hero height, easiest move is to fold them into the hero `eyebrow` line.
+2. **Onsite hero — spec marginalia removed.** Same situation. Onsite day rate + controls list are surfaced in What's Included and Pricing. If hero needs more upfront density I can add a one-line eyebrow.
+3. **Programming `prog-goal-body` left single column.** Drop-cap + 2 paragraphs reads better single-stack than split. If you'd rather it match other 2-col blocks, kill the drop-cap and I'll split.
+4. **Reviews widget colour for the orange star glyph** — uses `--ns-color-primary` with a fallback. If the token's hue clashes with the rest of the page on dark surfaces, swap to a fixed gold (`#f5b400`) on the inverse variant.
+
+**Out of scope (untouched):** copy in `copy/*.md`, strategy, brief, Tailwind/WP theme, new pages.
+
+---
+
 ### 2026-05-18 — PM → Designer (full Phase 4 revision pass against copyseller v3 copy)
 
 **From:** PM

@@ -75,8 +75,8 @@
     <!-- ============================================
          HERO — Bucket C Promise hook
          "Two days. Real controls. Walk out able to set a machine."
-         Marginalia component reused as the course-card sidebar
-         (allowed: this is the hero's spec panel, NOT a page-margin rail).
+         Single-stack treatment matching home.html (no marginalia
+         rail per project-wide cross-page constraint).
          ============================================ -->
     <section class="hero ct-hero" aria-labelledby="hero-title">
       <span class="fx-tick" aria-hidden="true"><span></span></span>
@@ -84,31 +84,17 @@
         <p class="hero-eyebrow hero-eyebrow-top">Classroom CNC training. Barwell, Leicestershire.</p>
         <h1 class="hero-title hero-title--svc" id="hero-title">Two days. Real controls. <em>Walk out able to set a machine.</em></h1>
 
-        <div class="hero-grid">
-          <div class="hero-stack">
-            <p class="hero-lede">You can press cycle-start. You can't write the cycle yet. Two days in Leicestershire and that changes.</p>
-            <div class="hero-ctas">
-              <a class="btn btn-primary btn-lg" href="#courses">See all courses</a>
-              <a class="btn btn-outline btn-lg" href="tel:+447834858407">07834 858 407</a>
-            </div>
+        <div class="hero-stack">
+          <p class="hero-lede">You can press cycle-start. You can't write the cycle yet. Two days in Leicestershire and that changes.</p>
+          <div class="hero-ctas">
+            <a class="btn btn-primary btn-lg" href="#courses">See all courses</a>
+            <a class="btn btn-outline btn-lg" href="tel:+447834858407">07834 858 407</a>
           </div>
-          <aside class="marginalia ct-hero-side" aria-label="Course card">
-            <header class="marginalia-head">
-              <span>Course card</span>
-            </header>
-            <dl>
-              <dt>Who it's for</dt>
-              <dd>Individuals starting in CNC or moving from operator to programmer. Companies sending one or two people on a structured course.</dd>
-              <dt>Format</dt>
-              <dd>Small group, 1 to 6 students, six CNC simulators</dd>
-              <dt>Day rate</dt>
-              <dd><strong>£300</strong> / student / day plus VAT</dd>
-              <dt>Where</dt>
-              <dd>Barwell, Leicestershire (training facility)</dd>
-              <dt>Certificate</dt>
-              <dd>Issued on completion of every course</dd>
-            </dl>
-          </aside>
+          <!-- google-reviews-widget — canonical, lift verbatim into SCF block -->
+          <a class="reviews-widget reviews-widget--hero" href="https://www.google.com/search?q=cnc+training+centre+reviews" rel="noopener" target="_blank">
+            <span class="reviews-widget-stars" aria-hidden="true">★★★★★</span>
+            <span class="reviews-widget-text"><strong>5.0</strong> · 30 reviews on Google</span>
+          </a>
         </div>
       </div>
     </section>
@@ -463,7 +449,11 @@
         </ul>
 
         <p class="auth-foot">
-          <a class="link-arrow" href="https://www.google.com/search?q=cnc+training+centre+reviews" rel="noopener">See all 30 reviews</a>
+          <!-- google-reviews-widget — canonical, lift verbatim into SCF block -->
+          <a class="reviews-widget" href="https://www.google.com/search?q=cnc+training+centre+reviews" rel="noopener" target="_blank">
+            <span class="reviews-widget-stars" aria-hidden="true">★★★★★</span>
+            <span class="reviews-widget-text"><strong>5.0</strong> · 30 reviews on Google</span>
+          </a>
         </p>
       </div>
     </section>

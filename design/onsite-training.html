@@ -74,59 +74,29 @@
 
     <!-- ============================================
          HERO — Bucket D Offer hook (copyseller v3)
-         Asymmetric: headline + lede LH, machine-card spec RH.
+         Single-stack treatment matching home.html (no
+         marginalia rail per project-wide cross-page
+         constraint, no hero-base ornament).
          ============================================ -->
     <section class="hero ot-hero" aria-labelledby="hero-title">
+      <span class="fx-tick" aria-hidden="true"><span></span></span>
+      <img class="fx-machine fx-machine-hero" src="../assets/photography/cnc-mill.png" alt="" loading="lazy" aria-hidden="true" />
       <div class="container">
         <p class="hero-eyebrow hero-eyebrow-top">Onsite CNC training. UK-wide.</p>
         <h1 class="hero-title hero-title--svc" id="hero-title">I come to you. Your machines. <em>£700 a day for the team.</em></h1>
 
-        <div class="ot-hero-grid">
-          <div class="hero-stack">
-            <p class="hero-lede">That Mazak nobody can touch. The Hurco running half its cycle time. The bloke who knew the sliding head left in March.</p>
-            <div class="hero-ctas">
-              <a class="btn btn-primary btn-lg" href="contact.html">Contact David</a>
-              <a class="btn btn-outline btn-lg" href="tel:+447834858407">07834 858 407</a>
-            </div>
+        <div class="hero-stack">
+          <p class="hero-lede">That Mazak nobody can touch. The Hurco running half its cycle time. The bloke who knew the sliding head left in March.</p>
+          <div class="hero-ctas">
+            <a class="btn btn-primary btn-lg" href="contact.html">Contact David</a>
+            <a class="btn btn-outline btn-lg" href="tel:+447834858407">07834 858 407</a>
           </div>
-
-          <aside class="ot-margin" aria-label="Onsite training at a glance">
-            <header class="ot-margin-head">
-              <span class="ot-margin-eyebrow">Onsite · spec</span>
-              <span class="ot-margin-rule" aria-hidden="true"></span>
-            </header>
-            <dl class="ot-margin-list">
-              <div class="ot-margin-row">
-                <dt>Who it's for</dt>
-                <dd>Engineering companies, 5 to 50 staff, CNC kit underperforming.</dd>
-              </div>
-              <div class="ot-margin-row">
-                <dt>Format</dt>
-                <dd>I come to you. Your machines, your parts, your shifts.</dd>
-              </div>
-              <div class="ot-margin-row">
-                <dt>Day rate</dt>
-                <dd><strong>£700</strong>/day, whole team. Hotel on top if I stay over.</dd>
-              </div>
-              <div class="ot-margin-row">
-                <dt>Controls</dt>
-                <dd>Fanuc · Heidenhain · Siemens · Mazak/Mazatrol · Hurco · Brother · Haas · Doosan · XYZ · sliding head.</dd>
-              </div>
-              <div class="ot-margin-row">
-                <dt>Availability</dt>
-                <dd>UK-wide. <span class="ot-gap">[GAP — confirm typical booking lead time; existing copy said 4 to 6 weeks out]</span></dd>
-              </div>
-            </dl>
-          </aside>
+          <!-- google-reviews-widget — canonical, lift verbatim into SCF block -->
+          <a class="reviews-widget reviews-widget--hero" href="https://www.google.com/search?q=cnc+training+centre+reviews" rel="noopener" target="_blank">
+            <span class="reviews-widget-stars" aria-hidden="true">★★★★★</span>
+            <span class="reviews-widget-text"><strong>5.0</strong> · 30 reviews on Google</span>
+          </a>
         </div>
-
-        <footer class="hero-base" aria-hidden="true">
-          <span class="hero-base-tick"></span>
-          <span class="hero-base-line"></span>
-          <span class="hero-base-label">Scroll · Who this is for</span>
-          <span class="hero-base-line"></span>
-          <span class="hero-base-tick"></span>
-        </footer>
       </div>
     </section>
 
@@ -329,7 +299,11 @@
             <span class="sec-pretitle">Authority</span>
             <h2 class="authority-title" id="authority-title">Thirty years. Every major control. <em>Known by the OEMs.</em></h2>
             <p class="authority-lede">The OEMs send me referrals because they know I cover what their syllabus won't. Some of them send me work when their own training schedule won't flex.</p>
-            <a class="link-arrow ot-authority-link" href="https://www.google.com/search?q=cnc+training+centre+reviews" rel="noopener">See all 30 reviews</a>
+            <!-- google-reviews-widget — canonical, lift verbatim into SCF block -->
+            <a class="reviews-widget ot-authority-link" href="https://www.google.com/search?q=cnc+training+centre+reviews" rel="noopener" target="_blank">
+              <span class="reviews-widget-stars" aria-hidden="true">★★★★★</span>
+              <span class="reviews-widget-text"><strong>5.0</strong> · 30 reviews on Google</span>
+            </a>
           </header>
           <div class="spec-block" role="list" aria-label="Authority figures">
             <div class="spec" role="listitem">

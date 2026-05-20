@@ -25,133 +25,15 @@
 
 /* ============================================
  * § 01 — HERO
- * Asymmetric: headline + lede LH, machine-card marginalia RH.
- * Wider RH column than the home hero so the spec dl breathes.
+ * Single-stack treatment matching home.html (no marginalia
+ * rail and no hero-base ornament per project-wide cross-page
+ * constraint). The course / day-rate facts live in the
+ * Pricing section below; controls are surfaced in What's
+ * Included.
  * ============================================ */
 
 .ot-hero .hero-title { max-width: 18ch; }
 .ot-hero .hero-title em { font-style: normal; color: var(--ns-color-primary); }
-
-.ot-hero-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--ns-space-2xl);
-}
-
-@media (min-width: 900px) {
-  .ot-hero-grid {
-    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
-    gap: var(--ns-space-4xl);
-    align-items: start;
-  }
-}
-
-.ot-margin {
-  background: var(--ns-color-paper);
-  border: 1px solid var(--ns-color-rule);
-  border-radius: var(--ns-radius-tight);
-  padding: var(--ns-space-lg) var(--ns-space-lg) var(--ns-space-md);
-  position: relative;
-}
-
-.ot-margin::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 24px;
-  height: 24px;
-  border-top: 2px solid var(--ns-color-ink);
-  border-left: 2px solid var(--ns-color-ink);
-}
-
-.ot-margin::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 24px;
-  height: 24px;
-  border-bottom: 2px solid var(--ns-color-ink);
-  border-right: 2px solid var(--ns-color-ink);
-}
-
-.ot-margin-head {
-  display: grid;
-  grid-template-columns: max-content 1fr max-content;
-  gap: var(--ns-space-md);
-  align-items: center;
-  padding-bottom: var(--ns-space-md);
-  border-bottom: 1px solid var(--ns-color-rule);
-  margin-bottom: var(--ns-space-sm);
-}
-
-.ot-margin-eyebrow {
-  font-family: var(--ns-font-body);
-  font-size: var(--ns-text-tiny);
-  font-weight: var(--ns-weight-medium);
-  letter-spacing: var(--ns-track-extrawide);
-  text-transform: uppercase;
-  color: var(--ns-color-ink-muted);
-}
-
-.ot-margin-rule { height: 1px; background: var(--ns-color-rule-strong); }
-
-.ot-margin-num {
-  font-family: var(--ns-font-body);
-  font-size: var(--ns-text-tiny);
-  font-weight: var(--ns-weight-medium);
-  letter-spacing: 0.04em;
-  color: var(--ns-color-ink-muted);
-  font-feature-settings: "tnum" 1;
-}
-
-.ot-margin-list {
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-}
-
-.ot-margin-row {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--ns-space-2xs);
-  padding: var(--ns-space-sm) 0;
-  border-bottom: 1px solid var(--ns-color-rule-faint);
-  font-size: var(--ns-text-small);
-}
-
-@media (min-width: 700px) {
-  .ot-margin-row {
-    grid-template-columns: 8.5rem 1fr;
-    gap: var(--ns-space-md);
-    align-items: baseline;
-  }
-}
-
-.ot-margin-row:last-child { border-bottom: 0; }
-
-.ot-margin-row dt {
-  font-family: var(--ns-font-body);
-  font-size: var(--ns-text-tiny);
-  font-weight: var(--ns-weight-semibold);
-  letter-spacing: var(--ns-track-wide);
-  text-transform: uppercase;
-  color: var(--ns-color-ink);
-  margin: 0;
-}
-
-.ot-margin-row dd {
-  margin: 0;
-  color: var(--ns-color-ink-soft);
-  line-height: 1.45;
-}
-
-.ot-margin-row dd strong {
-  color: var(--ns-color-ink);
-  font-weight: var(--ns-weight-semibold);
-  font-feature-settings: "tnum" 1;
-}
 
 
 /* ============================================
@@ -588,9 +470,8 @@
  * ============================================ */
 
 .ot-authority-link {
-  display: inline-flex;
   margin-top: var(--ns-space-xl);
-  color: var(--ns-color-primary);
+  align-self: flex-start;
 }
 
 .ot-testimonials {
@@ -702,9 +583,15 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--ns-space-md);
-  max-width: 70ch;
   position: relative;
   z-index: 1;
+}
+
+@media (min-width: 900px) {
+  .ot-how-train-body {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--ns-space-2xl);
+  }
 }
 
 .ot-how-train-body p {
@@ -718,6 +605,14 @@
 .ot-how-train-body p:first-child {
   color: var(--ns-color-ink);
   font-size: var(--ns-text-large);
+}
+
+@media (min-width: 900px) {
+  /* Lede spans both columns; paras 2 and 3 sit side-by-side */
+  .ot-how-train-body p:first-child {
+    grid-column: 1 / -1;
+    max-width: 70ch;
+  }
 }
 
 
@@ -738,6 +633,13 @@
   z-index: 1;
 }
 
+@media (min-width: 900px) {
+  .ot-included-list {
+    grid-template-columns: 1fr 1fr;
+    column-gap: clamp(2rem, 4vw, 3rem);
+  }
+}
+
 .ot-included-list > li {
   display: grid;
   grid-template-columns: 1.5rem 1fr;
@@ -749,6 +651,12 @@
 
 .ot-included-list > li:last-child { border-bottom: 0; }
 
+/* At 2-col, the last odd item spans the full row; remove bottom border from the last two */
+@media (min-width: 900px) {
+  .ot-included-list > li:nth-last-child(2):nth-child(odd) { border-bottom: 0; }
+  .ot-included-list > li:nth-last-child(2):nth-child(odd) ~ li { border-bottom: 0; }
+}
+
 .ot-included-list > li::before {
   content: "—";
   font-family: var(--ns-font-display);
@@ -757,7 +665,7 @@
   color: var(--ns-color-primary);
 }
 
-@media (min-width: 700px) {
+@media (min-width: 700px) and (max-width: 899.98px) {
   .ot-included-list > li {
     grid-template-columns: 1.5rem minmax(0, 22ch) minmax(0, 1fr);
     gap: var(--ns-space-md) var(--ns-space-2xl);
@@ -785,7 +693,7 @@
   grid-column: 2 / -1;
 }
 
-@media (min-width: 700px) {
+@media (min-width: 700px) and (max-width: 899.98px) {
   .ot-included-body {
     grid-column: 3 / -1;
   }

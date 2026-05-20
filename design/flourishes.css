@@ -463,3 +463,95 @@
  * Flourishes are static — nothing to disable here.
  * Left as a hook for future scroll-driven flourishes.
  * ============================================ */
+
+
+/* ============================================
+ * § 10 — GOOGLE REVIEWS WIDGET (canonical)
+ *
+ * Small, reusable inline social-proof component.
+ * Stars + count + link. Used in heros (Home, About,
+ * service pages) and at the foot of testimonial blocks
+ * where a "See all reviews" affordance is earned.
+ *
+ * Markup contract (lift verbatim — Phase 5 SCF block):
+ *
+ *   <a class="reviews-widget" href="https://www.google.com/search?q=cnc+training+centre+reviews" rel="noopener" target="_blank">
+ *     <span class="reviews-widget-stars" aria-hidden="true">★★★★★</span>
+ *     <span class="reviews-widget-text"><strong>5.0</strong> · 30 reviews on Google</span>
+ *   </a>
+ *
+ * One implementation per project. Do not invent variants.
+ * ============================================ */
+
+.reviews-widget {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.7rem;
+  border: 1px solid var(--ns-color-rule);
+  border-radius: 2px;
+  text-decoration: none;
+  color: var(--ns-color-ink);
+  font-family: var(--ns-font-body);
+  line-height: 1;
+  background: transparent;
+  transition: border-color 120ms ease, color 120ms ease;
+}
+
+.reviews-widget:hover,
+.reviews-widget:focus-visible {
+  border-color: var(--ns-color-ink);
+  color: var(--ns-color-ink);
+  outline: none;
+}
+
+.reviews-widget-stars {
+  color: var(--ns-color-primary, #d97706);
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  line-height: 1;
+}
+
+.reviews-widget-text {
+  font-size: var(--ns-text-small);
+  color: var(--ns-color-ink-soft);
+  letter-spacing: 0.01em;
+}
+
+.reviews-widget-text strong {
+  color: var(--ns-color-ink);
+  font-weight: 600;
+  margin-right: 0.15rem;
+}
+
+/* Inverse variant for use on dark / contact / decisiveness bands */
+.s-anchor .reviews-widget,
+.contact .reviews-widget,
+.decisiveness .reviews-widget {
+  border-color: rgba(255, 255, 255, 0.25);
+  color: var(--ns-color-ink-inverse, #fff);
+}
+
+.s-anchor .reviews-widget:hover,
+.contact .reviews-widget:hover,
+.decisiveness .reviews-widget:hover {
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.s-anchor .reviews-widget-text,
+.contact .reviews-widget-text,
+.decisiveness .reviews-widget-text {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.s-anchor .reviews-widget-text strong,
+.contact .reviews-widget-text strong,
+.decisiveness .reviews-widget-text strong {
+  color: var(--ns-color-ink-inverse, #fff);
+}
+
+/* Hero placement variant — subtle, sits under hero CTAs.
+   Add as second class:  .reviews-widget.reviews-widget--hero  */
+.reviews-widget--hero {
+  margin-top: clamp(1rem, 2vw, 1.5rem);
+}

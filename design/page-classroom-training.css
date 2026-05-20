@@ -8,57 +8,14 @@
 
 /* -------------------------------------------------
  * § 01 — HERO TWEAKS
- * The hero shape (.hero-grid) is inherited. We adjust:
- * (a) hero title scale — the classroom headline is
- *     longer than home's, so the 9rem max from
- *     page-home.css overruns. Cap at ~6.5rem here.
- * (b) RH column swapped from .hero-specs to the
- *     .marginalia component so the page-edge marginalia
- *     signature lands on this service page.
+ * Single-stack treatment matching home.html. The
+ * marginalia course-card sidebar has been retired
+ * per the cross-page no-hero-marginalia constraint.
+ * Course-card facts now live in the Pricing section.
  * ------------------------------------------------- */
 
 .ct-hero .hero-title {
   max-width: 22ch;
-}
-
-.ct-hero-side {
-  /* Marginalia base styles already give it the panel
-     look. Match the hero column min-height + paint a
-     dimension-callout end-tick to echo the home spec
-     panel ticks without duplicating that markup. */
-  position: relative;
-  align-self: start;
-  padding: var(--ns-space-lg);
-}
-.ct-hero-side::before,
-.ct-hero-side::after {
-  content: "";
-  position: absolute;
-  left: -6px;
-  width: 12px;
-  height: 1px;
-  background: var(--ns-color-ink);
-}
-.ct-hero-side::before { top: -1px; }
-.ct-hero-side::after  { bottom: -1px; }
-.ct-hero-side .marginalia-head {
-  justify-content: space-between;
-}
-.ct-hero-side-num {
-  font-family: var(--ns-font-body);
-  font-size: var(--ns-text-tiny);
-  font-weight: var(--ns-weight-medium);
-  letter-spacing: var(--ns-track-wide);
-  font-variant-numeric: tabular-nums;
-  color: var(--ns-color-ink-muted);
-  text-transform: none;
-}
-.ct-hero-side dl dt {
-  padding-top: 0.2rem;
-}
-.ct-hero-side dl dd strong {
-  font-variant-numeric: tabular-nums;
-  color: var(--ns-color-ink);
 }
 
 
@@ -220,7 +177,15 @@
   list-style: none;
   margin: var(--ns-space-2xl) 0 0;
   padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
   border-top: 2px solid var(--ns-color-ink);
+}
+@media (min-width: 900px) {
+  .disq-list {
+    grid-template-columns: 1fr 1fr;
+    column-gap: clamp(2rem, 4vw, 3rem);
+  }
 }
 .disq-row {
   display: grid;
@@ -229,9 +194,16 @@
   padding: var(--ns-space-lg) 0;
   border-bottom: 1px solid var(--ns-color-rule);
 }
-@media (min-width: 700px) {
+@media (min-width: 700px) and (max-width: 899.98px) {
   .disq-row {
     grid-template-columns: 4rem 18rem 1fr;
+    align-items: baseline;
+    padding: var(--ns-space-xl) 0;
+  }
+}
+@media (min-width: 900px) {
+  .disq-row {
+    grid-template-columns: 4rem 1fr;
     align-items: baseline;
     padding: var(--ns-space-xl) 0;
   }
@@ -263,6 +235,11 @@
   .disq-row-idx { grid-column: 1; grid-row: 1; }
   .disq-row-name { grid-column: 2; grid-row: 1; }
   .disq-row-body { grid-column: 2; grid-row: 2; }
+}
+@media (min-width: 900px) {
+  .disq-row-idx { grid-column: 1; grid-row: 1; }
+  .disq-row-name { grid-column: 2; grid-row: 1; }
+  .disq-row-body { grid-column: 2; grid-row: 2; max-width: 48ch; }
 }
 
 
@@ -356,14 +333,23 @@
 }
 .offer-list {
   margin-top: var(--ns-space-2xl);
-  max-width: 72ch;
+  max-width: none;
   display: grid;
+  grid-template-columns: 1fr;
   gap: var(--ns-space-md);
+}
+@media (min-width: 900px) {
+  .offer-list {
+    grid-template-columns: 1fr 1fr;
+    column-gap: clamp(2rem, 4vw, 3rem);
+    row-gap: var(--ns-space-md);
+  }
 }
 .offer-list li {
   font-size: var(--ns-text-medium);
   line-height: var(--ns-leading-base);
   color: var(--ns-color-ink-soft);
+  max-width: 56ch;
 }
 
 
