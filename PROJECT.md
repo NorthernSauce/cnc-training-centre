@@ -1,7 +1,8 @@
 # CNC Training Centre Website
 
 **Started:** 2026-05-15 (re-kickoff; original project began earlier in 2026)
-**Design repo:** {TBC — Dave to provide GitHub URL}
+**Design repo:** https://github.com/NorthernSauce/cnc-training-centre
+**Pages preview:** https://northernsauce.github.io/cnc-training-centre/
 **Local theme path:** to be filled at phase 5 kickoff — e.g. ~/Local Sites/cnc-training-centre/app/public/wp-content/themes/_ns
 **Linear project:** https://linear.app/northern-sauce/project/cnc-training-centre-website-ec6281752867
 **Linear phase issues:** NOR-49 Strategy · NOR-50 Brief · NOR-51 Copy · NOR-52 Wireframes · NOR-53 Design · NOR-54 Build · NOR-55 Launch
