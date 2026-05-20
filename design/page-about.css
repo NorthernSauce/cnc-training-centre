@@ -24,38 +24,6 @@
   font-size: clamp(2.6rem, 1.8rem + 4.8vw, 6rem);
 }
 
-.about-glance {
-  margin-top: var(--ns-space-2xl);
-  padding-top: var(--ns-space-lg);
-  border-top: 1px solid var(--ns-color-rule);
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--ns-space-md);
-  max-width: 64rem;
-}
-.about-glance-row {
-  display: grid;
-  grid-template-columns: minmax(10rem, 14rem) 1fr;
-  gap: var(--ns-space-lg);
-  padding-bottom: var(--ns-space-md);
-  border-bottom: 1px solid var(--ns-color-rule-faint);
-}
-.about-glance-row:last-child { border-bottom: 0; padding-bottom: 0; }
-.about-glance dt {
-  font-family: var(--ns-font-body);
-  font-size: var(--ns-text-tiny);
-  font-weight: var(--ns-weight-semibold);
-  letter-spacing: var(--ns-track-wide);
-  text-transform: uppercase;
-  color: var(--ns-color-ink-muted);
-  padding-top: 0.25rem;
-}
-.about-glance dd {
-  margin: 0;
-  font-size: var(--ns-text-medium);
-  line-height: var(--ns-leading-base);
-  color: var(--ns-color-ink);
-}
 
 
 /* -------------------------------------------------
@@ -120,37 +88,25 @@
 
 
 /* -------------------------------------------------
- * AUTHORITY TABLE — stat table + review pull-quote.
- * Uses canonical .ns-table from components.css.
+ * AUTHORITY "What I'm known for" — spec-block fix.
+ * The shared .spec rules in page-home.css assume a 4-cell
+ * grid with nth-last-child(-n+2) clearing the bottom-border
+ * on the last row. About uses 4 standard cells + 1 spec-wide,
+ * which makes cell 4 lose its bottom border incorrectly.
+ * Locally restore the bottom border on cell 4 and ensure
+ * the spec-wide reads as its own row.
  * ------------------------------------------------- */
 
-.about-auth-table {
-  margin-top: var(--ns-space-2xl);
-  width: 100%;
+.authority.known .spec-block {
+  grid-template-columns: 1fr 1fr;
 }
-.about-auth-table th[scope="row"] {
-  width: 12rem;
-  font-family: var(--ns-font-display);
-  font-weight: 400;
-  font-size: var(--ns-heading-h4);
-  letter-spacing: var(--ns-track-tight);
-  color: var(--ns-color-ink);
-  text-align: left;
-  font-variant-numeric: tabular-nums;
+.authority.known .spec:nth-last-child(-n+2):not(.spec-wide) {
+  border-bottom: 1px solid var(--ns-color-rule);
 }
-.about-auth-table td {
-  font-size: var(--ns-text-medium);
-  line-height: var(--ns-leading-base);
-  color: var(--ns-color-ink-soft);
-}
-
-.about-auth-pull {
-  margin-top: var(--ns-space-2xl);
-}
-
-.about-auth-foot {
-  margin-top: var(--ns-space-xl);
-  text-align: center;
+.authority.known .spec-wide {
+  border-bottom: 0;
+  border-right: 0;
+  border-top: 1px solid var(--ns-color-rule);
 }
 
 
@@ -195,14 +151,6 @@
  * ------------------------------------------------- */
 
 @media (max-width: 700px) {
-  .about-glance-row {
-    grid-template-columns: 1fr;
-    gap: var(--ns-space-2xs);
-  }
-  .about-auth-table th[scope="row"] {
-    width: auto;
-    font-size: var(--ns-heading-h5);
-  }
   .about-trainer-coda { font-size: var(--ns-text-regular); }
   .how-lede { margin-bottom: var(--ns-space-xl); }
 }

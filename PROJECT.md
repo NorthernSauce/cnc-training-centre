@@ -287,3 +287,23 @@ Layout-only revision against the 2026-05-20 brief. Copy untouched. Every change 
 - Premium / high-end visual aesthetic, "industrial premium" — no SaaS gloss, no acid green, no decorative glass.
 - Keep brand blue + add green for video content per client; no lime/acid green as a dominant colour.
 - Two-font system; avoid Inter as the named display font.
+
+### 2026-05-20 — Designer → PM (revision pass 2: about hero/structure, fx-tick removal, site-wide testimonial cleanup, hub title fill)
+
+- **All pages:** removed `<span class="fx-tick">` from the hero section on every page (home, about, onsite-training, classroom-training, programming-services, courses, learning-hub, learning-hub-article, contact). Decorative `fx-tick` instances elsewhere on each page are intentionally retained per the brief (hero-only sweep).
+- **About:** rewrote the H1 to drop the forced `<br/>`, now wraps naturally to 2–3 clean lines. Removed the `<dl class="about-glance">` "at a glance" marginalia block directly under the hero. Removed the entire "Authority table" section (`s s-paper-tint authority about-auth`) — it duplicated the spec-block in "What I'm known for" above and only existed to house the testimonial GAP. Fixed the broken `.authority.known` spec-block: added local override in `page-about.css` so the 4-cell + 1 spec-wide layout renders with proper borders. Flipped surface alternation: `where` → `s-paper-tint`, `faq` → `s-paper`, so the page now reads tint / paper / tint / paper / tint / paper / contact — same family of treatments as `home.html`. Orphan CSS (`.about-glance*`, `.about-auth-*`) removed from `page-about.css`.
+- **Home:** removed the entire `§ PROOF OF WHO` section (`s s-paper-tint testimonials` — 3 t-card GAPs + foot Google widget). Hero Google widget + authority spec-block remain as the proof points.
+- **Onsite training:** removed the `<section class="s s-paper ot-cases">` "Three shop floors / Worked examples" block (3 GAP case studies). Removed the `<div class="ot-testimonials">` block-inside-authority (2 GAP testimonial cards). Authority section header + spec-block + Google widget kept.
+- **Classroom training:** removed the `<ul class="auth-quotes">` block (2 GAP testimonial cards) inside the authority section. Section header + spec-block + Google widget retained.
+- **Programming services:** removed the `<section class="s s-paper-tint prog-cases">` "Three jobs that came in tight" block (3 GAP case studies). Removed the `<ul class="prog-auth-quotes">` block (2 GAP testimonial cards). Authority section header + spec-block + Google widget kept.
+- **Learning Hub:** filled all 12 `.lh-card` titles and deks from the existing `data-title` / `data-dek` attributes (no invention — these were authored on the cards). Filled the 3 featured-card titles at the top of the page (1 featured + 2 secondaries) with plausible Fanuc / Heidenhain / Sliding-head titles + deks consistent with the existing card vocabulary. **Flagged for Dave:** these three titles are invented — drawn from David's known content territory, but not verified against the live cnctrainingcentre.com URL inventory (no inventory in the repo). Approve at sign-off or swap for real archive titles.
+- **Lede GAP at line ~110** (`hub-lede` "[GAP — Dave to confirm featured selection method"): left as-is, flagged back to Dave per brief.
+
+**Items for Dave at sign-off:**
+1. Pool B featured-card titles on `learning-hub.html` are plausible, not sourced — confirm or replace.
+2. The Home "Proof of who" section removal was inferred from item 8 ("kill every testimonial section on every page" + "Home — sweep for any testimonial block"). Confirm this aligns with intent (item 7 said the pattern should "only live on home" — interpreted as: if all that lived there were GAP testimonials, removing it is consistent with item 8).
+3. Hub featured lede still carries the [GAP — selection method] placeholder.
+
+**From:** ns-website-designer
+**Phase:** 4. Design (revision pass 2)
+**Status:** Needs Review · awaiting-dave
