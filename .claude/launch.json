@@ -3,8 +3,8 @@
   "configurations": [
     {
       "name": "brief",
-      "runtimeExecutable": "python3",
-      "runtimeArgs": ["-m", "http.server", "4321", "--directory", "/Users/davidmerton/Documents/Clients/cnc-training-centre"],
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["--yes", "serve", "/Users/davidmerton/Documents/Clients/cnc-training-centre", "-l", "4321", "--no-clipboard"],
       "port": 4321
     }
   ]

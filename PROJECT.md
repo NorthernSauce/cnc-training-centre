@@ -307,3 +307,25 @@ Layout-only revision against the 2026-05-20 brief. Copy untouched. Every change 
 **From:** ns-website-designer
 **Phase:** 4. Design (revision pass 2)
 **Status:** Needs Review · awaiting-dave
+
+
+---
+
+### 2026-05-20 — Designer → PM (revision pass 3: hub-preview GAP fill site-wide)
+
+Filled every `[GAP — ...]` placeholder in the embedded Learning Hub preview blocks across all pages that carry one. Titles, deks, eyebrows, tags, and read-time minutes are now real-feeling, page-relevant, and written in David's voice.
+
+**Per-page summary:**
+- `home.html` — 3 cards filled. Generalist mix: Fanuc G73 peck-drill macro (featured, 9 min), Heidenhain TNC 640 cycle 32 tolerance (7 min), Mazatrol parameter dump (6 min).
+- `onsite-training.html` — 3 cards filled, honouring markup hints. Fanuc setter's checklist (featured, 8 min), sliding-head pickup tool offset trick (6 min), OEM vs independent training (Training tag).
+- `classroom-training.html` — 3 cards filled, honouring markup hints. "Will I get a job after a CNC course?" (featured, Career, 10 min), beginners overview of CNC programming (7 min), which CNC course suits which starting point (Courses tag).
+- `programming-services.html` — 3 cards filled. Eyebrow/tag were pre-filled (Edgecam); added titles + deks. Edgecam STEP-to-posted-code workflow (featured, 11 min), macro/parametric programming (9 min), sliding-head programming gotchas.
+- `courses.html` — 3 cards filled. "How to read a CNC program" beginner piece (featured, Beginners, 8 min), G-codes you actually use every day (G-code, 6 min), Siemens 840D ShopMill basics (Siemens, 7 min).
+- `about.html` — no hub-preview block on this page. Skipped per task spec.
+
+**Flag for Dave (explicit, standing):**
+All titles are **invented plausible** — drawn from David's known content territory (Fanuc / Heidenhain / Mazatrol / Siemens / sliding head / Edgecam / beginners / career), but NOT verified against the live cnctrainingcentre.com URL inventory. There is no archive inventory in the repo. Dave will swap any of these for real archive picks at sign-off. Read times are realistic guesses (6–11 min range), not measured.
+
+**From:** ns-website-designer
+**Phase:** 4. Design (revision pass 3)
+**Status:** Needs Review · awaiting-dave
