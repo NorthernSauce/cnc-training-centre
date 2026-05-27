@@ -3,7 +3,8 @@
 **Started:** 2026-05-15 (re-kickoff; original project began earlier in 2026)
 **Design repo:** https://github.com/NorthernSauce/cnc-training-centre
 **Pages preview:** https://northernsauce.github.io/cnc-training-centre/
-**Local theme path:** to be filled at phase 5 kickoff — e.g. ~/Local Sites/cnc-training-centre/app/public/wp-content/themes/_ns
+**Local theme path:** ~/Local Sites/cnctrainingcentre/app/public/wp-content/themes/_ns
+**WordPress repo:** https://github.com/NorthernSauce/cnc-training-centre-website
 **Linear project:** https://linear.app/northern-sauce/project/cnc-training-centre-website-ec6281752867
 **Linear phase issues:** NOR-49 Strategy · NOR-50 Brief · NOR-51 Copy · NOR-52 Wireframes · NOR-53 Design · NOR-54 Build · NOR-55 Launch
 **Active Brief sub-issues:** NOR-148 Direction (Done) · NOR-149 Tokens (Done) · NOR-150 Components (Done) · NOR-151 Style guide (Done) · NOR-152 DESIGN.md (Done)
@@ -27,7 +28,9 @@
 
 ## Current phase
 
-Phase 4 (Design) — full revision pass against copyseller v3 copy: **all 9 issues Needs Review, awaiting Dave**.
+Phase 5 (Build) — **Segment 1 complete (2026-05-27).** Implementation Plan signed off. Linear roadmap seeded (NOR-336 → NOR-398). Bootstrap + theme foundation done: tokens, Fontshare, .js gate, Customizer, CPTs/taxonomies, nav walkers, CSS skeletons. NOR-336–NOR-342 all Done. Ready for Segment 2 (Global Parts). BLOCKER: WP Business Reviews not on WP.org — Dave needs to supply zip or confirm Site Reviews as permanent substitute.
+
+## Previous phase
 
 **Status (2026-05-18 end of pass):**
 - Phase 3a Copy — DONE + SIGNED OFF (commits c358173, 32273e2, 9c76f32).
@@ -276,6 +279,9 @@ Layout-only revision against the 2026-05-20 brief. Copy untouched. Every change 
 - Voice direction in strategy.md is the law: warm, direct, sweary, anti-corporate, no "wooden AI".
 
 ## Decisions log
+
+- 2026-05-27 — **Build phase Implementation Plan signed off by Dave.** OD answers: OD-01 WP Business Reviews plugin (shortcode-in-ACF-block if plugin exposes one). OD-02 Reviews block can drop anywhere; new ACF block. OD-03/04 Single `cnc-course` CPT with `course-type` taxonomy (`classroom` / `online`); page blocks AUTO-PULL by term — no manual post-selection. OD-05 Tutor LMS deferred. OD-06 Hub featured auto/latest (consistent with auto-pull philosophy). OD-07 Hub search + filters BOTH AJAX, in-archive only, no `search.php` redirect — saved as global skill rule. OD-08 Fonts match design files exactly (Google Fonts, lifted as-is). OD-09 Classroom venue address = Customizer field; every contact-detail block site-wide pulls from Customizer, never manual. Pixel-perfect bar: design is locked + correct; build matches design exactly, first time, no drift.
+
 
 - 2026-05-15 — Sitemap trimmed from 5 services + shop to 4 services (Onsite / Classroom / Courses-coming-soon / Programming Services) + Learning Hub + About + Contact. Online Live Training folded back into Classroom; Shop removed; Courses kept as a "coming soon" placeholder.
 - 2026-05-15 — Project migrated from `~/Documents/PROJECTS/Client Website Projects/cnc-training-centre/` to standard `~/Documents/Clients/cnc-training-centre/`. Old design + build folders archived to `_archive/`.
