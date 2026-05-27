@@ -2,6 +2,21 @@
 /**
  * Compose: Classroom Training page
  * Run: wp eval-file wp-content/themes/cnc-training-centre/build/compose-classroom-training.php
+ *
+ * Design order (classroom-training.html):
+ *  1. .hero.ct-hero             → block-hero
+ *  2. .problem.who              → block-who
+ *  3. .services.courses         → block-course-sheet
+ *  4. .authority.expect         → block-offer-list  (six simulators / what to expect)
+ *  5. .offer                    → block-offer-list  (real simulators checklist — 2nd instance)
+ *  6. .outcome                  → block-outcome
+ *  7. .pricing                  → block-pricing-grid
+ *  8. .disq                     → block-disqualifier
+ *  9. .authority.auth           → block-authority
+ * 10. .faq                      → block-faq
+ * 11. .find                     → block-osm-map
+ * 12. .hub                      → block-hub-preview
+ * 13. .contact.decisiveness     → block-decisiveness
  */
 
 require '/Users/davidmerton/Local Sites/cnctrainingcentre/app/public/wp-content/themes/cnc-training-centre/build/lib/compose.php';
@@ -12,8 +27,7 @@ $content = '';
 $content .= ns_block( 'block-hero', [
 	'variant'       => 'service',
 	'eyebrow'       => 'Classroom CNC training. Barwell, Leicestershire.',
-	'heading'       => 'Two days. Real controls. Walk out able to set a machine.',
-	'heading_em'    => '',
+	'heading'       => 'Two days. Real controls. [em]Walk out able to set a machine.[/em]',
 	'lede'          => 'You can press cycle-start. You can\'t write the cycle yet. Two days in Leicestershire and that changes.',
 	'primary_cta'   => [ 'url' => '/courses/', 'title' => 'See all courses', 'target' => '' ],
 	'secondary_cta' => [ 'url' => 'tel:07834858407', 'title' => 'Call 07834 858 407', 'target' => '' ],
@@ -22,7 +36,7 @@ $content .= ns_block( 'block-hero', [
 
 // ── 2. WHO ────────────────────────────────────────────────────────────────────
 $content .= ns_block( 'block-who', [
-	'heading'         => 'If you\'ve finished your apprenticeship and the interesting stuff stopped',
+	'heading'         => 'If you\'ve finished your apprenticeship and [em]the interesting stuff stopped.[/em]',
 	'body_left'       => '<p>You\'re in your 20s, 30s, 40s. Already on a CNC, stuck at operator level and wanting to move into programming. Or a manual machinist, fabricator, setter on a different process, looking to break into CNC properly. Or finished an apprenticeship that stopped before the programming bit started.</p><p>I also get companies sending one or two people on a scheduled course rather than booking me onsite. Usually because the team is small, the budget is tight, or the operator needs lifting from beginner to setter and a structured course fits better than me arriving for two days.</p>',
 	'body_right'      => '<p>Either way, the classroom works the same way. Small group, real simulators, the same teaching approach I use onsite. No fixed agenda, no syllabus you could\'ve downloaded for free, no PowerPoint. You learn by doing.</p>',
 	'show_pullquote'  => '0',
@@ -35,7 +49,7 @@ $content .= ns_block( 'block-who', [
 // ── 3. COURSE-SHEET ───────────────────────────────────────────────────────────
 $content .= ns_block( 'block-course-sheet', [
 	'pretitle'    => 'Courses',
-	'heading'     => 'Eight courses. Pick the one that meets you where you are.',
+	'heading'     => 'Eight courses. [em]Pick the one that meets you where you are.[/em]',
 	'lede'        => 'Each course runs scheduled or on-demand if you\'ve got two or more. Application is per course.',
 	'meta_string' => '08 / 08 listed · Apply per course',
 	'rows'        => [
@@ -99,10 +113,10 @@ $content .= ns_block( 'block-course-sheet', [
 	'surface' => 's-paper',
 ] );
 
-// ── 4. OFFER-LIST (What's included / Six simulators) ─────────────────────────
+// ── 4. OFFER-LIST — .authority.expect (Six simulators / What to expect) ──────
 $content .= ns_block( 'block-offer-list', [
 	'pretitle' => 'What to expect',
-	'heading'  => 'Six simulators. One to six of you.',
+	'heading'  => 'Six simulators. [em]One to six of you.[/em]',
 	'lede'     => '',
 	'items'    => [
 		[ 'text' => '<strong>Group size.</strong> One to six students. Even with one applicant the course runs. You get a more intensive week.' ],
@@ -115,10 +129,37 @@ $content .= ns_block( 'block-offer-list', [
 	'surface' => 's-paper-tint',
 ] );
 
-// ── 5. PRICING-GRID ───────────────────────────────────────────────────────────
+// ── 5. OFFER-LIST — .offer (Real simulators, real instructor, real cert) ─────
+$content .= ns_block( 'block-offer-list', [
+	'pretitle' => 'What\'s included',
+	'heading'  => 'Real simulators, real instructor, [em]real certificate.[/em]',
+	'lede'     => '',
+	'items'    => [
+		[ 'text' => 'A simulator station for the duration of the course. Real control, real G-code, the same interfaces you\'ll see on the shop floor.' ],
+		[ 'text' => 'Small-group teaching. Never more than six students. Sometimes one.' ],
+		[ 'text' => 'All the teaching in person, by me. Not a junior trainer, not a video, not a workbook.' ],
+		[ 'text' => 'Certificate per student on completion. Evidenced for CVs, employers, apprenticeship records.' ],
+		[ 'text' => 'Course materials to take home: notes, reference sheets, copies of the example programs we worked through. [GAP — Dave to confirm]' ],
+		[ 'text' => 'Written reference for job-hunting students: if you\'re job-hunting after the course, I\'ll give you a reference based on what you did in the classroom. [GAP — Dave to confirm]' ],
+		[ 'text' => 'Honest course selection up front. Five-minute phone call before you apply, no charge, to make sure you\'re picking the right course.' ],
+		[ 'text' => 'Local accommodation list sent with confirmation. Half a dozen options in Barwell, all under £80/night.' ],
+	],
+	'surface' => 's-paper',
+] );
+
+// ── 6. OUTCOME ────────────────────────────────────────────────────────────────
+$content .= ns_block( 'block-outcome', [
+	'pretitle' => 'After the course',
+	'heading'  => 'What does your CV look like [em]three months from now?[/em]',
+	'body'     => '<p>You walk in on day one of the new job and you\'re not bluffing. You know what offsets are. You know what to do when the cycle stops. You\'re not the person everyone wishes had been trained properly before they got handed the keys.</p><p>If you\'re already employed, you go back to work the Monday after the course and apply something specific. Your manager notices. The next time programming work comes up, your name\'s in the conversation.</p>',
+	'layout'   => 'single',
+	'surface'  => 's-paper-tint',
+] );
+
+// ── 7. PRICING-GRID ───────────────────────────────────────────────────────────
 $content .= ns_block( 'block-pricing-grid', [
 	'pretitle'      => 'Pricing',
-	'heading'       => '£300 per student per day. Plus VAT.',
+	'heading'       => '£300 per student per day. [em]Plus VAT.[/em]',
 	'lede'          => '<p>Classroom rate is £300 per student per day. Two-day course is £600 plus VAT. Three-day course is £900. Macro programming and Edgecam run longer and are priced on the course page.</p><p>Companies sponsoring an individual on a scheduled course pay the same per-student rate. If you\'re a company sending three or more people, an onsite engagement at £700/day for the whole team is usually the better number. Happy to scope it either way on the enquiry call.</p>',
 	'alt_link'      => [ 'url' => '/onsite-training/', 'title' => 'See onsite training instead', 'target' => '' ],
 	'list_a_heading' => 'What that gets you',
@@ -139,37 +180,10 @@ $content .= ns_block( 'block-pricing-grid', [
 	'surface' => 's-paper',
 ] );
 
-// ── 6. OUTCOME ────────────────────────────────────────────────────────────────
-$content .= ns_block( 'block-outcome', [
-	'pretitle' => 'What changes',
-	'heading'  => 'What does your CV look like three months from now?',
-	'body'     => '<p>You walk in on day one of the new job and you\'re not bluffing. You know what offsets are. You know what to do when the cycle stops. You\'re not the person everyone wishes had been trained properly before they got handed the keys.</p><p>If you\'re already employed, you go back to work the Monday after the course and apply something specific. Your manager notices. The next time programming work comes up, your name\'s in the conversation.</p>',
-	'layout'   => 'single',
-	'surface'  => 's-paper-tint',
-] );
-
-// ── 7. OSM-MAP ────────────────────────────────────────────────────────────────
-// Barwell, Leicestershire placeholder coordinates. Real address from Customizer field.
-$content .= ns_block( 'block-osm-map', [
-	'heading_pretitle' => 'Location',
-	'heading'          => 'Barwell, Leicestershire.',
-	'body'             => 'The training facility is in Barwell, Leicestershire. Postcode and directions are sent with your booking confirmation.',
-	'address_lines'    => [
-		[ 'label' => 'Town',   'value' => 'Barwell, Leicestershire' ],
-		[ 'label' => 'Directions', 'value' => 'Sent with booking confirmation' ],
-	],
-	'parking_note'  => '',
-	'iframe_src'    => 'https://www.openstreetmap.org/export/embed.html?bbox=-1.3803%2C52.5590%2C-1.3403%2C52.5790&layer=mapnik&marker=52.5690%2C-1.3603',
-	'map_caption'   => 'Barwell, Leicestershire',
-	'map_link_url'  => 'https://www.openstreetmap.org/?mlat=52.5690&mlon=-1.3603#map=14/52.5690/-1.3603',
-	'map_link_text' => 'View larger map',
-	'surface'       => 's-paper',
-] );
-
 // ── 8. DISQUALIFIER ───────────────────────────────────────────────────────────
 $content .= ns_block( 'block-disqualifier', [
 	'pretitle' => 'Not for everyone',
-	'heading'  => 'If any of these are you, save your £300 and don\'t book.',
+	'heading'  => 'If any of these are you, [em]save your £300 and don\'t book.[/em]',
 	'lede'     => '',
 	'items'    => [
 		[
@@ -200,7 +214,7 @@ $content .= ns_block( 'block-disqualifier', [
 // ── 9. AUTHORITY ─────────────────────────────────────────────────────────────
 $content .= ns_block( 'block-authority', [
 	'variant'      => 'standard',
-	'heading'      => 'Same hands teaching now as in 1996.',
+	'heading'      => 'Same hands teaching now [em]as in 1996.[/em]',
 	'lede'         => 'Same instructor on every course. Not a rotating bench of trainers. Not a franchise model. Me. You can watch hundreds of hours of my teaching style on the YouTube channel before you ever fill in an application form.',
 	'spec_items'   => [
 		[ 'label' => 'Training on CNC machines',   'value' => '30',    'note' => 'years', 'wide' => '0' ],
@@ -212,36 +226,9 @@ $content .= ns_block( 'block-authority', [
 	'show_reviews' => '1',
 ] );
 
-// ── 10. HUB-PREVIEW ──────────────────────────────────────────────────────────
-$content .= ns_block( 'block-hub-preview', [
-	'heading'         => 'Free reading before you apply.',
-	'lede'            => 'The Learning Hub has hundreds of articles on G-code, machine setup, and CNC programming. Good starting point if you\'re not sure which course fits, or if you want to arrive on day one already ahead.',
-	'cta'             => [ 'url' => '/learning-hub/', 'title' => 'Go to the Learning Hub', 'target' => '' ],
-	'secondary_items' => [
-		[
-			'title'     => '[GAP — confirm]',
-			'dek'       => '[GAP — confirm]',
-			'url'       => '/learning-hub/',
-			'control'   => 'Fanuc',
-			'skill'     => 'G-code',
-			'type'      => 'Article',
-			'read_time' => '5 min',
-		],
-		[
-			'title'     => '[GAP — confirm]',
-			'dek'       => '[GAP — confirm]',
-			'url'       => '/learning-hub/',
-			'control'   => '',
-			'skill'     => 'Setup',
-			'type'      => 'Article',
-			'read_time' => '4 min',
-		],
-	],
-] );
-
-// ── 11. FAQ ───────────────────────────────────────────────────────────────────
+// ── 10. FAQ ───────────────────────────────────────────────────────────────────
 $content .= ns_block( 'block-faq', [
-	'heading' => 'What gets asked before someone applies?',
+	'heading' => 'What gets asked [em]before someone applies?[/em]',
 	'items'   => [
 		[
 			'question' => 'Will this course get me a job?',
@@ -274,9 +261,53 @@ $content .= ns_block( 'block-faq', [
 	],
 ] );
 
-// ── 12. DECISIVENESS ─────────────────────────────────────────────────────────
+// ── 11. OSM-MAP ───────────────────────────────────────────────────────────────
+$content .= ns_block( 'block-osm-map', [
+	'heading_pretitle' => 'Location',
+	'heading'          => 'Barwell, Leicestershire.',
+	'body'             => 'The training facility is in Barwell, Leicestershire. Postcode and directions are sent with your booking confirmation.',
+	'address_lines'    => [
+		[ 'label' => 'Town',       'value' => 'Barwell, Leicestershire' ],
+		[ 'label' => 'Directions', 'value' => 'Sent with booking confirmation' ],
+	],
+	'parking_note'  => '',
+	'iframe_src'    => 'https://www.openstreetmap.org/export/embed.html?bbox=-1.3803%2C52.5590%2C-1.3403%2C52.5790&layer=mapnik&marker=52.5690%2C-1.3603',
+	'map_caption'   => 'Barwell, Leicestershire',
+	'map_link_url'  => 'https://www.openstreetmap.org/?mlat=52.5690&mlon=-1.3603#map=14/52.5690/-1.3603',
+	'map_link_text' => 'View larger map',
+	'surface'       => 's-paper',
+] );
+
+// ── 12. HUB-PREVIEW ──────────────────────────────────────────────────────────
+$content .= ns_block( 'block-hub-preview', [
+	'heading'         => 'Free reading before you apply.',
+	'lede'            => 'The Learning Hub has hundreds of articles on G-code, machine setup, and CNC programming. Good starting point if you\'re not sure which course fits, or if you want to arrive on day one already ahead.',
+	'cta'             => [ 'url' => '/learning-hub/', 'title' => 'Go to the Learning Hub', 'target' => '' ],
+	'secondary_items' => [
+		[
+			'title'     => '[GAP — confirm]',
+			'dek'       => '[GAP — confirm]',
+			'url'       => '/learning-hub/',
+			'control'   => 'Fanuc',
+			'skill'     => 'G-code',
+			'type'      => 'Article',
+			'read_time' => '5 min',
+		],
+		[
+			'title'     => '[GAP — confirm]',
+			'dek'       => '[GAP — confirm]',
+			'url'       => '/learning-hub/',
+			'control'   => '',
+			'skill'     => 'Setup',
+			'type'      => 'Article',
+			'read_time' => '4 min',
+		],
+	],
+] );
+
+// ── 13. DECISIVENESS ─────────────────────────────────────────────────────────
 $content .= ns_block( 'block-decisiveness', [
-	'heading'       => 'Five minutes on the phone. Quickest way to pick.',
+	'heading'       => 'Five minutes on the phone. [em]Quickest way to pick.[/em]',
 	'lede'          => 'Call me direct on 07834 858 407 if you\'d rather talk it through than fill in a form. Quickest way to work out which course fits.',
 	'primary_cta'   => [ 'url' => '/courses/', 'title' => 'See all courses', 'target' => '' ],
 	'secondary_cta' => [ 'url' => 'tel:07834858407', 'title' => 'Call 07834 858 407', 'target' => '' ],
