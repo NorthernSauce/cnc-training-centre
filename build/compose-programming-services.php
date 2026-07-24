@@ -38,7 +38,7 @@ $content .= ns_block( 'block-hero', [
 // 2. WHO (prog-fit — courses variant for who-* classes)
 $content .= ns_block( 'block-who', [
 	'variant'    => 'courses',
-	'heading'    => 'If your one programmer is on holiday [em]and the deadline isn\'t.[/em]',
+	'heading'    => 'For shops with more programming work [em]than programmers.[/em]',
 	'body_left'  => '<p>You\'ve got the work on the books and the machine on the floor. What you haven\'t got is the programming horsepower to turn the drawing into tested G-code by Friday.</p>',
 	'body_right' => '<p>I get the drawing, write the programme, send it back with the post applied, the tooling listed and notes on how it should run. You put it on the machine and make parts.</p>',
 	'show_pullquote' => 1,
@@ -122,7 +122,7 @@ $content .= ns_block( 'block-bundle-list', [
 // 6. GOAL-EDITORIAL
 $content .= ns_block( 'block-goal-editorial', [
 	'pretitle' => 'The outcome',
-	'heading'  => 'What\'s the week look like [em]with programming off your plate?[/em]',
+	'heading'  => 'What changes when you [em]offload the programming.[/em]',
 	'body'     => '<p>Friday\'s job doesn\'t sit on a desk until Tuesday. The awkward parts offload to me instead of jumping the queue. The work you turned down because the horsepower wasn\'t there? Quote it again.</p>',
 ] );
 

@@ -33,7 +33,7 @@ $content .= ns_block( 'block-hero', [
 
 // 2. AGITATION
 $content .= ns_block( 'block-agitation', [
-	'heading'    => 'I know we should have sorted this [em]ages ago.[/em]',
+	'heading'    => 'Untrained operators are [em]costing you money.[/em]',
 	'body_left'  => '<p>Machines running slow. Work subbed out that should be done in-house. One bloke who knows the Mazak, and you wince every time he books holiday.</p>',
 	'body_right' => '<p>You\'ve looked at training before. The OEMs charge double and only teach their own brand. YouTube doesn\'t answer back. So it stays on the list, and another quarter goes by.</p>',
 ] );
@@ -49,7 +49,7 @@ $content .= ns_block( 'block-positioning', [
 // 4. MECHANISM
 $content .= ns_block( 'block-mechanism', [
 	'pretitle'  => 'How it works',
-	'heading'   => 'What\'s the only training that [em]doesn\'t stop the line?[/em]',
+	'heading'   => 'I train your team on your machines, [em]while they work.[/em]',
 	'body'      => '<p class="mechanism-lede">Most training sits your team in a room with a PowerPoint while the machines stand idle. Half of it never transfers.</p><p>I do it the other way round. Your shop, your machines, your parts. The setter watches offsets dialled in on the job that\'s due Thursday. When I leave, the part\'s in spec and the person who couldn\'t do it can.</p>',
 	'dl_items'  => [
 		[ 'term' => 'On your machines',  'definition' => 'Not a classroom mock-up.' ],
@@ -107,7 +107,7 @@ $content .= ns_block( 'block-services-grid', [
 $content .= ns_block( 'block-authority', [
 	'variant'      => 'standard',
 	'pretitle'     => 'Proof',
-	'heading'      => 'If I haven\'t trained on your control, [em]it doesn\'t exist.[/em]',
+	'heading'      => 'Thirty years. [em]Every major control.[/em]',
 	'lede'         => 'You\'ll probably read a few of my articles before you ring. That\'s how it usually goes.',
 	'spec_items'   => [
 		[ 'value' => '30',  'note' => 'yrs', 'label' => 'Training on CNC machines across every major control.',                                    'wide' => 0 ],

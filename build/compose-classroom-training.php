@@ -40,7 +40,7 @@ $content .= ns_block( 'block-hero', [
 
 // ── 2. WHO ────────────────────────────────────────────────────────────────────
 $content .= ns_block( 'block-who', [
-	'heading'         => 'If you\'ve finished your apprenticeship and [em]the interesting stuff stopped.[/em]',
+	'heading'         => 'For operators who want to become [em]setters and programmers.[/em]',
 	'body_left'       => '<p>You\'re on a CNC, stuck at operator level, wanting to move into programming. Or a manual machinist breaking into CNC properly. Or a company sending one or two people rather than booking me onsite.</p>',
 	'body_right'      => '<p>Small group, real simulators, the same teaching I do onsite. No syllabus you could\'ve downloaded for free. You learn by doing.</p>',
 	'show_pullquote'  => '0',
@@ -152,7 +152,7 @@ $content .= ns_block( 'block-offer-list', [
 // ── 6. OUTCOME ────────────────────────────────────────────────────────────────
 $content .= ns_block( 'block-outcome', [
 	'pretitle' => 'After the course',
-	'heading'  => 'What does your CV look like [em]three months from now?[/em]',
+	'heading'  => 'What the course does [em]for your job prospects.[/em]',
 	'body'     => '<p>You walk into the new job and you\'re not bluffing. You know what offsets are. You know what to do when the cycle stops. Or you go back to work on Monday, apply something specific, and your manager notices.</p>',
 	'layout'   => 'single',
 	'surface'  => 's-paper-tint',
@@ -215,7 +215,7 @@ $content .= ns_block( 'block-disqualifier', [
 // ── 9. AUTHORITY ─────────────────────────────────────────────────────────────
 $content .= ns_block( 'block-authority', [
 	'variant'      => 'standard',
-	'heading'      => 'Same hands teaching now [em]as in 1996.[/em]',
+	'heading'      => 'Taught by me. [em]Every course, every time.[/em]',
 	'lede'         => 'Same instructor on every course. Not a franchise, not a rotating bench of trainers. Me. Watch hundreds of hours of my teaching on YouTube before you apply.',
 	'spec_items'   => [
 		[ 'label' => 'Training on CNC machines',   'value' => '30',    'note' => 'years', 'wide' => '0' ],

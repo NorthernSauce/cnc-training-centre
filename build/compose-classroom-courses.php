@@ -220,7 +220,7 @@ foreach ( $courses as $c ) {
 	// 3. WHAT YOU'LL LEARN
 	$content .= ns_block( 'block-offer-list', [
 		'pretitle' => 'The course',
-		'heading'  => 'What you\'ll [em]actually learn.[/em]',
+		'heading'  => 'What you\'ll [em]learn.[/em]',
 		'lede'     => 'I teach, you do. Worked examples, then your attempt, then the next problem.',
 		'items'    => array_map( fn( $t ) => [ 'text' => $t ], $c['learn'] ),
 		'surface'  => 's-paper-tint',

@@ -29,7 +29,7 @@ $content .= ns_block( 'block-hero', [
 
 // 2. SVC-CTA-FORM (contact form centrepiece)
 $content .= ns_block( 'block-svc-cta-form', [
-	'heading' => 'One form. [em]The thing you need at the top.[/em]',
+	'heading' => 'Send your enquiry here.',
 	'lede'    => '<p>Fill in what\'s useful. Everything except your name and email is optional.</p>',
 	'form_id' => 1,
 ] );
@@ -71,7 +71,7 @@ $content .= ns_block( 'block-other-ways', [
 
 // 4. TRUST-STRIP
 $content .= ns_block( 'block-trust-strip', [
-	'heading'    => 'Thirty years of doing this. Worth two lines before you hit send.',
+	'heading'    => 'The proof, in numbers.',
 	'spec_items' => [
 		[ 'value' => '30',   'note' => 'yrs', 'label' => 'Training on CNC machines, on every major control.' ],
 		[ 'value' => '30',   'note' => '',    'label' => 'Five-star reviews on Google.' ],

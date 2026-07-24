@@ -37,7 +37,7 @@ $content .= ns_block( 'block-hero', [
 
 // 2. WHO
 $content .= ns_block( 'block-who', [
-	'heading'    => 'If you wince every time [em]your senior operator[/em] books holiday.',
+	'heading'    => 'For shops where only one or two people [em]really know the machines.[/em]',
 	'body_left'  => '<p>You\'re an MD or production manager. Six-figure machines on the floor, people running them off muscle memory, the complicated jobs going out to a subcontractor.</p>',
 	'body_right' => '<p>I come in, work with your team on your kit, and leave them two or three rungs up from where they were on Monday. On your machine, programming your parts.</p>',
 ] );
@@ -45,7 +45,7 @@ $content .= ns_block( 'block-who', [
 // 3. HOW-TRAIN
 $content .= ns_block( 'block-how-train', [
 	'pretitle' => 'How I train',
-	'heading'  => 'What\'s the only training your team applies [em]the next day?[/em]',
+	'heading'  => 'Training on your machines, [em]on your parts.[/em]',
 	'body'     => '<p>PowerPoint training doesn\'t transfer. Your team sits in a room for two days while the machines stand idle, then forgets most of it by Friday.</p><p>I train on your machines, against your actual jobs. The setter watches offsets dialled in on the part that\'s due Thursday. Train Monday, run it Tuesday. That\'s how it sticks.</p><p>No fixed agenda. If your operators are flying, I push on. If something\'s not clicking, I stay on it until it does.</p>',
 ] );
 

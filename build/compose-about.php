@@ -44,8 +44,8 @@ $content .= ns_block( 'block-about-trainer', [
 
 // 3. KNOWN
 $content .= ns_block( 'block-known', [
-	'pretitle'  => 'What I\'m known for',
-	'heading'   => 'The work, [em]not the marketing.[/em]',
+	'pretitle'  => 'Track record',
+	'heading'   => 'What I\'m known for.',
 	'lede'      => '',
 	'spec_items' => [
 		[ 'value' => '30',   'note' => 'yrs', 'label' => 'Training on every major control. Fanuc, Heidenhain, Siemens, Mazak, Hurco, Brother, Haas, Doosan, XYZ, sliding head.', 'wide' => 0 ],
