@@ -3,7 +3,7 @@
 **Started:** 2026-05-15 (re-kickoff; original project began earlier in 2026)
 **Design repo:** https://github.com/NorthernSauce/cnc-training-centre
 **Pages preview:** https://northernsauce.github.io/cnc-training-centre/
-**Local theme path:** ~/Local Sites/cnctrainingcentre/app/public/wp-content/themes/_ns
+**Local theme path:** ~/Local Sites/cnctrainingcentre/app/public/wp-content/themes/cnc-training-centre (renamed from `_ns` 2026-05-27 per Dave; internal `_ns_` namespacing kept)
 **WordPress repo:** https://github.com/NorthernSauce/cnc-training-centre-website
 **Linear project:** https://linear.app/northern-sauce/project/cnc-training-centre-website-ec6281752867
 **Linear phase issues:** NOR-49 Strategy · NOR-50 Brief · NOR-51 Copy · NOR-52 Wireframes · NOR-53 Design · NOR-54 Build · NOR-55 Launch
@@ -395,3 +395,24 @@ Course titles are taken verbatim from `strategy/cnctcc-proposed-sitemap.md` and 
 **From:** ns-website-designer
 **Phase:** 4. Design (revision pass 4)
 **Status:** Needs Review · awaiting-dave
+
+---
+
+### 2026-06-07 — PM → Dave (clone build: content migration + hub + trainings + nav + links + Tutor — SHIP-READY)
+
+**Site:** `cnctrainingcentre-old` (the live-content clone). **Status:** ready for client review.
+
+Autonomous build onto the clone (which holds the client's real 290-post archive + Tutor/Woo data). Full detail + resume log in `plans/EXECUTION-STATUS.md`; implementation plan in `plans/CONTENT-MIGRATION-IMPLEMENTATION-PLAN.md`. All code on branch `cnc-clone-rebuild` (unpushed). Deploy path = WP Migrate DB (DB + theme files).
+
+**Done:**
+- DB isolation fixed (clone wp-config was bare `localhost` — the Fuelled-wipe hazard) + backups at each stage.
+- 6 SCF-block marketing pages copied from the new site (Home, About, Contact, Onsite, Classroom, Programming); front + posts page set.
+- Learning Hub filter rebuilt: left sidebar, real category + tag + search, AJAX, no reload (the old filter hit empty taxonomies).
+- Single-post formatting fixed (legacy raw HTML now styled) + the missing-TOC-sidebar bug fixed.
+- 17 trainings as `cnc-course` (`/training/<slug>/`), content lifted as-is, + a `block-training-links` block on Onsite (7) / Classroom (10).
+- Nav: top (Onsite·Classroom·Programming·Online·About·Learning Hub) + Footer Services/Learning/Legal; 7 legacy menus deleted; Privacy page created.
+- Link integrity: ~211 posts' internal links rewritten to new URLs + theme-level 301 redirect map for old/inbound URLs.
+- Tutor LMS rebranded to theme (variable-override `tutor.css`).
+- Fixed 3 reported bugs: TOC sidebar, ugly card excerpts, the recurring `u003c` character bug (+ global prevention added to CLAUDE.md so it never recurs on any project).
+
+**Follow-ups (non-blocking):** visual mobile eyeball pass; `.gitignore` compiled-asset fix (NOR-440) before any pure-git deploy; "Apply/enquiry" legacy pages currently redirect (convert to real forms = follow-up); post NOR-54 Build update when Linear MCP reconnects.

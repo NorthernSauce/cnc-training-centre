@@ -3,6 +3,8 @@
  * Compose: Programming Services page.
  * Run: wp eval-file wp-content/themes/cnc-training-centre/build/compose-programming-services.php
  *
+ * Copy: v4 rewrite 2026-07-24 — cut hard, straight to the point, David's voice.
+ *
  * Design order (programming-services.html):
  *  1. .hero.prog-hero       → block-hero
  *  2. .prog-fit             → block-who (variant=courses)
@@ -27,7 +29,7 @@ $content .= ns_block( 'block-hero', [
 	'variant'       => 'service',
 	'eyebrow'       => 'Sub-contract CNC programming · Edgecam · UK-wide',
 	'heading'       => 'Send me the drawing. [em]I\'ll send back[/em] tested G-code.',
-	'lede'          => 'Job in Friday. Deadline Tuesday. Your programmer\'s on holiday. The part\'s complex enough to tie up two days of someone you haven\'t got.',
+	'lede'          => 'Job in Friday. Deadline Tuesday. Your programmer\'s on holiday. That\'s what this service is for.',
 	'primary_cta'   => [ 'url' => '/contact/', 'title' => 'Send a drawing', 'target' => '' ],
 	'secondary_cta' => [ 'url' => 'tel:+447834858407', 'title' => 'Call 07834 858 407', 'target' => '' ],
 	'show_reviews'  => 1,
@@ -37,10 +39,10 @@ $content .= ns_block( 'block-hero', [
 $content .= ns_block( 'block-who', [
 	'variant'    => 'courses',
 	'heading'    => 'If your one programmer is on holiday [em]and the deadline isn\'t.[/em]',
-	'body_left'  => '<p>You\'re an engineering company with the work on the books and the machine on the floor. What you haven\'t got is the time, the headcount, or the in-house programming horsepower to turn the drawing into tested G-code by Friday. Maybe your one programmer is on holiday. Maybe the part is complex enough that hand-coding it would tie someone up for two days. Maybe you\'ve never had a programmer and you\'ve always sub-contracted the trickier work out.</p>',
-	'body_right' => '<p>This is the service for that. Not training, not consultancy. Programming. I get the drawing, I write the programme, I send it back with the post applied, the tooling listed, and notes on how it should run. You put it on the machine and make parts.</p>',
+	'body_left'  => '<p>You\'ve got the work on the books and the machine on the floor. What you haven\'t got is the programming horsepower to turn the drawing into tested G-code by Friday.</p>',
+	'body_right' => '<p>I get the drawing, write the programme, send it back with the post applied, the tooling listed and notes on how it should run. You put it on the machine and make parts.</p>',
 	'show_pullquote' => 1,
-	'pullquote_text' => 'Worth saying clearly. If what you actually need is to build in-house programming capability so this doesn\'t keep happening, that\'s onsite or classroom training. Different page, different conversation. I\'d rather steer you to the right thing than book you for the wrong one.',
+	'pullquote_text' => 'If what you actually need is in-house programming capability so this stops happening, that\'s training. Different page. I\'d rather steer you right than book you wrong.',
 	'pullquote_cite' => '',
 	'show_coda'      => 0,
 	'coda'           => '',
@@ -55,22 +57,22 @@ $content .= ns_block( 'block-prog-offer', [
 		[
 			'index' => '01',
 			'name'  => 'Sub-contract programming',
-			'lede'  => 'You send the drawing, I send back tested G-code. Most common engagement. Suits one-off complex parts, urgent jobs, or steady overflow when your in-house programmer is at capacity.',
+			'lede'  => 'Drawing in, tested G-code out. One-off complex parts, urgent jobs, steady overflow.',
 		],
 		[
 			'index' => '02',
 			'name'  => 'Edgecam programming',
-			'lede'  => 'I run a professional Edgecam licence. If your shop is on Edgecam (or moving to it) I can program in your software, deliver the file in your format, post to your specific machine. Common controls covered: Fanuc, Heidenhain, Siemens, Mazak, Hurco, Haas.',
+			'lede'  => 'Professional Edgecam licence. Your software, your file format, posted to your machine.',
 		],
 		[
 			'index' => '03',
 			'name'  => 'Turnkey solutions',
-			'lede'  => 'For companies bringing a new machine or a new process online. I\'ll write the first set of programmes, document the tooling, set up the fixtures conceptually, stay involved while your team gets confident running the work. Halfway between programming and consultancy.',
+			'lede'  => 'New machine or new process? I write the first programmes, document the tooling, stay involved until your team\'s confident.',
 		],
 		[
 			'index' => '04',
 			'name'  => 'CNC machining services',
-			'lede'  => 'Where you\'d rather sub the whole job out. Programme plus parts. I work with a network of trusted machine shops for production runs that need both programming intelligence and physical machining. Quoted per job. [GAP — Dave to confirm this is how production runs are delivered.]',
+			'lede'  => 'Programme plus parts, through a network of trusted machine shops. Quoted per job.',
 		],
 	],
 	'surface'    => 's-paper',
@@ -85,18 +87,18 @@ $content .= ns_block( 'block-plan-steps', [
 	'steps'    => [
 		[
 			'num'   => '01',
-			'title' => 'Send the drawing and tell me what you\'re running it on.',
-			'body'  => 'Email or send through the enquiry form. Include the drawing (STEP, IGES, DXF, PDF, whatever you\'ve got), the machine and control, the material, the batch quantity, the deadline. The more honest the brief, the cleaner the quote.',
+			'title' => 'Send the drawing.',
+			'body'  => 'STEP, IGES, DXF, PDF, whatever you\'ve got. Tell me the machine and control, the material, the quantity, the deadline.',
 		],
 		[
 			'num'   => '02',
 			'title' => 'I quote on hours, you decide.',
-			'body'  => 'Programming is £60 to £100 per hour plus VAT, depending on complexity. Straightforward 3-axis milling work is at the bottom end. Multi-axis or sliding head with live tooling is at the top. I\'ll come back with an estimate in hours and a fixed-cap if you\'d prefer the certainty. Sub-contract programming is paid upfront before the work starts.',
+			'body'  => '£60 to £100 per hour plus VAT depending on complexity. Fixed-cap available once I\'ve seen the drawing. Paid upfront.',
 		],
 		[
 			'num'   => '03',
-			'title' => 'Tested G-code delivered. Phone stays on.',
-			'body'  => 'You get the programme with the post applied, a tooling list, and notes on how it should run. If something kicks back when you load it on the machine (wrong post, fixture clash, anything) get on the phone. I\'d rather sort it in twenty minutes with you on the line than have you fighting it for an afternoon.',
+			'title' => 'Tested code delivered. Phone stays on.',
+			'body'  => 'Post applied, tooling list, run notes. If anything kicks back on the machine, ring me and we\'ll sort it in twenty minutes.',
 		],
 	],
 ] );
@@ -107,13 +109,13 @@ $content .= ns_block( 'block-bundle-list', [
 	'heading'  => 'Six things bundled [em]into the hourly rate.[/em]',
 	'items'    => [
 		[ 'name' => 'The programming work',                        'body' => 'Drawing in, tested G-code out.' ],
-		[ 'name' => 'Posting to your specific machine and control','body' => 'Fanuc, Heidenhain, Siemens, Mazak, Hurco, Haas, Doosan, XYZ, sliding head. All standard posts available, custom posts if needed.' ],
+		[ 'name' => 'Posting to your machine and control',         'body' => 'All standard posts, custom posts if needed.' ],
 		[ 'name' => 'Tooling list and run notes',                  'body' => 'Not just the code. The context to run it confidently.' ],
 		[ 'name' => 'Phone support after delivery',                'body' => 'Until the program runs cleanly on your machine.' ],
-		[ 'name' => 'Honest hour estimates up front',              'body' => 'Fixed-cap available on request once I\'ve seen the drawing.' ],
-		[ 'name' => 'Routing if it\'s not the right job for me',   'body' => 'If your part is below the threshold for paid programming, or if you\'re better off training your team to do this in-house, I\'ll say so.' ],
+		[ 'name' => 'Honest hour estimates up front',              'body' => 'Fixed-cap on request.' ],
+		[ 'name' => 'Routing if it\'s not the right job for me',   'body' => 'If you\'re better off training your team instead, I\'ll say so.' ],
 	],
-	'foot'     => 'Quoted separately: turnkey engagements (new machine commissioning plus first programs), CNC machining services (programming plus parts via my network of trusted shops), onsite programming on your floor.',
+	'foot'     => 'Quoted separately: turnkey engagements, machining services, onsite programming on your floor.',
 	'surface'  => 's-paper',
 ] );
 
@@ -121,20 +123,20 @@ $content .= ns_block( 'block-bundle-list', [
 $content .= ns_block( 'block-goal-editorial', [
 	'pretitle' => 'The outcome',
 	'heading'  => 'What\'s the week look like [em]with programming off your plate?[/em]',
-	'body'     => '<p>The job that came in on Friday afternoon doesn\'t sit on a desk until Tuesday. The customer who needed parts by Thursday gets parts by Thursday. Your in-house programmer stops being the bottleneck because the awkward jobs offload to me instead of jumping the queue.</p><p>The work you quietly turned down because the programming horsepower wasn\'t there. Quote those again. The job you sub-contracted out at a margin loss. Bring it back in-house. I do the programming, you do the machining at proper margin. Programming load stops being the thing that caps your shop\'s revenue.</p>',
+	'body'     => '<p>Friday\'s job doesn\'t sit on a desk until Tuesday. The awkward parts offload to me instead of jumping the queue. The work you turned down because the horsepower wasn\'t there? Quote it again.</p>',
 ] );
 
 // 7. PRICING-RATES
 $content .= ns_block( 'block-pricing-rates', [
 	'pretitle' => 'Pricing',
 	'heading'  => '£60 to £100 per hour. [em]Where you sit depends on the work.[/em]',
-	'lede'     => 'Programming work is priced by the hour. The rate moves with complexity. You\'ll get an estimate in hours on the quote. If you want a fixed-cap rather than an hourly run, ask. For most jobs I can do that once I\'ve seen the drawing.',
-	'foot'     => 'All programming work is paid upfront before the work starts. That\'s how I\'ve run sub-contract programming for the same reason as onsite training. It keeps the relationship clean and means I can prioritise your job properly. [GAP — Dave to confirm the £60 / £75–85 / £100 tier breakdown.]',
+	'lede'     => 'You get an estimate in hours on the quote. Want a fixed-cap instead? Ask.',
+	'foot'     => 'All programming work is paid upfront. Keeps the relationship clean and your job prioritised.',
 	'rows'     => [
-		[ 'rate' => '£60/hr',     'tier' => 'Standard 3-axis',         'body' => 'Milling and turning. Familiar controls, conventional cycles, straightforward tooling.',                                               'wide' => 0 ],
-		[ 'rate' => '£75–85/hr',  'tier' => 'Multi-axis & complex',    'body' => 'Multi-axis work, complex fixtures, parts with awkward geometry, non-standard posts.',                                                  'wide' => 0 ],
-		[ 'rate' => '£100/hr',    'tier' => 'Sliding head & macro',    'body' => 'Swiss-type work, live tooling on multi-axis lathes, parametric programming with macro, anything that requires real depth on a specific control.', 'wide' => 0 ],
-		[ 'rate' => 'Per job',    'tier' => 'Turnkey & machining',     'body' => 'Turnkey engagements and CNC machining services are quoted per job. The hourly rate is still the foundation; the day count moves around with the situation.', 'wide' => 1 ],
+		[ 'rate' => '£60/hr',     'tier' => 'Standard 3-axis',         'body' => 'Milling and turning. Familiar controls, conventional cycles.',                                               'wide' => 0 ],
+		[ 'rate' => '£75–85/hr',  'tier' => 'Multi-axis & complex',    'body' => 'Multi-axis work, complex fixtures, awkward geometry, non-standard posts.',                                                  'wide' => 0 ],
+		[ 'rate' => '£100/hr',    'tier' => 'Sliding head & macro',    'body' => 'Swiss-type work, live tooling, parametric programming with macro.', 'wide' => 0 ],
+		[ 'rate' => 'Per job',    'tier' => 'Turnkey & machining',     'body' => 'Quoted per job. The hourly rate is still the foundation.', 'wide' => 1 ],
 	],
 	'surface'  => 's-paper-tint',
 ] );
@@ -143,32 +145,32 @@ $content .= ns_block( 'block-pricing-rates', [
 $content .= ns_block( 'block-warn-list', [
 	'pretitle' => 'Who shouldn\'t book this',
 	'heading'  => 'Three situations [em]where I\'m the wrong call.[/em]',
-	'lede'     => 'Programming services work well when you\'ve got a real machining job, a real deadline, and the machine to run the code on. They don\'t work when:',
+	'lede'     => '',
 	'items'    => [
 		[
 			'num'  => '01',
 			'name' => 'You want to learn how to program.',
-			'body' => 'That\'s training. Onsite if you\'ve got the machines, classroom if you want simulators and a structured course. I do both. Different page.',
+			'body' => 'That\'s training. Onsite or classroom. I do both. Different page.',
 		],
 		[
 			'num'  => '02',
-			'name' => 'You don\'t have a machine to run the programme on.',
-			'body' => 'Programming services assume you\'ve got the kit to run the code. If you\'re still at the planning stage, the conversation you need is about machine spec, not G-code.',
+			'name' => 'You don\'t have a machine to run it on.',
+			'body' => 'The conversation you need is about machine spec, not G-code.',
 		],
 		[
 			'num'  => '03',
-			'name' => 'You\'re hoping for a free programme on a speculative job.',
-			'body' => 'All sub-contract programming is paid upfront once I\'ve quoted and you\'ve accepted. If the job doesn\'t materialise after you\'ve accepted the quote, I\'ll hold the deposit for the next one. But I don\'t work on spec.',
+			'name' => 'You\'re hoping for a free programme on spec.',
+			'body' => 'All work is quoted and paid upfront. I don\'t work on spec.',
 		],
 	],
 	'surface'  => 's-paper',
 ] );
 
-// 9. AUTHORITY (prog-auth — spec-block + reviews widget)
+// 9. AUTHORITY
 $content .= ns_block( 'block-authority', [
 	'variant'      => 'standard',
 	'heading'      => 'Thirty years writing CNC programs [em]for engineering companies.[/em]',
-	'lede'         => 'I\'ve been writing CNC programmes for a living since 1996. Every major control — Fanuc, Heidenhain, Siemens, Mazak, Hurco, Brother, Haas, Doosan, XYZ, sliding head — has been on the bench. Edgecam runs on a professional licence in the office with all the common posts. Hand-coding for legacy controls when the situation calls for it.',
+	'lede'         => 'Writing CNC programmes for a living since 1996. Edgecam on a professional licence, all the common posts, hand-coding when the control calls for it.',
 	'spec_items'   => [
 		[ 'value' => '30',   'note' => 'yrs', 'label' => 'Writing CNC programmes for engineering companies.', 'wide' => 0 ],
 		[ 'value' => 'Pro',  'note' => '',    'label' => 'Edgecam licence. All major posts available.',        'wide' => 0 ],
@@ -181,28 +183,9 @@ $content .= ns_block( 'block-authority', [
 // 10. HUB-PREVIEW
 $content .= ns_block( 'block-hub-preview', [
 	'heading'         => 'See the programming style before you send the drawing.',
-	'lede'            => 'The Hub is full of programmes I\'ve written, posted, broken down and explained. If you want to see how I think before you trust me with a job, start there.',
+	'lede'            => 'The Hub is full of programmes I\'ve written, posted, broken down and explained.',
 	'cta'             => [ 'url' => '/learning-hub/', 'title' => 'Browse the Hub', 'target' => '' ],
-	'secondary_items' => [
-		[
-			'title'     => '[GAP — confirm]',
-			'dek'       => '',
-			'url'       => '',
-			'control'   => 'Fanuc',
-			'skill'     => 'Programming',
-			'type'      => 'Article',
-			'read_time' => '',
-		],
-		[
-			'title'     => '[GAP — confirm]',
-			'dek'       => '',
-			'url'       => '',
-			'control'   => '',
-			'skill'     => 'Edgecam',
-			'type'      => 'Article',
-			'read_time' => '',
-		],
-	],
+	'secondary_items' => [],
 ] );
 
 // 11. FAQ
@@ -211,31 +194,27 @@ $content .= ns_block( 'block-faq', [
 	'items'   => [
 		[
 			'question' => 'How fast can you turn a programme around?',
-			'answer'   => '<p>Depends on the job. A standard 3-axis milling part with a clean drawing, often same-day if it lands in office hours. A complex multi-axis or sliding head part with live tooling, typically two to five working days. I\'d rather quote honestly on the brief than promise a turnaround I can\'t keep.</p>',
+			'answer'   => '<p>A clean 3-axis part, often same-day. Complex multi-axis or sliding head, two to five working days. Quoted honestly on the brief.</p>',
 		],
 		[
 			'question' => 'Will the G-code run on my machine without modification?',
-			'answer'   => '<p>That\'s the goal. I post to your specific machine and control, and the code is tested in Edgecam before it leaves me. Will every programme run perfectly first time on every machine? No. Fixtures, tool wear, controller quirks all exist. That\'s why the phone stays on after delivery.</p>',
+			'answer'   => '<p>That\'s the goal. Posted to your specific machine, tested in Edgecam before it leaves me. If a fixture or controller quirk bites, the phone stays on.</p>',
 		],
 		[
 			'question' => 'What files do you need?',
-			'answer'   => '<p>Ideally a 3D model (STEP or IGES) plus a PDF drawing for dimensions and tolerances. DXF for 2D work. If all you\'ve got is a hand sketch and a phone call, that can still work for simple parts. I\'ll tell you on the enquiry whether the brief is enough or whether I need more.</p>',
+			'answer'   => '<p>Ideally a STEP or IGES model plus a PDF drawing. DXF for 2D. A hand sketch and a phone call can work for simple parts.</p>',
 		],
 		[
-			'question' => 'Do you work with Edgecam only, or can you hand-code?',
-			'answer'   => '<p>Both. Edgecam is the default for anything substantial. Hand-coding still has its place for short, simple programmes or for legacy controls without modern post support. I\'ll use whichever makes sense for the job and tell you why on the quote.</p>',
+			'question' => 'Edgecam only, or can you hand-code?',
+			'answer'   => '<p>Both. Edgecam for anything substantial, hand-coding for short programmes or legacy controls.</p>',
 		],
 		[
-			'question' => 'What if my batch is too small to justify the programming cost?',
-			'answer'   => '<p>Then say so on the enquiry. Sometimes the right answer is "this part isn\'t worth programming. You should sub-contract the actual machining out." I\'d rather give you that answer than charge you for a programme that doesn\'t pay back.</p>',
+			'question' => 'What if my batch is too small to justify the cost?',
+			'answer'   => '<p>Then I\'ll tell you, and point you at a better route. I\'d rather do that than charge for a programme that doesn\'t pay back.</p>',
 		],
 		[
-			'question' => 'Can you stay involved if the job runs into problems?',
-			'answer'   => '<p>Yes. Phone support is included once the programme has been delivered. If you want me onsite to commission a new machine or train the team running the parts, that\'s a separate engagement. Onsite training or a turnkey scope.</p>',
-		],
-		[
-			'question' => 'Do you do production runs as well as programming?',
-			'answer'   => '<p>Through the CNC machining services route, yes. I work with a network of trusted machine shops. Quoted per job rather than per hour, because the variables shift.</p>',
+			'question' => 'Do you do production runs as well?',
+			'answer'   => '<p>Yes, through the machining services route. Programme plus parts, quoted per job.</p>',
 		],
 	],
 ] );
@@ -243,7 +222,7 @@ $content .= ns_block( 'block-faq', [
 // 12. DECISIVENESS
 $content .= ns_block( 'block-decisiveness', [
 	'heading'       => 'Send the drawing. [em]Tell me the deadline.[/em]',
-	'lede'          => 'Email the drawing (STEP, IGES, DXF, PDF, whatever you\'ve got) with two lines: the machine and control it\'s going on, and when you need the parts. I\'ll come back the same day with an hour estimate and dates. If you\'d rather talk before you send anything, call 07834 858 407.',
+	'lede'          => 'Two lines: the machine it\'s going on, and when you need the parts. Same-day answer with an hour estimate.',
 	'primary_cta'   => [ 'url' => '/contact/', 'title' => 'Send a drawing', 'target' => '' ],
 	'secondary_cta' => [ 'url' => 'tel:+447834858407', 'title' => '07834 858 407', 'target' => '' ],
 	'phone'         => '',

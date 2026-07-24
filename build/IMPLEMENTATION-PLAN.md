@@ -1,6 +1,28 @@
 # CNC Training Centre — WordPress Build Implementation Plan
 
-**Status:** Awaiting Dave sign-off before execution begins  
+**Status:** SIGNED OFF 2026-05-27 — Segment 1 dispatched.
+
+## Dave's Decisions (2026-05-27)
+
+- **OD-01 Reviews plugin:** WP Business Reviews. New ACF block. If plugin exposes a shortcode, block just renders the shortcode via `do_shortcode()`.
+- **OD-02 Reviews section placement:** New ACF block — placeable on any page (no fixed location).
+- **OD-03 Courses architecture:** ONE custom post type `cnc-course`. Taxonomy `course-type` with terms: `classroom`, `online` (+ `onsite` if onsite training also benefits from CPT records — builder confirms during execution).
+- **OD-04 CPT slug:** `cnc-course`.
+- **OD-05 Tutor LMS:** Deferred. Do NOT install Tutor LMS plugin. Online courses page lists CPT entries with `course-type = online`; Tutor LMS gets bolted on later.
+- **OD-06 Hub featured:** Auto-pull (latest / category-default). No manual editor pick. Consistent with the course-block auto-pull philosophy.
+- **OD-07 Hub search + filters: BOTH AJAX, in-archive only.** No `search.php` redirect, no separate search page. User types → posts re-render live inside the archive grid. Filter chips → same. Saved as a global skill rule for every future NS Hub.
+- **OD-08 Fonts:** Match `design/*.html` + `design/design.css` exactly. Google Fonts as defined in the design — lift the `@import` / `<link>` / `@font-face` declarations verbatim.
+- **OD-09 Classroom venue + ALL contact details:** Customizer fields. Every contact-detail block site-wide (Contact form, About contact band, Classroom venue block, footer contact column, schema.org JSON-LD) READS from the Customizer via `get_theme_mod()`. ZERO manual contact entry in any ACF block.
+
+**Course auto-pull rule (Dave verbatim):** "Each of those pages will then automatically pull those specific courses in that ACF block, as opposed to them having to be manually selected." → Classroom page's course block auto-queries `cnc-course WHERE course-type = classroom`. Online Courses page auto-queries `course-type = online`. No post-object repeaters. Block fields are layout/heading/CTA only.
+
+**Theme directory rename (Dave verbatim 2026-05-27):** Cloned base theme directory = `cnc-training-centre/` (NOT `_ns/`). `style.css` `Theme Name:` updated to "CNC Training Centre". Internal namespacing (`_ns_` prefix, `_ns` text domain, `_ns-style` enqueue handles, `_NS_VERSION`) UNTOUCHED — only the directory name + visible Theme Name change. Theme target path becomes `~/Local Sites/cnctrainingcentre/app/public/wp-content/themes/cnc-training-centre/`.
+
+**Menu architecture (Dave verbatim 2026-05-27):** "The mobile navigation drawer must use the same primary navigation as the primary navigation. All menus must be done through the Appearance menu within the WordPress editor as well." → Register `primary` menu location ONCE; desktop header and mobile drawer both render it (different walkers). Footer menus (services / learning / legals) are their own locations since content differs. Zero hardcoded nav anywhere — every nav-shaped block is `wp_nav_menu()` against a registered location.
+
+**Pixel-perfect bar (Dave verbatim):** "The design is already exactly pixel perfect, exactly how it needs to be... exactly what the design is now needs to match exactly into the WordPress build, no mistakes, just exactly as it is in the design, first time."
+
+  
 **Linear build issue:** NOR-54 (Backlog until approved)  
 **Prepared by:** ns-acf-block-builder, Plan Mode  
 **Date:** 2026-05-27

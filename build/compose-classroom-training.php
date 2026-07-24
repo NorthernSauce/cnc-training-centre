@@ -3,12 +3,16 @@
  * Compose: Classroom Training page
  * Run: wp eval-file wp-content/themes/cnc-training-centre/build/compose-classroom-training.php
  *
- * Design order (classroom-training.html):
+ * Copy: v4 rewrite 2026-07-24 — cut hard, straight to the point, David's voice.
+ * Changes vs live: Amelia events calendar REMOVED from this page (now on each
+ * course page); course-sheet rows link to the 8 new /classroom-training/ child pages.
+ *
+ * Section order:
  *  1. .hero.ct-hero             → block-hero
  *  2. .problem.who              → block-who
- *  3. .services.courses         → block-course-sheet
- *  4. .authority.expect         → block-offer-list  (six simulators / what to expect)
- *  5. .offer                    → block-offer-list  (real simulators checklist — 2nd instance)
+ *  3. .services.courses         → block-course-sheet   (links to 8 course pages)
+ *  4. .authority.expect         → block-offer-list     (what to expect)
+ *  5. .offer                    → block-offer-list     (what's included)
  *  6. .outcome                  → block-outcome
  *  7. .pricing                  → block-pricing-grid
  *  8. .disq                     → block-disqualifier
@@ -19,7 +23,7 @@
  * 13. .contact.decisiveness     → block-decisiveness
  */
 
-require '/Users/davidmerton/Local Sites/cnctrainingcentre/app/public/wp-content/themes/cnc-training-centre/build/lib/compose.php';
+require __DIR__ . '/lib/compose.php';
 
 $content = '';
 
@@ -28,8 +32,8 @@ $content .= ns_block( 'block-hero', [
 	'variant'       => 'service',
 	'eyebrow'       => 'Classroom CNC training. Barwell, Leicestershire.',
 	'heading'       => 'Two days. Real controls. [em]Walk out able to set a machine.[/em]',
-	'lede'          => 'You can press cycle-start. You can\'t write the cycle yet. Two days in Leicestershire and that changes.',
-	'primary_cta'   => [ 'url' => '/courses/', 'title' => 'See all courses', 'target' => '' ],
+	'lede'          => 'You can press cycle-start. You can\'t write the cycle yet. Two days in Barwell and that changes.',
+	'primary_cta'   => [ 'url' => '#courses', 'title' => 'Pick your course', 'target' => '' ],
 	'secondary_cta' => [ 'url' => 'tel:07834858407', 'title' => 'Call 07834 858 407', 'target' => '' ],
 	'show_reviews'  => '0',
 ] );
@@ -37,8 +41,8 @@ $content .= ns_block( 'block-hero', [
 // ── 2. WHO ────────────────────────────────────────────────────────────────────
 $content .= ns_block( 'block-who', [
 	'heading'         => 'If you\'ve finished your apprenticeship and [em]the interesting stuff stopped.[/em]',
-	'body_left'       => '<p>You\'re in your 20s, 30s, 40s. Already on a CNC, stuck at operator level and wanting to move into programming. Or a manual machinist, fabricator, setter on a different process, looking to break into CNC properly. Or finished an apprenticeship that stopped before the programming bit started.</p><p>I also get companies sending one or two people on a scheduled course rather than booking me onsite. Usually because the team is small, the budget is tight, or the operator needs lifting from beginner to setter and a structured course fits better than me arriving for two days.</p>',
-	'body_right'      => '<p>Either way, the classroom works the same way. Small group, real simulators, the same teaching approach I use onsite. No fixed agenda, no syllabus you could\'ve downloaded for free, no PowerPoint. You learn by doing.</p>',
+	'body_left'       => '<p>You\'re on a CNC, stuck at operator level, wanting to move into programming. Or a manual machinist breaking into CNC properly. Or a company sending one or two people rather than booking me onsite.</p>',
+	'body_right'      => '<p>Small group, real simulators, the same teaching I do onsite. No syllabus you could\'ve downloaded for free. You learn by doing.</p>',
 	'show_pullquote'  => '0',
 	'pullquote_text'  => '',
 	'pullquote_cite'  => '',
@@ -46,103 +50,101 @@ $content .= ns_block( 'block-who', [
 	'coda'            => '',
 ] );
 
-// ── 3. COURSE-SHEET ───────────────────────────────────────────────────────────
+// ── 3. COURSE-SHEET (links to the 8 course pages) ─────────────────────────────
 $content .= ns_block( 'block-course-sheet', [
 	'pretitle'    => 'Courses',
 	'heading'     => 'Eight courses. [em]Pick the one that meets you where you are.[/em]',
-	'lede'        => 'Each course runs scheduled or on-demand if you\'ve got two or more. Application is per course.',
+	'lede'        => 'Every course runs at Barwell on real-control simulators. Dates and applications are on each course page.',
 	'meta_string' => '08 / 08 listed · Apply per course',
 	'rows'        => [
 		[
 			'index' => '01',
-			'name'  => 'Beginners: Milling',
+			'name'  => 'Beginners Milling Operator',
 			'rate'  => '2 days · <strong>£600</strong> + VAT',
-			'lede'  => 'New to CNC milling. Reading a programme, setting tools, work offsets, basic G-code. Walk out able to set up a job from scratch and run it.',
-			'url'   => '',
+			'lede'  => 'New to CNC milling. Axes, tooling, tool setting, measuring. The course to take before the programming one.',
+			'url'   => '/classroom-training/beginners-milling-operator/',
 		],
 		[
 			'index' => '02',
-			'name'  => 'Beginners: Turning',
+			'name'  => 'Beginners Turning Operator',
 			'rate'  => '2 days · <strong>£600</strong> + VAT',
-			'lede'  => 'Same shape as the milling beginners course, on lathe simulators. Tool turret setup, work offsets, basic turning cycles, common lathe G-codes.',
-			'url'   => '',
+			'lede'  => 'Same shape as the milling course, on lathes. Turret, chuck, spindle, tool setting, measuring.',
+			'url'   => '/classroom-training/beginners-turning-operator/',
 		],
 		[
 			'index' => '03',
-			'name'  => 'Setter / Operator: Milling',
+			'name'  => 'Setter Operator: Milling',
 			'rate'  => '2 days · <strong>£600</strong> + VAT',
-			'lede'  => 'For operators who can press cycle-start but want to set the machine themselves. Tool length offsets, work coordinate systems, edge-finding, first-off inspection, dealing with a crash without panicking.',
-			'url'   => '',
+			'lede'  => 'You can press cycle-start. Now set the machine yourself. Offsets, datums, proving out a new program.',
+			'url'   => '/classroom-training/setter-operator-milling/',
 		],
 		[
 			'index' => '04',
-			'name'  => 'Setter / Operator: Turning',
+			'name'  => 'Setter Operator: Turning',
 			'rate'  => '2 days · <strong>£600</strong> + VAT',
-			'lede'  => 'Lathe equivalent. Setting the turret, work offsets, dealing with bar feed, common turning problems on the shop floor.',
-			'url'   => '',
+			'lede'  => 'The lathe equivalent. Turret setup, work shift datum, tool offsets, proving out.',
+			'url'   => '/classroom-training/setter-operator-turning/',
 		],
 		[
 			'index' => '05',
 			'name'  => 'Learn to Program: Milling',
 			'rate'  => '2 days · <strong>£600</strong> + VAT',
-			'lede'  => 'Beyond running someone else\'s programme. Writing G-code by hand for milling work, canned cycles, cutter compensation, sub-routines. You leave able to write a programme from a drawing.',
-			'url'   => '',
+			'lede'  => 'Write G-code by hand for milling. Canned cycles, datums, sub programs. Leave able to program from a drawing.',
+			'url'   => '/classroom-training/learn-to-program-milling/',
 		],
 		[
 			'index' => '06',
 			'name'  => 'Learn to Program: Turning',
 			'rate'  => '2 days · <strong>£600</strong> + VAT',
-			'lede'  => 'Lathe programming from scratch. Roughing and finishing cycles, threading, grooving, parting. You finish able to programme a typical turned part hand-coded.',
-			'url'   => '',
+			'lede'  => 'Lathe programming from scratch. Roughing cycles, profiles, threading. Leave able to program a turned part.',
+			'url'   => '/classroom-training/learn-to-program-turning/',
 		],
 		[
 			'index' => '07',
-			'name'  => 'Macro Programming',
-			'rate'  => '[GAP — confirm] days · price on course page',
-			'lede'  => 'For programmers who want to move past basic G-code into parametric programming. Macro variables, IF/THEN/GOTO logic, custom canned cycles, talking to the control properly. Separates programmers from people who copy programmes.',
-			'url'   => '',
+			'name'  => 'Edgecam Milling',
+			'rate'  => '2 days · <strong>£600</strong> + VAT',
+			'lede'  => 'CAD/CAM for milling in Edgecam. Model in, posted code out, on my professional licence.',
+			'url'   => '/classroom-training/edgecam-milling/',
 		],
 		[
 			'index' => '08',
-			'name'  => 'Edgecam',
-			'rate'  => '[GAP — confirm] days · price on course page',
-			'lede'  => 'CAD/CAM training in Edgecam, using my professional licence in the classroom. Cover the workflow from importing a model to posting tested G-code. Suits programmers moving from hand-code to CAM, or companies adopting Edgecam in-house.',
-			'url'   => '',
+			'name'  => 'Edgecam Turning',
+			'rate'  => '2 days · <strong>£600</strong> + VAT',
+			'lede'  => 'The turning side of Edgecam. From solid model to tested code on a real lathe.',
+			'url'   => '/classroom-training/edgecam-turning/',
 		],
 	],
 	'surface' => 's-paper',
 ] );
 
-// ── 4. OFFER-LIST — .authority.expect (Six simulators / What to expect) ──────
+// ── 4. OFFER-LIST — What to expect ───────────────────────────────────────────
 $content .= ns_block( 'block-offer-list', [
 	'pretitle' => 'What to expect',
 	'heading'  => 'Six simulators. [em]One to six of you.[/em]',
 	'lede'     => '',
 	'items'    => [
-		[ 'text' => '<strong>Group size.</strong> One to six students. Even with one applicant the course runs. You get a more intensive week.' ],
-		[ 'text' => '<strong>Length.</strong> Most courses run two or three days. Macro programming and Edgecam usually run longer.' ],
-		[ 'text' => '<strong>Format.</strong> I teach, you do. Worked examples, then your attempt, then the next problem. No long lectures.' ],
-		[ 'text' => '<strong>Pace.</strong> I adapt to the room. If you\'re flying, I cover more ground. If something\'s not clicking, I stay with it until it does.' ],
-		[ 'text' => '<strong>Certificate.</strong> Issued on completion, per student. Useful for your CV, your employer\'s records, your own evidence of competence.' ],
-		[ 'text' => '<strong>Where.</strong> Barwell, Leicestershire. Postcode and directions sent on application.' ],
+		[ 'text' => '<strong>Group size.</strong> One to six students. The course runs even with one.' ],
+		[ 'text' => '<strong>Length.</strong> Two days. 9.30am to 4pm.' ],
+		[ 'text' => '<strong>Format.</strong> I teach, you do. Worked examples, then your attempt. No long lectures.' ],
+		[ 'text' => '<strong>Pace.</strong> I adapt to the room. If something\'s not clicking, I stay with it.' ],
+		[ 'text' => '<strong>Certificate.</strong> Issued on completion, per student.' ],
+		[ 'text' => '<strong>Where.</strong> Barwell, Leicestershire. Directions sent on application.' ],
 	],
 	'surface' => 's-paper-tint',
 ] );
 
-// ── 5. OFFER-LIST — .offer (Real simulators, real instructor, real cert) ─────
+// ── 5. OFFER-LIST — What's included ──────────────────────────────────────────
 $content .= ns_block( 'block-offer-list', [
 	'pretitle' => 'What\'s included',
 	'heading'  => 'Real simulators, real instructor, [em]real certificate.[/em]',
 	'lede'     => '',
 	'items'    => [
-		[ 'text' => 'A simulator station for the duration of the course. Real control, real G-code, the same interfaces you\'ll see on the shop floor.' ],
-		[ 'text' => 'Small-group teaching. Never more than six students. Sometimes one.' ],
-		[ 'text' => 'All the teaching in person, by me. Not a junior trainer, not a video, not a workbook.' ],
-		[ 'text' => 'Certificate per student on completion. Evidenced for CVs, employers, apprenticeship records.' ],
-		[ 'text' => 'Course materials to take home: notes, reference sheets, copies of the example programs we worked through. [GAP — Dave to confirm]' ],
-		[ 'text' => 'Written reference for job-hunting students: if you\'re job-hunting after the course, I\'ll give you a reference based on what you did in the classroom. [GAP — Dave to confirm]' ],
-		[ 'text' => 'Honest course selection up front. Five-minute phone call before you apply, no charge, to make sure you\'re picking the right course.' ],
-		[ 'text' => 'Local accommodation list sent with confirmation. Half a dozen options in Barwell, all under £80/night.' ],
+		[ 'text' => 'Your own simulator station. Real control, real G-code, the same interfaces as the shop floor.' ],
+		[ 'text' => 'All the teaching in person, by me. Not a junior trainer, not a video.' ],
+		[ 'text' => 'Certificate per student on completion.' ],
+		[ 'text' => 'Course notes to take home.' ],
+		[ 'text' => 'Free course-selection call before you book. Five minutes, no charge.' ],
+		[ 'text' => 'Lunch, tea and coffee thrown in. Accommodation list sent with confirmation.' ],
 	],
 	'surface' => 's-paper',
 ] );
@@ -151,7 +153,7 @@ $content .= ns_block( 'block-offer-list', [
 $content .= ns_block( 'block-outcome', [
 	'pretitle' => 'After the course',
 	'heading'  => 'What does your CV look like [em]three months from now?[/em]',
-	'body'     => '<p>You walk in on day one of the new job and you\'re not bluffing. You know what offsets are. You know what to do when the cycle stops. You\'re not the person everyone wishes had been trained properly before they got handed the keys.</p><p>If you\'re already employed, you go back to work the Monday after the course and apply something specific. Your manager notices. The next time programming work comes up, your name\'s in the conversation.</p>',
+	'body'     => '<p>You walk into the new job and you\'re not bluffing. You know what offsets are. You know what to do when the cycle stops. Or you go back to work on Monday, apply something specific, and your manager notices.</p>',
 	'layout'   => 'single',
 	'surface'  => 's-paper-tint',
 ] );
@@ -160,12 +162,12 @@ $content .= ns_block( 'block-outcome', [
 $content .= ns_block( 'block-pricing-grid', [
 	'pretitle'      => 'Pricing',
 	'heading'       => '£300 per student per day. [em]Plus VAT.[/em]',
-	'lede'          => '<p>Classroom rate is £300 per student per day. Two-day course is £600 plus VAT. Three-day course is £900. Macro programming and Edgecam run longer and are priced on the course page.</p><p>Companies sponsoring an individual on a scheduled course pay the same per-student rate. If you\'re a company sending three or more people, an onsite engagement at £700/day for the whole team is usually the better number. Happy to scope it either way on the enquiry call.</p>',
+	'lede'          => '<p>Every course is two days: £600 plus VAT per student, £720 all in. Companies sponsoring someone pay the same rate. Sending three or more people? Onsite at £700/day for the whole team is usually the better number.</p>',
 	'alt_link'      => [ 'url' => '/onsite-training/', 'title' => 'See onsite training instead', 'target' => '' ],
 	'list_a_heading' => 'What that gets you',
 	'list_a_style'   => 'ns-list-plus',
 	'list_a_items'   => [
-		[ 'text' => 'Place on the course at the Barwell facility' ],
+		[ 'text' => 'Place on the course at Barwell' ],
 		[ 'text' => 'A simulator station for the duration' ],
 		[ 'text' => 'All the teaching, in person, by me' ],
 		[ 'text' => 'Certificate on completion' ],
@@ -173,9 +175,8 @@ $content .= ns_block( 'block-pricing-grid', [
 	'list_b_heading' => 'What\'s not included',
 	'list_b_style'   => 'ns-list-bullet',
 	'list_b_items'   => [
-		[ 'text' => 'Travel to Barwell (you make your own way)' ],
-		[ 'text' => 'Accommodation if you\'re staying over (recommendations sent with confirmation)' ],
-		[ 'text' => 'Lunch (most days the group walks to the local at midday, or bring your own)' ],
+		[ 'text' => 'Travel to Barwell' ],
+		[ 'text' => 'Accommodation (recommendations sent with confirmation)' ],
 	],
 	'surface' => 's-paper',
 ] );
@@ -189,22 +190,22 @@ $content .= ns_block( 'block-disqualifier', [
 		[
 			'index' => 'A',
 			'name'  => 'You want a degree.',
-			'body'  => 'Practical training, not academic. The certificate evidences competence on the course content. Doesn\'t replace an HNC, an engineering degree, or a formal apprenticeship.',
+			'body'  => 'This is practical training. The certificate evidences competence, it doesn\'t replace an HNC or an apprenticeship.',
 		],
 		[
 			'index' => 'B',
 			'name'  => 'You can\'t travel to Barwell.',
-			'body'  => 'Online courses are coming but aren\'t live yet. The Learning Hub is the best free starting point until self-paced courses launch.',
+			'body'  => 'Start with the online courses or the Learning Hub instead.',
 		],
 		[
 			'index' => 'C',
-			'name'  => 'You\'re a complete beginner who hasn\'t seen a CNC.',
-			'body'  => 'The beginners courses assume you\'ve at least been near a machine and understand the basics of metal cutting. If you\'re starting from zero, the Hub has months of reading that\'ll get you to a useful starting point.',
+			'name'  => 'You\'ve never been near a machine.',
+			'body'  => 'The beginners courses assume you understand the basics of metal cutting. The Hub will get you to a useful starting point first.',
 		],
 		[
 			'index' => 'D',
 			'name'  => 'You\'re sending five people from one company.',
-			'body'  => 'At that group size, onsite training on your own machines is almost always the better economic and practical choice. Call me. I\'ll scope it that way instead.',
+			'body'  => 'At that size, onsite on your own machines is the better call. Ring me and I\'ll scope it that way.',
 		],
 	],
 	'footer_note' => '',
@@ -215,7 +216,7 @@ $content .= ns_block( 'block-disqualifier', [
 $content .= ns_block( 'block-authority', [
 	'variant'      => 'standard',
 	'heading'      => 'Same hands teaching now [em]as in 1996.[/em]',
-	'lede'         => 'Same instructor on every course. Not a rotating bench of trainers. Not a franchise model. Me. You can watch hundreds of hours of my teaching style on the YouTube channel before you ever fill in an application form.',
+	'lede'         => 'Same instructor on every course. Not a franchise, not a rotating bench of trainers. Me. Watch hundreds of hours of my teaching on YouTube before you apply.',
 	'spec_items'   => [
 		[ 'label' => 'Training on CNC machines',   'value' => '30',    'note' => 'years', 'wide' => '0' ],
 		[ 'label' => 'Five-star reviews on Google', 'value' => '30',   'note' => '',      'wide' => '0' ],
@@ -232,31 +233,27 @@ $content .= ns_block( 'block-faq', [
 	'items'   => [
 		[
 			'question' => 'Will this course get me a job?',
-			'answer'   => '<p>Honest answer: a certificate alone won\'t. A certificate plus the skills you\'ll actually use on the floor, plus the willingness to start somewhere and learn, will. I\'ve had students go from a beginners course to an operator job within a month. I\'ve had others struggle because they wanted the qualification more than they wanted the work. The course is part of the answer, not the whole answer.</p>',
+			'answer'   => '<p>A certificate alone won\'t. The certificate plus skills you\'ll actually use on the floor will. I\'ve had students go from a beginners course to an operator job within a month.</p>',
 		],
 		[
 			'question' => 'Which course do I need?',
-			'answer'   => '<p>If you\'ve never run a CNC, beginners. If you can press cycle-start but can\'t set the machine, setter/operator. If you can set it but you\'ve never written a programme from scratch, Learn to Program. If you\'re an experienced programmer who\'s never touched parametric code, macro programming. If you\'re not sure, call me. Five minutes on the phone usually settles it.</p>',
+			'answer'   => '<p>Never run a CNC: beginners. Can press cycle-start but can\'t set the machine: setter operator. Can set it but can\'t program: Learn to Program. Not sure: ring me, five minutes settles it.</p>',
 		],
 		[
 			'question' => 'How many people are on each course?',
-			'answer'   => '<p>One to six. The course runs even with one applicant. You just get a much more intensive week of one-to-one time.</p>',
+			'answer'   => '<p>One to six. The course runs even with one applicant. You just get more one-to-one time.</p>',
 		],
 		[
 			'question' => 'Can my employer pay for me?',
-			'answer'   => '<p>Yes, lots do. I\'ll invoice the company direct, or you can pay and reclaim. Either works. Happy to talk to your manager if it helps the conversation.</p>',
+			'answer'   => '<p>Yes, lots do. I\'ll invoice the company direct, or you pay and reclaim.</p>',
 		],
 		[
 			'question' => 'Are the simulators the same as real machines?',
-			'answer'   => '<p>The simulators run real controls. Same Fanuc, Heidenhain, Siemens, Mazak interfaces you\'ll see on the shop floor. The G-code you write in the classroom runs on a real machine without rewriting. The only thing missing is the swarf.</p>',
+			'answer'   => '<p>They run real controls. Same Fanuc interfaces you\'ll see on the floor. The G-code you write here runs on a real machine without rewriting. The only thing missing is the swarf.</p>',
 		],
 		[
 			'question' => 'Do you offer accommodation?',
-			'answer'   => '<p>No. Barwell has half a dozen hotels and B&Bs within ten minutes. I\'ll send a few recommendations with the booking confirmation.</p>',
-		],
-		[
-			'question' => 'Is there a weekend option?',
-			'answer'   => '<p>[GAP — Dave to confirm definitive answer. Existing copy says some courses have weekend variants.]</p>',
+			'answer'   => '<p>No, but Barwell has half a dozen hotels and B&Bs within ten minutes. Recommendations sent with your confirmation.</p>',
 		],
 	],
 ] );
@@ -265,7 +262,7 @@ $content .= ns_block( 'block-faq', [
 $content .= ns_block( 'block-osm-map', [
 	'heading_pretitle' => 'Location',
 	'heading'          => 'Barwell, Leicestershire.',
-	'body'             => 'The training facility is in Barwell, Leicestershire. Postcode and directions are sent with your booking confirmation.',
+	'body'             => 'The training facility is in Barwell, just outside Hinckley. Postcode and directions sent with your booking confirmation.',
 	'address_lines'    => [
 		[ 'label' => 'Town',       'value' => 'Barwell, Leicestershire' ],
 		[ 'label' => 'Directions', 'value' => 'Sent with booking confirmation' ],
@@ -281,35 +278,16 @@ $content .= ns_block( 'block-osm-map', [
 // ── 12. HUB-PREVIEW ──────────────────────────────────────────────────────────
 $content .= ns_block( 'block-hub-preview', [
 	'heading'         => 'Free reading before you apply.',
-	'lede'            => 'The Learning Hub has hundreds of articles on G-code, machine setup, and CNC programming. Good starting point if you\'re not sure which course fits, or if you want to arrive on day one already ahead.',
+	'lede'            => 'Hundreds of articles on G-code, setup and programming. Arrive on day one already ahead.',
 	'cta'             => [ 'url' => '/learning-hub/', 'title' => 'Go to the Learning Hub', 'target' => '' ],
-	'secondary_items' => [
-		[
-			'title'     => '[GAP — confirm]',
-			'dek'       => '[GAP — confirm]',
-			'url'       => '/learning-hub/',
-			'control'   => 'Fanuc',
-			'skill'     => 'G-code',
-			'type'      => 'Article',
-			'read_time' => '5 min',
-		],
-		[
-			'title'     => '[GAP — confirm]',
-			'dek'       => '[GAP — confirm]',
-			'url'       => '/learning-hub/',
-			'control'   => '',
-			'skill'     => 'Setup',
-			'type'      => 'Article',
-			'read_time' => '4 min',
-		],
-	],
+	'secondary_items' => [],
 ] );
 
 // ── 13. DECISIVENESS ─────────────────────────────────────────────────────────
 $content .= ns_block( 'block-decisiveness', [
 	'heading'       => 'Five minutes on the phone. [em]Quickest way to pick.[/em]',
-	'lede'          => 'Call me direct on 07834 858 407 if you\'d rather talk it through than fill in a form. Quickest way to work out which course fits.',
-	'primary_cta'   => [ 'url' => '/courses/', 'title' => 'See all courses', 'target' => '' ],
+	'lede'          => 'Ring me on 07834 858 407 if you\'d rather talk it through than fill in a form.',
+	'primary_cta'   => [ 'url' => '#courses', 'title' => 'Pick your course', 'target' => '' ],
 	'secondary_cta' => [ 'url' => 'tel:07834858407', 'title' => 'Call 07834 858 407', 'target' => '' ],
 	'phone'         => '07834 858 407',
 	'email'         => 'david@cnctrainingcentre.com',
