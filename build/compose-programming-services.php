@@ -52,25 +52,20 @@ $content .= ns_block( 'block-who', [
 $content .= ns_block( 'block-prog-offer', [
 	'pretitle'   => 'What I offer',
 	'heading'    => 'Four ways to get programming [em]off your plate.[/em]',
-	'meta'       => '04 / 04 listed · Off-site programming · UK-wide delivery',
 	'items'      => [
 		[
-			'index' => '01',
 			'name'  => 'Sub-contract programming',
 			'lede'  => 'Drawing in, tested G-code out. One-off complex parts, urgent jobs, steady overflow.',
 		],
 		[
-			'index' => '02',
 			'name'  => 'Edgecam programming',
 			'lede'  => 'Professional Edgecam licence. Your software, your file format, posted to your machine.',
 		],
 		[
-			'index' => '03',
 			'name'  => 'Turnkey solutions',
 			'lede'  => 'New machine or new process? I write the first programmes, document the tooling, stay involved until your team\'s confident.',
 		],
 		[
-			'index' => '04',
 			'name'  => 'CNC machining services',
 			'lede'  => 'Programme plus parts, through a network of trusted machine shops. Quoted per job.',
 		],
@@ -86,17 +81,14 @@ $content .= ns_block( 'block-plan-steps', [
 	'cta'      => [ 'url' => '/contact/', 'title' => 'Send a drawing', 'target' => '' ],
 	'steps'    => [
 		[
-			'num'   => '01',
 			'title' => 'Send the drawing.',
 			'body'  => 'STEP, IGES, DXF, PDF, whatever you\'ve got. Tell me the machine and control, the material, the quantity, the deadline.',
 		],
 		[
-			'num'   => '02',
 			'title' => 'I quote on hours, you decide.',
 			'body'  => '£60 to £100 per hour plus VAT depending on complexity. Fixed-cap available once I\'ve seen the drawing. Paid upfront.',
 		],
 		[
-			'num'   => '03',
 			'title' => 'Tested code delivered. Phone stays on.',
 			'body'  => 'Post applied, tooling list, run notes. If anything kicks back on the machine, ring me and we\'ll sort it in twenty minutes.',
 		],
@@ -148,17 +140,14 @@ $content .= ns_block( 'block-warn-list', [
 	'lede'     => '',
 	'items'    => [
 		[
-			'num'  => '01',
 			'name' => 'You want to learn how to program.',
 			'body' => 'That\'s training. Onsite or classroom. I do both. Different page.',
 		],
 		[
-			'num'  => '02',
 			'name' => 'You don\'t have a machine to run it on.',
 			'body' => 'The conversation you need is about machine spec, not G-code.',
 		],
 		[
-			'num'  => '03',
 			'name' => 'You\'re hoping for a free programme on spec.',
 			'body' => 'All work is quoted and paid upfront. I don\'t work on spec.',
 		],

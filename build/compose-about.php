@@ -74,17 +74,14 @@ $content .= ns_block( 'block-plan-steps', [
 	'cta'       => [ 'url' => '/contact/', 'title' => 'Tell David what you need', 'target' => '' ],
 	'steps'     => [
 		[
-			'num'   => '01',
 			'title' => 'Start where they actually are.',
 			'body'  => 'First morning I walk the shop, see what the machines are doing, see the team\'s real level. Then we work from there.',
 		],
 		[
-			'num'   => '02',
 			'title' => 'Train on your actual machines.',
 			'body'  => 'Train Monday, run the part Tuesday. That\'s how it sticks.',
 		],
 		[
-			'num'   => '03',
 			'title' => 'Connect it to next week\'s work.',
 			'body'  => 'Training that isn\'t connected to the next job is forgotten by Friday.',
 		],

@@ -55,59 +55,50 @@ $content .= ns_block( 'block-course-sheet', [
 	'pretitle'    => 'Courses',
 	'heading'     => 'Eight courses. [em]Pick the one that meets you where you are.[/em]',
 	'lede'        => 'Every course runs at Barwell on real-control simulators. Dates and applications are on each course page.',
-	'meta_string' => '08 / 08 listed · Apply per course',
 	'rows'        => [
 		[
-			'index' => '01',
 			'name'  => 'Beginners Milling Operator',
 			'rate'  => '2 days · <strong>£600</strong> + VAT',
 			'lede'  => 'New to CNC milling. Axes, tooling, tool setting, measuring. The course to take before the programming one.',
 			'url'   => '/classroom-training/beginners-milling-operator/',
 		],
 		[
-			'index' => '02',
 			'name'  => 'Beginners Turning Operator',
 			'rate'  => '2 days · <strong>£600</strong> + VAT',
 			'lede'  => 'Same shape as the milling course, on lathes. Turret, chuck, spindle, tool setting, measuring.',
 			'url'   => '/classroom-training/beginners-turning-operator/',
 		],
 		[
-			'index' => '03',
 			'name'  => 'Setter Operator: Milling',
 			'rate'  => '2 days · <strong>£600</strong> + VAT',
 			'lede'  => 'You can press cycle-start. Now set the machine yourself. Offsets, datums, proving out a new program.',
 			'url'   => '/classroom-training/setter-operator-milling/',
 		],
 		[
-			'index' => '04',
 			'name'  => 'Setter Operator: Turning',
 			'rate'  => '2 days · <strong>£600</strong> + VAT',
 			'lede'  => 'The lathe equivalent. Turret setup, work shift datum, tool offsets, proving out.',
 			'url'   => '/classroom-training/setter-operator-turning/',
 		],
 		[
-			'index' => '05',
 			'name'  => 'Learn to Program: Milling',
 			'rate'  => '2 days · <strong>£600</strong> + VAT',
 			'lede'  => 'Write G-code by hand for milling. Canned cycles, datums, sub programs. Leave able to program from a drawing.',
 			'url'   => '/classroom-training/learn-to-program-milling/',
 		],
 		[
-			'index' => '06',
 			'name'  => 'Learn to Program: Turning',
 			'rate'  => '2 days · <strong>£600</strong> + VAT',
 			'lede'  => 'Lathe programming from scratch. Roughing cycles, profiles, threading. Leave able to program a turned part.',
 			'url'   => '/classroom-training/learn-to-program-turning/',
 		],
 		[
-			'index' => '07',
 			'name'  => 'Edgecam Milling',
 			'rate'  => '2 days · <strong>£600</strong> + VAT',
 			'lede'  => 'CAD/CAM for milling in Edgecam. Model in, posted code out, on my professional licence.',
 			'url'   => '/classroom-training/edgecam-milling/',
 		],
 		[
-			'index' => '08',
 			'name'  => 'Edgecam Turning',
 			'rate'  => '2 days · <strong>£600</strong> + VAT',
 			'lede'  => 'The turning side of Edgecam. From solid model to tested code on a real lathe.',
@@ -188,22 +179,18 @@ $content .= ns_block( 'block-disqualifier', [
 	'lede'     => '',
 	'items'    => [
 		[
-			'index' => 'A',
 			'name'  => 'You want a degree.',
 			'body'  => 'This is practical training. The certificate evidences competence, it doesn\'t replace an HNC or an apprenticeship.',
 		],
 		[
-			'index' => 'B',
 			'name'  => 'You can\'t travel to Barwell.',
 			'body'  => 'Start with the online courses or the Learning Hub instead.',
 		],
 		[
-			'index' => 'C',
 			'name'  => 'You\'ve never been near a machine.',
 			'body'  => 'The beginners courses assume you understand the basics of metal cutting. The Hub will get you to a useful starting point first.',
 		],
 		[
-			'index' => 'D',
 			'name'  => 'You\'re sending five people from one company.',
 			'body'  => 'At that size, onsite on your own machines is the better call. Ring me and I\'ll scope it that way.',
 		],
