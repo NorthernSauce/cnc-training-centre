@@ -6,15 +6,16 @@ Facts for any agent working in this folder. Keep this file current; log changes 
 - Business: independent CNC trainer with 30 years' experience. Four services: onsite training, classroom training, programming services, online courses. Learning Hub of about 300 articles, 332 YouTube videos, 27k LinkedIn followers.
 - Contact: David, trainer and sole decision-maker (david@cnctrainingcentre.com). First name only; see rules.
 - What Northern Sauce does for them: full website rebuild from a 965-URL WordPress sprawl — Status: in build (Phase 5; content-migration clone build marked ship-ready for client review 2026-06-07; last commit 2026-07-30)
+- Plan: website build, £2,499 fixed, paid in full by 26 May 2026; online courses not included. Hosting and maintenance quoted at £25 a month, or £45 with support; which one David takes isn't in comms (comms/2026-05-02-meet-discovery-call.md; comms/2026-05-26-email-payment-received.md)
 
 ## Where everything is
 - This folder: `~/Documents/Northern Sauce OS/clients/cnc-training-centre/`
 - GitHub: design repo `git@github.com:NorthernSauce/cnc-training-centre.git`; WordPress repo `NorthernSauce/cnc-training-centre-website`. Pages preview https://northernsauce.github.io/cnc-training-centre/
 - Local WordPress site: `~/Local Sites/cnctrainingcentre/` → http://cnctrainingcentre.local — theme `cnc-training-centre`. The deliverable clone holding the real 290-post archive is `~/Local Sites/cnctrainingcentre-old/`.
-- Staging: [GAP]
-- Live: [GAP] (the client's email domain is cnctrainingcentre.com; the live URL is not written down)
+- Staging: https://cnctrainingcentre-com.stackstaging.com/ (comms/2026-07-30-email-staging-site-link.md)
+- Live: not live yet. On staging, waiting on David's changes; left with him for now (Dave, 9 Nov 2026). Client email domain cnctrainingcentre.com
 - Linear project: https://linear.app/northern-sauce/project/cnc-training-centre-website-ec6281752867 (Build is NOR-54)
-- Basecamp / comms: [GAP]
+- Basecamp / comms: Basecamp project 47127069, https://app.basecamp.com/5922159/projects/47127069 (comms/basecamp-cnc-training-centre.md); email and Meet notes in `comms/`
 - Key folders here:
   - `brief/` — tokens.css, components.css, style guide, design-brief.md, references
   - `strategy/` — strategy.md, market-intelligence.md, proposed sitemap
@@ -37,7 +38,7 @@ Facts for any agent working in this folder. Keep this file current; log changes 
 - A designer may revise autonomously only when applying refreshed copy to an already-locked visual vocabulary (2026-05-18).
 
 ## Open items
-- `[GAP]` items from the design pass: worked examples, programming pricing tiers, "network of trusted machine shops" wording, two testimonials, hub featured articles.
+- Content David still owes (part of the changes we're waiting on him for): worked examples, programming pricing tiers, "network of trusted machine shops" wording, two testimonials, hub featured articles.
 - Reviews plugin: WP Business Reviews is not on WP.org; Dave to supply a zip or confirm Site Reviews.
 - No usable teaching photography; David-teaching shoot deferred to post-launch. Logo is PNG only; SVG to request.
 - NOR-440: fix compiled-asset `.gitignore` before any pure-git deploy. Mobile eyeball pass on the clone. Apply and enquiry pages currently redirect.
